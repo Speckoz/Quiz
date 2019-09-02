@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileQuiz.Views.TelaInicial"
+             Visual="Material"
+             BackgroundColor="WhiteSmoke">
+
+    <ContentPage.Content>
+        <StackLayout Margin="10,35,10,10">
+            <!--Title-->
+            <Label Text="Bem Vindo"
+               HorizontalOptions="Center"
+               FontSize="32"
+               FontAttributes="Bold"
+               TextColor="Black"/>
+
+            <!--Logo-->
+            <Image Source="https://heartdevs.com/dist/images/logo-he4rt.png" WidthRequest="125" HeightRequest="125" />
+
+            <!--Inputs-->
+            <Editor x:Name="loginLbl"
+                Placeholder="Insira seu login"
+                HeightRequest="100"
+                TextColor="Black"
+                Margin="0, 25, 0, 0" />
+
+            <Entry x:Name="senhaLbl"
+                Placeholder="Insira sua senha"
+                HeightRequest="100"
+                TextColor="Black"
+                Keyboard="Text"
+                IsPassword="True" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                <!--Buttons-->
+                <Button Text="Login" BackgroundColor="#6f32bf"/>
+                <!--Buttons-->
+                <Button Text="Registrar" Grid.Column="1" BackgroundColor="#6f32bf" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

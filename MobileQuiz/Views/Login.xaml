@@ -27,7 +27,7 @@
                 TextColor="Black"
                 Margin="0, 25, 0, 0" />
 
-            <Entry x:Name="senhaLbl"
+            <Entry x:Name="passwordLbl"
                 Placeholder="Insira sua senha"
                 HeightRequest="100"
                 TextColor="Black"

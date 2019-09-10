@@ -13,6 +13,10 @@ O Projeto irá consumir a API que está disponivel no repositório do [Quiz Desk
 # TODO List 🚀
 
 - [ ] Integrar o login e registro com a API.
+- [ ] Fazer a tela de registro.
+- [ ] Fazer a tela de categorias.
+- [ ] Fazer a tela principal do jogo.
+- [ ] Fazer a tela de adição de questões.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

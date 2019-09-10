@@ -34,6 +34,12 @@
                 Keyboard="Text"
                 IsPassword="True" />
 
+            <!--Button Login-->
+            <Button Text="Login" 
+                BackgroundColor="#6f32bf"
+                Margin="0, 0, 0, 13" 
+                Clicked="" />
+            <!--Grid Buttons-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -41,9 +47,9 @@
                 </Grid.ColumnDefinitions>
                 
                 <!--Buttons-->
-                <Button Text="Login" BackgroundColor="#6f32bf"/>
+                <Button Text="Register" BackgroundColor="#6f32bf" />
                 <!--Buttons-->
-                <Button Text="Registrar" Grid.Column="1" BackgroundColor="#6f32bf" />
+                <Button Text="Forgot" Grid.Column="1" BackgroundColor="#6f32bf" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

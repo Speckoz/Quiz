@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MobileQuiz.Views.TelaInicial"
+             x:Class="MobileQuiz.Views.Login"
              Visual="Material"
              BackgroundColor="WhiteSmoke">
 
@@ -38,7 +38,7 @@
             <Button Text="Login" 
                 BackgroundColor="#6f32bf"
                 Margin="0, 0, 0, 13" 
-                Clicked="" />
+                Clicked="Login_Clicked"/>
             <!--Grid Buttons-->
             <Grid>
                 <Grid.ColumnDefinitions>

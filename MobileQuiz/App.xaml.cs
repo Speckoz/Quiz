@@ -11,7 +11,7 @@ namespace MobileQuiz
         {
             InitializeComponent();
 
-            MainPage = new TelaInicial();
+            MainPage = new Login();
         }
 
         protected override void OnStart()

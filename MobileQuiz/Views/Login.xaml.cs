@@ -16,7 +16,7 @@ namespace MobileQuiz.Views
 
         private void Login_Clicked(object sender, EventArgs e)
         {
-            User user = new User(this.loginLbl.Text, this.passwordLbl.Text);
+            UserModel user = new UserModel(this.loginLbl.Text, this.passwordLbl.Text);
             // Login Service
         }
     }

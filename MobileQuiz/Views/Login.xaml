@@ -26,7 +26,7 @@
                 HeightRequest="100"
                 TextColor="Black"
                 Keyboard="Email"
-                Margin="0, 25, 0, 0"
+                Margin="0, 28, 0, 0"
                 IsPassword="False" />
 
             <Entry x:Name="passwordLbl"

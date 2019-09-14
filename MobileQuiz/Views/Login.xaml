@@ -21,17 +21,18 @@
             <Image Source="https://heartdevs.com/dist/images/logo-he4rt.png" WidthRequest="125" HeightRequest="125" />
 
             <!--Inputs-->
-            <Editor x:Name="loginLbl"
+            <Entry x:Name="loginLbl"
                 Placeholder="Insira seu login"
                 HeightRequest="100"
                 TextColor="Black"
-                Margin="0, 25, 0, 0" />
+                Keyboard="Email"
+                Margin="0, 25, 0, 0"
+                IsPassword="False" />
 
             <Entry x:Name="passwordLbl"
                 Placeholder="Insira sua senha"
                 HeightRequest="100"
                 TextColor="Black"
-                Keyboard="Text"
                 IsPassword="True" />
 
             <!--Button Login-->

@@ -1,8 +1,8 @@
 ﻿using MobileQuiz.Models;
-using MobileQuiz.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MobileQuiz.Services;
 
 namespace MobileQuiz.Views
 {
@@ -16,8 +16,12 @@ namespace MobileQuiz.Views
 
         private void Login_Clicked(object sender, EventArgs e)
         {
-            UserModel user = new UserModel(this.loginLbl.Text, this.passwordLbl.Text);
-            // Login Service
+            var user = UserService.SearchUser(this.loginLbl.Text, this.passwordLbl.Text);
+            if (user == null)
+            {
+                DisplayAlert("Erro", "Usuario não encontrado!", "OK");
+                return;
+            }
         }
     }
 }

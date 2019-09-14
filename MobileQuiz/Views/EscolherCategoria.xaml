@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileQuiz.Views.EscolherCategoria"
+             Visual="Material"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.Content>
+        <StackLayout Margin="10,5,10,10" Padding="30">
+            <!--Title-->
+            <Label Text="Escolha a Categoria"
+               HorizontalOptions="Center"
+               FontSize="34"
+               FontAttributes="Bold"
+               TextColor="Black" />
+
+
+
+
+            <!--Image-->
+            <Image Source="https://user-images.githubusercontent.com/40467826/64911953-8d2bb580-d6fe-11e9-91ac-b744a89ded21.png" WidthRequest="145" HeightRequest="145" />
+
+            <!--Todas-->
+            <Button 
+                Text="Todas"
+                BackgroundColor="DarkGreen"
+                FontSize="Large"
+                Margin="0, 30, 0, 20"/>
+
+            <!--Ciencia-->
+            <Button 
+                Text="Ciencia"
+                BackgroundColor="#6f32bf"
+                FontSize="Large" />
+
+            <!--Arte-->
+            <Button 
+                Text="Arte"
+                BackgroundColor="#6f32bf"
+                FontSize="Large" />
+
+            <!--Historia-->
+            <Button 
+                Text="Historia"
+                BackgroundColor="#6f32bf"
+                FontSize="Large" />
+
+            <!--Geografia-->
+            <Button 
+                Text="Geografia"
+                BackgroundColor="#6f32bf"
+                FontSize="Large" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

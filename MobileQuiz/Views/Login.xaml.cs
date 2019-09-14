@@ -22,6 +22,8 @@ namespace MobileQuiz.Views
                 DisplayAlert("Erro", "Usuario não encontrado!", "OK");
                 return;
             }
+
+            Application.Current.MainPage = new EscolherCategoria();
         }
     }
 }

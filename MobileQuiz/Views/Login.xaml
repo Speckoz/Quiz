@@ -40,6 +40,7 @@
                 BackgroundColor="#6f32bf"
                 Margin="0, 0, 0, 13" 
                 Clicked="Login_Clicked"/>
+            
             <!--Grid Buttons-->
             <Grid>
                 <Grid.ColumnDefinitions>

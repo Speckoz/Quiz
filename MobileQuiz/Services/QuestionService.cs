@@ -7,22 +7,18 @@ using System.Text;
 
 namespace MobileQuiz.Services
 {
-    public class QuestionService
+    public static class QuestionService
     {
-        public List<QuestionModel> questions { get; set; } = Seed.SeedQuestions();
-
-        public QuestionService()
-        {
-        }
+        public static List<QuestionModel> Questions { get; set; } = Seed.SeedQuestions();
 
         // Get random question
-        public QuestionModel GetRandomQuestion() => questions[new Random().Next(questions.Count)];
+        public static QuestionModel GetRandomQuestion() => Questions[new Random().Next(Questions.Count)];
 
         // Get random question by category
-        public QuestionModel GetRandomQuestion(string category)
+        public static QuestionModel GetRandomQuestion(string category)
         {
-            var aux = questions.Where(q => q.Category == category).ToList();
-            return aux[new Random().Next(aux.Count)];
+            var categoryQuestions = Questions.Where(q => q.Category == category).ToList();
+            return categoryQuestions[new Random().Next(categoryQuestions.Count)];
         }
     }
 }

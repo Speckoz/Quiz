@@ -19,7 +19,7 @@ namespace MobileQuiz.Views
         {
             Button btn = sender as Button;
             QuestionModel question = btn.Text == "Todas" ? GetRandomQuestion() : GetRandomQuestion(btn.Text);
-            //Application.Current.MainPage = new Jogo(question);
+            Application.Current.MainPage = new Jogo(question);
         }
     }
 }

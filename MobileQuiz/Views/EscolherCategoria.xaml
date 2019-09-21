@@ -22,7 +22,7 @@
 
             <!--Todas-->
             <Button 
-                Clicked="Todas_Clicked"
+                Clicked="Categoria_Clicked"
                 Text="Todas"
                 BackgroundColor="DarkGreen"
                 FontSize="Large"
@@ -30,28 +30,28 @@
 
             <!--Ciencia-->
             <Button 
-                Clicked="Ciencia_Clicked"
+                Clicked="Categoria_Clicked"
                 Text="Ciencia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Arte-->
             <Button 
-                Clicked="Arte_Clicked"
+                Clicked="Categoria_Clicked"
                 Text="Arte"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Historia-->
             <Button 
-                Clicked="Historia_Clicked"
+                Clicked="Categoria_Clicked"
                 Text="Historia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Geografia-->
             <Button 
-                Clicked="Geografia_Clicked"
+                Clicked="Categoria_Clicked"
                 Text="Geografia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />

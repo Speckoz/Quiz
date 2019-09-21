@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileQuiz.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace MobileQuiz.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Jogo : ContentPage
     {
-        public Jogo()
+        public Jogo(QuestionModel question)
         {
             InitializeComponent();
             InitButtons();

@@ -11,16 +11,17 @@ namespace MobileQuiz.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Jogo : ContentPage
     {
-        public Jogo(QuestionModel question)
+        public Jogo(QuestionModel question, int round = 0, int pontos = 0)
         {
             InitializeComponent();
-            Mount(question);
+            Mount(question, round, pontos);
         }
 
-        private void Mount(QuestionModel question)
+        private void Mount(QuestionModel question, int round, int pontos)
         {
             CreateButtons(question);
             CreateTitle(question.Question);
+            RenderInfos(round, pontos);
         }
 
         private void CreateTitle(string question)
@@ -36,6 +37,7 @@ namespace MobileQuiz.Views
                 var btn = new Button()
                 {
                     Text = answer,
+                    FontSize = 19,
                 };
 
                 if (answer == question.CorrectAnswer) btn.ClassId = "correct";
@@ -68,6 +70,11 @@ namespace MobileQuiz.Views
             List<string> answerList = question.IncorrectAnswers.Split('/').ToList();
             answerList.Add(question.CorrectAnswer);
             return answerList.Randomize().ToList();
+        }
+
+        private void RenderInfos(int round, int pontos)
+        {
+
         }
     }
 }

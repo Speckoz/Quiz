@@ -8,8 +8,37 @@
              Visual="Material" >
     <ContentPage.Content>
         <StackLayout Margin="10,5,10,10" Padding="10" x:Name="myBtns">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Round-->
+                <Label Text="Round: 1"
+                    x:Name="Round"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="25"
+                    FontAttributes="Bold"
+                    TextColor="Black" />
+
+                <!--Pontos-->
+                <Label Grid.Column="1" 
+                    x:Name="Pontos"
+                    Text="Pontos: 212" 
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="25"
+                    FontAttributes="Bold"
+                    TextColor="Black" />
+
+            </Grid>
+
             <!--Title-->
             <Label Text="Game"
+               Margin="0, 25"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"
                x:Name="Title"
@@ -24,7 +53,6 @@
                 <StackLayout x:Name="MyButtons"/>
 
             </Grid>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

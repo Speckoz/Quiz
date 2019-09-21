@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MobileQuiz.Views.Jogo"
+             Visual="Material" >
+    <ContentPage.Content>
+        <StackLayout Margin="10,5,10,10" Padding="10" x:Name="myBtns">
+            <!--Title-->
+            <Label Text="Game"
+               HorizontalOptions="Center"
+               FontSize="38"
+               FontAttributes="Bold"
+               TextColor="Black" />
+
+            <!--Grid Buttons-->
+            <Grid>
+
+                <StackLayout x:Name="MyButtons"/>
+
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="0" Text="Pablo Picasso" BackgroundColor="#FFE53C25" FontAttributes="Bold" TextColor="White" />
+                <Button Grid.Column="1" Text="Very very looooooooong text" BackgroundColor="#98A4AE" FontAttributes="Bold" TextColor="White"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Text="Very very looooooooong text" BackgroundColor="#6f32bf" FontAttributes="Bold" TextColor="White"/>
+                <Button Grid.Row="1" Grid.Column="1" Text="Very very looooooooong text" BackgroundColor="#6f32bf" FontAttributes="Bold" TextColor="White"/>-->
+
+
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
-﻿using MobileQuiz.Models;
+﻿using MobileQuiz.Helpers;
+using MobileQuiz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace MobileQuiz.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Jogo : ContentPage
     {
-        // Clear this pls
         public Jogo(QuestionModel question)
         {
             InitializeComponent();
@@ -67,7 +67,7 @@ namespace MobileQuiz.Views
         {
             List<string> answerList = question.IncorrectAnswers.Split('/').ToList();
             answerList.Add(question.CorrectAnswer);
-            return answerList;
+            return answerList.Randomize().ToList();
         }
     }
 }

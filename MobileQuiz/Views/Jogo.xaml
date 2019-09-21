@@ -10,6 +10,8 @@
         <StackLayout Margin="10,5,10,10" Padding="10" x:Name="myBtns">
             <!--Title-->
             <Label Text="Game"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
                x:Name="Title"
                HorizontalOptions="Center"
                FontSize="32"

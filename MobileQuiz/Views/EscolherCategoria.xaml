@@ -17,38 +17,41 @@
                TextColor="Black" />
 
 
-
-
             <!--Image-->
             <Image Source="https://user-images.githubusercontent.com/40467826/64911953-8d2bb580-d6fe-11e9-91ac-b744a89ded21.png" WidthRequest="145" HeightRequest="145" />
 
             <!--Todas-->
             <Button 
+                Clicked="Todas_Clicked"
                 Text="Todas"
                 BackgroundColor="DarkGreen"
                 FontSize="Large"
-                Margin="0, 30, 0, 20"/>
+                Margin="0, 30, 0, 20" />
 
             <!--Ciencia-->
             <Button 
+                Clicked="Ciencia_Clicked"
                 Text="Ciencia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Arte-->
             <Button 
+                Clicked="Arte_Clicked"
                 Text="Arte"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Historia-->
             <Button 
+                Clicked="Historia_Clicked"
                 Text="Historia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />
 
             <!--Geografia-->
             <Button 
+                Clicked="Geografia_Clicked"
                 Text="Geografia"
                 BackgroundColor="#6f32bf"
                 FontSize="Large" />

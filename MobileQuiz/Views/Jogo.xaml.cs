@@ -1,5 +1,6 @@
 ﻿using MobileQuiz.Helpers;
 using MobileQuiz.Models;
+using MobileQuiz.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,16 @@ namespace MobileQuiz.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Jogo : ContentPage
     {
-        public Jogo(QuestionModel question, int round = 0, int pontos = 0)
+        private string Category { get; set; }
+        private int ActualRound { get; set; }
+        public int Points { get; set; }
+        public Jogo(QuestionModel question, int round = 0, int pontos = 10)
         {
             InitializeComponent();
             Mount(question, round, pontos);
+            this.Category = question.Category;
+            this.ActualRound = round;
+            this.Points = pontos;
         }
 
         private void Mount(QuestionModel question, int round, int pontos)
@@ -56,7 +63,7 @@ namespace MobileQuiz.Views
             if (btn.ClassId == "correct")
             {
                 DisplayAlert("Parabéns", "Você acertou!", "OK");
-                // Proxima fase
+                NextLevel(++this.ActualRound, (this.Points * 2), this.Category);
             }
             else
             {
@@ -74,7 +81,17 @@ namespace MobileQuiz.Views
 
         private void RenderInfos(int round, int pontos)
         {
+            Label roundLabel = (Label)FindByName("Round");
+            Label pointsLabel = (Label)FindByName("Pontos");
 
+            roundLabel.Text = $"Round: {round.ToString()}";
+            pointsLabel.Text = $"Pontos: {pontos.ToString()}";
+        }
+
+        private void NextLevel(int round, int poins, string category = "")
+        {
+            QuestionModel question = QuestionService.GetRandomQuestion(category);
+            Application.Current.MainPage = new Jogo(question, round, poins);
         }
     }
 }

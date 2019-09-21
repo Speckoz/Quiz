@@ -14,8 +14,12 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 
 - [x] Fazer a tela de login
 - [x] Criar os serviços das questoes e usuarios
-- [ ] Fazer a tela de categorias.
-- [ ] Fazer a tela principal do jogo.
+- [x] Fazer a tela de categorias.
+- [x] Fazer a tela principal do jogo.
+- [ ] Avançar para proxima fase.
+- [ ] Implementar fim de jogo.
+- [ ] Tela de cadastro.
+- [ ] Avançar para proxima fase.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

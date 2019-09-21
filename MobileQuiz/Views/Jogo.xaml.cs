@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static MobileQuiz.Services.QuestionService;
 
 namespace MobileQuiz.Views
 {
@@ -15,11 +16,12 @@ namespace MobileQuiz.Views
         private string Category { get; set; }
         private int ActualRound { get; set; }
         public int Points { get; set; }
-        public Jogo(QuestionModel question, int round = 0, int pontos = 10)
+        public Jogo(string category, int round = 0, int pontos = 10)
         {
+            QuestionModel question = category == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);
             InitializeComponent();
             Mount(question, round, pontos);
-            this.Category = question.Category;
+            this.Category = category;
             this.ActualRound = round;
             this.Points = pontos;
         }
@@ -57,17 +59,17 @@ namespace MobileQuiz.Views
             }
         }
 
-        private void CheckAnswer(object sender, EventArgs e)
+        private async void CheckAnswer(object sender, EventArgs e)
         {
             var btn = (Button)sender;
             if (btn.ClassId == "correct")
             {
-                DisplayAlert("Parabéns", "Você acertou!", "OK");
-                NextLevel(++this.ActualRound, (this.Points * 2), this.Category);
+                await DisplayAlert("Parabéns", "Você acertou!", "OK");
+                NextLevel(++this.ActualRound, (this.Points * 2));
             }
             else
             {
-                DisplayAlert("Fim de jogo", "Você Perdeu!", "OK");
+                await DisplayAlert("Fim de jogo", "Você Perdeu!", "OK");
                 // Fim de jogo
             }
         }
@@ -88,10 +90,9 @@ namespace MobileQuiz.Views
             pointsLabel.Text = $"Pontos: {pontos.ToString()}";
         }
 
-        private void NextLevel(int round, int poins, string category = "")
+        private void NextLevel(int round, int poins)
         {
-            QuestionModel question = QuestionService.GetRandomQuestion(category);
-            Application.Current.MainPage = new Jogo(question, round, poins);
+            Application.Current.MainPage = new Jogo(this.Category, round, poins);
         }
     }
 }

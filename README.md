@@ -16,7 +16,7 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Criar os serviços das questoes e usuarios
 - [x] Fazer a tela de categorias.
 - [x] Fazer a tela principal do jogo.
-- [ ] Avançar para proxima fase.
+- [x] Avançar para proxima fase.
 - [ ] Implementar fim de jogo.
 - [ ] Tela de cadastro.
 - [ ] Avançar para proxima fase.

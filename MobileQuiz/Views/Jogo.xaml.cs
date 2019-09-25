@@ -69,8 +69,8 @@ namespace MobileQuiz.Views
             }
             else
             {
-                await DisplayAlert("Fim de jogo", "Você Perdeu!", "OK");
-                // Fim de jogo
+                await DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {this.Points} pontos", "OK");
+                GameOver();
             }
         }
 
@@ -93,6 +93,11 @@ namespace MobileQuiz.Views
         private void NextLevel(int round, int poins)
         {
             Application.Current.MainPage = new Jogo(this.Category, round, poins);
+        }
+
+        private void GameOver()
+        {
+            Application.Current.MainPage = new EscolherCategoria();
         }
     }
 }

@@ -36,10 +36,6 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 
 ![jogo](https://user-images.githubusercontent.com/40467826/65614716-7c94fe00-df8e-11e9-8869-ec39f59fd83e.png)
 
-### INTERFACE DO JOGO 🎮
-
-![jogo](https://user-images.githubusercontent.com/40467826/65614716-7c94fe00-df8e-11e9-8869-ec39f59fd83e.png)
-
 ### INTERFACE DO CADASTRO 🎮
 
 ![cadastro](https://user-images.githubusercontent.com/40467826/65617131-9d5f5280-df92-11e9-9eb5-f9068bc05443.png)

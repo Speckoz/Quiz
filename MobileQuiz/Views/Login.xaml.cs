@@ -25,5 +25,10 @@ namespace MobileQuiz.Views
 
             Application.Current.MainPage = new EscolherCategoria();
         }
+
+        private void Register_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new Registrar();
+        }
     }
 }

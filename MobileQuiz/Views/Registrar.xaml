@@ -4,25 +4,26 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MobileQuiz.Views.Login"
-             Visual="Material"
-             BackgroundColor="WhiteSmoke">
-
+             x:Class="MobileQuiz.Views.Registrar"
+             Visual="Material">
     <ContentPage.Content>
         <StackLayout Margin="10,35,10,10">
             <!--Title-->
-            <Label Text="Bem Vindo"
+            <Label Text="Registrar"
                HorizontalOptions="Center"
                FontSize="32"
                FontAttributes="Bold"
-               TextColor="Black"/>
+               TextColor="Black" />
 
             <!--Logo-->
-            <Image Source="https://heartdevs.com/dist/images/logo-he4rt.png" WidthRequest="125" HeightRequest="125" />
+            <Image Source="https://i.imgur.com/WqV0K6P.png" 
+                   Margin="25"
+                   WidthRequest="125" 
+                   HeightRequest="125" />
 
             <!--Inputs-->
             <Entry x:Name="loginLbl"
-                Placeholder="Insira seu login"
+                Placeholder="Login desejado"
                 HeightRequest="100"
                 TextColor="Black"
                 Keyboard="Email"
@@ -30,29 +31,19 @@
                 IsPassword="False" />
 
             <Entry x:Name="passwordLbl"
-                Placeholder="Insira sua senha"
+                Placeholder="Senha desejada"
                 HeightRequest="100"
                 TextColor="Black"
                 IsPassword="True" />
 
-            <!--Button Login-->
-            <Button Text="Login" 
+            <!--Button Registrar-->
+            <Button Text="Registrar" 
                 BackgroundColor="#6f32bf"
-                Margin="0, 0, 0, 13" 
-                Clicked="Login_Clicked"/>
-            
-            <!--Grid Buttons-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                
-                <!--Buttons-->
-                <Button Text="Register" BackgroundColor="#6f32bf" Clicked="Register_Clicked"/>
-                <!--Buttons-->
-                <Button Text="About" Grid.Column="1" BackgroundColor="#6f32bf" />
-            </Grid>
+                Margin="0, 0, 0, 13" />
+
+
+            <!--Button Voltar-->
+            <Button Text="Voltar" BackgroundColor="#6f32bf" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

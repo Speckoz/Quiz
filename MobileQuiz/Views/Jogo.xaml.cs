@@ -43,19 +43,7 @@ namespace MobileQuiz.Views
         {
             foreach (var answer in GetAnswersFromQuestion(question))
             {
-                var btn = new Button()
-                {
-                    Text = answer,
-                    FontSize = 19,
-                };
-
-                if (answer == question.CorrectAnswer) btn.ClassId = "correct";
-                
-
-                // Add handler
-                btn.Clicked += CheckAnswer;
-
-                MyButtons.Children.Add(btn);
+                var btn = CreateAnswerButton(answer, question);
             }
         }
 
@@ -72,6 +60,24 @@ namespace MobileQuiz.Views
                 await DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {this.Points} pontos", "OK");
                 GameOver();
             }
+        }
+
+        private Button CreateAnswerButton(string answer, QuestionModel question)
+        {
+            Button btn = new Button()
+            {
+                Text = answer,
+                FontSize = 19,
+            };
+
+            if (answer == question.CorrectAnswer) btn.ClassId = "correct";
+
+            // Add handler
+            btn.Clicked += CheckAnswer;
+
+            MyButtons.Children.Add(btn);
+
+            return btn;
         }
 
         private List<string> GetAnswersFromQuestion(QuestionModel question)

@@ -16,6 +16,7 @@ namespace MobileQuiz.Views
         private string Category { get; set; }
         private int ActualRound { get; set; }
         public int Points { get; set; }
+
         public Jogo(string category, int round = 0, int pontos = 10)
         {
             QuestionModel question = category == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);

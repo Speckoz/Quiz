@@ -39,11 +39,14 @@
             <!--Button Registrar-->
             <Button Text="Registrar" 
                 BackgroundColor="#6f32bf"
-                Margin="0, 0, 0, 13" />
+                Margin="0, 0, 0, 13"
+                Clicked="Register_Clicked"/>
 
 
             <!--Button Voltar-->
-            <Button Text="Voltar" BackgroundColor="#6f32bf" />
+            <Button Text="Voltar"
+                BackgroundColor="#6f32bf"
+                Clicked="Register_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

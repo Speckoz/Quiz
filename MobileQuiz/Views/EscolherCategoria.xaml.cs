@@ -14,7 +14,7 @@ namespace MobileQuiz.Views
             InitializeComponent();
         }
 
-        private void Categoria_Clicked(object sender, EventArgs e)
+        private void Category_Clicked(object sender, EventArgs e)
         {
             Button btn = sender as Button;
             Application.Current.MainPage = new Jogo(btn.Text);

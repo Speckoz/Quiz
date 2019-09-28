@@ -17,14 +17,14 @@ namespace MobileQuiz.Views
         private int ActualRound { get; set; }
         public int Points { get; set; }
 
-        public Jogo(string category, int round = 0, int pontos = 10)
+        public Jogo(string category, int round = 0, int points = 10)
         {
             QuestionModel question = category == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);
             InitializeComponent();
-            Mount(question, round, pontos);
+            Mount(question, round, points);
             this.Category = category;
             this.ActualRound = round;
-            this.Points = pontos;
+            this.Points = points;
         }
 
         private void Mount(QuestionModel question, int round, int pontos)
@@ -88,18 +88,18 @@ namespace MobileQuiz.Views
             return answerList.Randomize().ToList();
         }
 
-        private void RenderInfos(int round, int pontos)
+        private void RenderInfos(int round, int points)
         {
             Label roundLabel = (Label)FindByName("Round");
             Label pointsLabel = (Label)FindByName("Pontos");
 
             roundLabel.Text = $"Round: {round.ToString()}";
-            pointsLabel.Text = $"Pontos: {pontos.ToString()}";
+            pointsLabel.Text = $"Pontos: {points.ToString()}";
         }
 
-        private void NextLevel(int round, int poins)
+        private void NextLevel(int round, int points)
         {
-            Application.Current.MainPage = new Jogo(this.Category, round, poins);
+            Application.Current.MainPage = new Jogo(this.Category, round, points);
         }
 
         private void GameOver()

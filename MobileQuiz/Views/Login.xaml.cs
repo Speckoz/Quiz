@@ -2,7 +2,6 @@
 using MobileQuiz.Services;
 
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,5 +25,10 @@ namespace MobileQuiz.Views
         }
 
         private void Register_Clicked(object sender, EventArgs e) => Application.Current.MainPage = new Registrar();
+
+        private async void About_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Sobre", $"Criado por Specko\n\nModificado por Logikoz\n\n{System.Text.Encoding.Default.GetString(Properties.Resources.Questions)}", "Fechar");
+        }
     }
 }

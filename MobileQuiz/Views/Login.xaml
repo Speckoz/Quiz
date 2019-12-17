@@ -63,6 +63,7 @@
                 <Button
                     Grid.Column="1"
                     BackgroundColor="#6f32bf"
+                    Clicked="About_Clicked"
                     HorizontalOptions="FillAndExpand"
                     Text="About" />
             </StackLayout>

@@ -1,5 +1,6 @@
 ﻿using MobileQuiz.Models;
 using MobileQuiz.Services.Helpers;
+
 using System.Collections.Generic;
 
 namespace MobileQuiz.Services
@@ -10,9 +11,6 @@ namespace MobileQuiz.Services
 
         public static void SaveUser(UserModel user) => Users.Add(user);
 
-        public static UserModel SearchUser(string login, string password)
-        {
-            return Users.Find(u => u.Login == login && u.Password == password);
-        }
+        public static UserModel SearchUser(string login, string password) => Users.Find(u => u.Login == login && u.Password == password);
     }
 }

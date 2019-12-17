@@ -5,10 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MobileQuiz.Views.Jogo"
-             Visual="Material" >
+             Visual="Material">
     <ContentPage.Content>
         <StackLayout Margin="10,5,10,10" Padding="10" x:Name="myBtns">
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -25,15 +24,14 @@
                     TextColor="Black" />
 
                 <!--Pontos-->
-                <Label Grid.Column="1" 
+                <Label Grid.Column="1"
                     x:Name="Pontos"
-                    Text="Pontos: 212" 
+                    Text="Pontos: 212"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     FontSize="25"
                     FontAttributes="Bold"
                     TextColor="Black" />
-
             </Grid>
 
             <!--Title-->
@@ -50,8 +48,7 @@
             <!--Grid Buttons-->
             <Grid>
 
-                <StackLayout x:Name="MyButtons"/>
-
+                <StackLayout x:Name="MyButtons" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

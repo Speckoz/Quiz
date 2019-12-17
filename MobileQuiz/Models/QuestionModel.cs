@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MobileQuiz.Models
+﻿namespace MobileQuiz.Models
 {
     public class QuestionModel
     {
@@ -11,6 +7,11 @@ namespace MobileQuiz.Models
         public string CorrectAnswer { get; set; }
         public string Category { get; set; }
         public string IncorrectAnswers { get; set; }
+
+        public QuestionModel()
+        {
+        }
+
         public QuestionModel(int id, string question, string correctAnswer, string category, string incorrectAnswers)
         {
             Id = id;

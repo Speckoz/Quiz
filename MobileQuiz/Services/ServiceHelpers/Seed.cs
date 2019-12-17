@@ -1,7 +1,6 @@
 ﻿using MobileQuiz.Models;
-using System;
+
 using System.Collections.Generic;
-using System.Text;
 
 namespace MobileQuiz.Services.Helpers
 {
@@ -12,12 +11,12 @@ namespace MobileQuiz.Services.Helpers
         {
             return new List<UserModel>
             {
-                new UserModel("admin", "admin"),
-                new UserModel("marco", "123"),
-                new UserModel("heart", "password"),
-                new UserModel("gmail", "777"),
-                new UserModel("specko", "2020"),
-                new UserModel("javaf", "javafx")
+                new UserModel(){ Login = "admin", Password = "admin" },
+                new UserModel(){ Login = "marco", Password = "123" },
+                new UserModel(){ Login = "heart", Password = "password" },
+                new UserModel(){ Login = "gmail", Password = "777"},
+                new UserModel(){ Login = "specko", Password = "2020"},
+                new UserModel(){ Login = "javaf", Password = "javafx"}
             };
         }
 
@@ -26,7 +25,7 @@ namespace MobileQuiz.Services.Helpers
         {
             return new List<QuestionModel>
             {
-                new QuestionModel(1, "De quem é a famosa frase Penso, logo existo?", "Descartes", "Arte", "Platão/Sócrates/Galileu Galilei"),
+                new QuestionModel { Id = 1, Question = "De quem é a famosa frase Penso, logo existo?", CorrectAnswer = "Descartes", Category = "Arte", IncorrectAnswers = "Platão/Sócrates/Galileu Galilei" },
                 new QuestionModel(2, "Quais o menor e o maior país do mundo?", "Vaticano e Rússia", "Geografia", "Nauru e China/Mônaco e Canadá/Malta e Estados Unidos"),
                 new QuestionModel(3, "Qual o nome do presidente do Brasil que ficou conhecido como Jango?", "João Goulart", "Historia", "Jânio Quadros/Getúlio Vargas/João Figueiredo"),
                 new QuestionModel(4, "Quais os países que têm a maior e a menor expectativa de vida do mundo?", "Japão e Serra Leoa", "Geografia", "Estados Unidos e Angola/Brasil e Congo/Austrália e Afeganistão"),

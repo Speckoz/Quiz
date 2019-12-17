@@ -1,52 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MobileQuiz.Views.Registrar"
-             Visual="Material">
-    <ContentPage.Content>
-        <StackLayout Margin="10,35,10,10">
-            <!--Title-->
-            <Label Text="Registrar"
-               HorizontalOptions="Center"
-               FontSize="32"
-               FontAttributes="Bold"
-               TextColor="Black" />
-
-            <!--Logo-->
-            <Image Source="https://i.imgur.com/WqV0K6P.png" 
-                   Margin="25"
-                   WidthRequest="125" 
-                   HeightRequest="125" />
-
-            <!--Inputs-->
-            <Entry x:Name="loginLbl"
-                Placeholder="Login desejado"
-                HeightRequest="100"
-                TextColor="Black"
+<ContentPage
+    x:Class="MobileQuiz.Views.Registrar"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            FontAttributes="Bold"
+            FontSize="32"
+            HorizontalOptions="Center"
+            Text="Registrar"
+            TextColor="Black" />
+        <Image
+            Grid.Row="1"
+            Margin="25"
+            HeightRequest="125"
+            Source="https://i.imgur.com/WqV0K6P.png"
+            WidthRequest="125" />
+        <StackLayout Grid.Row="2" Orientation="Vertical">
+            <Entry
+                x:Name="loginLbl"
+                IsPassword="False"
                 Keyboard="Email"
-                Margin="0, 28, 0, 0"
-                IsPassword="False" />
-
-            <Entry x:Name="passwordLbl"
+                Placeholder="Login desejado"
+                TextColor="Black" />
+            <Entry
+                x:Name="passwordLbl"
+                IsPassword="True"
                 Placeholder="Senha desejada"
-                HeightRequest="100"
-                TextColor="Black"
-                IsPassword="True" />
-
-            <!--Button Registrar-->
-            <Button Text="Registrar" 
-                BackgroundColor="#6f32bf"
-                Margin="0, 0, 0, 13"
-                Clicked="Register_Clicked"/>
-
-
-            <!--Button Voltar-->
-            <Button Text="Voltar"
-                BackgroundColor="#6f32bf"
-                Clicked="Register_Clicked" />
+                TextColor="Black" />
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout
+            Grid.Row="3"
+            Margin="0,20,0,0"
+            Orientation="Vertical">
+            <Button
+                BackgroundColor="#6f32bf"
+                Clicked="Register_Clicked"
+                Text="Registrar" />
+            <Button
+                Margin="0,10,0,0"
+                BackgroundColor="#8E51DE"
+                Clicked="Back_Clicked"
+                Text="Voltar" />
+        </StackLayout>
+    </Grid>
 </ContentPage>

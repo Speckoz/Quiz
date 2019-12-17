@@ -1,11 +1,13 @@
 ﻿using MobileQuiz.Helpers;
 using MobileQuiz.Models;
-using MobileQuiz.Services;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 using static MobileQuiz.Services.QuestionService;
 
 namespace MobileQuiz.Views
@@ -13,18 +15,16 @@ namespace MobileQuiz.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Jogo : ContentPage
     {
-        private string Category { get; set; }
-        private int ActualRound { get; set; }
-        public int Points { get; set; }
+        private int ActualRound;
+
+        private readonly string _category;
+        private readonly int _points;
 
         public Jogo(string category, int round = 0, int points = 10)
         {
-            QuestionModel question = category == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);
             InitializeComponent();
-            Mount(question, round, points);
-            this.Category = category;
-            this.ActualRound = round;
-            this.Points = points;
+            QuestionModel question = (_category = category) == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);
+            Mount(question, ActualRound = round, _points = points);
         }
 
         private void Mount(QuestionModel question, int round, int pontos)
@@ -34,38 +34,33 @@ namespace MobileQuiz.Views
             RenderInfos(round, pontos);
         }
 
-        private void CreateTitle(string question)
-        {
-            var label = (Label)FindByName("Title");
-            label.Text = question;
-        }
+        private void CreateTitle(string question) => ((Label)FindByName("Title")).Text = question;
 
         private void CreateButtons(QuestionModel question)
         {
-            foreach (var answer in GetAnswersFromQuestion(question))
+            foreach (string answer in GetAnswersFromQuestion(question))
             {
-                var btn = CreateAnswerButton(answer, question);
+                _ = CreateAnswerButton(answer, question);
             }
         }
 
         private async void CheckAnswer(object sender, EventArgs e)
         {
-            var btn = (Button)sender;
-            if (btn.ClassId == "correct")
+            if (((Button)sender).ClassId == "correct")
             {
                 await DisplayAlert("Parabéns", "Você acertou!", "OK");
-                NextLevel(++this.ActualRound, (this.Points * 2));
+                NextLevel(++ActualRound, _points * 2);
             }
             else
             {
-                await DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {this.Points} pontos", "OK");
+                await DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {_points} pontos", "OK");
                 GameOver();
             }
         }
 
         private Button CreateAnswerButton(string answer, QuestionModel question)
         {
-            Button btn = new Button()
+            var btn = new Button()
             {
                 Text = answer,
                 FontSize = 19,
@@ -83,28 +78,19 @@ namespace MobileQuiz.Views
 
         private List<string> GetAnswersFromQuestion(QuestionModel question)
         {
-            List<string> answerList = question.IncorrectAnswers.Split('/').ToList();
+            var answerList = question.IncorrectAnswers.Split('/').ToList();
             answerList.Add(question.CorrectAnswer);
             return answerList.Randomize().ToList();
         }
 
         private void RenderInfos(int round, int points)
         {
-            Label roundLabel = (Label)FindByName("Round");
-            Label pointsLabel = (Label)FindByName("Pontos");
-
-            roundLabel.Text = $"Round: {round.ToString()}";
-            pointsLabel.Text = $"Pontos: {points.ToString()}";
+            ((Label)FindByName("Round")).Text = $"Round: {round.ToString()}";
+            ((Label)FindByName("Pontos")).Text = $"Pontos: {points.ToString()}";
         }
 
-        private void NextLevel(int round, int points)
-        {
-            Application.Current.MainPage = new Jogo(this.Category, round, points);
-        }
+        private void NextLevel(int round, int points) => Application.Current.MainPage = new Jogo(_category, round, points);
 
-        private void GameOver()
-        {
-            Application.Current.MainPage = new EscolherCategoria();
-        }
+        private void GameOver() => Application.Current.MainPage = new EscolherCategoria();
     }
 }

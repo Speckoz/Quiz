@@ -1,61 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MobileQuiz.Views.EscolherCategoria"
-             Visual="Material"
-             BackgroundColor="WhiteSmoke">
+<ContentPage
+    x:Class="MobileQuiz.Views.EscolherCategoria"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="WhiteSmoke"
+    Visual="Material"
+    mc:Ignorable="d">
     <ContentPage.Content>
         <StackLayout Margin="10,5,10,10" Padding="30">
-            <!--Title-->
-            <Label Text="Escolha a Categoria"
-               HorizontalOptions="Center"
-               FontSize="34"
-               FontAttributes="Bold"
-               TextColor="Black" />
+            <!--  Title  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="34"
+                HorizontalOptions="Center"
+                Text="Escolha a Categoria"
+                TextColor="Black" />
 
+            <!--  Image  -->
+            <Image
+                HeightRequest="145"
+                Source="https://user-images.githubusercontent.com/40467826/64911953-8d2bb580-d6fe-11e9-91ac-b744a89ded21.png"
+                WidthRequest="145" />
 
-            <!--Image-->
-            <Image Source="https://user-images.githubusercontent.com/40467826/64911953-8d2bb580-d6fe-11e9-91ac-b744a89ded21.png" WidthRequest="145" HeightRequest="145" />
-
-            <!--Todas-->
-            <Button 
-                Clicked="Category_Clicked"
-                Text="Todas"
+            <!--  Todas  -->
+            <Button
+                Margin="0,30,0,20"
                 BackgroundColor="DarkGreen"
+                Clicked="Category_Clicked"
                 FontSize="Large"
-                Margin="0, 30, 0, 20" />
+                Text="Todas" />
 
-            <!--Ciencia-->
-            <Button 
-                Clicked="Category_Clicked"
-                Text="Ciencia"
+            <!--  Ciencia  -->
+            <Button
                 BackgroundColor="#6f32bf"
-                FontSize="Large" />
-
-            <!--Arte-->
-            <Button 
                 Clicked="Category_Clicked"
-                Text="Arte"
-                BackgroundColor="#6f32bf"
-                FontSize="Large" />
+                FontSize="Large"
+                Text="Ciencia" />
 
-            <!--Historia-->
-            <Button 
+            <!--  Arte  -->
+            <Button
+                BackgroundColor="#6f32bf"
                 Clicked="Category_Clicked"
-                Text="Historia"
-                BackgroundColor="#6f32bf"
-                FontSize="Large" />
+                FontSize="Large"
+                Text="Arte" />
 
-            <!--Geografia-->
-            <Button 
+            <!--  Historia  -->
+            <Button
+                BackgroundColor="#6f32bf"
                 Clicked="Category_Clicked"
-                Text="Geografia"
-                BackgroundColor="#6f32bf"
-                FontSize="Large" />
+                FontSize="Large"
+                Text="Historia" />
 
+            <!--  Geografia  -->
+            <Button
+                BackgroundColor="#6f32bf"
+                Clicked="Category_Clicked"
+                FontSize="Large"
+                Text="Geografia" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,5 @@
              mc:Ignorable="d"
              x:Class="MobileQuiz.App">
     <Application.Resources>
-
     </Application.Resources>
 </Application>

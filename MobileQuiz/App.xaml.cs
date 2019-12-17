@@ -6,17 +6,9 @@ namespace MobileQuiz
 {
     public partial class App : Application
     {
-        public App()
-        {
-            InitializeComponent();
+        public App() => InitializeComponent();
 
-            MainPage = new Login();
-        }
-
-        protected override void OnStart()
-        {
-            // Handle when your app starts
-        }
+        protected override void OnStart() => MainPage = new Login();
 
         protected override void OnSleep()
         {

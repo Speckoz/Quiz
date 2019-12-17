@@ -26,7 +26,7 @@ namespace MobileQuiz.Services.Helpers
         // Seed Questions
         public static List<QuestionModel> SeedQuestions()
         {
-            return JsonConvert.DeserializeObject<List<QuestionModel>>(Encoding.Default.GetString(Resources.Questions));
+            return JsonConvert.DeserializeObject<List<QuestionModel>>(Encoding.UTF8.GetString(Resources.Questions));
         }
     }
 }

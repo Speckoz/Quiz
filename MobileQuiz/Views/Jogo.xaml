@@ -1,55 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MobileQuiz.Views.Jogo"
-             Visual="Material">
-    <ContentPage.Content>
-        <StackLayout Margin="10,5,10,10" Padding="10" x:Name="myBtns">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+<ContentPage
+    x:Class="MobileQuiz.Views.Jogo"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
 
-                <!--Round-->
-                <Label Text="Round: 1"
-                    x:Name="Round"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    FontSize="25"
-                    FontAttributes="Bold"
-                    TextColor="Black" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--  Round  -->
+            <Label
+                x:Name="Round"
+                Grid.Column="0"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="Round: 1"
+                TextColor="Black" />
 
-                <!--Pontos-->
-                <Label Grid.Column="1"
-                    x:Name="Pontos"
-                    Text="Pontos: 212"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    FontSize="25"
-                    FontAttributes="Bold"
-                    TextColor="Black" />
-            </Grid>
+            <!--  Pontos  -->
+            <Label
+                x:Name="Pontos"
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                Text="Points: 0"
+                TextColor="Black" />
+        </Grid>
 
-            <!--Title-->
-            <Label Text="Game"
-               Margin="0, 25"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               x:Name="Title"
-               HorizontalOptions="Center"
-               FontSize="32"
-               FontAttributes="Bold"
-               TextColor="Black" />
+        <!--  Title  -->
+        <Label
+            x:Name="Title"
+            Grid.Row="1"
+            Margin="20"
+            FontAttributes="Bold"
+            FontSize="27"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="Question here!"
+            TextColor="Black"
+            VerticalOptions="Center" />
 
-            <!--Grid Buttons-->
-            <Grid>
-
-                <StackLayout x:Name="MyButtons" />
-            </Grid>
-        </StackLayout>
-    </ContentPage.Content>
+        <StackLayout x:Name="MyButtons" Grid.Row="2" />
+    </Grid>
 </ContentPage>

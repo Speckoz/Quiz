@@ -73,6 +73,16 @@ namespace MobileQuiz.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
+        public static byte[] heartLogo {
+            get {
+                object obj = ResourceManager.GetObject("heartLogo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
         public static byte[] Questions {
             get {
                 object obj = ResourceManager.GetObject("Questions", resourceCulture);

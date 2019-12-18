@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BackgroundColor="WhiteSmoke"
     Visual="Material"
     mc:Ignorable="d">
     <Grid Margin="10">
@@ -28,46 +27,43 @@
             Margin="10"
             HeightRequest="125"
             HorizontalOptions="Center"
-            Source="https://heartdevs.com/dist/images/logo-he4rt.png"
+            Source="{Binding Image}"
             WidthRequest="125" />
 
         <StackLayout
             Grid.Row="2"
             Margin="0,20,0,20"
             Orientation="Vertical">
+
             <Entry
-                x:Name="loginLbl"
-                IsPassword="False"
-                Keyboard="Email"
                 Placeholder="Insira seu login"
+                Text="{Binding Login}"
                 TextColor="Black" />
 
             <Entry
-                x:Name="passwordLbl"
                 IsPassword="True"
                 Placeholder="Insira sua senha"
+                Text="{Binding Password}"
                 TextColor="Black" />
         </StackLayout>
 
         <StackLayout Grid.Row="3" Orientation="Vertical">
             <Button
                 BackgroundColor="#6f32bf"
-                Clicked="Login_Clicked"
-                Text="Login" />
+                Command="{Binding AuthCommand}"
+                Text="Autenticar" />
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <Button
-                    x:Name="Register_bt"
                     BackgroundColor="#6f32bf"
                     Command="{Binding RegisterCommand}"
-                    CommandParameter="{Binding Source={x:Reference Register_bt}}"
                     HorizontalOptions="FillAndExpand"
-                    Text="Register" />
+                    Text="Registrar" />
                 <Button
                     Grid.Column="1"
                     BackgroundColor="#6f32bf"
-                    Clicked="About_Clicked"
+                    Command="{Binding AboutCommand}"
                     HorizontalOptions="FillAndExpand"
-                    Text="About" />
+                    Text="Sobre" />
             </StackLayout>
         </StackLayout>
     </Grid>

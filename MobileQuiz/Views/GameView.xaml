@@ -21,7 +21,6 @@
             </Grid.ColumnDefinitions>
             <!--  Round  -->
             <Label
-                x:Name="Pontos"
                 Grid.Column="0"
                 FontAttributes="Bold"
                 FontSize="Title"
@@ -37,7 +36,6 @@
 
             <!--  Pontos  -->
             <Label
-                x:Name="Round"
                 Grid.Column="1"
                 FontAttributes="Bold"
                 FontSize="Title"

@@ -9,6 +9,7 @@ namespace MobileQuiz
         public App()
         {
             InitializeComponent();
+
             MainPage = new AuthAccountView();
         }
 

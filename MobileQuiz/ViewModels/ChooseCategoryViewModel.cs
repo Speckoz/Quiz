@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using MobileQuiz.Helpers;
 using MobileQuiz.Views;
 
 using System.IO;
@@ -13,8 +13,7 @@ namespace MobileQuiz.ViewModels
     {
         private readonly ChooseCategoryView _page;
 
-        private ImageSource __image = Convert();
-        private string __chooseCategory = "Escolha aqui";
+        private ImageSource __image = ConvertImageHelper.Convert(Properties.Resources.choose);
 
         public ImageSource Image
         {
@@ -26,39 +25,17 @@ namespace MobileQuiz.ViewModels
             }
         }
 
-        public string ChooseCategoryText
-        {
-            get => __chooseCategory;
-            set
-            {
-                __chooseCategory = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public RelayCommand ChooseAnswerCommand { get; private set; }
+        public RelayCommand<Button> ChooseAnswerCommand { get; private set; }
 
         public ChooseCategoryViewModel(ChooseCategoryView page)
         {
             _page = page;
-            ChooseAnswerCommand = new RelayCommand(ChooseCategory);
+            ChooseAnswerCommand = new RelayCommand<Button>(ChooseCategory);
         }
 
-        private void ChooseCategory()
+        private void ChooseCategory(Button bt)
         {
-            ChooseCategoryText = "Escolha mudou";
-        }
-
-        private async void ChooseCategory(Button bt)
-        {
-            //Application.Current.MainPage = new GameView(obj.Text);
-            await _page.DisplayAlert("Botao", bt.Text, "OK");
-        }
-
-        private static ImageSource Convert()
-        {
-            Stream stream = new MemoryStream(Properties.Resources.choose);
-            return ImageSource.FromStream(() => stream);
+            Application.Current.MainPage = new GameView(bt.Text);
         }
     }
 }

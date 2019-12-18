@@ -17,6 +17,7 @@
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RestSharp" Version="106.6.10" />
+    <PackageReference Include="System.Text.Json" Version="4.7.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.4.0.991265" />
@@ -39,10 +40,10 @@
     <EmbeddedResource Update="Views\GameView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Login.xaml">
+    <EmbeddedResource Update="Views\AuthAccountView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Registrar.xaml">
+    <EmbeddedResource Update="Views\RegisterAccountView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -59,8 +60,11 @@
     <Compile Update="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Update="Views\AuthAccountView.xaml.cs">
+      <DependentUpon>AuthAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegisterAccountView.xaml.cs">
+      <DependentUpon>RegisterAccountView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

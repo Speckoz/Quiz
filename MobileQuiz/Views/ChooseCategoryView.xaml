@@ -21,13 +21,13 @@
             FontAttributes="Bold"
             FontSize="34"
             HorizontalOptions="Center"
-            Text="Escolha a Categoria"
+            Text="{Binding ChooseCategoryText, Mode=TwoWay}"
             TextColor="Black" />
 
         <Image
             Grid.Row="1"
             HeightRequest="145"
-            Source="{Binding Path=Image, Mode=OneWay}"
+            Source="{Binding Image}"
             WidthRequest="145" />
 
         <StackLayout Grid.Row="2" Orientation="Vertical">
@@ -35,40 +35,35 @@
             <Button
                 Margin="0,30,0,20"
                 BackgroundColor="DarkGreen"
-                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
-                CommandParameter="{Binding .}"
+                Command="{Binding ChooseAnswerCommand, Mode=TwoWay}"
                 FontSize="Large"
                 Text="Todas" />
 
             <!--  Ciencia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
-                CommandParameter="{Binding .}"
+                Command="{Binding ChooseAnswerCommand}"
                 FontSize="Large"
                 Text="Ciencia" />
 
             <!--  Arte  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
-                CommandParameter="{Binding .}"
+                Command="{Binding ChooseAnswerCommand}"
                 FontSize="Large"
                 Text="Arte" />
 
             <!--  Historia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
-                CommandParameter="{Binding .}"
+                Command="{Binding ChooseAnswerCommand}"
                 FontSize="Large"
                 Text="Historia" />
 
             <!--  Geografia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
-                CommandParameter="{Binding .}"
+                Command="{Binding ChooseAnswerCommand}"
                 FontSize="Large"
                 Text="Geografia" />
         </StackLayout>

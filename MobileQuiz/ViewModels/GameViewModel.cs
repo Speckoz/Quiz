@@ -2,7 +2,7 @@
 
 namespace MobileQuiz.ViewModels
 {
-    class GameViewModel : ViewModelBase
+    internal class GameViewModel : ViewModelBase
     {
         private int __points;
         private int __round;
@@ -16,6 +16,7 @@ namespace MobileQuiz.ViewModels
                 RaisePropertyChanged();
             }
         }
+
         public int Round
         {
             get => __round;

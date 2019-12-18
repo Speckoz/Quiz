@@ -14,7 +14,7 @@
             <RowDefinition Height="*" />
 
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -52,18 +52,21 @@
 
         <!--  Title  -->
         <Label
-            x:Name="Title"
+            x:Name="OlaT"
             Grid.Row="1"
             Margin="20"
             FontAttributes="Bold"
             FontSize="27"
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
-            Text="Question here!"
+            Text="{Binding Title}"
             TextColor="Black"
             TextDecorations="Underline"
             VerticalOptions="Center" />
 
-        <StackLayout x:Name="MyButtons" Grid.Row="2" />
+        <StackLayout
+            x:Name="MyButtons"
+            Grid.Row="2"
+            VerticalOptions="Center" />
     </Grid>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using MobileQuiz.Helpers;
 using MobileQuiz.Models;
-
+using MobileQuiz.Services;
+using MobileQuiz.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +9,21 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using static MobileQuiz.Services.QuestionService;
-
 namespace MobileQuiz.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Jogo : ContentPage
+    public partial class GameView : ContentPage
     {
         private int ActualRound;
 
         private readonly string _category;
         private readonly int _points;
 
-        public Jogo(string category, int round = 0, int points = 10)
+        public GameView(string category, int round = 0, int points = 10)
         {
             InitializeComponent();
-            QuestionModel question = (_category = category) == "Todas" ? GetRandomQuestion() : GetRandomQuestion(category);
+            BindingContext = new GameViewModel();
+            QuestionModel question = (_category = category) == "Todas" ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(category);
             Mount(question, ActualRound = round, _points = points);
         }
 
@@ -89,8 +89,8 @@ namespace MobileQuiz.Views
             ((Label)FindByName("Pontos")).Text = $"Pontos: {points.ToString()}";
         }
 
-        private void NextLevel(int round, int points) => Application.Current.MainPage = new Jogo(_category, round, points);
+        private void NextLevel(int round, int points) => Application.Current.MainPage = new GameView(_category, round, points);
 
-        private void GameOver() => Application.Current.MainPage = new EscolherCategoria();
+        private void GameOver() => Application.Current.MainPage = new ChooseCategoryView();
     }
 }

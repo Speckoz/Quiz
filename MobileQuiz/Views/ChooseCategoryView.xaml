@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MobileQuiz.Views.EscolherCategoria"
+    x:Class="MobileQuiz.Views.ChooseCategoryView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="ChooseCategory"
     BackgroundColor="WhiteSmoke"
     Visual="Material"
     mc:Ignorable="d">
@@ -14,6 +15,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
         <Label
             Grid.Row="0"
             FontAttributes="Bold"
@@ -25,7 +27,7 @@
         <Image
             Grid.Row="1"
             HeightRequest="145"
-            Source="https://user-images.githubusercontent.com/40467826/64911953-8d2bb580-d6fe-11e9-91ac-b744a89ded21.png"
+            Source="{Binding Path=Image, Mode=OneWay}"
             WidthRequest="145" />
 
         <StackLayout Grid.Row="2" Orientation="Vertical">
@@ -33,35 +35,40 @@
             <Button
                 Margin="0,30,0,20"
                 BackgroundColor="DarkGreen"
-                Clicked="Category_Clicked"
+                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
+                CommandParameter="{Binding .}"
                 FontSize="Large"
                 Text="Todas" />
 
             <!--  Ciencia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Clicked="Category_Clicked"
+                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
+                CommandParameter="{Binding .}"
                 FontSize="Large"
                 Text="Ciencia" />
 
             <!--  Arte  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Clicked="Category_Clicked"
+                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
+                CommandParameter="{Binding .}"
                 FontSize="Large"
                 Text="Arte" />
 
             <!--  Historia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Clicked="Category_Clicked"
+                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
+                CommandParameter="{Binding .}"
                 FontSize="Large"
                 Text="Historia" />
 
             <!--  Geografia  -->
             <Button
                 BackgroundColor="#6f32bf"
-                Clicked="Category_Clicked"
+                Command="{Binding Path=BindingContext.ChooseAnswerCommand, Mode=TwoWay, Source={x:Reference ChooseCategory}}"
+                CommandParameter="{Binding .}"
                 FontSize="Large"
                 Text="Geografia" />
         </StackLayout>

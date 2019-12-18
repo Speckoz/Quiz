@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MobileQuiz.Views.Jogo"
+    x:Class="MobileQuiz.Views.GameView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -21,23 +21,35 @@
             </Grid.ColumnDefinitions>
             <!--  Round  -->
             <Label
-                x:Name="Round"
+                x:Name="Pontos"
                 Grid.Column="0"
                 FontAttributes="Bold"
                 FontSize="Title"
                 HorizontalTextAlignment="Center"
-                Text="Round: 1"
-                TextColor="Black" />
+                TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Rodada: " />
+                        <Span Text="{Binding Round}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
 
             <!--  Pontos  -->
             <Label
-                x:Name="Pontos"
+                x:Name="Round"
                 Grid.Column="1"
                 FontAttributes="Bold"
                 FontSize="Title"
                 HorizontalTextAlignment="Center"
-                Text="Points: 0"
-                TextColor="Black" />
+                TextColor="Black">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Pontos: " />
+                        <Span Text="{Binding Points}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </Grid>
 
         <!--  Title  -->
@@ -51,6 +63,7 @@
             HorizontalTextAlignment="Center"
             Text="Question here!"
             TextColor="Black"
+            TextDecorations="Underline"
             VerticalOptions="Center" />
 
         <StackLayout x:Name="MyButtons" Grid.Row="2" />

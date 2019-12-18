@@ -23,6 +23,7 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Efetuar o cadastro.
 - [x] Alterar questoes para um arquivo json local.
 - [x] Implementar MVVM.
+- [ ] Crar tela de gerenciamento de questoes.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

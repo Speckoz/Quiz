@@ -21,7 +21,7 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Avançar para proxima fase.
 - [x] Tela de cadastro.
 - [x] Efetuar o cadastro.
-- [x] Alterar questoes para um arquivo json local.
+- [ ] Alterar questoes para um arquivo json local.
 - [ ] Implementar MVVM.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:

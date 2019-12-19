@@ -19,7 +19,7 @@
 
             <Image
                 Grid.Row="0"
-                Margin="20"
+                Margin="20,0,20,20"
                 HeightRequest="80"
                 HorizontalOptions="Center"
                 Source="{Binding Image}"
@@ -34,40 +34,27 @@
 
             <StackLayout
                 Grid.Row="2"
-                Margin="0,50,0,50"
+                Margin="0,40,0,40"
                 Orientation="Vertical">
-
                 <input:AdvancedEntry
                     Title="Insira seu Login:"
-                    Annotation="None"
-                    BorderColor="Purple"
+                    BorderColor="#9d0af5"
                     IsRequired="True"
                     Placeholder="Login"
+                    Style="{StaticResource AESetColor}"
                     Text="{Binding Login}"
-                    TextColor="Black"
+                    TextColor="#9d0af5"
                     ValidationMessage="Voce precisar informar o Login!" />
                 <input:AdvancedEntry
                     Title="Insira sua senha:"
-                    Annotation="Password"
-                    BorderColor="Purple"
+                    BorderColor="#9d0af5"
+                    IsPassword="True"
                     IsRequired="True"
                     Placeholder="Senha"
+                    Style="{StaticResource AESetColor}"
                     Text="{Binding Password}"
-                    TextColor="Black"
+                    TextColor="#9d0af5"
                     ValidationMessage="Voce precisa informa a Senha!" />
-                <!--<Entry
-                    ClearButtonVisibility="WhileEditing"
-                    Placeholder="Insira seu login"
-                    PlaceholderColor="Default"
-                    Text="{Binding Login}"
-                    TextColor="Default" />
-
-                <Entry
-                    IsPassword="True"
-                    Placeholder="Insira sua senha"
-                    PlaceholderColor="Default"
-                    Text="{Binding Password}"
-                    TextColor="Default" />-->
             </StackLayout>
 
             <StackLayout Grid.Row="3" Orientation="Vertical">
@@ -81,7 +68,7 @@
             </StackLayout>
         </Grid>
 
-        <StackLayout Margin="20,50" VerticalOptions="EndAndExpand">
+        <StackLayout Margin="20,10,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
             <Button
                 Command="{Binding RegisterCommand}"

@@ -5,9 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Gerenciar Questoes"
     Visual="Material"
     mc:Ignorable="d">
-    <CollectionView Margin="20" ItemsSource="{Binding QuestionOptions}">
+    <CollectionView Margin="10,0,10,0" ItemsSource="{Binding QuestionOptions}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Margin="0,10">

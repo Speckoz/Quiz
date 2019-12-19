@@ -4,8 +4,8 @@ using Xamarin.Forms.Xaml;
 namespace MobileQuiz.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainScreenView : MasterDetailPage
+    public partial class MainTabListView : TabbedPage
     {
-        public MainScreenView() => InitializeComponent();
+        public MainTabListView() => InitializeComponent();
     }
 }

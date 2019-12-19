@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Application.Resources>
@@ -25,5 +26,11 @@
             <Setter Property="TextColor" Value="#9d0af5" />
             <Setter Property="BorderWidth" Value="1" />
         </Style>
+
+        <!--  InputKIT  -->
+        <Style x:Key="AESetColor" TargetType="input:AdvancedEntry">
+            <Setter Property="AnnotationColor" Value="#9d0af5" />
+        </Style>
+        <!--  InputKIT  -->
     </Application.Resources>
 </Application>

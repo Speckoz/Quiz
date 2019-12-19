@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="MobileQuiz.Views.MainTabListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:MobileQuiz.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Mobile Quiz"
+    mc:Ignorable="d">
+    <TabbedPage.Children>
+        <local:ChooseCategoryView Title="Jogar" />
+        <local:AuthAccountView Title="Rank Top" />
+        <local:ManagerQuestionsView Title="Gerenciar" />
+    </TabbedPage.Children>
+</TabbedPage>

@@ -1,17 +1,15 @@
-﻿using Android;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Properties;
-using System;
-using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace MobileQuiz.ViewModels
 {
-    class ManagerQuestionsViewModel : ViewModelBase
+    internal class ManagerQuestionsViewModel : ViewModelBase
     {
         private ObservableCollection<ManagerQuestionsModel> __questionOptions;
 

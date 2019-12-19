@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage
+<MasterDetailPage
     x:Class="MobileQuiz.Views.MainScreenView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -7,19 +7,15 @@
     xmlns:local="clr-namespace:MobileQuiz.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <NavigationPage Title="Jogar">
-        <x:Arguments>
-            <local:ChooseCategoryView />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="Rank Top">
-        <x:Arguments>
-            <local:AuthAccountView />
-        </x:Arguments>
-    </NavigationPage>
-    <NavigationPage Title="Gerenciar">
-        <x:Arguments>
-            <local:ManagerQuestionsView />
-        </x:Arguments>
-    </NavigationPage>
-</TabbedPage>
+    <!--  Menu here  -->
+    <MasterDetailPage.Master>
+        <local:ManagerQuestionsView />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:MainTabListView />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

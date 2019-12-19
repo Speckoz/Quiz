@@ -52,6 +52,7 @@
             CornerRadius="10"
             HeightRequest="100"
             HorizontalOptions="Center"
+            IsVisible="False"
             VerticalOptions="Center"
             WidthRequest="200"
             Color="LightGray" />

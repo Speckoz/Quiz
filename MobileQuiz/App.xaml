@@ -20,6 +20,7 @@
         <Style x:Key="OutlinedButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent" />
             <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HeightRequest" Value="35" />
             <Setter Property="BorderColor" Value="#9d0af5" />
             <Setter Property="TextColor" Value="#9d0af5" />
             <Setter Property="BorderWidth" Value="1" />

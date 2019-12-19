@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
@@ -36,18 +37,37 @@
                 Margin="0,50,0,50"
                 Orientation="Vertical">
 
-                <Entry
+                <input:AdvancedEntry
+                    Title="Insira seu Login:"
+                    Annotation="None"
+                    BorderColor="Purple"
+                    IsRequired="True"
+                    Placeholder="Login"
+                    Text="{Binding Login}"
+                    TextColor="Black"
+                    ValidationMessage="Voce precisar informar o Login!" />
+                <input:AdvancedEntry
+                    Title="Insira sua senha:"
+                    Annotation="Password"
+                    BorderColor="Purple"
+                    IsRequired="True"
+                    Placeholder="Senha"
+                    Text="{Binding Password}"
+                    TextColor="Black"
+                    ValidationMessage="Voce precisa informa a Senha!" />
+                <!--<Entry
                     ClearButtonVisibility="WhileEditing"
                     Placeholder="Insira seu login"
-                    PlaceholderColor="White"
+                    PlaceholderColor="Default"
                     Text="{Binding Login}"
                     TextColor="Default" />
 
                 <Entry
                     IsPassword="True"
                     Placeholder="Insira sua senha"
+                    PlaceholderColor="Default"
                     Text="{Binding Password}"
-                    TextColor="Default" />
+                    TextColor="Default" />-->
             </StackLayout>
 
             <StackLayout Grid.Row="3" Orientation="Vertical">

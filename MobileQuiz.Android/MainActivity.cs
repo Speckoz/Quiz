@@ -23,6 +23,8 @@ namespace MobileQuiz.Droid
 
             FormsMaterial.Init(this, savedInstanceState);
 
+            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
+
             LoadApplication(new App());
         }
 

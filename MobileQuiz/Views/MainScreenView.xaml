@@ -17,9 +17,9 @@
             <local:AuthAccountView />
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage Title="Configuraçoes">
+    <NavigationPage Title="Gerenciar">
         <x:Arguments>
-            <local:RegisterAccountView />
+            <local:ManagerQuestionsView />
         </x:Arguments>
     </NavigationPage>
 </TabbedPage>

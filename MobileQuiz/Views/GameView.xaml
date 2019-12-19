@@ -48,6 +48,14 @@
             </Label>
         </Grid>
 
+        <BoxView
+            CornerRadius="10"
+            HeightRequest="100"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="200"
+            Color="LightGray" />
+
         <!--  Title  -->
         <Label
             Grid.Row="1"

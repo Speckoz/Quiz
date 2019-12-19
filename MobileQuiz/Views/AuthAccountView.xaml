@@ -7,64 +7,66 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Label
-            Grid.Row="0"
-            FontAttributes="Bold"
-            FontSize="32"
-            HorizontalOptions="Center"
-            Text="Bem Vindo"
-            TextColor="Black" />
+    <StackLayout>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <Image
-            Grid.Row="1"
-            Margin="10"
-            HeightRequest="125"
-            HorizontalOptions="Center"
-            Source="{Binding Image}"
-            WidthRequest="125" />
+            <Image
+                Grid.Row="0"
+                Margin="20"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                Source="{Binding Image}"
+                WidthRequest="80" />
 
-        <StackLayout
-            Grid.Row="2"
-            Margin="0,20,0,20"
-            Orientation="Vertical">
+            <Label
+                Grid.Row="1"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Text="Autenticar Conta" />
 
-            <Entry
-                Placeholder="Insira seu login"
-                Text="{Binding Login}"
-                TextColor="Black" />
+            <StackLayout
+                Grid.Row="2"
+                Margin="0,50,0,50"
+                Orientation="Vertical">
 
-            <Entry
-                IsPassword="True"
-                Placeholder="Insira sua senha"
-                Text="{Binding Password}"
-                TextColor="Black" />
-        </StackLayout>
+                <Entry
+                    ClearButtonVisibility="WhileEditing"
+                    Placeholder="Insira seu login"
+                    PlaceholderColor="White"
+                    Text="{Binding Login}"
+                    TextColor="Default" />
 
-        <StackLayout Grid.Row="3" Orientation="Vertical">
-            <Button
-                BackgroundColor="#6f32bf"
-                Command="{Binding AuthCommand}"
-                Text="Autenticar" />
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <Entry
+                    IsPassword="True"
+                    Placeholder="Insira sua senha"
+                    Text="{Binding Password}"
+                    TextColor="Default" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Vertical">
+                <Button Command="{Binding AuthCommand}" Text="Autenticar" />
+
                 <Button
-                    BackgroundColor="#6f32bf"
-                    Command="{Binding RegisterCommand}"
-                    HorizontalOptions="FillAndExpand"
-                    Text="Registrar" />
-                <Button
-                    Grid.Column="1"
-                    BackgroundColor="#6f32bf"
                     Command="{Binding AboutCommand}"
                     HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
                     Text="Sobre" />
             </StackLayout>
+        </Grid>
+
+        <StackLayout Margin="20,50" VerticalOptions="EndAndExpand">
+            <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
+            <Button
+                Command="{Binding RegisterCommand}"
+                Style="{StaticResource OutlinedButton}"
+                Text="Registrar" />
         </StackLayout>
-    </Grid>
+    </StackLayout>
 </ContentPage>

@@ -6,17 +6,9 @@ namespace MobileQuiz
 {
     public partial class App : Application
     {
-        public App()
-        {
-            InitializeComponent();
+        public App() => InitializeComponent();
 
-            MainPage = new AuthAccountView();
-        }
-
-        protected override void OnStart()
-        {
-
-        }
+        protected override void OnStart() => MainPage = new AuthAccountView();
 
         protected override void OnSleep()
         {

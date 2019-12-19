@@ -7,53 +7,62 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Label
-            Grid.Row="0"
-            FontAttributes="Bold"
-            FontSize="32"
-            HorizontalOptions="Center"
-            Text="Registrar"
-            TextColor="Black" />
-        <Image
-            Grid.Row="1"
-            Margin="25"
-            HeightRequest="125"
-            Source="https://i.imgur.com/WqV0K6P.png"
-            WidthRequest="125" />
-        <StackLayout Grid.Row="2" Orientation="Vertical">
-            <Entry
-                x:Name="loginLbl"
-                IsPassword="False"
-                Keyboard="Email"
-                Placeholder="Login desejado"
-                TextColor="Black" />
-            <Entry
-                x:Name="passwordLbl"
-                IsPassword="True"
-                Placeholder="Senha desejada"
-                TextColor="Black" />
-        </StackLayout>
+    <StackLayout>
 
-        <StackLayout
-            Grid.Row="3"
-            Margin="0,20,0,0"
-            Orientation="Vertical">
-            <Button
-                BackgroundColor="#6f32bf"
-                Clicked="Register_Clicked"
-                Text="Registrar" />
-            <Button
-                Margin="0,10,0,0"
-                BackgroundColor="#8E51DE"
-                Clicked="Back_Clicked"
-                Text="Voltar" />
-        </StackLayout>
-    </Grid>
+        <Grid Margin="20" VerticalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Margin="20"
+                HeightRequest="70"
+                Source="{Binding Image}"
+                WidthRequest="70" />
+            <Label
+                Grid.Row="1"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Text="Registrar Conta" />
+
+            <StackLayout Grid.Row="2" Margin="0,50,0,50">
+                <Entry
+                    x:Name="loginLbl"
+                    IsPassword="False"
+                    Keyboard="Email"
+                    Placeholder="Informe um Login"
+                    Text="{Binding Login}"
+                    TextColor="Default" />
+                <StackLayout Margin="0,10,0,0" Orientation="Horizontal">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        IsPassword="True"
+                        Placeholder="Informe uma Senha"
+                        Text="{Binding NewPassword}"
+                        TextColor="Default" />
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        IsPassword="True"
+                        Placeholder="Confirme a Senha"
+                        Text="{Binding ConfirmNewPassword}"
+                        TextColor="Default" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Vertical">
+                <Button Command="{Binding RegisterCommand}" Text="Registrar" />
+            </StackLayout>
+        </Grid>
+
+        <Button
+            Margin="20,50"
+            Command="{Binding BackCommand}"
+            Style="{StaticResource OutlinedButton}"
+            Text="Voltar"
+            VerticalOptions="EndAndExpand" />
+    </StackLayout>
 </ContentPage>

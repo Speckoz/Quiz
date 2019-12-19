@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
-    <Grid Margin="10">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
@@ -25,26 +24,25 @@
                 FontAttributes="Bold"
                 FontSize="Title"
                 HorizontalTextAlignment="Center"
-                TextColor="Black">
+                TextColor="Default">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Rodada: " />
-                        <Span Text="{Binding Round}" />
+                        <Span Text="{Binding Round}" TextColor="#9d0af5" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-
             <!--  Pontos  -->
             <Label
                 Grid.Column="1"
                 FontAttributes="Bold"
                 FontSize="Title"
                 HorizontalTextAlignment="Center"
-                TextColor="Black">
+                TextColor="Default">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Pontos: " />
-                        <Span Text="{Binding Points}" />
+                        <Span Text="{Binding Points}" TextColor="#9d0af5" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
@@ -52,20 +50,19 @@
 
         <!--  Title  -->
         <Label
-            x:Name="OlaT"
             Grid.Row="1"
-            Margin="20"
+            Margin="20,40,20,40"
             FontAttributes="Bold"
             FontSize="27"
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
             Text="{Binding Title}"
-            TextColor="Black"
+            TextColor="Default"
             TextDecorations="Underline"
             VerticalOptions="Center" />
 
         <StackLayout
-            x:Name="MyButtons"
+            x:Name="Buttons_st"
             Grid.Row="2"
             VerticalOptions="Center" />
     </Grid>

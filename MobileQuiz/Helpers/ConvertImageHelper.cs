@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Xamarin.Forms;
 
 namespace MobileQuiz.Helpers
@@ -8,10 +9,6 @@ namespace MobileQuiz.Helpers
         /// <summary>
         /// Converte um Byte[] para ImageSource.
         /// </summary>
-        public static ImageSource Convert(byte[] img)
-        {
-            Stream stream = new MemoryStream(img);
-            return ImageSource.FromStream(() => stream);
-        }
+        public static ImageSource Convert(byte[] img) => ImageSource.FromStream(() => new MemoryStream(img));
     }
 }

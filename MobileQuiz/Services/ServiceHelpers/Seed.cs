@@ -9,7 +9,6 @@ namespace MobileQuiz.Services.Helpers
 {
     public static class Seed
     {
-        // Seed Users
         public static List<UserModel> SeedUsers()
         {
             return new List<UserModel>
@@ -23,7 +22,6 @@ namespace MobileQuiz.Services.Helpers
             };
         }
 
-        // Seed Questions
         public static List<QuestionModel> SeedQuestions()
         {
             return JsonConvert.DeserializeObject<List<QuestionModel>>(Encoding.UTF8.GetString(Resources.Questions));

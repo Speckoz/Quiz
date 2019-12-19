@@ -1,10 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="MobileQuiz.App">
+<Application
+    x:Class="MobileQuiz.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <Application.Resources>
+        <!--  Defaults  -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#9d0af5" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="#9d0af5" />
+        </Style>
+
+        <!--  Switch  -->
+        <Style x:Key="OutlinedButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderColor" Value="#9d0af5" />
+            <Setter Property="TextColor" Value="#9d0af5" />
+            <Setter Property="BorderWidth" Value="1" />
+        </Style>
     </Application.Resources>
 </Application>

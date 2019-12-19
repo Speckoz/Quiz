@@ -89,5 +89,15 @@ namespace MobileQuiz.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        public static byte[] register {
+            get {
+                object obj = ResourceManager.GetObject("register", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

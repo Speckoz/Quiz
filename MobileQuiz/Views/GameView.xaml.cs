@@ -1,11 +1,4 @@
-﻿using MobileQuiz.Helpers;
-using MobileQuiz.Models;
-using MobileQuiz.Services;
-using MobileQuiz.ViewModels;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MobileQuiz.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,5 +13,15 @@ namespace MobileQuiz.Views
             InitializeComponent();
             BindingContext = new GameViewModel(this, category);
         }
+
+        public void AddButtons(Button bt) => Buttons_st.Children.Add(bt);
+
+        public void AddButtons(params Button[] bts)
+        {
+            foreach (Button b in bts)
+                Buttons_st.Children.Add(b);
+        }
+
+        public void ClearButtons() => Buttons_st.Children.Clear();
     }
 }

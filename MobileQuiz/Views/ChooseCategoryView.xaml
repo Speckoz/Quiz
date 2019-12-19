@@ -6,7 +6,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ChooseCategory"
-    BackgroundColor="WhiteSmoke"
     Visual="Material"
     mc:Ignorable="d">
     <Grid Margin="10">
@@ -16,26 +15,24 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label
-            Grid.Row="0"
-            FontAttributes="Bold"
-            FontSize="34"
-            HorizontalOptions="Center"
-            Text="Escolha a Categoria"
-            TextColor="Black" />
-
         <Image
-            Grid.Row="1"
-            HeightRequest="145"
+            Grid.Row="0"
+            Margin="20"
+            HeightRequest="70"
             Source="{Binding Image}"
-            WidthRequest="145" />
+            WidthRequest="70" />
+        <Label
+            Grid.Row="1"
+            FontAttributes="Bold"
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="Escolha a Categoria" />
 
         <StackLayout Grid.Row="2" Orientation="Vertical">
             <!--  Todas  -->
             <Button
                 x:Name="Todos_bt"
                 Margin="0,30,0,20"
-                BackgroundColor="DarkGreen"
                 Command="{Binding ChooseAnswerCommand}"
                 CommandParameter="{Binding Source={x:Reference Todos_bt}}"
                 FontSize="Large"
@@ -44,7 +41,7 @@
             <!--  Ciencia  -->
             <Button
                 x:Name="Ciencia_bt"
-                BackgroundColor="#6f32bf"
+                BackgroundColor="Gray"
                 Command="{Binding ChooseAnswerCommand}"
                 CommandParameter="{Binding Source={x:Reference Ciencia_bt}}"
                 FontSize="Large"
@@ -53,7 +50,7 @@
             <!--  Arte  -->
             <Button
                 x:Name="Arte_bt"
-                BackgroundColor="#6f32bf"
+                BackgroundColor="Gray"
                 Command="{Binding ChooseAnswerCommand}"
                 CommandParameter="{Binding Source={x:Reference Arte_bt}}"
                 FontSize="Large"
@@ -62,7 +59,7 @@
             <!--  Historia  -->
             <Button
                 x:Name="Historia_Bt"
-                BackgroundColor="#6f32bf"
+                BackgroundColor="Gray"
                 Command="{Binding ChooseAnswerCommand}"
                 CommandParameter="{Binding Source={x:Reference Historia_Bt}}"
                 FontSize="Large"
@@ -71,7 +68,7 @@
             <!--  Geografia  -->
             <Button
                 x:Name="Geografia_bt"
-                BackgroundColor="#6f32bf"
+                BackgroundColor="Gray"
                 Command="{Binding ChooseAnswerCommand}"
                 CommandParameter="{Binding Source={x:Reference Geografia_bt}}"
                 FontSize="Large"

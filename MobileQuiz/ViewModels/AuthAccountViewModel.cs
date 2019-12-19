@@ -79,28 +79,10 @@ namespace MobileQuiz.ViewModels
                 return;
             }
 
-            Application.Current.MainPage = new ChooseCategoryView();
+            Application.Current.MainPage = new MainScreenView();
         }
 
-        private async void About()
-        {
-            await _page.DisplayAlert("Sobre", $"Criado por Specko\n\nModificado por Logikoz", "Fechar");
-
-            //try
-            //{
-            //    string value = System.Text.Encoding.UTF8.GetString(Properties.Resources.Questions);
-            //    await _page.DisplayAlert("Json", value, "OK");
-            //    List<QuestionModel> qs = JsonConvert.DeserializeObject<List<QuestionModel>>(value);
-            //    await _page.DisplayAlert(qs[0].Question, qs[0].CorrectAnswer, "Ok");
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (await _page.DisplayAlert("Error", ex.GetType().FullName + $"\n{ex.Message}\n\n{ex.StackTrace}", "Aceitar", "Cancelar") == true)
-            //    {
-            //        await _page.DisplayAlert("Hu rhuu", "Voce aceitou", "OK");
-            //    }
-            //}
-        }
+        private async void About() => await _page.DisplayAlert("Sobre", $"Criado por Specko\n\nModificado por Logikoz", "Fechar");
 
         private void Register() => Application.Current.MainPage = new RegisterAccountView();
     }

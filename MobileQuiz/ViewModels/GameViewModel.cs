@@ -1,20 +1,21 @@
-﻿using Android.Service.QuickSettings;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+
 using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Services;
 using MobileQuiz.Views;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Xamarin.Forms;
 
 namespace MobileQuiz.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {
-        private readonly string category;
-
+        private readonly string _category;
         private readonly GameView _page;
 
         private int __points;
@@ -54,25 +55,25 @@ namespace MobileQuiz.ViewModels
         public GameViewModel(GameView page, string category)
         {
             _page = page;
-            this.category = category;
+            _category = category;
             Mount();
         }
 
         private void Mount()
         {
-            QuestionModel question = category == "Todas" ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(category);
+            QuestionModel question = _category == "Todas" ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
             Title = question.Question;
             CreateButtons(question);
         }
 
         private void CreateButtons(QuestionModel question)
         {
-            _page.MyButtons.Children.Clear();
+            _page.ClearButtons();
             GetAnswersFromQuestion(question)
-                .ForEach(q => CreateAnswerButton(q, question));
+                .ForEach(q => _page.AddButtons(CreateAnswerButton(q, question)));
         }
 
-        private async void CheckAnswer(object sender, EventArgs e)
+        private async void CheckAnswerAsync(object sender, EventArgs e)
         {
             if (((Button)sender).ClassId == "correct")
             {
@@ -85,7 +86,7 @@ namespace MobileQuiz.ViewModels
             {
                 if (await _page.DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
-                    Application.Current.MainPage = new GameView(category);
+                    Application.Current.MainPage = new GameView(_category);
                 }
                 else
                     GameOver();
@@ -102,10 +103,7 @@ namespace MobileQuiz.ViewModels
 
             if (answer == question.CorrectAnswer) btn.ClassId = "correct";
 
-            btn.Clicked += CheckAnswer;
-
-            //implementar mvvm.
-            _page.MyButtons.Children.Add(btn);
+            btn.Clicked += CheckAnswerAsync;
 
             return btn;
         }
@@ -117,13 +115,8 @@ namespace MobileQuiz.ViewModels
             return answerList.Randomize().ToList();
         }
 
-        private void NextLevel()
-        {
-            Mount();
+        private void NextLevel() => Mount();
 
-            //Application.Current.MainPage = new GameView(Ca, round, points);
-        }
-
-        private void GameOver() => Application.Current.MainPage = new ChooseCategoryView();
+        private void GameOver() => Application.Current.MainPage = new MainScreenView();
     }
 }

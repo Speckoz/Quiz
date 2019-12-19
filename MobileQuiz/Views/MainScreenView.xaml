@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="MobileQuiz.Views.MainScreenView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:MobileQuiz.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <NavigationPage Title="Jogar">
+        <x:Arguments>
+            <local:ChooseCategoryView />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Rank Top">
+        <x:Arguments>
+            <local:AuthAccountView />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Configuraçoes">
+        <x:Arguments>
+            <local:RegisterAccountView />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

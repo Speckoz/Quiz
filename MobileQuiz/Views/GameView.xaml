@@ -65,7 +65,7 @@
             FontSize="27"
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
-            Text="{Binding Title}"
+            Text="{Binding Question}"
             TextColor="Default"
             TextDecorations="Underline"
             VerticalOptions="Center" />
@@ -81,8 +81,9 @@
                             Command="{Binding AnswerCommand}"
                             CommandParameter="{Binding Source={x:Reference ClickedButton}}"
                             FontSize="Medium"
-                            Text="{Binding AnswerText}"
-                            TextColor="White" />
+                            HeightRequest="50"
+                            Style="{StaticResource OutlinedButton}"
+                            Text="{Binding AnswerText}" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -16,12 +16,11 @@ namespace MobileQuiz.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {
-        private readonly string _category;
-        private readonly GameView _page;
+        private readonly CategoryEnum _category;
 
         private int __points;
         private int __round;
-        private string __title;
+        private string __question;
         private ObservableCollection<GameModel> __answerButtons;
 
         public int Points
@@ -44,12 +43,12 @@ namespace MobileQuiz.ViewModels
             }
         }
 
-        public string Title
+        public string Question
         {
-            get => __title;
+            get => __question;
             set
             {
-                __title = value;
+                __question = value;
                 RaisePropertyChanged();
             }
         }
@@ -64,17 +63,16 @@ namespace MobileQuiz.ViewModels
             }
         }
 
-        public GameViewModel(GameView page, string category)
+        public GameViewModel(CategoryEnum category)
         {
-            _page = page;
             _category = category;
             Mount();
         }
 
         private void Mount()
         {
-            QuestionModel question = _category == "Todas" ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
-            Title = question.Question;
+            QuestionModel question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
+            Question = question.Question;
             CreateButtons(question);
         }
 
@@ -97,16 +95,16 @@ namespace MobileQuiz.ViewModels
 
         private async void CheckAnswerAsync(Button button)
         {
-            if (button.ClassId == "true")
+            if (bool.Parse(button.ClassId))
             {
-                await _page.DisplayAlert("Parabéns", "Você acertou!", "OK");
+                await Application.Current.MainPage.DisplayAlert("Parabéns", "Você acertou!", "OK");
                 Round++;
                 Points = Points == 0 ? 10 : Points * 2;
                 NextLevel();
             }
             else
             {
-                if (await _page.DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
+                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
                     Application.Current.MainPage = new GameView(_category);
                 }

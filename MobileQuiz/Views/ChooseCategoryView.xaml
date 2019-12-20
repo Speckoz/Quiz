@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:enum="clr-namespace:MobileQuiz.Models"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="ChooseCategory"
     Visual="Material"
@@ -28,51 +29,21 @@
             HorizontalOptions="Center"
             Text="Escolha a Categoria" />
 
-        <StackLayout Grid.Row="2" Orientation="Vertical">
-            <!--  Todas  -->
-            <Button
-                x:Name="Todos_bt"
-                Margin="0,30,0,20"
-                Command="{Binding ChooseAnswerCommand}"
-                CommandParameter="{Binding Source={x:Reference Todos_bt}}"
-                FontSize="Large"
-                Text="Todas" />
-
-            <!--  Ciencia  -->
-            <Button
-                x:Name="Ciencia_bt"
-                BackgroundColor="Gray"
-                Command="{Binding ChooseAnswerCommand}"
-                CommandParameter="{Binding Source={x:Reference Ciencia_bt}}"
-                FontSize="Large"
-                Text="Ciencia" />
-
-            <!--  Arte  -->
-            <Button
-                x:Name="Arte_bt"
-                BackgroundColor="Gray"
-                Command="{Binding ChooseAnswerCommand}"
-                CommandParameter="{Binding Source={x:Reference Arte_bt}}"
-                FontSize="Large"
-                Text="Arte" />
-
-            <!--  Historia  -->
-            <Button
-                x:Name="Historia_Bt"
-                BackgroundColor="Gray"
-                Command="{Binding ChooseAnswerCommand}"
-                CommandParameter="{Binding Source={x:Reference Historia_Bt}}"
-                FontSize="Large"
-                Text="Historia" />
-
-            <!--  Geografia  -->
-            <Button
-                x:Name="Geografia_bt"
-                BackgroundColor="Gray"
-                Command="{Binding ChooseAnswerCommand}"
-                CommandParameter="{Binding Source={x:Reference Geografia_bt}}"
-                FontSize="Large"
-                Text="Geografia" />
-        </StackLayout>
+        <CollectionView Grid.Row="2" ItemsSource="{Binding ChooseCategories}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="{Binding PaddingButton}">
+                        <Button
+                            x:Name="ChooseButton"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            Command="{Binding ChooseAnswerCommand}"
+                            CommandParameter="{Binding Source={x:Reference ChooseButton}}"
+                            FontSize="Large"
+                            Text="{Binding TextButton}"
+                            TextColor="White" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

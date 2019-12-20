@@ -9,15 +9,13 @@ namespace MobileQuiz.Services
 {
     public static class QuestionService
     {
-        public static List<QuestionModel> Questions { get; set; } = Seed.SeedQuestions();
+        private static readonly List<QuestionModel> _questions = Seed.SeedQuestions();
 
-        // Get random question
-        public static QuestionModel GetRandomQuestion() => Questions[new Random().Next(Questions.Count)];
+        public static QuestionModel GetRandomQuestion() => _questions[new Random().Next(_questions.Count)];
 
-        // Get random question by category
-        public static QuestionModel GetRandomQuestion(string category)
+        public static QuestionModel GetRandomQuestion(CategoryEnum category)
         {
-            var categoryQuestions = Questions.Where(q => q.Category == category).ToList();
+            var categoryQuestions = _questions.Where(q => q.Category == category).ToList();
             return categoryQuestions[new Random().Next(categoryQuestions.Count)];
         }
     }

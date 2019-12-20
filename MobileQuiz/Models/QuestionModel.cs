@@ -2,7 +2,7 @@
 {
     public enum CategoryEnum
     {
-        Todas, Ciencia
+        Todas, Ciencia, Arte, Historia, Geograria, Esporte
     }
 
     public class QuestionModel
@@ -13,7 +13,7 @@
 
         public string CorrectAnswer { get; set; }
 
-        public string Category { get; set; }
+        public CategoryEnum Category { get; set; }
 
         public string IncorrectAnswers { get; set; }
     }

@@ -11,7 +11,7 @@ namespace MobileQuiz.Views.Starting
         public AuthAccountView()
         {
             InitializeComponent();
-            BindingContext = new AuthAccountViewModel(this);
+            BindingContext = new AuthAccountViewModel();
         }
     }
 }

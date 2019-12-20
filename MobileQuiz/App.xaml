@@ -5,12 +5,62 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
+    xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
     mc:Ignorable="d">
     <Application.Resources>
+        <OnPlatform
+            x:Key="FontFamily.RobotoRegular"
+            x:TypeArguments="x:String"
+            Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+            iOS="Roboto-Regular" />
+        <OnPlatform
+            x:Key="FontFamily.RobotoMedium"
+            x:TypeArguments="x:String"
+            Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+            iOS="Roboto-Medium" />
+
+        <mtrltypo:MaterialFontConfiguration
+            x:Key="Material.Font"
+            Body1="{StaticResource FontFamily.RobotoRegular}"
+            Body2="{StaticResource FontFamily.RobotoRegular}"
+            Button="{StaticResource FontFamily.RobotoMedium}"
+            Caption="{StaticResource FontFamily.RobotoRegular}"
+            H1="{StaticResource FontFamily.RobotoRegular}"
+            H2="{StaticResource FontFamily.RobotoRegular}"
+            H3="{StaticResource FontFamily.RobotoRegular}"
+            H4="{StaticResource FontFamily.RobotoRegular}"
+            H5="{StaticResource FontFamily.RobotoRegular}"
+            H6="{StaticResource FontFamily.RobotoMedium}"
+            Overline="{StaticResource FontFamily.RobotoRegular}"
+            Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />
+
+        <mtrl:MaterialColorConfiguration
+            x:Key="Material.Color"
+            Background="#FFFFFF"
+            Error="#B00020"
+            OnBackground="#000000"
+            OnError="#FFFFFF"
+            OnPrimary="#9d0af5"
+            OnSecondary="#FFFFFF"
+            OnSurface="#000000"
+            Primary="#9d0af5"
+            PrimaryVariant="#000000"
+            Secondary="#063852"
+            SecondaryVariant="#001229"
+            Surface="#FFFFFF" />
+
+        <mtrl:MaterialConfiguration
+            x:Key="Material.Configuration"
+            ColorConfiguration="{StaticResource Material.Color}"
+            FontConfiguration="{StaticResource Material.Font}" />
+
         <!--  Defaults  -->
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#9d0af5" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource Material.Color.Primary}" />
             <Setter Property="CornerRadius" Value="20" />
         </Style>
         <Style TargetType="Label">

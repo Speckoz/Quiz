@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 
+using ImageCircle.Forms.Plugin.Droid;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -20,6 +22,7 @@ namespace MobileQuiz.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
 
             FormsMaterial.Init(this, savedInstanceState);
 

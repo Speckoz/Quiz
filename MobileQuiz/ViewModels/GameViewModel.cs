@@ -95,15 +95,19 @@ namespace MobileQuiz.ViewModels
 
         private async void CheckAnswerAsync(Button button)
         {
+            button.BorderWidth = 5;
             if (bool.Parse(button.ClassId))
             {
-                await Application.Current.MainPage.DisplayAlert("Parabéns", "Você acertou!", "OK");
                 Round++;
-                Points = Points == 0 ? 10 : Points * 2;
+                bool isDefault = Points == default;
+                Points = isDefault ? 10 : Points * 2;
+                await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points/2)} pontos.", "OK");
                 NextLevel();
             }
             else
             {
+                (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
+
                 if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
                     Application.Current.MainPage = new GameView(_category);

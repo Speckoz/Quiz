@@ -29,8 +29,9 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
   - [ ] Editar questao.
   - [ ] Remover questao.
 - [x] Criar menu lateral.
+  - [x] adicionar opçao de voltar pra pagina inicial.
   - [ ] adicionar perfil.
-  - [ ] adicionar opçao de deslogar.
+  - [x] adicionar opçao de deslogar.
   - [ ] adicionar sobre.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:

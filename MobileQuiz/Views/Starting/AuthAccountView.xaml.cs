@@ -1,16 +1,9 @@
-﻿using MobileQuiz.Models;
-using MobileQuiz.Services;
-using MobileQuiz.ViewModels;
-
-using Newtonsoft.Json;
-
-using System;
-using System.Collections.Generic;
+﻿using MobileQuiz.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MobileQuiz.Views
+namespace MobileQuiz.Views.Starting
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AuthAccountView : ContentPage

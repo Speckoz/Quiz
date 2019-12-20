@@ -3,7 +3,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MobileQuiz.Views
+namespace MobileQuiz.Views.Starting
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterAccountView : ContentPage

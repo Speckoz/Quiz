@@ -1,7 +1,10 @@
-﻿using Newtonsoft.Json;
-
-namespace MobileQuiz.Models
+﻿namespace MobileQuiz.Models
 {
+    public enum CategoryEnum
+    {
+        Todas, Ciencia
+    }
+
     public class QuestionModel
     {
         public int Id { get; set; }

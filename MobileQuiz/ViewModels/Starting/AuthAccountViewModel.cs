@@ -5,6 +5,7 @@ using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Services;
 using MobileQuiz.Views;
+using MobileQuiz.Views.Starting;
 
 using Xamarin.Forms;
 

@@ -1,12 +1,13 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Services;
 using MobileQuiz.Views;
 
-using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 using Xamarin.Forms;
@@ -21,6 +22,7 @@ namespace MobileQuiz.ViewModels
         private int __points;
         private int __round;
         private string __title;
+        private ObservableCollection<GameModel> __answerButtons;
 
         public int Points
         {
@@ -52,6 +54,16 @@ namespace MobileQuiz.ViewModels
             }
         }
 
+        public ObservableCollection<GameModel> AnswerButtons
+        {
+            get => __answerButtons;
+            set
+            {
+                __answerButtons = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public GameViewModel(GameView page, string category)
         {
             _page = page;
@@ -68,14 +80,24 @@ namespace MobileQuiz.ViewModels
 
         private void CreateButtons(QuestionModel question)
         {
-            _page.ClearButtons();
+            AnswerButtons = new ObservableCollection<GameModel>();
             GetAnswersFromQuestion(question)
-                .ForEach(q => _page.AddButtons(CreateAnswerButton(q, question)));
+                .ForEach(q => AnswerButtons.Add(CreateAnswerButton(q, question)));
         }
 
-        private async void CheckAnswerAsync(object sender, EventArgs e)
+        private GameModel CreateAnswerButton(string answer, QuestionModel question)
         {
-            if (((Button)sender).ClassId == "correct")
+            return new GameModel
+            {
+                IsCorrectAnswer = (answer == question.CorrectAnswer).ToString().ToLower(),
+                AnswerText = answer,
+                AnswerCommand = new RelayCommand<Button>(CheckAnswerAsync)
+            };
+        }
+
+        private async void CheckAnswerAsync(Button button)
+        {
+            if (button.ClassId == "true")
             {
                 await _page.DisplayAlert("Parabéns", "Você acertou!", "OK");
                 Round++;
@@ -91,21 +113,6 @@ namespace MobileQuiz.ViewModels
                 else
                     GameOver();
             }
-        }
-
-        private Button CreateAnswerButton(string answer, QuestionModel question)
-        {
-            var btn = new Button()
-            {
-                Text = answer,
-                FontSize = 19,
-            };
-
-            if (answer == question.CorrectAnswer) btn.ClassId = "correct";
-
-            btn.Clicked += CheckAnswerAsync;
-
-            return btn;
         }
 
         private List<string> GetAnswersFromQuestion(QuestionModel question)

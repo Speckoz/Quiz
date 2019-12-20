@@ -20,10 +20,10 @@
             <Image
                 Grid.Row="0"
                 Margin="20,0,20,20"
-                HeightRequest="80"
+                HeightRequest="70"
                 HorizontalOptions="Center"
                 Source="{Binding Image}"
-                WidthRequest="80" />
+                WidthRequest="70" />
 
             <Label
                 Grid.Row="1"

@@ -70,9 +70,22 @@
             TextDecorations="Underline"
             VerticalOptions="Center" />
 
-        <StackLayout
-            x:Name="Buttons_st"
-            Grid.Row="2"
-            VerticalOptions="Center" />
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Button
+                            x:Name="ClickedButton"
+                            ClassId="{Binding IsCorrectAnswer}"
+                            Command="{Binding AnswerCommand}"
+                            CommandParameter="{Binding Source={x:Reference ClickedButton}}"
+                            FontSize="Medium"
+                            Text="{Binding AnswerText}"
+                            TextColor="White" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>

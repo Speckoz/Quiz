@@ -20,7 +20,14 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Implementar fim de jogo.
 - [x] Avançar para proxima fase.
 - [x] Tela de cadastro.
-- [ ] Efetuar o cadastro.
+- [x] Efetuar o cadastro.
+- [x] Alterar questoes para um arquivo json local.
+- [x] Implementar MVVM.
+- [x] Criar tela de gerenciamento de questoes.
+  - [ ] Criar telas de gerenciamento.
+- [x] Criar menu lateral.
+  - [ ] dicionar perfil.
+  - [ ] opçao de deslogar.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

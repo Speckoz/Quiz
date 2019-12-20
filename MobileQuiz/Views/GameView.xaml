@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MobileQuiz.Views.GameView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--  Round  -->
+            <Label
+                Grid.Column="0"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                TextColor="Default">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Rodada: " />
+                        <Span Text="{Binding Round}" TextColor="#9d0af5" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <!--  Pontos  -->
+            <Label
+                Grid.Column="1"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                TextColor="Default">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Pontos: " />
+                        <Span Text="{Binding Points}" TextColor="#9d0af5" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+
+        <BoxView
+            CornerRadius="10"
+            HeightRequest="100"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            VerticalOptions="Center"
+            WidthRequest="200"
+            Color="LightGray" />
+
+        <!--  Title  -->
+        <Label
+            Grid.Row="1"
+            Margin="20,40,20,40"
+            FontAttributes="Bold"
+            FontSize="27"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Title}"
+            TextColor="Default"
+            TextDecorations="Underline"
+            VerticalOptions="Center" />
+
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Button
+                            x:Name="ClickedButton"
+                            ClassId="{Binding IsCorrectAnswer}"
+                            Command="{Binding AnswerCommand}"
+                            CommandParameter="{Binding Source={x:Reference ClickedButton}}"
+                            FontSize="Medium"
+                            Text="{Binding AnswerText}"
+                            TextColor="White" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

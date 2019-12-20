@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MobileQuiz.Views.Starting.AuthAccountView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Visual="Material"
+    mc:Ignorable="d">
+    <StackLayout>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Margin="20,0,20,20"
+                HeightRequest="70"
+                HorizontalOptions="Center"
+                Source="{Binding Image}"
+                WidthRequest="70" />
+
+            <Label
+                Grid.Row="1"
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Text="Autenticar Conta" />
+
+            <StackLayout
+                Grid.Row="2"
+                Margin="0,40,0,40"
+                Orientation="Vertical">
+                <input:AdvancedEntry
+                    Title="Insira seu Login:"
+                    BorderColor="#9d0af5"
+                    IsRequired="True"
+                    Placeholder="Login"
+                    Style="{StaticResource AESetColor}"
+                    Text="{Binding Login}"
+                    TextColor="#9d0af5"
+                    ValidationMessage="Voce precisar informar o Login!" />
+                <input:AdvancedEntry
+                    Title="Insira sua senha:"
+                    BorderColor="#9d0af5"
+                    IsPassword="True"
+                    IsRequired="True"
+                    Placeholder="Senha"
+                    Style="{StaticResource AESetColor}"
+                    Text="{Binding Password}"
+                    TextColor="#9d0af5"
+                    ValidationMessage="Voce precisa informa a Senha!" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Vertical">
+                <Button Command="{Binding AuthCommand}" Text="Autenticar" />
+
+                <Button
+                    Command="{Binding AboutCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
+                    Text="Sobre" />
+            </StackLayout>
+        </Grid>
+
+        <StackLayout Margin="20,10,20,30" VerticalOptions="EndAndExpand">
+            <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
+            <Button
+                Command="{Binding RegisterCommand}"
+                Style="{StaticResource OutlinedButton}"
+                Text="Registrar" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

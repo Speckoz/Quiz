@@ -25,7 +25,9 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Implementar MVVM.
 - [x] Criar tela de gerenciamento de questoes.
   - [ ] Criar telas de gerenciamento.
-- [ ] Criar menu e adicionar perfil e opçao de deslogar.
+- [x] Criar menu lateral.
+  - [ ] dicionar perfil.
+  - [ ] opçao de deslogar.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

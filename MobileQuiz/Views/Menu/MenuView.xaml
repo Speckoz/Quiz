@@ -19,10 +19,10 @@
 
                 <image:CircleImage
                     Aspect="AspectFill"
-                    HeightRequest="50"
+                    HeightRequest="60"
                     HorizontalOptions="Center"
                     Source="{Binding UserImage}"
-                    WidthRequest="50" />
+                    WidthRequest="60" />
                 <Label
                     Margin="0,10,0,0"
                     d:Text="Ruan Carlos CS"

@@ -6,8 +6,13 @@ namespace MobileQuiz.Models.Menu
 {
     internal class MenuModel
     {
-        public byte ItemId { get; set; }
+        public ItemIdEnum ItemId { get; set; }
         public string Text { get; set; }
         public RelayCommand<Grid> MenuItemCommand { get; set; }
+    }
+
+    internal enum ItemIdEnum
+    {
+        Home, Perfil, Logout, VOID, About
     }
 }

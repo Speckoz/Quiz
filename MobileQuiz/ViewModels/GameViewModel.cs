@@ -108,12 +108,13 @@ namespace MobileQuiz.ViewModels
             {
                 (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
 
-                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu!\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
+                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu! A alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
-                    Application.Current.MainPage = new GameView(_category);
+                    GameOverAsync();
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new GameView(_category), true);
                 }
                 else
-                    GameOver();
+                    GameOverAsync();
             }
         }
 
@@ -124,8 +125,16 @@ namespace MobileQuiz.ViewModels
             return answerList.Randomize().ToList();
         }
 
+        private string GetAnswerCorrect()
+        {
+            foreach (GameModel gm in AnswerButtons)
+                if (bool.Parse(gm.IsCorrectAnswer))
+                    return gm.AnswerText;
+            return null;
+        }
+
         private void NextLevel() => Mount();
 
-        private void GameOver() => Application.Current.MainPage = new MainScreenView();
+        private async void GameOverAsync() => await Application.Current.MainPage.Navigation.PopModalAsync();
     }
 }

@@ -1,9 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using MobileQuiz.Helpers;
 using MobileQuiz.Models.Menu;
+using MobileQuiz.Views;
+using MobileQuiz.Views.Starting;
+
 using System;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 using Xamarin.Forms;
 
@@ -52,21 +57,38 @@ namespace MobileQuiz.ViewModels.Menu
 
             MenuItems = new ObservableCollection<MenuModel>
             {
-                new MenuModel { Text = "Inicio", ItemId = 0, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = "Ver Perfil", ItemId = 1, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = "Deslogar", ItemId = 2, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = string.Empty, ItemId = 3, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = "Sobre", ItemId = 4, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) }
+                new MenuModel { Text = "Inicio", ItemId = ItemIdEnum.Home, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
+                new MenuModel { Text = "Ver Perfil", ItemId = ItemIdEnum.Perfil, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
+                new MenuModel { Text = "Deslogar", ItemId = ItemIdEnum.Logout, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
+                new MenuModel { Text = string.Empty, ItemId = ItemIdEnum.VOID, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
+                new MenuModel { Text = "Sobre", ItemId = ItemIdEnum.About, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) }
             };
         }
 
         private async void MenuItemSelected(Grid obj)
         {
             obj.BackgroundColor = Color.LightGray;
-            byte item = byte.Parse(obj.ClassId);
-            if (item != 3)
+
+            switch (Enum.Parse<ItemIdEnum>(obj.ClassId))
             {
-                await App.Current.MainPage.DisplayAlert(item + " " + (obj.Children[0] as Label).Text, "parece que foi", "OK");
+                case ItemIdEnum.Home:
+                    (Application.Current.MainPage as MasterDetailPage).Detail = new NavigationPage(new MainTabListView());
+                    break;
+
+                case ItemIdEnum.Perfil:
+                    //add perfil here
+                    //App.Current.MainPage.Navigation.PushModalAsync
+                    break;
+
+                case ItemIdEnum.Logout:
+                    if (await Application.Current.MainPage.DisplayAlert("ATENÇAO!", "Realmente deseja deslogar da conta atual?", "Deslogar", "Cancelar"))
+                        Application.Current.MainPage = new AuthAccountView();
+                    break;
+
+                case ItemIdEnum.About:
+                    //add about here
+                    //Application.Current.MainPage.Navigation
+                    break;
             }
             obj.BackgroundColor = Color.Transparent;
         }

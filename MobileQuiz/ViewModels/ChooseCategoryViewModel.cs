@@ -47,7 +47,7 @@ namespace MobileQuiz.ViewModels
                 {
                     BackgroundColor = Color.FromHex("#9d0af5"),
                     PaddingButton = new Thickness(0,30,0,20),
-                    ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosen),
+                    ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosenAsync),
                     TextButton = CategoryEnum.Todas
                 },
                 CreateButtonGray(CategoryEnum.Arte),
@@ -62,15 +62,15 @@ namespace MobileQuiz.ViewModels
         {
             return new ChooseCategoryModel
             {
-                ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosen),
+                ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosenAsync),
                 TextButton = category
             };
         }
 
-        private void CategoryChosen(Button bt)
+        private async void CategoryChosenAsync(Button bt)
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
-                Application.Current.MainPage = new GameView(result);
+                await Application.Current.MainPage.Navigation.PushModalAsync(new GameView(result), true);
         }
     }
 }

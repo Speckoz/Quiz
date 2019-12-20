@@ -24,10 +24,14 @@ Versão mobile do [Quiz](https://github.com/marcopandolfo/quiz-game/) sendo dese
 - [x] Alterar questoes para um arquivo json local.
 - [x] Implementar MVVM.
 - [x] Criar tela de gerenciamento de questoes.
-  - [ ] Criar telas de gerenciamento.
+  - [ ] Criar questao.
+  - [ ] Consultar questao.
+  - [ ] Editar questao.
+  - [ ] Remover questao.
 - [x] Criar menu lateral.
-  - [ ] dicionar perfil.
-  - [ ] opçao de deslogar.
+  - [ ] adicionar perfil.
+  - [ ] adicinar opçao de deslogar.
+  - [ ] adicinar sobre.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

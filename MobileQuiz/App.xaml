@@ -4,33 +4,65 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
+    xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
     mc:Ignorable="d">
     <Application.Resources>
-        <!--  Defaults  -->
-        <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="#9d0af5" />
-            <Setter Property="CornerRadius" Value="20" />
-        </Style>
+        <OnPlatform
+            x:Key="FontFamily.RobotoRegular"
+            x:TypeArguments="x:String"
+            Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+            iOS="Roboto-Regular" />
+        <OnPlatform
+            x:Key="FontFamily.RobotoMedium"
+            x:TypeArguments="x:String"
+            Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+            iOS="Roboto-Medium" />
+
+        <mtrl:MaterialColorConfiguration
+            x:Key="Material.Color"
+            Background="#EAEAEA"
+            Error="#B00020"
+            OnBackground="#000000"
+            OnError="#FFFFFF"
+            OnPrimary="#FFFFFF"
+            OnSecondary="#FFFFFF"
+            OnSurface="#000000"
+            Primary="#9d0af5"
+            PrimaryVariant="#000000"
+            Secondary="#063852"
+            SecondaryVariant="#001229"
+            Surface="#FFFFFF" />
+
+        <mtrl:MaterialConfiguration x:Key="Material.Configuration" ColorConfiguration="{StaticResource Material.Color}" />
+
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="#9d0af5" />
+            <Setter Property="TextColor" Value="{DynamicResource Material.Color.Primary}" />
         </Style>
 
-        <!--  Switch  -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+
         <Style x:Key="OutlinedButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="Transparent" />
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="HeightRequest" Value="35" />
-            <Setter Property="BorderColor" Value="#9d0af5" />
-            <Setter Property="TextColor" Value="#9d0af5" />
+            <Setter Property="TextColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="BorderColor" Value="{DynamicResource Material.Color.Primary}" />
             <Setter Property="BorderWidth" Value="1" />
         </Style>
 
-        <!--  InputKIT  -->
-        <Style x:Key="AESetColor" TargetType="input:AdvancedEntry">
-            <Setter Property="AnnotationColor" Value="#9d0af5" />
+        <Style x:Key="MTFBase" TargetType="material:MaterialTextField">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextFontSize" Value="15" />
+            <Setter Property="AlwaysShowUnderline" Value="True" />
+            <Setter Property="UnderlineColor" Value="{DynamicResource Material.Color.Secondary}" />
+            <Setter Property="TintColor" Value="{DynamicResource Material.Color.Primary}" />
         </Style>
-        <!--  InputKIT  -->
+
     </Application.Resources>
 </Application>

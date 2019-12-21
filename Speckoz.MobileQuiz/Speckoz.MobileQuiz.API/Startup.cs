@@ -33,6 +33,7 @@ namespace Speckoz.MobileQuiz.API
             services.AddScoped<SeedingService>();
 
             services.AddControllers();
+
             services.AddOptions();
             services.AddMemoryCache();
         }
@@ -42,6 +43,13 @@ namespace Speckoz.MobileQuiz.API
         {
             if (env.IsDevelopment())
             {
+                // Auto create DB
+                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
+                    context.Database.Migrate();
+                }
+
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }

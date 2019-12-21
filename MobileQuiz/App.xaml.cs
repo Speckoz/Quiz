@@ -9,8 +9,7 @@ namespace MobileQuiz
         public App()
         {
             InitializeComponent();
-
-            XF.Material.Forms.Material.Init(this);
+            XF.Material.Forms.Material.Init(this, "Material.Configuration");
         }
 
         protected override void OnStart() => MainPage = new AuthAccountView();

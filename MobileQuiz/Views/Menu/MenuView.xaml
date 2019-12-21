@@ -15,16 +15,15 @@
                 BackgroundColor="#9d0af5"
                 HorizontalOptions="FillAndExpand"
                 Orientation="Vertical">
-                <!--<BoxView BackgroundColor="White" CornerRadius="20" />-->
 
                 <image:CircleImage
                     Aspect="AspectFill"
-                    HeightRequest="60"
+                    HeightRequest="90"
                     HorizontalOptions="Center"
-                    Source="{Binding UserImage}"
-                    WidthRequest="60" />
+                    Source="https://avatars0.githubusercontent.com/u/37851168"
+                    WidthRequest="90" />
+                <!--  Source="{Binding UserImage}"  -->
                 <Label
-                    Margin="0,10,0,0"
                     d:Text="Ruan Carlos CS"
                     FontAttributes="Bold"
                     FontSize="Large"

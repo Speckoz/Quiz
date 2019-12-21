@@ -24,9 +24,7 @@ namespace MobileQuiz.Droid
 
             ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
 
-            Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
-
-            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
+            //Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }

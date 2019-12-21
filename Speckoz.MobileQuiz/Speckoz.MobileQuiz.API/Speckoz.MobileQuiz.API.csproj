@@ -5,7 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Speckoz.MobileQuiz.Dependencies\Speckoz.MobileQuiz.Dependencies.csproj" />
   </ItemGroup>
 
 

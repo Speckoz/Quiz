@@ -1,18 +1,18 @@
 ﻿using Speckoz.MobileQuiz.Dependencies.Enums;
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MobileQuiz.Models
+namespace Speckoz.MobileQuiz.API.Models
 {
     public class QuestionModel : IQuestion
     {
         public int QuestionID { get; set; }
-
         public string Question { get; set; }
-
         public string CorrectAnswer { get; set; }
-
         public CategoryEnum Category { get; set; }
-
         public string IncorrectAnswers { get; set; }
     }
 }

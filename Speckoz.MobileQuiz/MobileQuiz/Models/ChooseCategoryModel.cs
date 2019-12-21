@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 
+using Speckoz.MobileQuiz.Dependencies.Enums;
+
 using Xamarin.Forms;
 
 namespace MobileQuiz.Models

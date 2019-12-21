@@ -5,6 +5,8 @@ using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Views;
 
+using Speckoz.MobileQuiz.Dependencies.Enums;
+
 using System;
 using System.Collections.ObjectModel;
 

@@ -1,5 +1,6 @@
-﻿using MobileQuiz.Models;
-using MobileQuiz.ViewModels;
+﻿using MobileQuiz.ViewModels;
+
+using Speckoz.MobileQuiz.Dependencies.Enums;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

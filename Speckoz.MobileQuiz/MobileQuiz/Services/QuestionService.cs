@@ -1,6 +1,8 @@
 ﻿using MobileQuiz.Models;
 using MobileQuiz.Services.Helpers;
 
+using Speckoz.MobileQuiz.Dependencies.Enums;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,11 +1,9 @@
-﻿namespace MobileQuiz.Models
-{
-    public enum CategoryEnum
-    {
-        Todas, Ciencia, Arte, Historia, Geograria, Esporte
-    }
+﻿using Speckoz.MobileQuiz.Dependencies.Enums;
+using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
-    public class QuestionModel
+namespace MobileQuiz.Models
+{
+    public class QuestionModel : IQuestion
     {
         public int Id { get; set; }
 

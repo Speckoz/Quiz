@@ -4,7 +4,7 @@ namespace Speckoz.MobileQuiz.Dependencies.Interfaces
 {
     public interface IQuestion
     {
-        int QuestionID { get; set; }
+        int? QuestionID { get; set; }
 
         string Question { get; set; }
 

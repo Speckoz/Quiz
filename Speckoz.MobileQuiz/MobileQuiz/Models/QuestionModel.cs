@@ -5,7 +5,7 @@ namespace MobileQuiz.Models
 {
     public class QuestionModel : IQuestion
     {
-        public int QuestionID { get; set; }
+        public int? QuestionID { get; set; }
 
         public string Question { get; set; }
 

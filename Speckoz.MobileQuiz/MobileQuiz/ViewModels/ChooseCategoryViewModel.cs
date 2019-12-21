@@ -11,6 +11,8 @@ using System;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
+using XF.Material.Forms;
+using XF.Material.Forms.Resources;
 
 namespace MobileQuiz.ViewModels
 {
@@ -47,7 +49,7 @@ namespace MobileQuiz.ViewModels
             {
                 new ChooseCategoryModel
                 {
-                    BackgroundColor = Color.FromHex("#9d0af5"),
+                    BackgroundColor = Material.GetResource<Color>(MaterialConstants.Color.PRIMARY),
                     PaddingButton = new Thickness(0,30,0,20),
                     ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosenAsync),
                     TextButton = CategoryEnum.Todas

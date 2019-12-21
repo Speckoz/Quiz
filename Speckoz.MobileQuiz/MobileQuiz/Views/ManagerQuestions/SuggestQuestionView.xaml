@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MobileQuiz.Views.ManagerQuestions.SuggestQuestionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="this"
+    Title="Sugerir Questao"
+    mc:Ignorable="d">
+
+    <ScrollView Padding="20">
+        <StackLayout>
+
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Pergunta"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.Question}" />
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Resposta Correta"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.CorrectAnswer}" />
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HelperText="Informe os items sepadados por barra ( / )"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Respostas incorretas"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.IncorrectAnswers}" />
+            <Label />
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Categoria"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.Category}" />
+
+            <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

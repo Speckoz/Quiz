@@ -8,6 +8,7 @@ using MobileQuiz.Views;
 using MobileQuiz.Views.Starting;
 
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace MobileQuiz.ViewModels
 {
@@ -62,20 +63,23 @@ namespace MobileQuiz.ViewModels
 
         private async void Auth()
         {
-            if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
+            using (await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
-                await Application.Current.MainPage.DisplayAlert("Ops!", "Voce precisa preencher os campos!", "OK");
-                return;
-            }
+                if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Ops!", "Voce precisa preencher os campos!", "OK");
+                    return;
+                }
 
-            UserModel user = UserService.SearchUser(Login, Password);
-            if (user == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Erro", "Usuario não encontrado!", "OK");
-                return;
-            }
+                UserModel user = UserService.SearchUser(Login, Password);
+                if (user == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Erro", "Usuario não encontrado!", "OK");
+                    return;
+                }
 
-            Application.Current.MainPage = new MainScreenView();
+                Application.Current.MainPage = new MainScreenView();
+            }
         }
 
         private async void About() => await Application.Current.MainPage.DisplayAlert("Sobre", $"Criado por Specko\n\nModificado por Logikoz", "Fechar");

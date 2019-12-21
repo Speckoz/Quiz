@@ -14,6 +14,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using XF.Material.Forms.Resources;
+using XF.Material.Forms.UI.Dialogs;
+using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace MobileQuiz.ViewModels
 {
@@ -112,17 +116,25 @@ namespace MobileQuiz.ViewModels
                 Round++;
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
-                await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.", "OK");
+
+                try
+                {
+                    await MaterialDialog.Instance.SnackbarAsync($"Parabéns, Você acertou! +{(isDefault ? 10 : Points / 2)} pontos.", MaterialSnackbar.DurationShort);
+                }
+                catch
+                {
+                    await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.", "OK");
+                }
                 NextLevel();
             }
             else
             {
                 (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
 
-                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu! A alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
+                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
                     GameOverAsync();
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new GameView(_category), true);
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(_category)), true);
                 }
                 else
                     GameOverAsync();

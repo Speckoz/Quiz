@@ -6,12 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace MobileQuiz.Views.ManagerQuestions
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ManagerQuestionsView : ContentPage
+    public partial class SuggestQuestionView : ContentPage
     {
-        public ManagerQuestionsView()
+        public SuggestQuestionView()
         {
             InitializeComponent();
-            BindingContext = new ManagerQuestionsViewModel();
+            BindingContext = new SuggestQuestionViewModel();
         }
     }
 }

@@ -6,12 +6,13 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:MobileQuiz.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mq="clr-namespace:MobileQuiz.Views.ManagerQuestions"
     xmlns:start="clr-namespace:MobileQuiz.Views.Starting"
     Title="Mobile Quiz"
     mc:Ignorable="d">
     <TabbedPage.Children>
         <local:ChooseCategoryView Title="Jogar" />
         <start:AuthAccountView Title="Rank Top" />
-        <local:ManagerQuestionsView Title="Gerenciar" />
+        <mq:ManagerQuestionsView Title="Gerenciar" />
     </TabbedPage.Children>
 </TabbedPage>

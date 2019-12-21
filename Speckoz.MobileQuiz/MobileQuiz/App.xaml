@@ -10,16 +10,6 @@
     xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
     mc:Ignorable="d">
     <Application.Resources>
-        <OnPlatform
-            x:Key="FontFamily.RobotoRegular"
-            x:TypeArguments="x:String"
-            Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
-            iOS="Roboto-Regular" />
-        <OnPlatform
-            x:Key="FontFamily.RobotoMedium"
-            x:TypeArguments="x:String"
-            Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
-            iOS="Roboto-Medium" />
 
         <mtrl:MaterialColorConfiguration
             x:Key="Material.Color"
@@ -32,7 +22,7 @@
             OnSurface="#000000"
             Primary="#9d0af5"
             PrimaryVariant="#000000"
-            Secondary="#063852"
+            Secondary="Gray"
             SecondaryVariant="#001229"
             Surface="#FFFFFF" />
 
@@ -58,7 +48,10 @@
 
         <Style x:Key="MTFBase" TargetType="material:MaterialTextField">
             <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="PlaceholderColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="FloatingPlaceholderColor" Value="{DynamicResource Material.Color.Primary}" />
             <Setter Property="TextFontSize" Value="15" />
+            <Setter Property="TextColor" Value="Default" />
             <Setter Property="AlwaysShowUnderline" Value="True" />
             <Setter Property="UnderlineColor" Value="{DynamicResource Material.Color.Secondary}" />
             <Setter Property="TintColor" Value="{DynamicResource Material.Color.Primary}" />

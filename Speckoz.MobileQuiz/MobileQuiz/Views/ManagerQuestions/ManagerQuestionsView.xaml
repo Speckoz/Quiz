@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MobileQuiz.Views.ManagerQuestionsView"
+    x:Class="MobileQuiz.Views.ManagerQuestions.ManagerQuestionsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -16,10 +16,7 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ActionOpen}" />
                     </StackLayout.GestureRecognizers>
-                    <material:MaterialCard
-                        BackgroundColor="White"
-                        CornerRadius="10"
-                        Elevation="2">
+                    <material:MaterialCard CornerRadius="10" Elevation="2">
                         <StackLayout Margin="0,0" Orientation="Horizontal">
                             <Image
                                 HeightRequest="60"

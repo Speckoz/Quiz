@@ -2,6 +2,6 @@
 {
     public enum CategoryEnum
     {
-        Ciencia, Arte, Historia, Geograria, Esporte
+        Todas, Ciencia, Arte, Historia, Geograria, Esporte
     }
 }

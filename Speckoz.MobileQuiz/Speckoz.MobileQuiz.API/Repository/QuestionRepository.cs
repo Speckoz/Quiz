@@ -87,7 +87,7 @@ namespace Speckoz.MobileQuiz.API.Repository
         /// Retorna uma questão aleatória
         /// </summary>
         /// <param name="category">Categoria da questão</param>
-        public async Task<QuestionModel> GetRandom(CategoryEnum category = CategoryEnum.Todas)
+        public async Task<QuestionModel> GetRandomTaskAsync(CategoryEnum category = CategoryEnum.Todas)
         {
 
             if (category == CategoryEnum.Todas)

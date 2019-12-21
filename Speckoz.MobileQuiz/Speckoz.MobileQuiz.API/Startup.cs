@@ -24,7 +24,6 @@ namespace Speckoz.MobileQuiz.API
                 builder => builder.MigrationsAssembly("Speckoz.MobileQuiz.API"))
             );
 
-
             services.AddControllers();
         }
 

@@ -19,5 +19,10 @@ namespace Speckoz.MobileQuiz.API.Models
         public CategoryEnum Category { get; set; }
         [Required]
         public string IncorrectAnswers { get; set; }
+
+        public static implicit operator QuestionModel(List<QuestionModel> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

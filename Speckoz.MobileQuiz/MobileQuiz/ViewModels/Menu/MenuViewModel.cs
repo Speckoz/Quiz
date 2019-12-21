@@ -8,7 +8,6 @@ using MobileQuiz.Views.Starting;
 
 using System;
 using System.Collections.ObjectModel;
-using System.Threading;
 
 using Xamarin.Forms;
 

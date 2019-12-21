@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace Speckoz.MobileQuiz.API.Test
@@ -8,7 +7,6 @@ namespace Speckoz.MobileQuiz.API.Test
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

@@ -101,7 +101,7 @@ namespace MobileQuiz.ViewModels
                 Round++;
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
-                await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points/2)} pontos.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.", "OK");
                 NextLevel();
             }
             else

@@ -63,6 +63,5 @@
             <Setter Property="UnderlineColor" Value="{DynamicResource Material.Color.Secondary}" />
             <Setter Property="TintColor" Value="{DynamicResource Material.Color.Primary}" />
         </Style>
-
     </Application.Resources>
 </Application>

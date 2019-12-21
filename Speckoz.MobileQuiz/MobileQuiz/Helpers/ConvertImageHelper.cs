@@ -1,10 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+
 using Xamarin.Forms;
 
 namespace MobileQuiz.Helpers
 {
-    class ConvertImageHelper
+    internal class ConvertImageHelper
     {
         /// <summary>
         /// Converte um Byte[] para ImageSource.

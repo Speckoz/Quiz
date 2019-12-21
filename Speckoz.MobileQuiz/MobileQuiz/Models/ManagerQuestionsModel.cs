@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+
 using Xamarin.Forms;
 
 namespace MobileQuiz.Models

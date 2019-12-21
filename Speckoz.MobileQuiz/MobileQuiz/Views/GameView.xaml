@@ -70,7 +70,6 @@
             TextDecorations="Underline"
             VerticalOptions="Center" />
 
-
         <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

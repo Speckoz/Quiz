@@ -7,6 +7,7 @@ using MobileQuiz.Services;
 using MobileQuiz.Views;
 
 using Speckoz.MobileQuiz.Dependencies.Enums;
+using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -65,27 +66,35 @@ namespace MobileQuiz.ViewModels
             }
         }
 
+        public RelayCommand ForceGameOverCommand { get; private set; }
+
         public GameViewModel(CategoryEnum category)
         {
             _category = category;
             Mount();
+
+            ForceGameOverCommand = new RelayCommand(async () =>
+            {
+                if (await Application.Current.MainPage.DisplayAlert("Aviso", "Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Sair", "Cancelar"))
+                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
+            });
         }
 
         private void Mount()
         {
-            QuestionModel question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
+            IQuestion question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
             Question = question.Question;
             CreateButtons(question);
         }
 
-        private void CreateButtons(QuestionModel question)
+        private void CreateButtons(IQuestion question)
         {
             AnswerButtons = new ObservableCollection<GameModel>();
             GetAnswersFromQuestion(question)
                 .ForEach(q => AnswerButtons.Add(CreateAnswerButton(q, question)));
         }
 
-        private GameModel CreateAnswerButton(string answer, QuestionModel question)
+        private GameModel CreateAnswerButton(string answer, IQuestion question)
         {
             return new GameModel
             {
@@ -120,7 +129,7 @@ namespace MobileQuiz.ViewModels
             }
         }
 
-        private List<string> GetAnswersFromQuestion(QuestionModel question)
+        private List<string> GetAnswersFromQuestion(IQuestion question)
         {
             var answerList = question.IncorrectAnswers.Split('/').ToList();
             answerList.Add(question.CorrectAnswer);

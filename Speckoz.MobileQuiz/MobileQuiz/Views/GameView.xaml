@@ -4,83 +4,112 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Jogando"
     Visual="Material"
     mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ForceGameOverCommand}" Text="Encerrar" />
+    </ContentPage.ToolbarItems>
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,20,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <!--  Round  -->
-            <Label
-                Grid.Column="0"
-                FontAttributes="Bold"
-                FontSize="Title"
-                HorizontalTextAlignment="Center"
-                TextColor="Default">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Rodada: " />
-                        <Span Text="{Binding Round}" TextColor="#9d0af5" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-            <!--  Pontos  -->
-            <Label
-                Grid.Column="1"
-                FontAttributes="Bold"
-                FontSize="Title"
-                HorizontalTextAlignment="Center"
-                TextColor="Default">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Pontos: " />
-                        <Span Text="{Binding Points}" TextColor="#9d0af5" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </Grid>
 
-        <BoxView
+        <material:MaterialCard
+            Grid.Row="0"
             CornerRadius="10"
-            HeightRequest="100"
-            HorizontalOptions="Center"
-            IsVisible="False"
-            VerticalOptions="Center"
-            WidthRequest="200"
-            Color="LightGray" />
+            Elevation="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Default">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Rodada: " />
+                            <Span
+                                d:Text="15"
+                                Text="{Binding Round}"
+                                TextColor="#9d0af5" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Default">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Pontos: " />
+                            <Span
+                                d:Text="1235"
+                                Text="{Binding Points}"
+                                TextColor="#9d0af5" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+        </material:MaterialCard>
 
-        <!--  Title  -->
-        <Label
+        <material:MaterialCard
             Grid.Row="1"
-            Margin="20,40,20,40"
-            FontAttributes="Bold"
-            FontSize="27"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            Text="{Binding Question}"
-            TextColor="Default"
-            TextDecorations="Underline"
-            VerticalOptions="Center" />
+            Margin="0,20,0,30"
+            Padding="0"
+            CornerRadius="10"
+            Elevation="2">
+            <StackLayout>
+                <Grid>
+                    <BoxView BackgroundColor="{StaticResource Material.Color.Primary}" CornerRadius="10 10 0 0" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Pergunta"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
 
+                <Label
+                    Grid.Row="1"
+                    Margin="10"
+                    d:Text="Ruan Carlos é top demais test teste lgkflkgsd lgskdlfkg sldf "
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Question}"
+                    TextColor="Default"
+                    VerticalOptions="Center" />
+
+            </StackLayout>
+        </material:MaterialCard>
         <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">
+            <d:CollectionView.ItemsSource>
+                <x:String>11111</x:String>
+            </d:CollectionView.ItemsSource>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="5">
                         <Button
                             x:Name="ClickedButton"
+                            Padding="0"
+                            d:Text="Teste"
                             ClassId="{Binding IsCorrectAnswer}"
                             Command="{Binding AnswerCommand}"
                             CommandParameter="{Binding Source={x:Reference ClickedButton}}"
                             FontSize="Medium"
-                            HeightRequest="50"
+                            HeightRequest="40"
                             Style="{StaticResource OutlinedButton}"
                             Text="{Binding AnswerText}" />
                     </Grid>

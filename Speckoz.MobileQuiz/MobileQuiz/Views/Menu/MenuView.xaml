@@ -11,17 +11,17 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout
-                Padding="50"
+                Padding="30"
                 BackgroundColor="#9d0af5"
                 HorizontalOptions="FillAndExpand"
                 Orientation="Vertical">
 
                 <image:CircleImage
                     Aspect="AspectFill"
-                    HeightRequest="90"
+                    HeightRequest="100"
                     HorizontalOptions="Center"
                     Source="https://avatars0.githubusercontent.com/u/37851168"
-                    WidthRequest="90" />
+                    WidthRequest="100" />
                 <!--  Source="{Binding UserImage}"  -->
                 <Label
                     d:Text="Ruan Carlos CS"

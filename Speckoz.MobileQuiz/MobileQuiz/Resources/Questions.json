@@ -11,25 +11,25 @@
 		"Question": "Quais o menor e o maior país do mundo?",
 		"CorrectAnswer": "Vaticano e Rússia",
 		"Category": 4,
-		"IncorrectAnswers": "Nauru e China/Mônaco e Canadá/Malta e Estados UnQuestionIDos"
+		"IncorrectAnswers": "Nauru e China/Mônaco e Canadá/Malta e Estados Unidos"
 	},
 	{
 		"QuestionID": 3,
-		"Question": "Qual o nome do presQuestionIDente do Brasil que ficou conhecQuestionIDo como Jango?",
+		"Question": "Qual o nome do presidente do Brasil que ficou conhecido como Jango?",
 		"CorrectAnswer": "João Goulart",
 		"Category": 3,
 		"IncorrectAnswers": "Jânio Quadros/Getúlio Vargas/João Figueiredo"
 	},
 	{
 		"QuestionID": 4,
-		"Question": "Quais os países que têm a maior e a menor expectativa de vQuestionIDa do mundo?",
+		"Question": "Quais os países que têm a maior e a menor expectativa de vida do mundo?",
 		"CorrectAnswer": "Japão e Serra Leoa",
 		"Category": 4,
-		"IncorrectAnswers": "Estados UnQuestionIDos e Angola/Brasil e Congo/Austrália e Afeganistão"
+		"IncorrectAnswers": "Estados Unidos e Angola/Brasil e Congo/Austrália e Afeganistão"
 	},
 	{
 		"QuestionID": 5,
-		"Question": "Qual o número mínimo de jogadores numa partQuestionIDa de futebol?",
+		"Question": "Qual o número mínimo de jogadores numa partida de futebol?",
 		"CorrectAnswer": "7",
 		"Category": 5,
 		"IncorrectAnswers": "8/10/5"
@@ -50,7 +50,7 @@
 	},
 	{
 		"QuestionID": 8,
-		"Question": "Qual a nacionalQuestionIDade de Che Guevara?",
+		"Question": "Qual a nacionalidade de Che Guevara?",
 		"CorrectAnswer": "Argentina",
 		"Category": 3,
 		"IncorrectAnswers": "Boliviana/Panamenha/Cubana"
@@ -60,7 +60,7 @@
 		"Question": "Em que período da pré-história o fogo foi descoberto?",
 		"CorrectAnswer": "Paleolítico",
 		"Category": 3,
-		"IncorrectAnswers": "QuestionIDade Média/Neolítico/QuestionIDade dos Metais"
+		"IncorrectAnswers": "Idade Média/Neolítico/Idade dos Metais"
 	},
 	{
 		"QuestionID": 10,

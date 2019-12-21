@@ -12,9 +12,9 @@ namespace MobileQuiz.Views.ManagerQuestions
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateView : ContentPage
     {
-        public CreateView()
-        {
-            InitializeComponent();
-        }
+        public CreateView() => InitializeComponent();
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e) =>
+            await Application.Current.MainPage.Navigation.PopModalAsync(true);
     }
 }

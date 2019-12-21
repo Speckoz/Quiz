@@ -4,8 +4,9 @@ using GalaSoft.MvvmLight.Command;
 using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Properties;
-
+using MobileQuiz.Views.ManagerQuestions;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace MobileQuiz.ViewModels
 {
@@ -32,7 +33,7 @@ namespace MobileQuiz.ViewModels
                     ActionImage = ConvertImageHelper.Convert(Resources.choose),
                     ActionName = "Nova Questao",
                     ActionDescription= "Abre uma tela com campos para cadastrar uma nova questao",
-                    ActionOpen = new RelayCommand(async () => await App.Current.MainPage.DisplayAlert("", "Nova questao", "OK"))
+                    ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new CreateView()), true))
                 },new ManagerQuestionsModel
                 {
                     ActionImage = ConvertImageHelper.Convert(Resources.register),

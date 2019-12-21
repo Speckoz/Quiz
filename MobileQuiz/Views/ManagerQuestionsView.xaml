@@ -8,7 +8,10 @@
     Title="Gerenciar Questoes"
     Visual="Material"
     mc:Ignorable="d">
-    <CollectionView Margin="10,0,10,0" ItemsSource="{Binding QuestionOptions}">
+    <CollectionView
+        Margin="10,0,10,0"
+        HorizontalOptions="FillAndExpand"
+        ItemsSource="{Binding QuestionOptions}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <Grid Margin="0,10">

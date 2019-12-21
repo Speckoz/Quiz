@@ -11,7 +11,8 @@ namespace MobileQuiz.Views
         public ChooseCategoryView()
         {
             InitializeComponent();
-            BindingContext = new ChooseCategoryViewModel(this);
+
+            BindingContext = new ChooseCategoryViewModel();
         }
     }
 }

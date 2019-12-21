@@ -4,12 +4,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
     <StackLayout>
-        <Grid Margin="20">
+        <Grid Margin="20,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -19,7 +19,7 @@
 
             <Image
                 Grid.Row="0"
-                Margin="20,0,20,20"
+                Margin="20,0,20,5"
                 HeightRequest="70"
                 HorizontalOptions="Center"
                 Source="{Binding Image}"
@@ -34,46 +34,38 @@
 
             <StackLayout
                 Grid.Row="2"
-                Margin="0,40,0,40"
+                Margin="0,20,0,20"
                 Orientation="Vertical">
-                <input:AdvancedEntry
-                    Title="Insira seu Login:"
-                    BorderColor="#9d0af5"
-                    IsRequired="True"
-                    Placeholder="Login"
-                    Style="{StaticResource AESetColor}"
-                    Text="{Binding Login}"
-                    TextColor="#9d0af5"
-                    ValidationMessage="Voce precisar informar o Login!" />
-                <input:AdvancedEntry
-                    Title="Insira sua senha:"
-                    BorderColor="#9d0af5"
-                    IsPassword="True"
-                    IsRequired="True"
-                    Placeholder="Senha"
-                    Style="{StaticResource AESetColor}"
-                    Text="{Binding Password}"
-                    TextColor="#9d0af5"
-                    ValidationMessage="Voce precisa informa a Senha!" />
+                <material:MaterialTextField
+                    InputType="Text"
+                    Placeholder="Informe seu login"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding Login}" />
+
+                <material:MaterialTextField
+                    InputType="Password"
+                    Placeholder="Informe sua senha"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding Password}" />
             </StackLayout>
 
             <StackLayout Grid.Row="3" Orientation="Vertical">
-                <Button Command="{Binding AuthCommand}" Text="Autenticar" />
-
                 <Button
-                    Command="{Binding AboutCommand}"
-                    HorizontalOptions="FillAndExpand"
-                    IsVisible="False"
-                    Text="Sobre" />
+                    Command="{Binding AuthCommand}"
+                    HorizontalOptions="Fill"
+                    Text="Autenticar"
+                    VerticalOptions="Center" />
             </StackLayout>
         </Grid>
 
-        <StackLayout Margin="20,10,20,30" VerticalOptions="EndAndExpand">
+        <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
             <Button
                 Command="{Binding RegisterCommand}"
+                HorizontalOptions="Fill"
                 Style="{StaticResource OutlinedButton}"
-                Text="Registrar" />
+                Text="Registrar"
+                VerticalOptions="Center" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

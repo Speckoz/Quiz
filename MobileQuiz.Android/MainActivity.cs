@@ -3,7 +3,6 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 
-using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 namespace MobileQuiz.Droid
@@ -19,11 +18,13 @@ namespace MobileQuiz.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            Forms.Init(this, savedInstanceState);
 
-            FormsMaterial.Init(this, savedInstanceState);
+            Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            XF.Material.Droid.Material.Init(this, savedInstanceState);
 
-            Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+
+            //Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }

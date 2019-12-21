@@ -4,12 +4,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Visual="Material"
     mc:Ignorable="d">
     <StackLayout>
-        <Grid Margin="20" VerticalOptions="StartAndExpand">
+        <Grid Margin="20,15" VerticalOptions="StartAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -19,7 +19,6 @@
 
             <Image
                 Grid.Row="0"
-                Margin="0,0,0,20"
                 HeightRequest="70"
                 Source="{Binding Image}"
                 WidthRequest="70" />
@@ -31,39 +30,27 @@
                 HorizontalOptions="Center"
                 Text="Registrar Conta" />
 
-            <StackLayout Grid.Row="2" Margin="0,40,0,40">
-                <input:AdvancedEntry
-                    Title="Insira seu login:"
-                    BorderColor="#9d0af5"
-                    IsRequired="True"
-                    Placeholder="Senha"
-                    Style="{StaticResource AESetColor}"
-                    Text="{Binding Login}"
-                    TextColor="#9d0af5"
-                    ValidationMessage="Voce precisa inserir um Login!" />
+            <StackLayout Grid.Row="2" Margin="0,20,0,20">
+                <material:MaterialTextField
+                    InputType="Text"
+                    Placeholder="Insira seu login"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding Login}" />
+
                 <StackLayout Orientation="Horizontal">
-                    <input:AdvancedEntry
-                        Title="Insira sua senha:"
-                        BorderColor="#9d0af5"
+                    <material:MaterialTextField
                         HorizontalOptions="FillAndExpand"
-                        IsPassword="True"
-                        IsRequired="True"
-                        Placeholder="Senha"
-                        Style="{StaticResource AESetColor}"
-                        Text="{Binding NewPassword}"
-                        TextColor="#9d0af5"
-                        ValidationMessage="Voce precisa inserir a Senha!" />
-                    <input:AdvancedEntry
-                        Title="Confirme a senha:"
-                        BorderColor="#9d0af5"
+                        InputType="Password"
+                        Placeholder="Insira sua senha"
+                        Style="{StaticResource MTFBase}"
+                        Text="{Binding NewPassword}" />
+
+                    <material:MaterialTextField
                         HorizontalOptions="FillAndExpand"
-                        IsPassword="True"
-                        IsRequired="True"
-                        Placeholder="Senha"
-                        Style="{StaticResource AESetColor}"
-                        Text="{Binding ConfirmNewPassword}"
-                        TextColor="#9d0af5"
-                        ValidationMessage="Voce precisa confirmar a Senha!" />
+                        InputType="Password"
+                        Placeholder="Confirme sua senha"
+                        Style="{StaticResource MTFBase}"
+                        Text="{Binding ConfirmNewPassword}" />
                 </StackLayout>
             </StackLayout>
 
@@ -73,11 +60,13 @@
                 Text="Registrar" />
         </Grid>
 
-        <Button
-            Margin="20,10,20,30"
-            Command="{Binding BackCommand}"
-            Style="{StaticResource OutlinedButton}"
-            Text="Voltar"
-            VerticalOptions="EndAndExpand" />
+        <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
+            <Label HorizontalOptions="Center" Text="Já tem uma conta?" />
+            <Button
+                Command="{Binding BackCommand}"
+                Style="{StaticResource OutlinedButton}"
+                Text="Voltar"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
     </StackLayout>
 </ContentPage>

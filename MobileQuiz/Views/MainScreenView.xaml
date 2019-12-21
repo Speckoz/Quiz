@@ -6,10 +6,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:MobileQuiz.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:menu="clr-namespace:MobileQuiz.Views.Menu"
     mc:Ignorable="d">
     <!--  Menu here  -->
     <MasterDetailPage.Master>
-        <local:ManagerQuestionsView />
+        <menu:MenuView />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>

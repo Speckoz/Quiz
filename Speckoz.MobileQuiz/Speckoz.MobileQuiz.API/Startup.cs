@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Speckoz.MobileQuiz.API.Data;
+using Speckoz.MobileQuiz.API.Repository;
+using Speckoz.MobileQuiz.API.Repository.Interfaces;
 
 namespace Speckoz.MobileQuiz.API
 {
@@ -23,6 +25,9 @@ namespace Speckoz.MobileQuiz.API
                 options => options.UseSqlite(_configuration["ConnectionString"],
                 builder => builder.MigrationsAssembly("Speckoz.MobileQuiz.API"))
             );
+
+            // Repository
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
 
             // SeedingService
             services.AddScoped<SeedingService>();

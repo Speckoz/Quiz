@@ -89,11 +89,19 @@ namespace Speckoz.MobileQuiz.API.Repository
         /// <param name="category">Categoria da questão</param>
         public async Task<QuestionModel> GetRandom(CategoryEnum category = CategoryEnum.Todas)
         {
+
             if (category == CategoryEnum.Todas)
             {
-                return await _context.Questions.OrderBy(q => Guid.NewGuid()).FirstOrDefaultAsync();
+                var questionsAll = await _context.Questions.ToListAsync();
+                var selectedQuestion = questionsAll[new Random().Next(questionsAll.Count)];
+
+                return selectedQuestion;
             }
-            return await _context.Questions.Where(q => q.Category == category).FirstOrDefaultAsync();
+
+            var questionsCategory = await _context.Questions.Where(q => q.Category == category).ToListAsync();
+            var selected = questionsCategory[new Random().Next(questionsCategory.Count)];
+
+            return selected;
         }
 
         /// <summary>

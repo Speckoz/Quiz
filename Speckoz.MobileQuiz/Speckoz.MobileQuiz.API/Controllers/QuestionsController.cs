@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Speckoz.MobileQuiz.API.Repository.Interfaces;
+using Speckoz.MobileQuiz.Dependencies.Enums;
 
 namespace Speckoz.MobileQuiz.API.Controllers
 {
@@ -19,9 +20,11 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: api/Questions
         [HttpGet]
-        public IActionResult GetRandomQuestion()
+        public IActionResult GetRandomQuestion(string cat)
         {
-            return Ok("Salve");
+            var category = (CategoryEnum)int.Parse(cat);
+            var question = _questionRepository.GetRandom(category);
+            return Ok(question);
         }
     }
 }

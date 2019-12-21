@@ -16,6 +16,9 @@ namespace Speckoz.MobileQuiz.API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<QuestionModel>().ToTable("Questions");
+            modelBuilder.Entity<QuestionModel>().HasKey(q => q.QuestionID);
         }
 
         public DbSet<QuestionModel> Questions { get; set; }

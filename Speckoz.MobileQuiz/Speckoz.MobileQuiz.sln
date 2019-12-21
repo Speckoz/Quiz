@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileQuiz.Android", "MobileQuiz.Android\MobileQuiz.Android.csproj", "{3E4E6410-3BFF-412F-81E8-C06BCE0953AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileQuiz", "MobileQuiz\MobileQuiz.csproj", "{2E96A6FD-01A4-4729-B60F-8AA384A5A8BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MobileQuiz", "MobileQuiz\MobileQuiz.csproj", "{2E96A6FD-01A4-4729-B60F-8AA384A5A8BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{0C9CDD27-70C2-42BF-AB03-FC05B93442F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{2A137F6F-A4D6-4FEE-B341-3C9EC0B48490}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E4E6410-3BFF-412F-81E8-C06BCE0953AA} = {0C9CDD27-70C2-42BF-AB03-FC05B93442F5}
+		{2E96A6FD-01A4-4729-B60F-8AA384A5A8BB} = {0C9CDD27-70C2-42BF-AB03-FC05B93442F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {04D79950-4192-4E52-A5D7-F381D25D9DE4}

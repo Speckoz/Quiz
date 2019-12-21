@@ -20,10 +20,10 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: api/Questions
         [HttpGet]
-        public IActionResult GetRandomQuestion(string cat)
+        public async Task<IActionResult> GetRandomQuestion(string cat)
         {
             var category = (CategoryEnum)int.Parse(cat);
-            var question = _questionRepository.GetRandom(category);
+            var question = await _questionRepository.GetRandomTaskAsync(category);
             return Ok(question);
         }
     }

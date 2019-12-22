@@ -9,6 +9,7 @@
     xmlns:mq="clr-namespace:MobileQuiz.Views.ManagerQuestions"
     xmlns:start="clr-namespace:MobileQuiz.Views.Starting"
     Title="Mobile Quiz"
+    Visual="Material"
     mc:Ignorable="d">
     <TabbedPage.Children>
         <local:ChooseCategoryView Title="Jogar" />

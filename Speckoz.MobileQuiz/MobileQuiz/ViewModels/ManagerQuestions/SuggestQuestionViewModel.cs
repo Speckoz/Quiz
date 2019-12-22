@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using MobileQuiz.Helpers;
 using MobileQuiz.Models;
 using MobileQuiz.Models.ManagerQuestions;
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
-using System;
+
 using System.Collections.ObjectModel;
 using System.Linq;
 

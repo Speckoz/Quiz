@@ -91,7 +91,6 @@
                     Text="{Binding Question}"
                     TextColor="Default"
                     VerticalOptions="Center" />
-
             </StackLayout>
         </material:MaterialCard>
         <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">

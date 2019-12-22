@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Speckoz.MobileQuiz.API.Data;
 using Speckoz.MobileQuiz.API.Models;
 using Speckoz.MobileQuiz.API.Repository.Interfaces;
 using Speckoz.MobileQuiz.Dependencies.Enums;
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +16,6 @@ namespace Speckoz.MobileQuiz.API.Repository
         private readonly ApiContext _context;
 
         public QuestionRepository(ApiContext context) => _context = context;
-
 
         /// <summary>
         /// Cria uma nova questão no banco de dados
@@ -64,7 +64,7 @@ namespace Speckoz.MobileQuiz.API.Repository
         /// <param name="question">Questão atualizada</param>
         public async Task<QuestionModel> UpdateTaskAsync(QuestionModel question)
         {
-            if (!await ExistsTaskAsync(question.QuestionID))
+            if (!await ExistsTaskAsync((int)question.QuestionID))
                 return null;
 
             try
@@ -89,7 +89,6 @@ namespace Speckoz.MobileQuiz.API.Repository
         /// <param name="category">Categoria da questão</param>
         public async Task<QuestionModel> GetRandomTaskAsync(CategoryEnum category = CategoryEnum.Todas)
         {
-
             if (category == CategoryEnum.Todas)
             {
                 var questionsAll = await _context.Questions.ToListAsync();

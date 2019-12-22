@@ -117,14 +117,7 @@ namespace MobileQuiz.ViewModels
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
 
-                try
-                {
-                    await MaterialDialog.Instance.SnackbarAsync($"Parabéns, Você acertou! +{(isDefault ? 10 : Points / 2)} pontos.", MaterialSnackbar.DurationShort);
-                }
-                catch
-                {
-                    await Application.Current.MainPage.DisplayAlert("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.", "OK");
-                }
+                SendMessageHelper.SendAsync("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.");
                 NextLevel();
             }
             else

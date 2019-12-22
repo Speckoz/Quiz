@@ -13,6 +13,7 @@
     <StackLayout>
         <material:MaterialCard
             Margin="10"
+            BorderColor="LightGray"
             CornerRadius="10"
             Elevation="2">
             <material:MaterialCard.GestureRecognizers>
@@ -54,7 +55,10 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                         </StackLayout.GestureRecognizers>
-                        <material:MaterialCard CornerRadius="10" Elevation="2">
+                        <material:MaterialCard
+                            BorderColor="LightGray"
+                            CornerRadius="10"
+                            Elevation="2">
                             <StackLayout Orientation="Horizontal">
                                 <Image
                                     HeightRequest="60"

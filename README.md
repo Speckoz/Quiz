@@ -8,7 +8,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - Material Design
 ### API
 - ASP.NET Core 3.1
-- Database
+- Database SQLite
 
 # Contribuição ✌️
 
@@ -29,10 +29,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - [x] Alterar questoes para um arquivo json local.
 - [x] Implementar MVVM.
 - [x] Criar tela de gerenciamento de questoes.
-  - [ ] Criar questao.
-  - [ ] Consultar questao.
-  - [ ] Editar questao.
-  - [ ] Remover questao.
+  - [ ] Sugerir questoes. (USER)
+  - [ ] Listar status das questoes sugeridas. (USER)
+  - [ ] Listar sugestoes de questao. (ADMIN)
+  - [ ] Editar questao. (ADMIN)
+  - [ ] Remover questao. (ADMIN)
 - [x] Criar menu lateral.
   - [x] adicionar opçao de voltar pra pagina inicial.
   - [ ] adicionar perfil.

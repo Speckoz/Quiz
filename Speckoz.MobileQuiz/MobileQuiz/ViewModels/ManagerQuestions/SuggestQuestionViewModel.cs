@@ -9,6 +9,7 @@ using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -52,11 +53,15 @@ namespace MobileQuiz.ViewModels.ManagerQuestions
             if (!string.IsNullOrEmpty(NewQuestion.IncorrectAnswers))
             {
                 if (!IncorrectAnswersChips.Any(i => i.IncorrectAnswerText == NewQuestion.IncorrectAnswers))
+                {
                     IncorrectAnswersChips.Add(new SuggestQuestionChipModel
                     {
                         IncorrectAnswerText = NewQuestion.IncorrectAnswers,
                         IncorrectAnswerCommand = new RelayCommand<MaterialChip>(RemoveChipWithIncorretAnswer)
                     });
+
+                    NewQuestion.IncorrectAnswers = string.Empty;
+                }
                 else
                     SendMessageHelper.SendAsync("Já está na lista!", "Ops!");
             }
@@ -66,13 +71,23 @@ namespace MobileQuiz.ViewModels.ManagerQuestions
 
         private async void RemoveChipWithIncorretAnswer(MaterialChip chip)
         {
-            if (await Application.Current.MainPage.DisplayAlert("", "Tem certeza que quer excluir este item? ", "Sim", "Cancelar"))
+            if (await Continue())
                 foreach (SuggestQuestionChipModel incorret in IncorrectAnswersChips.ToList())
                     if (incorret.IncorrectAnswerText == chip.Text)
                         IncorrectAnswersChips.Remove(incorret);
+
+            static async Task<bool> Continue() => await Application.Current.MainPage.DisplayAlert("", "Tem certeza que quer excluir este item? ", "Sim", "Cancelar");
         }
 
-        private bool FieldsIsEmpty() => true;
+        private bool FieldsIsEmpty()
+        {
+            bool i1 = string.IsNullOrEmpty(NewQuestion.Question);
+            bool i2 = string.IsNullOrEmpty(NewQuestion.CorrectAnswer);
+            bool i3 = IncorrectAnswersChips.Count > 3;
+            //bool i4 =
+
+            return true;
+        }
 
         private async void SendSugestion()
         {

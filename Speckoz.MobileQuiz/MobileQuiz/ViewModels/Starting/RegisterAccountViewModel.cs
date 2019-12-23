@@ -68,7 +68,7 @@ namespace MobileQuiz.ViewModels
             BackCommand = new RelayCommand(Back);
         }
 
-        private void Back() => Application.Current.MainPage = new AuthAccountView();
+        private async void Back() => await Application.Current.MainPage.Navigation.PopModalAsync(true);
 
         private async void Register()
         {

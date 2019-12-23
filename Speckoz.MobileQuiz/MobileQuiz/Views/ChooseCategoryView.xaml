@@ -39,7 +39,8 @@
                             FontSize="Medium"
                             HeightRequest="42"
                             Text="{Binding TextButton}"
-                            TextColor="White" />
+                            TextColor="White"
+                            Visual="Material" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

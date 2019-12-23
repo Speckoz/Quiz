@@ -71,7 +71,7 @@ namespace MobileQuiz.ViewModels
                     return;
                 }
 
-                UserModel user = UserService.SearchUser(Login, Password);
+                UserModel user = UserService.SearchUser(Login.ToLower(), Password.ToLower());
                 if (user == null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Erro", "Usuario não encontrado!", "OK");
@@ -84,6 +84,6 @@ namespace MobileQuiz.ViewModels
 
         private async void About() => await Application.Current.MainPage.DisplayAlert("Sobre", $"Criado por Specko\n\nModificado por Logikoz", "Fechar");
 
-        private void Register() => Application.Current.MainPage = new RegisterAccountView();
+        private async void Register() => await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterAccountView(), true);
     }
 }

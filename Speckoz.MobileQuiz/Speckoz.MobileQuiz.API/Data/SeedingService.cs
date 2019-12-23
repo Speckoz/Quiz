@@ -15,7 +15,7 @@ namespace Speckoz.MobileQuiz.API.Data
 
         public void Seed()
         {
-            if (_context.Questions.Any())
+            if (_context.Questions.Any() && _context.Users.Any())
                 return;
 
             #region Questions
@@ -107,9 +107,19 @@ namespace Speckoz.MobileQuiz.API.Data
                 IncorrectAnswers = "3/6/1"
             });
 
-            _context.SaveChanges();
-
             #endregion
+
+            #region Users
+            _context.Users.Add(new UserModel 
+            {
+                Email = "admin@gmail.com",
+                Password = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+                Level = 1,
+                Username = "Specko"
+            });
+            #endregion
+
+            _context.SaveChanges();
         }
     }
 }

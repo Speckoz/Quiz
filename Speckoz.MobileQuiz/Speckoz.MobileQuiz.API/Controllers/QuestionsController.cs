@@ -40,5 +40,13 @@ namespace Speckoz.MobileQuiz.API.Controllers
             }
             return BadRequest();
         }
+
+        // Delete /Questions/12
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteQuestion(int id)
+        {
+            await _questionRepository.DeleteAsync(id);
+            return NoContent();
+        }
     }
 }

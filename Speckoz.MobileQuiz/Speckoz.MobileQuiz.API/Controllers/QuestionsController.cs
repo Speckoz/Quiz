@@ -17,16 +17,24 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         public QuestionsController(IQuestionRepository questionRepository) =>
             _questionRepository = questionRepository;
-        
+
 
         // GET: /Questions
         [HttpGet]
-        public async Task<IActionResult> GetRandomQuestion(string cat= "0")
+        public async Task<IActionResult> GetRandomQuestion(string cat = "0")
         {
             // Verifica se a categoria existe, senao atribui como categoria 0
             var category = Enum.IsDefined(typeof(CategoryEnum), int.Parse(cat)) ? (CategoryEnum)int.Parse(cat) : 0;
             var question = await _questionRepository.GetRandomTaskAsync(category);
             return Ok(question);
+        }
+
+        // GET: /Questions/2
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetQuestionById(int id)
+        {
+            QuestionModel question = await _questionRepository.FindByID(id);
+            return question == null ? NotFound() : (IActionResult)Ok(question);
         }
 
         // POST: /Questions

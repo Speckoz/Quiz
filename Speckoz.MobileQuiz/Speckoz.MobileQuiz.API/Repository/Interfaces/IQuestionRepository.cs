@@ -13,5 +13,6 @@ namespace Speckoz.MobileQuiz.API.Repository.Interfaces
         Task DeleteAsync(int id);
         Task<QuestionModel> UpdateTaskAsync(QuestionModel question);
         Task<QuestionModel> GetRandomTaskAsync(CategoryEnum category = CategoryEnum.Todas);
+        Task<QuestionModel> FindByID(int id);
     }
 }

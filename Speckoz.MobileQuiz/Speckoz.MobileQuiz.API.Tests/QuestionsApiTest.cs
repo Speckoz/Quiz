@@ -67,5 +67,19 @@ namespace Speckoz.MobileQuiz.API.Tests
             // Delete created question
             using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/questions/{resultQuestion.QuestionID}");
         }
+
+        [Fact]
+        public async void DadoIdValidoDeQuestaoNaURIApiRetornaQuestao()
+        {
+            using var request = new HttpRequestMessage(new HttpMethod("GET"), "/questions/1");
+
+            using HttpResponseMessage response = await _client.SendAsync(request);
+
+            QuestionModel question = JsonConvert.DeserializeObject<QuestionModel>(await response.Content.ReadAsStringAsync());
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotEmpty(question.Category.ToString());
+            Assert.NotEmpty(question.Question);
+            Assert.NotEmpty(question.IncorrectAnswers);
+        }
     }
 }

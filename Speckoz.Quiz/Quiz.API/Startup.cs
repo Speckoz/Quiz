@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using Quiz.API.Data;
 using Quiz.API.Repository;
 using Quiz.API.Repository.Interfaces;

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using Quiz.API.Models;
+
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Speckoz.MobileQuiz.API.Models;
 
 namespace Speckoz.MobileQuiz.API.Controllers
 {
@@ -25,7 +24,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
         {
             if (ModelState.IsValid)
             {
-
             }
 
             throw new NotImplementedException();

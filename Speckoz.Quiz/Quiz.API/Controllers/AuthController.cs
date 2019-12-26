@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Speckoz.MobileQuiz.Dependencies.Auxiliary;
+﻿using Microsoft.AspNetCore.Mvc;
 
+using Quiz.API.Models.Auxiliary;
+
+using System;
 
 namespace Speckoz.MobileQuiz.API.Controllers
 {
@@ -15,9 +12,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
     {
         // POST: /auth
         [HttpPost]
-        public IActionResult GenerateToken(LoginRequestModel login)
-        {
-            throw new NotImplementedException();
-        }
+        public IActionResult GenerateToken(LoginRequestModel login) => throw new NotImplementedException();
     }
 }

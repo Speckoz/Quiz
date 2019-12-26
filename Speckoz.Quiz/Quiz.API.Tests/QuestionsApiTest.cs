@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Mvc.Testing;
+
 using Newtonsoft.Json;
+
 using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
-using Quiz.Dependencies.Interfaces;
-using System;
+
 using System.Net;
 using System.Net.Http;
 using System.Text;
+
 using Xunit;
 
 namespace Quiz.API.Tests
@@ -16,7 +18,6 @@ namespace Quiz.API.Tests
         private readonly HttpClient _client;
 
         public QuestionsApiTest(WebApplicationFactory<Startup> factory) => _client = ConnectionFactory.GetClient(factory);
-
 
         [Theory]
         [InlineData(CategoryEnum.Arte)]
@@ -42,12 +43,12 @@ namespace Quiz.API.Tests
         [Fact]
         public async void DadaQuestaoValidaNoPostApiRetornaCreated()
         {
-            var question = new QuestionModel 
+            var question = new QuestionModel
             {
                 Question = "Questão Teste",
                 Category = CategoryEnum.Arte,
                 CorrectAnswer = "Certa",
-                IncorrectAnswers ="e/e/e",
+                IncorrectAnswers = "e/e/e",
             };
 
             using var request = new HttpRequestMessage(new HttpMethod("POST"), "/questions")
@@ -56,7 +57,6 @@ namespace Quiz.API.Tests
             };
 
             using HttpResponseMessage response = await _client.SendAsync(request);
-
 
             QuestionModel resultQuestion = JsonConvert.DeserializeObject<QuestionModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);

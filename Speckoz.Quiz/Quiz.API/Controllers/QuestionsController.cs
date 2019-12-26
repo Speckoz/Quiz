@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using Quiz.API.Models;
+using Quiz.API.Repository.Interfaces;
+using Quiz.Dependencies.Enums;
+
+using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Speckoz.MobileQuiz.API.Models;
-using Speckoz.MobileQuiz.API.Repository.Interfaces;
-using Speckoz.MobileQuiz.Dependencies.Enums;
 
 namespace Speckoz.MobileQuiz.API.Controllers
 {
@@ -17,7 +17,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         public QuestionsController(IQuestionRepository questionRepository) =>
             _questionRepository = questionRepository;
-
 
         // GET: /Questions
         [HttpGet]

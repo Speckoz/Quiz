@@ -1,8 +1,6 @@
 ﻿using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.API.Models

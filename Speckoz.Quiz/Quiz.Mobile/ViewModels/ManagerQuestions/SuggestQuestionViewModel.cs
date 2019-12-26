@@ -1,12 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Quiz.Dependencies.Enums;
 using Quiz.Helpers;
-using Quiz.Models;
 using Quiz.Models.ManagerQuestions;
 
-using Quiz.Dependencies.Interfaces;
-
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,15 +18,26 @@ namespace Quiz.ViewModels.ManagerQuestions
 {
     internal class SuggestQuestionViewModel : ViewModelBase
     {
-        private IQuestion __newQuestion;
+        private SuggestQuestionModel __newQuestion;
         private ObservableCollection<SuggestQuestionChipModel> __incorrectAnswersChips;
+        private string[] __categoryChoice;
 
-        public IQuestion NewQuestion
+        public SuggestQuestionModel NewQuestion
         {
             get => __newQuestion;
             set
             {
                 __newQuestion = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string[] CategoryChoice
+        {
+            get => __categoryChoice;
+            set
+            {
+                __categoryChoice = value;
                 RaisePropertyChanged();
             }
         }
@@ -48,7 +58,7 @@ namespace Quiz.ViewModels.ManagerQuestions
 
         public SuggestQuestionViewModel() => Init();
 
-        private void AddIncorrectAnswer()
+        private void AddChipWithIncorrectAnswer()
         {
             if (!string.IsNullOrEmpty(NewQuestion.IncorrectAnswers))
             {
@@ -83,11 +93,10 @@ namespace Quiz.ViewModels.ManagerQuestions
         {
             bool i1 = string.IsNullOrEmpty(NewQuestion.Question);
             bool i2 = string.IsNullOrEmpty(NewQuestion.CorrectAnswer);
-            bool i3 = IncorrectAnswersChips.Count > 3;
+            bool i3 = !(IncorrectAnswersChips.Count >= 3);
+            bool i4 = string.IsNullOrEmpty(NewQuestion.Category);
 
-            //bool i4 =
-
-            return true;
+            return i1 || i2 || i3 || i4;
         }
 
         private async void SendSugestion()
@@ -97,15 +106,22 @@ namespace Quiz.ViewModels.ManagerQuestions
                 await Application.Current.MainPage.DisplayAlert("Ops!", "Voce precisa preencher todos os campos", "Ok");
                 return;
             }
-
+            string aux = "";
+            foreach (SuggestQuestionChipModel s in IncorrectAnswersChips)
+            {
+                aux += $"{s.IncorrectAnswerText}/";
+            }
             //request here
+            Enum.TryParse(typeof(CategoryEnum), NewQuestion.Category, out object category);
+            await Application.Current.MainPage.DisplayAlert("Show", $"{NewQuestion.Question}\n{NewQuestion.Category} - {(CategoryEnum)category}\n{NewQuestion.CorrectAnswer}\n{aux}", "OK");
         }
 
         private void Init()
         {
-            NewQuestion = new QuestionModel();
+            NewQuestion = new SuggestQuestionModel();
+            CategoryChoice = Enum.GetNames(typeof(CategoryEnum));
             SendSugestionCommand = new RelayCommand(SendSugestion);
-            AddIncorrectAnswerCommand = new RelayCommand(AddIncorrectAnswer);
+            AddIncorrectAnswerCommand = new RelayCommand(AddChipWithIncorrectAnswer);
             IncorrectAnswersChips = new ObservableCollection<SuggestQuestionChipModel>();
         }
     }

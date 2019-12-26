@@ -3,17 +3,17 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 
-using Xamarin.Forms.Platform.Android;
+using Quiz.Mobile.Droid;
 
 namespace Quiz.Droid
 {
     [Activity(Label = "Quiz", Icon = "@mipmap/icon", Theme = "@style/LightTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : FormsAppCompatActivity
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            TabLayoutResource = Resource.Layout.abc_screen_toolbar;
-            ToolbarResource = Resource.Layout.abc_screen_toolbar;
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
 

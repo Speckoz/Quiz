@@ -13,15 +13,6 @@
 
     <ScrollView Padding="20">
         <StackLayout>
-            <Picker SelectedIndex="2">
-                <Picker.Items>
-                    <x:String>A</x:String>
-                    <x:String>B</x:String>
-                    <x:String>C</x:String>
-                    <x:String>D</x:String>
-                    <x:String>E</x:String>
-                </Picker.Items>
-            </Picker>
 
             <material:MaterialTextField
                 BackgroundColor="{StaticResource Material.Color.Background}"
@@ -43,19 +34,15 @@
                     Placeholder="Respostas incorretas"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewQuestion.IncorrectAnswers}" />
-                <Button
-                    Margin="10,0,0,15"
-                    Padding="0"
-                    BorderWidth="1"
-                    Command="{Binding AddIncorrectAnswerCommand}"
-                    CornerRadius="20"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HeightRequest="40"
-                    Style="{StaticResource OutlinedButton}"
-                    Text="+"
-                    VerticalOptions="Center"
-                    WidthRequest="40" />
+                <Grid
+                    Margin="10,0,0,0"
+                    Padding="10"
+                    VerticalOptions="Center">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Label FontSize="Small" Text="ADD" />
+                </Grid>
             </StackLayout>
             <CollectionView
                 Header="Lista: "
@@ -74,22 +61,28 @@
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
                                 TextColor="White" />
-
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
             <Label />
-            <material:MaterialTextField
+            <Picker
+                Title="Selecione a Categoria"
+                ItemsSource="{Binding CategoryChoice}"
+                SelectedItem="{Binding NewQuestion.Category}"
+                TextColor="{StaticResource Material.Color.Primary}" />
+            <Label />
+
+            <!--<material:MaterialTextField
                 BackgroundColor="{StaticResource Material.Color.Background}"
+                Choices="{Binding CategoryChoice}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Categoria"
                 Style="{StaticResource MTFBase}"
-                Text="{Binding NewQuestion.Category}" />
+                Text="{Binding NewQuestion.Category}" />-->
 
             <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />
         </StackLayout>
     </ScrollView>
-
 </ContentPage>

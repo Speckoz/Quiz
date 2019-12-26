@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Quiz.Views.ChooseCategoryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="ChooseCategory"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid Margin="10" HorizontalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            HeightRequest="70"
+            Source="{Binding Image}"
+            WidthRequest="70" />
+        <Label
+            Grid.Row="1"
+            FontAttributes="Bold"
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="Escolha a Categoria" />
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding ChooseCategories}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="{Binding PaddingButton}">
+                        <Button
+                            x:Name="ChooseButton"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            Command="{Binding ChooseAnswerCommand}"
+                            CommandParameter="{Binding Source={x:Reference ChooseButton}}"
+                            FontSize="Medium"
+                            HeightRequest="42"
+                            Text="{Binding TextButton}"
+                            TextColor="White"
+                            Visual="Material" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

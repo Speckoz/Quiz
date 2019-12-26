@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Quiz.Views.ManagerQuestions.SuggestQuestionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="this"
+    Title="Sugerir Questao"
+    Visual="Material"
+    mc:Ignorable="d">
+
+    <ScrollView Padding="20">
+        <StackLayout>
+            <Picker SelectedIndex="2">
+                <Picker.Items>
+                    <x:String>A</x:String>
+                    <x:String>B</x:String>
+                    <x:String>C</x:String>
+                    <x:String>D</x:String>
+                    <x:String>E</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Pergunta"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.Question}" />
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Resposta Correta"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.CorrectAnswer}" />
+
+            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                <material:MaterialTextField
+                    BackgroundColor="{StaticResource Material.Color.Background}"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Respostas incorretas"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding NewQuestion.IncorrectAnswers}" />
+                <Button
+                    Margin="10,0,0,15"
+                    Padding="0"
+                    BorderWidth="1"
+                    Command="{Binding AddIncorrectAnswerCommand}"
+                    CornerRadius="20"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HeightRequest="40"
+                    Style="{StaticResource OutlinedButton}"
+                    Text="+"
+                    VerticalOptions="Center"
+                    WidthRequest="40" />
+            </StackLayout>
+            <CollectionView
+                Header="Lista: "
+                HeightRequest="50"
+                ItemsLayout="HorizontalList"
+                ItemsSource="{Binding IncorrectAnswersChips}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
+                            </Grid.GestureRecognizers>
+                            <material:MaterialChip
+                                x:Name="IAnswerChip"
+                                BackgroundColor="{StaticResource Material.Color.Primary}"
+                                Image="https://i.imgur.com/N9vNTvB.png"
+                                Text="{Binding IncorrectAnswerText}"
+                                TextColor="White" />
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label />
+            <material:MaterialTextField
+                BackgroundColor="{StaticResource Material.Color.Background}"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Categoria"
+                Style="{StaticResource MTFBase}"
+                Text="{Binding NewQuestion.Category}" />
+
+            <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

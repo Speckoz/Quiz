@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Quiz.Views.ManagerQuestions.ManagerQuestionsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="this"
+    Title="Gerenciar Questoes"
+    Visual="Material"
+    mc:Ignorable="d">
+    <StackLayout>
+        <material:MaterialCard
+            Margin="10"
+            BorderColor="LightGray"
+            CornerRadius="10"
+            Elevation="2">
+            <material:MaterialCard.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SuggestQuestion.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
+            </material:MaterialCard.GestureRecognizers>
+            <StackLayout Orientation="Horizontal">
+                <Image
+                    HeightRequest="60"
+                    Source="{Binding SuggestQuestion.ActionImage}"
+                    VerticalOptions="Center"
+                    WidthRequest="60" />
+
+                <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
+                    <Label
+                        Grid.Row="0"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="Sugerir Questao"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="1"
+                        FontSize="Subtitle"
+                        Opacity=".6"
+                        Text="Abre uma tela com campos para sugerir uma questao"
+                        TextColor="Default" />
+                </StackLayout>
+            </StackLayout>
+        </material:MaterialCard>
+
+        <Label
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsAdmin}"
+            Text="Area Administrativa" />
+
+        <CollectionView HorizontalOptions="FillAndExpand" ItemsSource="{Binding QuestionOptions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" Orientation="Vertical">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
+                        </StackLayout.GestureRecognizers>
+                        <material:MaterialCard
+                            BorderColor="LightGray"
+                            CornerRadius="10"
+                            Elevation="2">
+                            <StackLayout Orientation="Horizontal">
+                                <Image
+                                    HeightRequest="60"
+                                    Source="{Binding ActionImage}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="60" />
+
+                                <StackLayout
+                                    Margin="20,0,0,0"
+                                    Orientation="Vertical"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Grid.Row="0"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="{Binding ActionName}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="Subtitle"
+                                        Opacity=".6"
+                                        Text="{Binding ActionDescription}"
+                                        TextColor="Default" />
+                                </StackLayout>
+                            </StackLayout>
+                        </material:MaterialCard>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

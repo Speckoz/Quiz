@@ -36,6 +36,20 @@ namespace Quiz.API.Repository
             return question;
         }
 
+
+        /// <summary>
+        /// Procura uma questão pelo ID
+        /// </summary>
+        /// <param name="id">ID da questão</param>
+        public async Task<QuestionModel> FindByID(int id)
+        {
+            IQueryable<QuestionModel> query = _context.Questions
+                .Where(q => (q.QuestionID == id));
+
+            return await query.FirstOrDefaultAsync();
+        } 
+
+
         /// <summary>
         /// Deleta um usuario
         /// </summary>

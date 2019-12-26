@@ -17,10 +17,12 @@ namespace Quiz.API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<QuestionModel>().ToTable("Questions");
-            modelBuilder.Entity<QuestionModel>().HasKey(q => q.QuestionID);
+            modelBuilder.Entity<QuestionModel>().ToTable("Questions").HasKey(q => q.QuestionID);
+
+            modelBuilder.Entity<UserModel>().ToTable("Users").HasKey(u => u.UserID);
         }
 
         public DbSet<QuestionModel> Questions { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     }
 }

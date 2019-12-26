@@ -22,10 +22,5 @@ namespace Quiz.API.Models
 
         [Required]
         public string IncorrectAnswers { get; set; }
-
-        public static implicit operator QuestionModel(List<QuestionModel> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

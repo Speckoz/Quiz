@@ -1,4 +1,5 @@
-﻿using Quiz.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Quiz.API.Data;
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using System;
@@ -30,6 +31,19 @@ namespace Quiz.API.Repository
                 throw ex;
             }
             return user;
+        }
+
+        /// <summary>
+        /// Procura um usuario pelo user e senha
+        /// </summary>
+        /// <param name="login">Login do usuario</param>
+        /// <param name="password">Senha do usuario</param>
+        public async Task<UserModel> FindUserTaskAsync(string login, string password)
+        {
+            IQueryable<UserModel> query = _context.Users
+                .Where(u => (u.Username == login || u.Email == login) && u.Password == password);
+
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

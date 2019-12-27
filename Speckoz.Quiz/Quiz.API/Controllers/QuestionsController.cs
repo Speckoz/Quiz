@@ -12,7 +12,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
     public class QuestionsController : ControllerBase
     {
         private IQuestionRepository _questionRepository;

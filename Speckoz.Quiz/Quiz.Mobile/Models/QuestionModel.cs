@@ -6,66 +6,16 @@ using System.Runtime.CompilerServices;
 
 namespace Quiz.Models
 {
-    public class QuestionModel : IQuestion, INotifyPropertyChanged
+    public class QuestionModel : IQuestion
     {
-        private int? __questionId;
-        private string __question;
-        private string __correctAnswer;
-        private CategoryEnum __category;
-        private string __incorrectAnswer;
+        public int? QuestionID { get; set; }
 
-        public int? QuestionID
-        {
-            get => __questionId;
-            set
-            {
-                __questionId = value;
-                OnPropertyChanged();
-            }
-        }
+        public string Question { get; set; }
 
-        public string Question
-        {
-            get => __question;
-            set
-            {
-                __question = value;
-                OnPropertyChanged();
-            }
-        }
+        public string CorrectAnswer { get; set; }
 
-        public string CorrectAnswer
-        {
-            get => __correctAnswer;
-            set
-            {
-                __correctAnswer = value;
-                OnPropertyChanged();
-            }
-        }
+        public virtual CategoryEnum Category { get; set; }
 
-        public CategoryEnum Category
-        {
-            get => __category;
-            set
-            {
-                __category = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string IncorrectAnswers
-        {
-            get => __incorrectAnswer;
-            set
-            {
-                __incorrectAnswer = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string property = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        public virtual string IncorrectAnswers { get; set; }
     }
 }

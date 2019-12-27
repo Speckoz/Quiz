@@ -70,17 +70,9 @@
             <Picker
                 Title="Selecione a Categoria"
                 ItemsSource="{Binding CategoryChoice}"
-                SelectedItem="{Binding NewQuestion.Category}"
+                SelectedIndex="{Binding Index, Mode=TwoWay}"
                 TextColor="{StaticResource Material.Color.Primary}" />
             <Label />
-
-            <!--<material:MaterialTextField
-                BackgroundColor="{StaticResource Material.Color.Background}"
-                Choices="{Binding CategoryChoice}"
-                HorizontalOptions="CenterAndExpand"
-                Placeholder="Categoria"
-                Style="{StaticResource MTFBase}"
-                Text="{Binding NewQuestion.Category}" />-->
 
             <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />
         </StackLayout>

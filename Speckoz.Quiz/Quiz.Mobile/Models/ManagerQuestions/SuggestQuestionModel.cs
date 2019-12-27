@@ -1,6 +1,9 @@
 ﻿using GalaSoft.MvvmLight.Command;
 
+using Quiz.Dependencies.Enums;
+
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 using XF.Material.Forms.UI;
 
@@ -14,18 +17,27 @@ namespace Quiz.Models.ManagerQuestions
 
     internal class SuggestQuestionModel : QuestionModel, INotifyPropertyChanged
     {
-        private string __category;
+        private CategoryEnum __category;
+        private string __incorrectAnswers;
 
-        public new string Category
+        public override string IncorrectAnswers
         {
-            get => __category;
-            set
-            {
-                __category = value;
-                PC?.Invoke(this, new PropertyChangedEventArgs(nameof(Category)));
-            }
+            get => __incorrectAnswers;
+            set => OnPropertyChanged(ref __incorrectAnswers, value);
         }
 
-        public event PropertyChangedEventHandler PC;
+        public override CategoryEnum Category
+        {
+            get => __category;
+            set => OnPropertyChanged(ref __category, value);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged<T>(ref T item, T value, [CallerMemberName] string property = null)
+        {
+            item = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
     }
 }

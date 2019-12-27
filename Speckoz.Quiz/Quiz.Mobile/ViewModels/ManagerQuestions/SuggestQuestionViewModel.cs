@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Helpers;
+using Quiz.Models;
 using Quiz.Models.ManagerQuestions;
 
 using System;
@@ -18,28 +19,26 @@ namespace Quiz.ViewModels.ManagerQuestions
 {
     internal class SuggestQuestionViewModel : ViewModelBase
     {
-        private SuggestQuestionModel __newQuestion;
+        private QuestionModel __newQuestion;
         private ObservableCollection<SuggestQuestionChipModel> __incorrectAnswersChips;
         private string[] __categoryChoice;
 
-        public SuggestQuestionModel NewQuestion
+        public QuestionModel NewQuestion
         {
             get => __newQuestion;
-            set
-            {
-                __newQuestion = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __newQuestion, value);
         }
 
         public string[] CategoryChoice
         {
             get => __categoryChoice;
-            set
-            {
-                __categoryChoice = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __categoryChoice, value);
+        }
+
+        public int Index
+        {
+            get => (int)NewQuestion.Category;
+            set => NewQuestion.Category = (CategoryEnum)value;
         }
 
         public RelayCommand SendSugestionCommand { get; private set; }
@@ -49,11 +48,7 @@ namespace Quiz.ViewModels.ManagerQuestions
         public ObservableCollection<SuggestQuestionChipModel> IncorrectAnswersChips
         {
             get => __incorrectAnswersChips;
-            set
-            {
-                __incorrectAnswersChips = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __incorrectAnswersChips, value);
         }
 
         public SuggestQuestionViewModel() => Init();
@@ -94,7 +89,7 @@ namespace Quiz.ViewModels.ManagerQuestions
             bool i1 = string.IsNullOrEmpty(NewQuestion.Question);
             bool i2 = string.IsNullOrEmpty(NewQuestion.CorrectAnswer);
             bool i3 = !(IncorrectAnswersChips.Count >= 3);
-            bool i4 = string.IsNullOrEmpty(NewQuestion.Category);
+            bool i4 = !(NewQuestion.Category >= 0);
 
             return i1 || i2 || i3 || i4;
         }
@@ -112,8 +107,7 @@ namespace Quiz.ViewModels.ManagerQuestions
                 aux += $"{s.IncorrectAnswerText}/";
             }
             //request here
-            Enum.TryParse(typeof(CategoryEnum), NewQuestion.Category, out object category);
-            await Application.Current.MainPage.DisplayAlert("Show", $"{NewQuestion.Question}\n{NewQuestion.Category} - {(CategoryEnum)category}\n{NewQuestion.CorrectAnswer}\n{aux}", "OK");
+            await Application.Current.MainPage.DisplayAlert("Show", $"{NewQuestion.Question}\n{NewQuestion.Category} - {(int)NewQuestion.Category}\n{NewQuestion.CorrectAnswer}\n{aux}", "OK");
         }
 
         private void Init()

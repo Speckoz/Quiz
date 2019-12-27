@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quiz.Dependencies.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,5 +12,6 @@ namespace Speckoz.MobileQuiz.Dependencies.Interfaces
         public string Username { get; set; }
         public int Level { get; set; }
         public string Password { get; set; }
+        public UserType UserType { get; set; }
     }
 }

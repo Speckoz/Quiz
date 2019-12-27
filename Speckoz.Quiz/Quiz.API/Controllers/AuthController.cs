@@ -48,7 +48,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
             var stringToken = new JwtSecurityTokenHandler().WriteToken(token);
 
-            return Ok(new { user, stringToken });
+            return Ok(new { user, token = stringToken });
         }
     }
 }

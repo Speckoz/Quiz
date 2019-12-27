@@ -116,7 +116,7 @@ namespace Quiz.API.Data
                 Password = "1234",
                 Level = 1,
                 Username = "Specko",
-                UserType = UserType.Admin,
+                UserType = UserTypeEnum.Admin,
             });
             #endregion
 

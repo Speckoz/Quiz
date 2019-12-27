@@ -22,6 +22,6 @@ namespace Quiz.API.Models
         public string Password { get; set; }
 
         [Required]
-        public UserType UserType { get; set; }
+        public UserTypeEnum UserType { get; set; }
     }
 }

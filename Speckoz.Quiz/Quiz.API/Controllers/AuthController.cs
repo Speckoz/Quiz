@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+
 using Quiz.API.Models.Auxiliary;
 using Quiz.API.Repository.Interfaces;
+
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -23,7 +25,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
             _userRepository = userRepository;
             _configuration = configuration;
         }
-
 
         // POST: /auth
         [HttpPost]

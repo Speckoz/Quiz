@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+
 using Newtonsoft.Json;
+
 using Quiz.API.Models;
 using Quiz.API.Models.Auxiliary;
+
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
-using System;
-using System.Collections.Generic;
+
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xunit;
 
 namespace Quiz.API.Tests

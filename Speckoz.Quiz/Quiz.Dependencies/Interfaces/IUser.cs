@@ -12,6 +12,6 @@ namespace Speckoz.MobileQuiz.Dependencies.Interfaces
         public string Username { get; set; }
         public int Level { get; set; }
         public string Password { get; set; }
-        public UserType UserType { get; set; }
+        public UserTypeEnum UserType { get; set; }
     }
 }

@@ -1,10 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+
 using Newtonsoft.Json;
+
 using Quiz.API.Models;
+using Quiz.Dependencies.Enums;
+
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xunit;
 
 namespace Quiz.API.Tests
@@ -14,7 +19,6 @@ namespace Quiz.API.Tests
         private readonly HttpClient _client;
 
         public UsersApiTest(WebApplicationFactory<Startup> factory) => _client = ConnectionFactory.GetClient(factory);
-        
 
         [Fact]
         public async Task DadoUsuarioValidoApiRetornaCreated()
@@ -25,7 +29,7 @@ namespace Quiz.API.Tests
                 Level = 0,
                 Password = "1234",
                 Username = "speckoz",
-                UserType = Dependencies.Enums.UserType.Normal
+                UserType = UserTypeEnum.Normal
             };
 
             using var request = new HttpRequestMessage(new HttpMethod("POST"), "/users")

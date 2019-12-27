@@ -2,6 +2,7 @@
 
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
+
 using System;
 using System.Threading.Tasks;
 
@@ -14,7 +15,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
         private readonly IUserRepository _userRepository;
 
         public UsersController(IUserRepository userRepository) => _userRepository = userRepository;
-        
 
         // GET: /users/2
         [HttpGet("{id}")]

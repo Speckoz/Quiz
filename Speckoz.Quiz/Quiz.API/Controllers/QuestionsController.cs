@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
@@ -11,6 +12,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class QuestionsController : ControllerBase
     {
         private IQuestionRepository _questionRepository;

@@ -1,13 +1,15 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.IdentityModel.Tokens;
 using Quiz.API.Data;
 using Quiz.API.Repository;
 using Quiz.API.Repository.Interfaces;
+using System.Text;
 
 namespace Quiz.API
 {
@@ -27,8 +29,21 @@ namespace Quiz.API
                 builder => builder.MigrationsAssembly("Quiz.API"))
             );
 
+            // JWT
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "Speckoz",
+                    ValidAudience = "Speckoz",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"]))
+                });
+
             // Repository
             services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             // SeedingService
             services.AddScoped<SeedingService>();
@@ -54,6 +69,8 @@ namespace Quiz.API
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }
+
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
 

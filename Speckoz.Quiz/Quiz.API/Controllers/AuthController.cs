@@ -12,6 +12,9 @@ namespace Speckoz.MobileQuiz.API.Controllers
     {
         // POST: /auth
         [HttpPost]
-        public IActionResult GenerateToken(LoginRequestModel login) => throw new NotImplementedException();
+        public IActionResult GenerateToken(LoginRequestModel login)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

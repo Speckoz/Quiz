@@ -1,4 +1,5 @@
-﻿using Speckoz.MobileQuiz.Dependencies.Interfaces;
+﻿using Quiz.Dependencies.Enums;
+using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -19,5 +20,8 @@ namespace Quiz.API.Models
 
         [Required]
         public string Password { get; set; }
+
+        [Required]
+        public UserType UserType { get; set; }
     }
 }

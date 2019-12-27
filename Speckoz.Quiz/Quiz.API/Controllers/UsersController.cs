@@ -23,7 +23,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
             throw new NotImplementedException();
         }
 
-        // POST /users
+        // POST: /users
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody]UserModel user)
         {

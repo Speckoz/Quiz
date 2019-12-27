@@ -8,7 +8,7 @@ using Quiz.Dependencies.Enums;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Quiz.API.Tests
@@ -23,7 +23,7 @@ namespace Quiz.API.Tests
         [InlineData(CategoryEnum.Arte)]
         [InlineData(CategoryEnum.Ciencia)]
         [InlineData(CategoryEnum.Todas)]
-        public async void DadaCategoriaValidaNaURIApiRetornaOkEQuestao(CategoryEnum cat)
+        public async Task DadaCategoriaValidaNaURIApiRetornaOkEQuestao(CategoryEnum cat)
         {
             // Arranje
             using var request = new HttpRequestMessage(new HttpMethod("GET"), $"/questions?cat={(int)cat}");
@@ -41,7 +41,7 @@ namespace Quiz.API.Tests
         }
 
         [Fact]
-        public async void DadaQuestaoValidaNoPostApiRetornaCreated()
+        public async Task DadaQuestaoValidaNoPostApiRetornaCreated()
         {
             var question = new QuestionModel
             {
@@ -69,7 +69,7 @@ namespace Quiz.API.Tests
         }
 
         [Fact]
-        public async void DadoIdValidoDeQuestaoNaURIApiRetornaQuestao()
+        public async Task DadoIdValidoDeQuestaoNaURIApiRetornaQuestao()
         {
             using var request = new HttpRequestMessage(new HttpMethod("GET"), "/questions/1");
 

@@ -3,6 +3,8 @@ using Quiz.API.Models;
 using System;
 using System.Threading.Tasks;
 using Quiz.API.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Quiz.API.Repository
 {
@@ -29,5 +31,13 @@ namespace Quiz.API.Repository
             }
             return question;
         }
+
+
+        /// <summary>
+        /// Recupera todas as sugestões de questão.
+        /// </summary>
+        public async Task<IEnumerable<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
+            await _context.Suggestions.ToListAsync();
+        
     }
 }

@@ -30,5 +30,14 @@ namespace Quiz.API.Controllers
             }
             return BadRequest();
         }
+
+        // GET: /suggestions
+        [HttpGet]
+        public async Task<IActionResult> GetSuggestions()
+        {
+
+            var suggestions =  await _questionSuggestionRepository.GetSuggestionsTaskAsync();
+            return Ok(suggestions);
+        }
     }
 }

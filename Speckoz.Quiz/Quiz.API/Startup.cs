@@ -66,7 +66,6 @@ namespace Quiz.API
                     var context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
                     context.Database.Migrate();
                 }
-
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }

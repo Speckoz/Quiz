@@ -36,7 +36,7 @@ namespace Quiz.API.Repository
         /// <summary>
         /// Recupera todas as sugestões de questão.
         /// </summary>
-        public async Task<IEnumerable<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
+        public async Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
             await _context.Suggestions.ToListAsync();
         
     }

@@ -9,6 +9,6 @@ namespace Quiz.API.Repository.Interfaces
     public interface IQuestionSuggestionRepository
     {
         Task<QuestionSuggestionModel> CreateTaskAync(QuestionSuggestionModel question);
-        Task<IEnumerable<QuestionSuggestionModel>> GetSuggestionsTaskAsync();
+        Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync();
     }
 }

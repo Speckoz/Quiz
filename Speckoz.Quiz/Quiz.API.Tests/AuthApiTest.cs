@@ -25,7 +25,7 @@ namespace Quiz.API.Tests
         [Fact]
         public async Task DadoUsuarioValidoApiRetornaToken()
         {
-            LoginRequestModel login = new LoginRequestModel
+            var login = new LoginRequestModel
             {
                 Login = "Specko",
                 Password = "1234"

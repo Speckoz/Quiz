@@ -1,7 +1,4 @@
 ﻿using Quiz.Dependencies.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Speckoz.MobileQuiz.Dependencies.Interfaces
 {

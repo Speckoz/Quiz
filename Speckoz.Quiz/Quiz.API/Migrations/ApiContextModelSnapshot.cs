@@ -42,6 +42,32 @@ namespace Quiz.API.Migrations
                     b.ToTable("Questions");
                 });
 
+            modelBuilder.Entity("Quiz.API.Models.QuestionSuggestion", b =>
+                {
+                    b.Property<int>("QuestionSuggestionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Category")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CorrectAnswer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("IncorrectAnswers")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QuestionSuggestionID");
+
+                    b.ToTable("Suggestions");
+                });
+
             modelBuilder.Entity("Quiz.API.Models.UserModel", b =>
                 {
                     b.Property<int>("UserID")

@@ -38,6 +38,23 @@ namespace Quiz.API.Repository
         /// </summary>
         public async Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
             await _context.Suggestions.ToListAsync();
-        
+
+        public async Task DeleteSuggestionTaskAsync(int id)
+        {
+            QuestionSuggestionModel suggestion = await _context.Suggestions.SingleOrDefaultAsync(s => s.QuestionSuggestionID == id);
+
+            try
+            {
+                if (suggestion != null)
+                {
+                    _context.Suggestions.Remove(suggestion);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
     }
 }

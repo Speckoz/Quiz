@@ -40,5 +40,14 @@ namespace Quiz.API.Controllers
             var suggestions =  await _questionSuggestionRepository.GetSuggestionsTaskAsync();
             return Ok(suggestions);
         }
+
+
+        // DELETE: /suggestions/2
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSuggestion(int id)
+        {
+            await _questionSuggestionRepository.DeleteSuggestionTaskAsync(id);
+            return NoContent();
+        }
     }
 }

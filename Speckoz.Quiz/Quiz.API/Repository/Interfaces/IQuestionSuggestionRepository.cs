@@ -10,5 +10,6 @@ namespace Quiz.API.Repository.Interfaces
     {
         Task<QuestionSuggestionModel> CreateTaskAync(QuestionSuggestionModel question);
         Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync();
+        Task DeleteSuggestionTaskAsync(int id);
     }
 }

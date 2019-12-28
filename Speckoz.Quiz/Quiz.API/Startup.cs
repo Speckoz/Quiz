@@ -43,6 +43,7 @@ namespace Quiz.API
 
             // Repository
             services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IQuestionSuggestionRepository, QuestionSuggestionRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             // SeedingService
@@ -65,7 +66,6 @@ namespace Quiz.API
                     var context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
                     context.Database.Migrate();
                 }
-
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }

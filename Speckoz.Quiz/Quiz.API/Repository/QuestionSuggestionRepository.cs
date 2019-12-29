@@ -39,6 +39,11 @@ namespace Quiz.API.Repository
         public async Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
             await _context.Suggestions.ToListAsync();
 
+
+        /// <summary>
+        /// Deleta uma sugestao
+        /// </summary>
+        /// <param name="id">ID da sugestao</param>
         public async Task DeleteSuggestionTaskAsync(int id)
         {
             QuestionSuggestionModel suggestion = await _context.Suggestions.SingleOrDefaultAsync(s => s.QuestionSuggestionID == id);
@@ -55,6 +60,37 @@ namespace Quiz.API.Repository
             {
                 throw exc;
             }
+        }
+
+
+        /// <summary>
+        /// Procura uma sugestao pelo ID
+        /// </summary>
+        /// <param name="id">ID da sugestao</param>
+        public async Task<QuestionSuggestionModel> FindById(int id)
+        {
+            return await _context.Suggestions.SingleOrDefaultAsync(s => s.QuestionSuggestionID == id);
+        }
+
+        /// <summary>
+        /// Aprova uma sugestão
+        /// </summary>
+        /// <param name="id">ID da sugestão</param>
+        public async Task ApproveSuggestion(int id)
+        {
+            QuestionSuggestionModel suggestion = await FindById(id);
+            if (suggestion == null) throw new KeyNotFoundException();
+
+            await _context.Questions.AddAsync(new QuestionModel 
+            {
+                Category = suggestion.Category,
+                CorrectAnswer = suggestion.CorrectAnswer,
+                IncorrectAnswers = suggestion.IncorrectAnswers,
+                Question = suggestion.Question
+            });
+
+            await DeleteSuggestionTaskAsync(id);
+            await _context.SaveChangesAsync();
         }
     }
 }

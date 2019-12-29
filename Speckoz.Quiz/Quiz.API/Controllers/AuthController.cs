@@ -3,8 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 using Quiz.API.Models;
-using Quiz.API.Models.Auxiliary;
 using Quiz.API.Repository.Interfaces;
+using Quiz.Dependencies.Models.Auxiliary;
 
 using System;
 using System.IdentityModel.Tokens.Jwt;

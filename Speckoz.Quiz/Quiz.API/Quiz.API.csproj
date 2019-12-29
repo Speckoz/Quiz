@@ -23,5 +23,9 @@
     <ProjectReference Include="..\Quiz.Dependencies\Quiz.Dependencies.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Auxiliary\" />
+  </ItemGroup>
+
 
 </Project>

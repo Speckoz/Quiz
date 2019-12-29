@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using Quiz.API.Models;
-using Quiz.API.Models.Auxiliary;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models.Auxiliary;
+
+using System.Threading.Tasks;
 
 namespace Quiz.API.Controllers
 {
@@ -28,7 +26,7 @@ namespace Quiz.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var createdUser = await _userRepository.CreateTaskAync(new UserModel 
+                var createdUser = await _userRepository.CreateTaskAync(new UserModel
                 {
                     Email = user.Email,
                     Level = 0,

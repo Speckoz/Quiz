@@ -1,10 +1,8 @@
-﻿using Newtonsoft.Json;
-
-using Quiz.Mobile.Properties;
+﻿using Quiz.Mobile.Properties;
 using Quiz.Models;
-
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 
 namespace Quiz.Services.Helpers
 {
@@ -25,7 +23,7 @@ namespace Quiz.Services.Helpers
 
         public static List<QuestionModel> SeedQuestions()
         {
-            return JsonConvert.DeserializeObject<List<QuestionModel>>(Encoding.UTF8.GetString(Resources.Questions));
+            return JsonSerializer.Deserialize<List<QuestionModel>>(Encoding.UTF8.GetString(Resources.Questions));
         }
     }
 }

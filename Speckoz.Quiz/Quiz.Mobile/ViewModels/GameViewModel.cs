@@ -1,23 +1,24 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Helpers;
-using Quiz.Models;
-using Quiz.Services;
-using Quiz.Views;
-
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
+using Quiz.Helpers;
+using Quiz.Mobile.Services.Requests;
+using Quiz.Models;
+using Quiz.Views;
+
+using RestSharp;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
+using System.Text.Json;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using XF.Material.Forms.Resources;
+
 using XF.Material.Forms.UI.Dialogs;
-using XF.Material.Forms.UI.Dialogs.Configurations;
 
 namespace Quiz.ViewModels
 {
@@ -33,41 +34,25 @@ namespace Quiz.ViewModels
         public int Points
         {
             get => __points;
-            set
-            {
-                __points = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __points, value);
         }
 
         public int Round
         {
             get => __round;
-            set
-            {
-                __round = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __round, value);
         }
 
         public string Question
         {
             get => __question;
-            set
-            {
-                __question = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __question, value);
         }
 
         public ObservableCollection<GameModel> AnswerButtons
         {
             get => __answerButtons;
-            set
-            {
-                __answerButtons = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __answerButtons, value);
         }
 
         public RelayCommand ForceGameOverCommand { get; private set; }
@@ -84,11 +69,31 @@ namespace Quiz.ViewModels
             });
         }
 
-        private void Mount()
+        private async void Mount()
         {
-            IQuestion question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
-            Question = question.Question;
-            CreateButtons(question);
+            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
+            {
+                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content);
+                    Question = question.Question;
+                    CreateButtons(question);
+                }
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    GameOverAsync();
+                    await Application.Current.MainPage.DisplayAlert("🤔", "Nao existe nenhuma pergunta para essa categoria. :/", "OK");
+                }
+                else
+                {
+                    GameOverAsync();
+                    await Application.Current.MainPage.DisplayAlert("😥", "Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "OK");
+                }
+            }
+
+            //IQuestion question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
         }
 
         private void CreateButtons(IQuestion question)
@@ -117,14 +122,14 @@ namespace Quiz.ViewModels
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
 
-                SendMessageHelper.SendAsync("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.");
+                //SendMessageHelper.SendAsync("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.");
                 NextLevel();
             }
             else
             {
                 (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
 
-                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo", $"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
+                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo 🎮", $"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
                 {
                     GameOverAsync();
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(_category)), true);

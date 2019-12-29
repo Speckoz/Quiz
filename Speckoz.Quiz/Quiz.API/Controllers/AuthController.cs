@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
+using Quiz.API.Models;
 using Quiz.API.Models.Auxiliary;
 using Quiz.API.Repository.Interfaces;
 
@@ -30,7 +31,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
         [HttpPost]
         public async Task<IActionResult> GenerateToken(LoginRequestModel login)
         {
-            var user = await _userRepository.FindUserTaskAsync(login.Login, login.Password);
+            UserModel user = await _userRepository.FindUserTaskAsync(login.Login, login.Password);
             if (user == null) return BadRequest();
 
             var token = new JwtSecurityToken(
@@ -47,9 +48,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
                     SecurityAlgorithms.HmacSha256
                 ));
 
-            var stringToken = new JwtSecurityTokenHandler().WriteToken(token);
-
-            return Ok(new { user, token = stringToken });
+            return base.Ok(new { user, token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
     }
 }

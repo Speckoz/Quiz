@@ -2,18 +2,24 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Interfaces;
 using Quiz.Helpers;
+using Quiz.Mobile.Services.Requests;
 using Quiz.Models;
 using Quiz.Models.ManagerQuestions;
+
+using RestSharp;
 
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 using XF.Material.Forms.UI;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.ViewModels.ManagerQuestions
 {
@@ -71,7 +77,7 @@ namespace Quiz.ViewModels.ManagerQuestions
                     SendMessageHelper.SendAsync("Já está na lista!", "Ops!");
             }
             else
-                SendMessageHelper.SendAsync("Voce precisa digitar no campo!", "Ops!");
+                SendMessageHelper.SendAsync("Voce precisa digitar algo no campo!", "Ops!");
         }
 
         private async void RemoveChipWithIncorretAnswer(MaterialChip chip)
@@ -84,30 +90,59 @@ namespace Quiz.ViewModels.ManagerQuestions
             static async Task<bool> Continue() => await Application.Current.MainPage.DisplayAlert("", "Tem certeza que quer excluir este item? ", "Sim", "Cancelar");
         }
 
-        private bool FieldsIsEmpty()
+        private async Task<bool> FieldsIsEmpty()
         {
-            bool i1 = string.IsNullOrEmpty(NewQuestion.Question);
-            bool i2 = string.IsNullOrEmpty(NewQuestion.CorrectAnswer);
-            bool i3 = !(IncorrectAnswersChips.Count >= 3);
-            bool i4 = !(NewQuestion.Category >= 0);
-
-            return i1 || i2 || i3 || i4;
+            if (string.IsNullOrEmpty(NewQuestion.Question))
+            {
+                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar a pergunta!", "Ok");
+                return true;
+            }
+            else if (string.IsNullOrEmpty(NewQuestion.CorrectAnswer))
+            {
+                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar a resposta correta da pergunta!", "Ok");
+                return true;
+            }
+            else if (!(IncorrectAnswersChips.Count >= 3))
+            {
+                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar pelo menos 3 respostas incorretas!", "Ok");
+                return true;
+            }
+            else if (!(NewQuestion.Category >= 0))
+            {
+                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa selecionar a categoria que mais se encaixa com a pergunta!", "Ok");
+                return true;
+            }
+            else
+                return false;
         }
 
         private async void SendSugestion()
         {
-            if (FieldsIsEmpty())
+            if (await FieldsIsEmpty())
             {
-                await Application.Current.MainPage.DisplayAlert("Ops!", "Voce precisa preencher todos os campos", "Ok");
                 return;
             }
             string aux = "";
-            foreach (SuggestQuestionChipModel s in IncorrectAnswersChips)
+            IncorrectAnswersChips.ToList().ForEach(a => aux += $"{a.IncorrectAnswerText}/");
+
+            IQuestion question = NewQuestion;
+            question.IncorrectAnswers = aux;
+
+            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando..."))
             {
-                aux += $"{s.IncorrectAnswerText}/";
+                IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(question);
+
+                if (response.StatusCode == HttpStatusCode.Created)
+                {
+                    dialog.MessageText = "Enviado com sucesso!";
+                }
+                else
+                    dialog.MessageText = "Nao foi possivel enviar, verifique a conexao!";
+
+                await Task.Delay(2000);
+                if (response.StatusCode == HttpStatusCode.Created)
+                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
             }
-            //request here
-            await Application.Current.MainPage.DisplayAlert("Show", $"{NewQuestion.Question}\n{NewQuestion.Category} - {(int)NewQuestion.Category}\n{NewQuestion.CorrectAnswer}\n{aux}", "OK");
         }
 
         private void Init()

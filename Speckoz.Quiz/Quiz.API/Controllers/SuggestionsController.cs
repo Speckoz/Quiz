@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
@@ -39,6 +36,30 @@ namespace Quiz.API.Controllers
 
             var suggestions =  await _questionSuggestionRepository.GetSuggestionsTaskAsync();
             return Ok(suggestions);
+        }
+
+
+        // DELETE: /suggestions/2
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSuggestion(int id)
+        {
+            await _questionSuggestionRepository.DeleteSuggestionTaskAsync(id);
+            return NoContent();
+        }
+
+        // PUT: /suggestions/approve/2
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> ApproveSuggestion(int id)
+        {
+            try
+            {
+                await _questionSuggestionRepository.ApproveSuggestion(id);
+                return Ok();
+            }
+            catch (KeyNotFoundException)
+            {
+                return BadRequest();
+            }
         }
     }
 }

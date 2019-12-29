@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;

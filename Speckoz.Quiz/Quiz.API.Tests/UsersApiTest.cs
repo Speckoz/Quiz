@@ -3,6 +3,7 @@
 using Newtonsoft.Json;
 
 using Quiz.API.Models;
+using Quiz.API.Models.Auxiliary;
 using Quiz.Dependencies.Enums;
 
 using System.Net;
@@ -23,13 +24,11 @@ namespace Quiz.API.Tests
         [Fact]
         public async Task DadoUsuarioValidoApiRetornaCreated()
         {
-            var user = new UserModel
+            var user = new RegisterRequestModel
             {
                 Email = "speckoz@gmail.com",
-                Level = 0,
                 Password = "1234",
                 Username = "speckoz",
-                UserType = UserTypeEnum.Normal
             };
 
             using var request = new HttpRequestMessage(new HttpMethod("POST"), "/users")

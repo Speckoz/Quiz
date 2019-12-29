@@ -92,8 +92,6 @@ namespace Quiz.ViewModels
                     await Application.Current.MainPage.DisplayAlert("😥", "Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "OK");
                 }
             }
-
-            //IQuestion question = _category == CategoryEnum.Todas ? QuestionService.GetRandomQuestion() : QuestionService.GetRandomQuestion(_category);
         }
 
         private void CreateButtons(IQuestion question)
@@ -142,6 +140,9 @@ namespace Quiz.ViewModels
         private List<string> GetAnswersFromQuestion(IQuestion question)
         {
             var answerList = question.IncorrectAnswers.Split('/').ToList();
+            foreach (string i in answerList.Where(i => i == string.Empty).Select(i => i))
+                answerList.Remove(i);
+
             answerList.Add(question.CorrectAnswer);
             return answerList.Randomize().ToList();
         }

@@ -18,12 +18,14 @@
                 BackgroundColor="{StaticResource Material.Color.Background}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Pergunta"
+                ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
             <material:MaterialTextField
                 BackgroundColor="{StaticResource Material.Color.Background}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Resposta Correta"
+                ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.CorrectAnswer}" />
 
@@ -32,12 +34,13 @@
                     BackgroundColor="{StaticResource Material.Color.Background}"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Respostas incorretas"
+                    ReturnType="Next"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewQuestion.IncorrectAnswers}" />
                 <Grid
                     Margin="10,0,0,0"
                     Padding="10"
-                    VerticalOptions="Center">
+                    VerticalOptions="CenterAndExpand">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
                     </Grid.GestureRecognizers>

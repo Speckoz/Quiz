@@ -18,14 +18,14 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: /users/2
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(int id)
+        public Task<IActionResult> GetUserById(int id)
         {
             throw new NotImplementedException();
         }
 
         // POST: /users
         [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody]UserModel user)
+        public async Task<IActionResult> CreateUser([FromBody]UserBaseModel user)
         {
             if (ModelState.IsValid)
             {

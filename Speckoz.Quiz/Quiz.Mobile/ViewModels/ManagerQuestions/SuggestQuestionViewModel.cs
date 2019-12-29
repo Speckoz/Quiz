@@ -123,7 +123,8 @@ namespace Quiz.ViewModels.ManagerQuestions
                 return;
             }
             string aux = "";
-            IncorrectAnswersChips.ToList().ForEach(a => aux += $"{a.IncorrectAnswerText}/");
+            foreach (SuggestQuestionChipModel i in IncorrectAnswersChips.ToList())
+                aux += $"{i.IncorrectAnswerText}/";
 
             IQuestion question = NewQuestion;
             question.IncorrectAnswers = aux;
@@ -132,14 +133,9 @@ namespace Quiz.ViewModels.ManagerQuestions
             {
                 IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(question);
 
-                if (response.StatusCode == HttpStatusCode.Created)
-                {
-                    dialog.MessageText = "Enviado com sucesso!";
-                }
-                else
-                    dialog.MessageText = "Nao foi possivel enviar, verifique a conexao!";
+                dialog.MessageText = response.StatusCode == HttpStatusCode.Created ? "Enviado com sucesso!" : "Nao foi possivel enviar, verifique a conexao!";
 
-                await Task.Delay(2000);
+                await Task.Delay(1500);
                 if (response.StatusCode == HttpStatusCode.Created)
                     await Application.Current.MainPage.Navigation.PopModalAsync(true);
             }

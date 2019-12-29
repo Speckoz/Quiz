@@ -13,7 +13,7 @@ namespace Quiz.Mobile.Services.Requests
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(new { Login = login, Password = password });
-            return await new RestClient($"{GetDataHelper.Uri}/Login").ExecuteTaskAsync(request);
+            return await new RestClient($"{GetDataHelper.Uri}/Auth").ExecuteTaskAsync(request);
         }
 
         public async static Task<IRestResponse> RegisterAccountTaskAsync(string username, string email, string password)

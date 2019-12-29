@@ -53,6 +53,7 @@
             <Setter Property="TextFontSize" Value="15" />
             <Setter Property="TextColor" Value="Default" />
             <Setter Property="AlwaysShowUnderline" Value="True" />
+            <Setter Property="ShouldAnimateUnderline" Value="True" />
             <Setter Property="UnderlineColor" Value="{DynamicResource Material.Color.Secondary}" />
             <Setter Property="TintColor" Value="{DynamicResource Material.Color.Primary}" />
         </Style>

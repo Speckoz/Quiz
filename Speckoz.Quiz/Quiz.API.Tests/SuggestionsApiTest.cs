@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+
 using Newtonsoft.Json;
+
 using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
+
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xunit;
 
 namespace Quiz.API.Tests
@@ -50,7 +54,6 @@ namespace Quiz.API.Tests
             };
 
             using HttpResponseMessage response = await _client.SendAsync(request);
-
 
             QuestionSuggestionModel resultSuggestion = JsonConvert.DeserializeObject<QuestionSuggestionModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);

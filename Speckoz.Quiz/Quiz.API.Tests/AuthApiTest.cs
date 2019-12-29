@@ -3,7 +3,7 @@
 using Newtonsoft.Json;
 
 using Quiz.API.Models;
-using Quiz.API.Models.Auxiliary;
+using Quiz.Dependencies.Models.Auxiliary;
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
@@ -27,8 +27,8 @@ namespace Quiz.API.Tests
         {
             var login = new LoginRequestModel
             {
-                Login = "Specko",
-                Password = "1234"
+                Login = "quiz",
+                Password = "quiz"
             };
 
             // Arranje
@@ -41,14 +41,14 @@ namespace Quiz.API.Tests
             using HttpResponseMessage response = await _client.SendAsync(request);
 
             // Assert
-            IUser usuario = JsonConvert.DeserializeObject<UserModel>(await response.Content.ReadAsStringAsync());
+            IUserBase usuario = JsonConvert.DeserializeObject<UserBaseModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
         public class UserTokenResponse
         {
             public string Token { get; set; }
-            public UserModel User { get; set; }
+            public UserBaseModel User { get; set; }
         }
     }
 }

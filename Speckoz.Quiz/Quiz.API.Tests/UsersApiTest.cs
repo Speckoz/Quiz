@@ -3,8 +3,7 @@
 using Newtonsoft.Json;
 
 using Quiz.API.Models;
-using Quiz.API.Models.Auxiliary;
-using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models.Auxiliary;
 
 using System.Net;
 using System.Net.Http;
@@ -31,14 +30,14 @@ namespace Quiz.API.Tests
                 Username = "speckoz",
             };
 
-            using var request = new HttpRequestMessage(new HttpMethod("POST"), "/users")
+            using var request = new HttpRequestMessage(new HttpMethod("POST"), "/register")
             {
                 Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json")
             };
 
             using HttpResponseMessage response = await _client.SendAsync(request);
 
-            UserModel createdUser = JsonConvert.DeserializeObject<UserModel>(await response.Content.ReadAsStringAsync());
+            UserBaseModel createdUser = JsonConvert.DeserializeObject<UserBaseModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             Assert.NotEmpty(createdUser.UserID.ToString());
             Assert.NotEmpty(createdUser.Username);

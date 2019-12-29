@@ -1,9 +1,7 @@
 ﻿using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
-using System;
-using System.Collections.Generic;
+
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Quiz.API.Data
 {
@@ -19,6 +17,7 @@ namespace Quiz.API.Data
                 return;
 
             #region Questions
+
             _context.Questions.Add(new QuestionModel
             {
                 Category = CategoryEnum.Historia,
@@ -73,7 +72,6 @@ namespace Quiz.API.Data
                 IncorrectAnswers = "12 horas/1 dia/12 minutos"
             });
 
-
             _context.Questions.Add(new QuestionModel
             {
                 Category = CategoryEnum.Historia,
@@ -81,7 +79,6 @@ namespace Quiz.API.Data
                 CorrectAnswer = "Argentina",
                 IncorrectAnswers = "Boliviana/Panamenha/Cubana"
             });
-
 
             _context.Questions.Add(new QuestionModel
             {
@@ -107,18 +104,20 @@ namespace Quiz.API.Data
                 IncorrectAnswers = "3/6/1"
             });
 
-            #endregion
+            #endregion Questions
 
             #region Users
-            _context.Users.Add(new UserModel 
+
+            _context.Users.Add(new UserBaseModel
             {
-                Email = "admin@gmail.com",
-                Password = "1234",
+                Email = "quiz@speckoz.net",
+                Password = "quiz",
                 Level = 1,
-                Username = "Specko",
+                Username = "quiz",
                 UserType = UserTypeEnum.Admin,
             });
-            #endregion
+
+            #endregion Users
 
             _context.SaveChanges();
         }

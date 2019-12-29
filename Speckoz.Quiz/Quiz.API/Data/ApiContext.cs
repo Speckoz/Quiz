@@ -19,13 +19,13 @@ namespace Quiz.API.Data
 
             modelBuilder.Entity<QuestionModel>().ToTable("Questions").HasKey(q => q.QuestionID);
 
-            modelBuilder.Entity<UserModel>().ToTable("Users").HasKey(u => u.UserID);
+            modelBuilder.Entity<UserBaseModel>().ToTable("Users").HasKey(u => u.UserID);
 
             modelBuilder.Entity<QuestionSuggestionModel>().ToTable("Suggestions").HasKey(s => s.QuestionSuggestionID);
         }
 
         public DbSet<QuestionModel> Questions { get; set; }
-        public DbSet<UserModel> Users { get; set; }
+        public DbSet<UserBaseModel> Users { get; set; }
         public DbSet<QuestionSuggestionModel> Suggestions { get; set; }
     }
 }

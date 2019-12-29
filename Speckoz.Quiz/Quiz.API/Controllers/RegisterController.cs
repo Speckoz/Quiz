@@ -15,10 +15,7 @@ namespace Quiz.API.Controllers
     {
         private readonly IUserRepository _userRepository;
 
-        public RegisterController(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        public RegisterController(IUserRepository userRepository) => _userRepository = userRepository;
 
         // POST: /Register
         [HttpPost]
@@ -26,7 +23,7 @@ namespace Quiz.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                var createdUser = await _userRepository.CreateTaskAync(new UserModel
+                UserBaseModel createdUser = await _userRepository.CreateTaskAync(new UserBaseModel
                 {
                     Email = user.Email,
                     Level = 0,

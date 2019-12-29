@@ -38,13 +38,15 @@
                 Orientation="Vertical">
                 <material:MaterialTextField
                     InputType="Text"
-                    Placeholder="Informe seu login"
+                    Placeholder="Usuário/Email"
+                    ReturnType="Next"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding Login}" />
 
                 <material:MaterialTextField
                     InputType="Password"
-                    Placeholder="Informe sua senha"
+                    Placeholder="Senha"
+                    ReturnType="Done"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding Password}" />
             </StackLayout>

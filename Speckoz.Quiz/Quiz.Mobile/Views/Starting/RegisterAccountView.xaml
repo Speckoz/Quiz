@@ -33,25 +33,24 @@
             <StackLayout Grid.Row="2" Margin="0,20,0,20">
                 <material:MaterialTextField
                     InputType="Text"
-                    Placeholder="Insira seu login"
+                    Placeholder="Usuario"
+                    ReturnType="Next"
                     Style="{StaticResource MTFBase}"
-                    Text="{Binding Login}" />
+                    Text="{Binding Username}" />
 
-                <StackLayout Orientation="Horizontal">
-                    <material:MaterialTextField
-                        HorizontalOptions="FillAndExpand"
-                        InputType="Password"
-                        Placeholder="Insira sua senha"
-                        Style="{StaticResource MTFBase}"
-                        Text="{Binding NewPassword}" />
+                <material:MaterialTextField
+                    InputType="Email"
+                    Placeholder="Email"
+                    ReturnType="Next"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding Email}" />
 
-                    <material:MaterialTextField
-                        HorizontalOptions="FillAndExpand"
-                        InputType="Password"
-                        Placeholder="Confirme sua senha"
-                        Style="{StaticResource MTFBase}"
-                        Text="{Binding ConfirmNewPassword}" />
-                </StackLayout>
+                <material:MaterialTextField
+                    InputType="Password"
+                    Placeholder="Senha"
+                    ReturnType="Done"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding NewPassword}" />
             </StackLayout>
 
             <Button

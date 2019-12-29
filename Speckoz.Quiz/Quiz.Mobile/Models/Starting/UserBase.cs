@@ -2,27 +2,28 @@
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
-using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
-namespace Quiz.API.Models
+namespace Quiz.Mobile.Models.Starting
 {
-    public class UserBaseModel : IUserBase
+    public class UserBase : IUserBase
     {
+        [JsonPropertyName("userID")]
         public int UserID { get; set; }
 
-        [Required]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
-        [Required]
+        [JsonPropertyName("username")]
         public string Username { get; set; }
 
-        [Required]
+        [JsonPropertyName("level")]
         public int Level { get; set; }
 
-        [Required]
+        [JsonPropertyName("password")]
         public string Password { get; set; }
 
-        [Required]
+        [JsonPropertyName("userType")]
         public UserTypeEnum UserType { get; set; }
     }
 }

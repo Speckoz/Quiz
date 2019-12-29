@@ -19,7 +19,7 @@ namespace Quiz.API.Repository
         /// Cria um novo usuario.
         /// </summary>
         /// <param name="user">Dados do usuario</param>
-        public async Task<UserModel> CreateTaskAync(UserModel user)
+        public async Task<UserBaseModel> CreateTaskAync(UserBaseModel user)
         {
             try
             {
@@ -38,9 +38,9 @@ namespace Quiz.API.Repository
         /// </summary>
         /// <param name="login">Login do usuario</param>
         /// <param name="password">Senha do usuario</param>
-        public async Task<UserModel> FindUserTaskAsync(string login, string password)
+        public async Task<UserBaseModel> FindUserTaskAsync(string login, string password)
         {
-            IQueryable<UserModel> query = _context.Users
+            IQueryable<UserBaseModel> query = _context.Users
                 .Where(u => (u.Username == login || u.Email == login) && u.Password == password);
 
             var user = await query.FirstOrDefaultAsync();

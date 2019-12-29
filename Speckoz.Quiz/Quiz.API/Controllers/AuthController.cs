@@ -31,7 +31,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
         [HttpPost]
         public async Task<IActionResult> GenerateToken(LoginRequestModel login)
         {
-            UserModel user = await _userRepository.FindUserTaskAsync(login.Login, login.Password);
+            UserBaseModel user = await _userRepository.FindUserTaskAsync(login.Login, login.Password);
             if (user == null) return BadRequest();
 
             var token = new JwtSecurityToken(

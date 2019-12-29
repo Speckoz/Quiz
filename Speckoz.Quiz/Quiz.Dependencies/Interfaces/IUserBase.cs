@@ -2,7 +2,7 @@
 
 namespace Speckoz.MobileQuiz.Dependencies.Interfaces
 {
-    public interface IUser
+    public interface IUserBase
     {
         public int UserID { get; set; }
         public string Email { get; set; }

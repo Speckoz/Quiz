@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Dependencies.Interfaces;
 using Quiz.Helpers;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Models;
@@ -126,7 +125,7 @@ namespace Quiz.ViewModels.ManagerQuestions
             foreach (SuggestQuestionChipModel i in IncorrectAnswersChips.ToList())
                 aux += $"{i.IncorrectAnswerText}/";
 
-            IQuestion question = NewQuestion;
+            QuestionModel question = NewQuestion;
             question.IncorrectAnswers = aux;
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando..."))

@@ -3,6 +3,7 @@ using Quiz.Models;
 
 using RestSharp;
 
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Quiz.Mobile.Services.Requests
@@ -13,8 +14,13 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
             request.AddHeader("Accept", "application/json");
-            request.AddJsonBody(question);
+            request.AddJsonBody(JsonSerializer.Serialize(question));
             return await new RestClient($"{GetDataHelper.Uri}/Suggestions").ExecuteTaskAsync(request);
+
+            //var request = new RestRequest(Method.POST);
+            //request.AddHeader("Accept", "application/json");
+            //request.AddJsonBody(new { question.Question, question.CorrectAnswer, question.Category, question.IncorrectAnswers });
+            //return await new RestClient($"{GetDataHelper.Uri}/Suggestions").ExecuteTaskAsync(request);
         }
     }
 }

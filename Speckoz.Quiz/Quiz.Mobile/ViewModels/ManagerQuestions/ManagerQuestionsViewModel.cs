@@ -21,31 +21,19 @@ namespace Quiz.ViewModels.ManagerQuestions
         public ObservableCollection<ManagerQuestionsModel> QuestionOptions
         {
             get => __questionOptions;
-            set
-            {
-                __questionOptions = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __questionOptions, value);
         }
 
         public ManagerQuestionsModel SuggestQuestion
         {
             get => __suggestQuestion;
-            set
-            {
-                __suggestQuestion = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __suggestQuestion, value);
         }
 
         public bool IsAdmin
         {
             get => __isAdmin;
-            set
-            {
-                __isAdmin = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __isAdmin, value);
         }
 
         public ManagerQuestionsViewModel()
@@ -53,7 +41,7 @@ namespace Quiz.ViewModels.ManagerQuestions
             SuggestQuestion = new ManagerQuestionsModel
             {
                 ActionImage = ConvertImageHelper.Convert(Resources.choose),
-                ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await s.Navigation.PushAsync(new SuggestQuestionView(), true))
+                ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await s.Navigation.PushModalAsync(new SuggestQuestionView(), true))
             };
 
             if (IsAdmin)

@@ -4,9 +4,9 @@
     {
         Todas,
         Ciencia,
-        Arte, 
-        Historia, 
-        Geograria, 
+        Arte,
+        Historia,
+        Geograria,
         Esporte
     }
 }

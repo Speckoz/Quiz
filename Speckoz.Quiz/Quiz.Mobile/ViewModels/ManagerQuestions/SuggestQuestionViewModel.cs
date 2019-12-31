@@ -24,11 +24,11 @@ namespace Quiz.ViewModels.ManagerQuestions
 {
     internal class SuggestQuestionViewModel : ViewModelBase
     {
-        private QuestionModel __newQuestion;
-        private ObservableCollection<SuggestQuestionChipModel> __incorrectAnswersChips;
+        private SuggestQuestionModel __newQuestion;
+
         private string[] __categoryChoice;
 
-        public QuestionModel NewQuestion
+        public SuggestQuestionModel NewQuestion
         {
             get => __newQuestion;
             set => Set(ref __newQuestion, value);
@@ -40,9 +40,9 @@ namespace Quiz.ViewModels.ManagerQuestions
             set => Set(ref __categoryChoice, value);
         }
 
-        public int Index
+        public byte Index
         {
-            get => (int)NewQuestion.Category;
+            get => (byte)NewQuestion.Category;
             set => NewQuestion.Category = (CategoryEnum)value;
         }
 
@@ -50,11 +50,7 @@ namespace Quiz.ViewModels.ManagerQuestions
 
         public RelayCommand AddIncorrectAnswerCommand { get; private set; }
 
-        public ObservableCollection<SuggestQuestionChipModel> IncorrectAnswersChips
-        {
-            get => __incorrectAnswersChips;
-            set => Set(ref __incorrectAnswersChips, value);
-        }
+        public ObservableCollection<SuggestQuestionChipModel> IncorrectAnswersChips { get; set; }
 
         public SuggestQuestionViewModel() => Init();
 
@@ -122,15 +118,17 @@ namespace Quiz.ViewModels.ManagerQuestions
                 return;
             }
             string aux = "";
-            foreach (SuggestQuestionChipModel i in IncorrectAnswersChips.ToList())
-                aux += $"{i.IncorrectAnswerText}/";
-
-            QuestionModel question = NewQuestion;
-            question.IncorrectAnswers = aux;
+            IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando..."))
             {
-                IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(question);
+                IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
+                {
+                    Question = NewQuestion.Question,
+                    Category = NewQuestion.Category,
+                    CorrectAnswer = NewQuestion.CorrectAnswer,
+                    IncorrectAnswers = aux
+                });
 
                 dialog.MessageText = response.StatusCode == HttpStatusCode.Created ? "Enviado com sucesso!" : "Nao foi possivel enviar, verifique a conexao!";
 
@@ -142,7 +140,7 @@ namespace Quiz.ViewModels.ManagerQuestions
 
         private void Init()
         {
-            NewQuestion = new SuggestQuestionModel();
+            NewQuestion = new SuggestQuestionModel() { Category = 0 };
             CategoryChoice = Enum.GetNames(typeof(CategoryEnum));
             SendSugestionCommand = new RelayCommand(SendSugestion);
             AddIncorrectAnswerCommand = new RelayCommand(AddChipWithIncorrectAnswer);

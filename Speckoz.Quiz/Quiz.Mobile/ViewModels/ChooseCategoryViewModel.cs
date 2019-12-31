@@ -19,30 +19,22 @@ namespace Quiz.ViewModels
 {
     internal class ChooseCategoryViewModel : ViewModelBase
     {
-        private ImageSource __image = ConvertImageHelper.Convert(Resources.choose);
+        private ImageSource __image;
         private ObservableCollection<ChooseCategoryModel> __chooseCategories;
 
         public ObservableCollection<ChooseCategoryModel> ChooseCategories
         {
             get => __chooseCategories;
-            set
-            {
-                __chooseCategories = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __chooseCategories, value);
         }
 
         public ImageSource Image
         {
             get => __image;
-            set
-            {
-                __image = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __image, value);
         }
 
-        public ChooseCategoryViewModel() => CreateButtonsChoose();
+        public ChooseCategoryViewModel() => Init();
 
         private void CreateButtonsChoose()
         {
@@ -76,6 +68,12 @@ namespace Quiz.ViewModels
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
                 await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(result)), true);
+        }
+
+        private void Init()
+        {
+            Image = ConvertImageHelper.Convert(Resources.choose);
+            CreateButtonsChoose();
         }
     }
 }

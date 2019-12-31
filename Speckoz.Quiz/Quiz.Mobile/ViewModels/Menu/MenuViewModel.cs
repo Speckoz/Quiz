@@ -23,31 +23,19 @@ namespace Quiz.ViewModels.Menu
         public ImageSource UserImage
         {
             get => __userImage;
-            set
-            {
-                __userImage = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __userImage, value);
         }
 
         public string UserName
         {
             get => __userName;
-            set
-            {
-                __userName = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __userName, value);
         }
 
         public ObservableCollection<MenuModel> MenuItems
         {
             get => __menuItems;
-            set
-            {
-                __menuItems = value;
-                RaisePropertyChanged();
-            }
+            set => Set(ref __menuItems, value);
         }
 
         public MenuViewModel()
@@ -77,7 +65,6 @@ namespace Quiz.ViewModels.Menu
 
                 case ItemIdEnum.Perfil:
                     //add perfil here
-                    //App.Current.MainPage.Navigation.PushModalAsync
                     break;
 
                 case ItemIdEnum.Logout:
@@ -87,7 +74,6 @@ namespace Quiz.ViewModels.Menu
 
                 case ItemIdEnum.About:
                     //add about here
-                    //Application.Current.MainPage.Navigation
                     break;
             }
             obj.BackgroundColor = Color.Transparent;

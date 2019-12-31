@@ -6,7 +6,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    x:Name="this"
     Title="Sugerir Questao"
     Visual="Material"
     mc:Ignorable="d">
@@ -73,7 +72,7 @@
             <Picker
                 Title="Selecione a Categoria"
                 ItemsSource="{Binding CategoryChoice}"
-                SelectedIndex="{Binding Index, Mode=TwoWay}"
+                SelectedIndex="{Binding Index}"
                 TextColor="{StaticResource Material.Color.Primary}" />
             <Label />
 

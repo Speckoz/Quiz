@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Properties;
 using Quiz.Models.Menu;
 using Quiz.Views;
@@ -41,7 +42,7 @@ namespace Quiz.ViewModels.Menu
         public MenuViewModel()
         {
             UserImage = ConvertImageHelper.Convert(Resources.choose);
-            UserName = "Ruan Carlos CS";
+            UserName = GetDataHelper.User.User.Email;
 
             MenuItems = new ObservableCollection<MenuModel>
             {

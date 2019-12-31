@@ -6,9 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+
 using Quiz.API.Data;
 using Quiz.API.Repository;
 using Quiz.API.Repository.Interfaces;
+
 using System.Text;
 
 namespace Quiz.API
@@ -52,6 +54,7 @@ namespace Quiz.API
             services.AddControllers();
 
             services.AddOptions();
+
             services.AddMemoryCache();
         }
 
@@ -61,9 +64,9 @@ namespace Quiz.API
             if (env.IsDevelopment())
             {
                 // Auto create DB
-                using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
+                    ApiContext context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
                     context.Database.Migrate();
                 }
                 app.UseDeveloperExceptionPage();
@@ -78,10 +81,7 @@ namespace Quiz.API
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

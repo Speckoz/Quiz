@@ -73,7 +73,7 @@ namespace Quiz.ViewModels
                 {
                     dialog.MessageText = "Autenticado com sucesso!";
 
-                    GetDataHelper.User = JsonSerializer.Deserialize<UserLogin>(response.Content);
+                    GetDataHelper.User = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                     await Task.Delay(1000);
 

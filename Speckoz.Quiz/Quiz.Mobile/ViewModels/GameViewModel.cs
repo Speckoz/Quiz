@@ -77,7 +77,7 @@ namespace Quiz.ViewModels
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content);
+                    QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                     Question = question.Question;
                     CreateButtons(question);
                 }

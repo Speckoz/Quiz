@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Quiz.API.Data;
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
+
 using System;
 using System.Linq;
 using System.Threading.Tasks;

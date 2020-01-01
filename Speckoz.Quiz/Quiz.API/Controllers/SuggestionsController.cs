@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
+
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -57,7 +59,7 @@ namespace Quiz.API.Controllers
         public async Task<IActionResult> DeleteSuggestion(int id)
         {
             // Coloca o status denied na tabela de status
-            var suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
+            QuestionsStatusModel suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
             if (suggestion == null) return NoContent();
             suggestion.QuestionStatus = QuestionStatusEnum.Denied;
             await _questionsStatusRepository.UpdateTaskAync(suggestion);
@@ -73,7 +75,7 @@ namespace Quiz.API.Controllers
             try
             {
                 // Coloca o status approved na tabela de status
-                var suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
+                QuestionsStatusModel suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
                 if (suggestion == null) return BadRequest();
                 suggestion.QuestionStatus = QuestionStatusEnum.Approved;
                 await _questionsStatusRepository.UpdateTaskAync(suggestion);

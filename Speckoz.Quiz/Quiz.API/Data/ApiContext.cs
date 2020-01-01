@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Quiz.API.Models;
 
 namespace Quiz.API.Data

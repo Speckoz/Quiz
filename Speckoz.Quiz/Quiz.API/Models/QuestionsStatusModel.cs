@@ -1,4 +1,5 @@
 ﻿using Quiz.Dependencies.Enums;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.API.Models

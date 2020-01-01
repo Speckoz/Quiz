@@ -1,4 +1,5 @@
 ﻿using Quiz.API.Models;
+
 using System.Threading.Tasks;
 
 namespace Quiz.API.Repository.Interfaces

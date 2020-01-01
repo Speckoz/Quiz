@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
+
 using Quiz.Views.ManagerQuestions;
+
 using Xamarin.Forms;
 
 namespace Quiz.Models

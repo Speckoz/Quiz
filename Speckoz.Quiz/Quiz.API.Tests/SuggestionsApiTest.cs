@@ -37,6 +37,19 @@ namespace Quiz.API.Tests
             Assert.NotEmpty(suggestions[0].QuestionSuggestionID.ToString());
         }
 
+        [Fact]
+        public async Task ApiRetornaListaDoStatusDasSugestoes()
+        {
+            using var request = new HttpRequestMessage(new HttpMethod("GET"), $"/suggestions/status");
+
+            using HttpResponseMessage response = await _client.SendAsync(request);
+
+            List<QuestionsStatusModel> status = JsonConvert.DeserializeObject<List<QuestionsStatusModel>>(await response.Content.ReadAsStringAsync());
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotEmpty(status[0].ID.ToString());
+            Assert.NotEmpty(status[0].QuestionStatus.ToString());
+            Assert.NotEmpty(status[0].UserID.ToString());
+        }
 
         [Fact]
         public async Task DadaSugestaoDeQuestaoValidaApiRetornaCreated()

@@ -39,10 +39,10 @@ namespace Speckoz.MobileQuiz.API.Controllers
                 audience: "Speckoz",
                 claims: new[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
                     new Claim(ClaimTypes.Role, user.UserType.ToString()),
                 },
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddYears(2),
                 signingCredentials: new SigningCredentials(
                     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SecurityKey"])),
                     SecurityAlgorithms.HmacSha256

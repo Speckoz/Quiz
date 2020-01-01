@@ -37,6 +37,7 @@ namespace Quiz.API.Tests
             Assert.NotEmpty(suggestions[0].QuestionSuggestionID.ToString());
         }
 
+
         [Fact]
         public async Task DadaSugestaoDeQuestaoValidaApiRetornaCreated()
         {

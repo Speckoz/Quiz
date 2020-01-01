@@ -12,5 +12,6 @@ namespace Quiz.API.Repository.Interfaces
         Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync();
         Task DeleteSuggestionTaskAsync(int id);
         Task ApproveSuggestion(int id);
+        Task<QuestionSuggestionModel> FindById(int id);
     }
 }

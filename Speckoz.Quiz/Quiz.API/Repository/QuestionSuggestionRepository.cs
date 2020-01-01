@@ -1,10 +1,10 @@
-﻿using Quiz.API.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Quiz.API.Data;
 using Quiz.API.Models;
-using System;
-using System.Threading.Tasks;
 using Quiz.API.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Quiz.API.Repository
 {
@@ -32,13 +32,11 @@ namespace Quiz.API.Repository
             return question;
         }
 
-
         /// <summary>
         /// Recupera todas as sugestões de questão.
         /// </summary>
-        public async Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync() => 
+        public async Task<List<QuestionSuggestionModel>> GetSuggestionsTaskAsync() =>
             await _context.Suggestions.ToListAsync();
-
 
         /// <summary>
         /// Deleta uma sugestao
@@ -62,7 +60,6 @@ namespace Quiz.API.Repository
             }
         }
 
-
         /// <summary>
         /// Procura uma sugestao pelo ID
         /// </summary>
@@ -81,7 +78,7 @@ namespace Quiz.API.Repository
             QuestionSuggestionModel suggestion = await FindById(id);
             if (suggestion == null) throw new KeyNotFoundException();
 
-            await _context.Questions.AddAsync(new QuestionModel 
+            await _context.Questions.AddAsync(new QuestionModel
             {
                 Category = suggestion.Category,
                 CorrectAnswer = suggestion.CorrectAnswer,

@@ -13,8 +13,8 @@ namespace Quiz.API.Data
 
         public void Seed()
         {
-
             #region Questions
+
             if (!_context.Questions.Any())
             {
                 _context.Questions.Add(new QuestionModel
@@ -107,6 +107,7 @@ namespace Quiz.API.Data
             #endregion Questions
 
             #region Users
+
             if (!_context.Users.Any())
             {
                 _context.Users.Add(new UserBaseModel
@@ -122,6 +123,7 @@ namespace Quiz.API.Data
             #endregion Users
 
             #region Suggestions
+
             if (!_context.Suggestions.Any())
             {
                 _context.Suggestions.Add(new QuestionSuggestionModel
@@ -132,19 +134,22 @@ namespace Quiz.API.Data
                     Question = "Question for tests",
                 });
             }
-            #endregion
+
+            #endregion Suggestions
 
             #region QuestionsStatus
+
             if (!_context.QuestionsStatus.Any())
             {
-                _context.QuestionsStatus.Add(new QuestionsStatusModel 
+                _context.QuestionsStatus.Add(new QuestionsStatusModel
                 {
                     QuestionID = 1,
                     QuestionStatus = QuestionStatusEnum.Pending,
                     UserID = 1,
                 });
             }
-            #endregion
+
+            #endregion QuestionsStatus
 
             _context.SaveChanges();
         }

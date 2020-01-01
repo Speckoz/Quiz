@@ -1,7 +1,5 @@
-﻿using Quiz.ViewModels;
-
-using Quiz.Dependencies.Enums;
-
+﻿using Quiz.Dependencies.Enums;
+using Quiz.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -36,7 +36,6 @@ namespace Quiz.API.Repository
             return question;
         }
 
-
         /// <summary>
         /// Procura uma questão pelo ID
         /// </summary>
@@ -47,8 +46,7 @@ namespace Quiz.API.Repository
                 .Where(q => (q.QuestionID == id));
 
             return await query.FirstOrDefaultAsync();
-        } 
-
+        }
 
         /// <summary>
         /// Deleta um usuario

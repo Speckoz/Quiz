@@ -6,6 +6,7 @@ namespace Quiz.API.Models
     public class QuestionSuggestionModel
     {
         public int QuestionSuggestionID { get; set; }
+
         [Required]
         public string Question { get; set; }
 

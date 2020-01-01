@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Quiz.API.Models;
-using Quiz.Dependencies.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Quiz.API.Data
 {

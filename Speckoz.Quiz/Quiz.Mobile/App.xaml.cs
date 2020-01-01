@@ -1,8 +1,6 @@
 ﻿using Quiz.Views.Starting;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 
 namespace Quiz
 {

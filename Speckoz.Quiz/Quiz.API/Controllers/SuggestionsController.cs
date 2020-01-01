@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Quiz.API.Controllers
 {
@@ -17,13 +16,12 @@ namespace Quiz.API.Controllers
         private readonly IQuestionSuggestionRepository _questionSuggestionRepository;
         private readonly IQuestionsStatusRepository _questionsStatusRepository;
 
-        public SuggestionsController(IQuestionSuggestionRepository questionSuggestionRepository, 
+        public SuggestionsController(IQuestionSuggestionRepository questionSuggestionRepository,
             IQuestionsStatusRepository questionsStatusRepository)
         {
             _questionSuggestionRepository = questionSuggestionRepository;
             _questionsStatusRepository = questionsStatusRepository;
         }
-
 
         // POST: /suggestions
         [Authorize]
@@ -50,8 +48,7 @@ namespace Quiz.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSuggestions()
         {
-
-            var suggestions =  await _questionSuggestionRepository.GetSuggestionsTaskAsync();
+            var suggestions = await _questionSuggestionRepository.GetSuggestionsTaskAsync();
             return Ok(suggestions);
         }
 

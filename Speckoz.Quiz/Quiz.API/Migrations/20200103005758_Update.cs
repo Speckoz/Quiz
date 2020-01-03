@@ -27,15 +27,14 @@ namespace Quiz.API.Migrations
                 name: "QuestionsStatus",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    QuestionID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    QuestionID = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
                     QuestionStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionsStatus", x => x.ID);
+                    table.PrimaryKey("PK_QuestionsStatus", x => x.QuestionID);
                 });
 
             migrationBuilder.CreateTable(

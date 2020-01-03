@@ -40,7 +40,7 @@
         </Style>
 
         <Style x:Key="OutlinedButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="TextColor" Value="{DynamicResource Material.Color.Primary}" />
             <Setter Property="BorderColor" Value="{DynamicResource Material.Color.Primary}" />
             <Setter Property="BorderWidth" Value="1" />

@@ -28,13 +28,12 @@
 
                 <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
                     <Label
-                        Grid.Row="0"
                         FontAttributes="Bold"
                         FontSize="Medium"
                         Text="Sugerir Questao"
                         VerticalOptions="Center" />
                     <Label
-                        Grid.Row="1"
+                        Padding="5"
                         FontSize="Subtitle"
                         Opacity=".6"
                         Text="Abre uma tela com campos para sugerir uma questao"

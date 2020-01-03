@@ -68,7 +68,6 @@ namespace Quiz.API
                 using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
                     ApiContext context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
-                    context.Database.EnsureCreated();
                     context.Database.Migrate();
                 }
                 app.UseDeveloperExceptionPage();

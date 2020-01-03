@@ -30,12 +30,13 @@ namespace Quiz.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Sqlite
+            // MySQL
             services.AddDbContext<ApiContext>
             (
-                options => options.UseSqlite($"Data Source={_appHost.ContentRootPath}/Api.db",
+                options => options.UseMySql(_configuration["ConnectionString"],
                 builder => builder.MigrationsAssembly("Quiz.API"))
             );
+
 
             // JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+Speckoz.Quiz/Quiz.API/Api.db
+
+Speckoz.Quiz/Quiz.API/Properties/launchSettings.json

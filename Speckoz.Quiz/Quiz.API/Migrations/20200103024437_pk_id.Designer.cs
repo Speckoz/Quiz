@@ -9,8 +9,8 @@ using Quiz.API.Data;
 namespace Quiz.API.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20200103005758_Update")]
-    partial class Update
+    [Migration("20200103024437_pk_id")]
+    partial class pk_id
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,8 +72,11 @@ namespace Quiz.API.Migrations
 
             modelBuilder.Entity("Quiz.API.Models.QuestionsStatusModel", b =>
                 {
-                    b.Property<int>("QuestionID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionID")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("QuestionStatus")
@@ -82,7 +85,7 @@ namespace Quiz.API.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("QuestionID");
+                    b.HasKey("ID");
 
                     b.ToTable("QuestionsStatus");
                 });

@@ -14,8 +14,6 @@ namespace Quiz.ViewModels.ManagerQuestions
     {
         private ObservableCollection<ManagerQuestionsModel> __questionOptions;
         private ManagerQuestionsModel __suggestQuestion;
-
-        //alterar depois...
         private bool __isAdmin = true;
 
         public ObservableCollection<ManagerQuestionsModel> QuestionOptions

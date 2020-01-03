@@ -36,15 +36,18 @@
                     ReturnType="Next"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewQuestion.IncorrectAnswers}" />
-                <Grid
-                    Margin="10,0,0,0"
-                    Padding="10"
-                    VerticalOptions="CenterAndExpand">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
-                    </Grid.GestureRecognizers>
-                    <Label FontSize="Small" Text="ADD" />
-                </Grid>
+
+                <Button
+                    Margin="0,0,0,15"
+                    Padding="0"
+                    Command="{Binding AddIncorrectAnswerCommand}"
+                    CornerRadius="30"
+                    FontSize="25"
+                    HeightRequest="50"
+                    Style="{StaticResource OutlinedButton}"
+                    Text="+"
+                    VerticalOptions="Center"
+                    WidthRequest="50" />
             </StackLayout>
             <CollectionView
                 Header="Lista: "

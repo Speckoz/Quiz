@@ -120,22 +120,20 @@ namespace Quiz.ViewModels.ManagerQuestions
             string aux = "";
             IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
-            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando..."))
+            using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando...");
+            IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
             {
-                IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
-                {
-                    Question = NewQuestion.Question,
-                    Category = NewQuestion.Category,
-                    CorrectAnswer = NewQuestion.CorrectAnswer,
-                    IncorrectAnswers = aux
-                });
+                Question = NewQuestion.Question,
+                Category = NewQuestion.Category,
+                CorrectAnswer = NewQuestion.CorrectAnswer,
+                IncorrectAnswers = aux
+            });
 
-                dialog.MessageText = response.StatusCode == HttpStatusCode.Created ? "Enviado com sucesso!" : "Nao foi possivel enviar, verifique a conexao!";
+            dialog.MessageText = response.StatusCode == HttpStatusCode.Created ? "Enviado com sucesso!" : "Nao foi possivel enviar, verifique a conexao!";
 
-                await Task.Delay(1500);
-                if (response.StatusCode == HttpStatusCode.Created)
-                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
-            }
+            await Task.Delay(1500);
+            if (response.StatusCode == HttpStatusCode.Created)
+                await Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
 
         private void Init()

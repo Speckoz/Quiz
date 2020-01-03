@@ -16,6 +16,10 @@ namespace Quiz.API.Repository
 
         public QuestionsStatusRepository(ApiContext apiContext) => _context = apiContext;
 
+        /// <summary>
+        /// Cria um novo status de questão.
+        /// </summary>
+        /// <param name="status">Modelo do status</param>
         public async Task<QuestionsStatusModel> CreateTaskAync(QuestionsStatusModel status)
         {
             try
@@ -30,6 +34,10 @@ namespace Quiz.API.Repository
             return status;
         }
 
+        /// <summary>
+        /// Deleta um registro de status.
+        /// </summary>
+        /// <param name="id">ID do registro</param>
         public async Task DeleteAsync(int id)
         {
             QuestionsStatusModel status = await _context.QuestionsStatus.SingleOrDefaultAsync(s => s.ID == id);
@@ -48,12 +56,24 @@ namespace Quiz.API.Repository
             }
         }
 
+        /// <summary>
+        /// Recupera todos os status do banco.
+        /// </summary>
         public async Task<IEnumerable<QuestionsStatusModel>> GetQuestionsStatusTaskAsync() =>
             await _context.QuestionsStatus.ToListAsync();
 
+        /// <summary>
+        /// Procura um registro de status.
+        /// </summary>
+        /// <param name="id">ID do registro</param>
+        /// <returns></returns>
         public async Task<QuestionsStatusModel> FindByIdTaskAsync(int id) =>
             await _context.QuestionsStatus.SingleOrDefaultAsync(s => s.ID == id);
 
+        /// <summary>
+        /// Atualiza os dados de um registro
+        /// </summary>
+        /// <param name="status">Dados atualizados</param>
         public async Task<QuestionsStatusModel> UpdateTaskAync(QuestionsStatusModel status)
         {
             if (!await ExistsTaskAync(status.ID))
@@ -72,10 +92,11 @@ namespace Quiz.API.Repository
             }
         }
 
+        /// <summary>
+        /// Verifica se um registro existe.
+        /// </summary>
+        /// <param name="id">ID do registro</param>
         public async Task<bool> ExistsTaskAync(int id) =>
             await _context.QuestionsStatus.AnyAsync(s => s.ID == id);
-
-        public async Task<IEnumerable<QuestionsStatusModel>> GetStatus() =>
-            await _context.QuestionsStatus.ToListAsync();
     }
 }

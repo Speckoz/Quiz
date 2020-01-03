@@ -92,6 +92,6 @@ namespace Quiz.API.Controllers
         // GET: /suggestions/status
         [HttpGet("status")]
         public async Task<IActionResult> GetStatus() =>
-            Ok(await _questionsStatusRepository.GetStatus());
+            Ok(await _questionsStatusRepository.GetQuestionsStatusTaskAsync());
     }
 }

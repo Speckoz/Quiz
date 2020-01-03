@@ -20,7 +20,7 @@ namespace Quiz.API.Repository
         /// <summary>
         /// Cria uma nova questão no banco de dados
         /// </summary>
-        /// <param name="question">Questão</param>
+        /// <param name="question">Modelo da Questão</param>
         public async Task<QuestionModel> CreateTaskAsync(QuestionModel question)
         {
             try

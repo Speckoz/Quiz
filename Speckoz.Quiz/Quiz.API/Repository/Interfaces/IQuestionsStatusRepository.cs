@@ -16,7 +16,5 @@ namespace Quiz.API.Repository.Interfaces
         Task<QuestionsStatusModel> FindByIdTaskAsync(int id);
 
         Task<QuestionsStatusModel> UpdateTaskAync(QuestionsStatusModel status);
-
-        Task<IEnumerable<QuestionsStatusModel>> GetStatus();
     }
 }

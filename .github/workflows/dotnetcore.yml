@@ -14,8 +14,6 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet build ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj --configuration Release
-    - name: Curl
-      run: curl 'https://api.ipify.org?format=json'
-    - name: Run with dotnet
-      run: dotnet run --project --urls="https://localhost:5001" ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj
+      run: dotnet build ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj
+    - name: Test with dotnet
+      run: dotnet test ./Speckoz.Quiz/Quiz.API.Tests/Quiz.API.Tests.csproj

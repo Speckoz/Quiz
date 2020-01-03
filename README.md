@@ -29,7 +29,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - [x] Alterar questoes para um arquivo json local.
 - [x] Implementar MVVM.
 - [x] Criar tela de gerenciamento de questoes.
-  - [ ] Sugerir questoes. (USER)
+  - [x] Sugerir questoes. (USER)
   - [ ] Listar status das questoes sugeridas. (USER)
   - [ ] Listar sugestoes de questao. (ADMIN)
   - [ ] Editar questao. (ADMIN)
@@ -39,6 +39,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   - [ ] adicionar perfil.
   - [x] adicionar opçao de deslogar.
   - [ ] adicionar sobre.
+- [x] Implementar API.
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

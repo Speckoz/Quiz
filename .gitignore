@@ -57,6 +57,7 @@ dlldata.c
 BenchmarkDotNet.Artifacts/
 
 # .NET Core
+launchSettings.json
 project.lock.json
 project.fragment.lock.json
 artifacts/
@@ -348,3 +349,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+Speckoz.Quiz/Quiz.API/Api.db
+
+Speckoz.Quiz/Quiz.API/Properties/launchSettings.json

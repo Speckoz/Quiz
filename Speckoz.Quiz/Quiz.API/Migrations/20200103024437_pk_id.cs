@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Quiz.API.Migrations
 {
-    public partial class Update : Migration
+    public partial class pk_id : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,14 +27,15 @@ namespace Quiz.API.Migrations
                 name: "QuestionsStatus",
                 columns: table => new
                 {
-                    QuestionID = table.Column<int>(nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    QuestionID = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false),
                     QuestionStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionsStatus", x => x.QuestionID);
+                    table.PrimaryKey("PK_QuestionsStatus", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(

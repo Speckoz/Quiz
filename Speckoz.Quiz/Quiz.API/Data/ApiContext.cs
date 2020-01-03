@@ -28,7 +28,7 @@ namespace Quiz.API.Data
 
             modelBuilder.Entity<QuestionsStatusModel>().
                 ToTable("QuestionsStatus").
-                HasKey(q => q.QuestionID);
+                HasKey(q => q.ID);
         }
 
         public DbSet<QuestionModel> Questions { get; set; }

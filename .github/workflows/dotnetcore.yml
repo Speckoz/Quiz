@@ -16,6 +16,6 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj --configuration Release
     - name: Run with dotnet
-      run: curl https://www.ipify.org/
+      run: curl 'https://api.ipify.org?format=json'
     - name: Test with dotnet
       run: dotnet test ./Speckoz.Quiz/Quiz.API.Tests --configuration Release

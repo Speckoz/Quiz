@@ -351,3 +351,7 @@ MigrationBackup/
 
 Speckoz.Quiz/Quiz.API/Api.db
 Speckoz.Quiz/Quiz.API/Properties/launchSettings.json
+
+Speckoz.Quiz/Quiz.API/Api.db-shm
+
+Speckoz.Quiz/Quiz.API/Api.db-wal

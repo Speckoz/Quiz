@@ -26,7 +26,7 @@ namespace Quiz.API.Controllers
         }
 
         // POST: /suggestions
-        [Authorize]
+        [Authorize(Roles = "Normal,Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateNewSuggestion(QuestionSuggestionModel question)
         {
@@ -56,6 +56,7 @@ namespace Quiz.API.Controllers
 
         // DELETE: /suggestions/2
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteSuggestion(int id)
         {
             // Coloca o status denied na tabela de status
@@ -70,6 +71,7 @@ namespace Quiz.API.Controllers
 
         // PUT: /suggestions/approve/2
         [HttpPut("approve/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ApproveSuggestion(int id)
         {
             try
@@ -92,6 +94,6 @@ namespace Quiz.API.Controllers
         // GET: /suggestions/status
         [HttpGet("status")]
         public async Task<IActionResult> GetStatus() =>
-            Ok(await _questionsStatusRepository.GetStatus());
+            Ok(await _questionsStatusRepository.GetQuestionsStatusTaskAsync());
     }
 }

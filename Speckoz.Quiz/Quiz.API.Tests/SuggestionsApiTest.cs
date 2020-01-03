@@ -46,7 +46,7 @@ namespace Quiz.API.Tests
 
             List<QuestionsStatusModel> status = JsonConvert.DeserializeObject<List<QuestionsStatusModel>>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.NotEmpty(status[0].ID.ToString());
+            Assert.NotEmpty(status[0].QuestionID.ToString());
             Assert.NotEmpty(status[0].QuestionStatus.ToString());
             Assert.NotEmpty(status[0].UserID.ToString());
         }

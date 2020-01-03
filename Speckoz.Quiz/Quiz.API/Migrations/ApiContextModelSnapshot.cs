@@ -68,13 +68,10 @@ namespace Quiz.API.Migrations
                     b.ToTable("Suggestions");
                 });
 
-            modelBuilder.Entity("Quiz.API.Models.QuestionsStatus", b =>
+            modelBuilder.Entity("Quiz.API.Models.QuestionsStatusModel", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("QuestionStatus")
@@ -83,16 +80,16 @@ namespace Quiz.API.Migrations
                     b.Property<int>("UserID")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("QuestionID");
 
                     b.ToTable("QuestionsStatus");
                 });
 
             modelBuilder.Entity("Quiz.API.Models.UserBaseModel", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<Guid>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()

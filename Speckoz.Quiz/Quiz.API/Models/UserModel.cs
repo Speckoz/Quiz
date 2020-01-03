@@ -1,14 +1,14 @@
 ﻿using Quiz.Dependencies.Enums;
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
-
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.API.Models
 {
     public class UserBaseModel : IUserBase
     {
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
 
         [Required]
         public string Email { get; set; }

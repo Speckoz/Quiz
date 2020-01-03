@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 
 using System;
@@ -21,19 +19,6 @@ namespace Speckoz.MobileQuiz.API.Controllers
         public Task<IActionResult> GetUserById(int id)
         {
             throw new NotImplementedException();
-        }
-
-        // POST: /users
-        [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody]UserBaseModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                var newUser = await _userRepository.CreateTaskAync(user);
-                return Created($"/users/{newUser.UserID}", newUser);
-            }
-
-            return BadRequest();
         }
     }
 }

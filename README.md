@@ -52,5 +52,5 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### INTERFACE DO JOGO 🎮
 
-<img src="https://user-images.githubusercontent.com/40467826/71303617-fd02a980-2399-11ea-9a73-e33d60920ab0.png" width=300px>
+<img src="https://user-images.githubusercontent.com/40467826/71702642-74c7cf80-2daf-11ea-96e4-7f6571707970.png" width=300px>
 

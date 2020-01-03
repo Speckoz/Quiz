@@ -16,6 +16,6 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj --configuration Release
     - name: Run with dotnet
-      run: dotnet run ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj 
+      run: dotnet run --project ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj 
     - name: Test with dotnet
       run: dotnet test ./Speckoz.Quiz/Quiz.API.Tests --configuration Release

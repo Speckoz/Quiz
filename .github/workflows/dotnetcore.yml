@@ -18,4 +18,4 @@ jobs:
     - name: Curl
       run: curl 'https://api.ipify.org?format=json'
     - name: Run with dotnet
-      run: dotnet run --project --urls=http://127.0.0.1:5000/ ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj
+      run: dotnet run --project --urls=http://172.17.0.1:5001/ ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj

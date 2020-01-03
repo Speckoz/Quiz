@@ -1,6 +1,6 @@
 ﻿using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
-
+using System;
 using System.Linq;
 
 namespace Quiz.API.Data
@@ -145,7 +145,7 @@ namespace Quiz.API.Data
                 {
                     QuestionID = 1,
                     QuestionStatus = QuestionStatusEnum.Pending,
-                    UserID = 1,
+                    UserID = Guid.NewGuid(),
                 });
             }
 

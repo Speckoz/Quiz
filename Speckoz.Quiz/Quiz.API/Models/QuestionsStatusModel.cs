@@ -1,5 +1,5 @@
 ﻿using Quiz.Dependencies.Enums;
-
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.API.Models
@@ -11,7 +11,7 @@ namespace Quiz.API.Models
         public int QuestionID { get; set; }
 
         [Required]
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
 
         [Required]
         public QuestionStatusEnum QuestionStatus { get; set; }

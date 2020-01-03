@@ -62,6 +62,7 @@
         <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Já tem uma conta?" />
             <Button
+                BackgroundColor="Transparent"
                 Command="{Binding BackCommand}"
                 Style="{StaticResource OutlinedButton}"
                 Text="Voltar"

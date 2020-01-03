@@ -11,6 +11,6 @@ namespace Quiz.Models
         public ImageSource ActionImage { get; set; }
         public string ActionName { get; set; }
         public string ActionDescription { get; set; }
-        public RelayCommand<ManagerQuestionsView> ActionOpen { get; set; }
+        public RelayCommand ActionOpen { get; set; }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using Quiz.Dependencies.Enums;
 using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Properties;
 using Quiz.Models;
 using Quiz.Views.ManagerQuestions;
 
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace Quiz.ViewModels.ManagerQuestions
 {
@@ -15,6 +17,7 @@ namespace Quiz.ViewModels.ManagerQuestions
         private ObservableCollection<ManagerQuestionsModel> __questionOptions;
         private ManagerQuestionsModel __suggestQuestion;
         private bool __isAdmin = true;
+        private ManagerQuestionsModel __statusSuggestions;
 
         public ObservableCollection<ManagerQuestionsModel> QuestionOptions
         {
@@ -28,6 +31,12 @@ namespace Quiz.ViewModels.ManagerQuestions
             set => Set(ref __suggestQuestion, value);
         }
 
+        public ManagerQuestionsModel StatusSuggestions
+        {
+            get => __statusSuggestions;
+            set => Set(ref __statusSuggestions, value);
+        }
+
         public bool IsAdmin
         {
             get => __isAdmin;
@@ -39,10 +48,16 @@ namespace Quiz.ViewModels.ManagerQuestions
             SuggestQuestion = new ManagerQuestionsModel
             {
                 ActionImage = ConvertImageHelper.Convert(Resources.choose),
-                ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await s.Navigation.PushModalAsync(new SuggestQuestionView(), true))
+                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
             };
 
-            if (IsAdmin)
+            StatusSuggestions = new ManagerQuestionsModel
+            {
+                ActionImage = ConvertImageHelper.Convert(Resources.choose),
+                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
+            };
+
+            if (IsAdmin = GetDataHelper.User.User.UserType == UserTypeEnum.Admin)
                 AdminAreaItems();
         }
 
@@ -53,21 +68,21 @@ namespace Quiz.ViewModels.ManagerQuestions
                     new ManagerQuestionsModel
                     {
                         ActionImage = ConvertImageHelper.Convert(Resources.register),
-                        ActionName = "Consultar Questao",
-                        ActionDescription= "Abre uma tela com campos para mostrar uma questao",
-                        ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await App.Current.MainPage.DisplayAlert("", "Consultar questao", "OK"))
+                        ActionName = "Avaliar Sugestoes",
+                        ActionDescription= "Abre uma tela com as sugestoes de questoes.",
+                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Avaliar Sugestoes", "OK"))
                     },new ManagerQuestionsModel
                     {
                         ActionImage = ConvertImageHelper.Convert(Resources.heartLogo),
                         ActionName = "Editar Questao",
                         ActionDescription= "Abre uma tela com campos para editar uma questao",
-                        ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await App.Current.MainPage.DisplayAlert("", "Editar questao", "OK"))
+                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Editar questao", "OK"))
                     },new ManagerQuestionsModel
                     {
                         ActionImage = ConvertImageHelper.Convert(Resources.choose),
                         ActionName = "Excluir Questao",
                         ActionDescription= "Abre uma tela com campos para excluir uma questao",
-                        ActionOpen = new RelayCommand<ManagerQuestionsView>(async (s) => await App.Current.MainPage.DisplayAlert("", "Excluir questao", "OK"))
+                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Excluir questao", "OK"))
                     }
                 };
         }

@@ -21,6 +21,8 @@
 
         <material:MaterialCard
             Grid.Row="0"
+            BackgroundColor="Transparent"
+            BorderColor="DimGray"
             CornerRadius="10"
             Elevation="2">
             <Grid>
@@ -67,6 +69,8 @@
             Grid.Row="1"
             Margin="0,20,0,30"
             Padding="0"
+            BackgroundColor="Transparent"
+            BorderColor="DimGray"
             CornerRadius="10"
             Elevation="2">
             <StackLayout>
@@ -83,7 +87,7 @@
 
                 <Label
                     Grid.Row="1"
-                    Margin="10"
+                    Margin="15"
                     d:Text="Ruan Carlos é top demais test teste lgkflkgsd lgskdlfkg sldf "
                     FontAttributes="Bold"
                     FontSize="Large"
@@ -104,6 +108,7 @@
                             x:Name="ClickedButton"
                             Padding="0"
                             d:Text="Teste"
+                            BackgroundColor="Transparent"
                             ClassId="{Binding IsCorrectAnswer}"
                             Command="{Binding AnswerCommand}"
                             CommandParameter="{Binding Source={x:Reference ClickedButton}}"

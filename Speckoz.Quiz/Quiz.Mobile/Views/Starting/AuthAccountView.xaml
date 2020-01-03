@@ -63,6 +63,7 @@
         <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
             <Button
+                BackgroundColor="Transparent"
                 Command="{Binding RegisterCommand}"
                 HorizontalOptions="Fill"
                 Style="{StaticResource OutlinedButton}"

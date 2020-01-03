@@ -5,6 +5,7 @@ using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
 
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -33,14 +34,15 @@ namespace Quiz.API.Controllers
             if (ModelState.IsValid)
             {
                 string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                var suggestion = await _questionSuggestionRepository.CreateTaskAync(question);
+                QuestionSuggestionModel suggestion = await _questionSuggestionRepository.CreateTaskAync(question);
 
                 await _questionsStatusRepository.CreateTaskAync(new QuestionsStatusModel
                 {
                     QuestionID = question.QuestionSuggestionID,
                     QuestionStatus = QuestionStatusEnum.Pending,
-                    UserID = int.Parse(userId)
+                    UserID = Guid.Parse(userId)
                 });
+
                 return Created($"/suggestions/{suggestion.QuestionSuggestionID}", suggestion);
             }
             return BadRequest();
@@ -50,7 +52,7 @@ namespace Quiz.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSuggestions()
         {
-            var suggestions = await _questionSuggestionRepository.GetSuggestionsTaskAsync();
+            List<QuestionSuggestionModel> suggestions = await _questionSuggestionRepository.GetSuggestionsTaskAsync();
             return Ok(suggestions);
         }
 

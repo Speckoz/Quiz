@@ -8,9 +8,9 @@ echo ======================  FAZENDO BUILD  ========================
 dotnet build
 
 echo ======================  RODANDO TESTES  ========================
-cd ..
-cd Quiz.API.Tests
-dotnet test
+#cd ..
+#cd Quiz.API.Tests
+#dotnet test
 
 echo ======================  RODANDO API  ========================
 cd ..

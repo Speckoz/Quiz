@@ -27,7 +27,7 @@
                 <Label
                     d:Text="Ruan Carlos CS"
                     FontAttributes="Bold"
-                    FontSize="Large"
+                    FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="{Binding UserName}"
                     TextColor="White"

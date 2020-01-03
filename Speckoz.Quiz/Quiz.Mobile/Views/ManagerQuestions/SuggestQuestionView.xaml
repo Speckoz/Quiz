@@ -9,19 +9,22 @@
     Title="Sugerir Questao"
     Visual="Material"
     mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ExitSuggestScreenCommand}" Text="Sair" />
+    </ContentPage.ToolbarItems>
 
     <ScrollView Padding="20">
         <StackLayout>
 
             <material:MaterialTextField
-                BackgroundColor="{StaticResource Material.Color.Background}"
+                BackgroundColor="Transparent"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Pergunta"
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
             <material:MaterialTextField
-                BackgroundColor="{StaticResource Material.Color.Background}"
+                BackgroundColor="Transparent"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Resposta Correta"
                 ReturnType="Next"
@@ -30,24 +33,26 @@
 
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <material:MaterialTextField
-                    BackgroundColor="{StaticResource Material.Color.Background}"
+                    BackgroundColor="Transparent"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Respostas incorretas"
-                    ReturnType="Next"
+                    ReturnCommand="{Binding AddIncorrectAnswerCommand}"
+                    ReturnType="Go"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewQuestion.IncorrectAnswers}" />
 
-                <Button
-                    Margin="0,0,0,15"
-                    Padding="0"
-                    Command="{Binding AddIncorrectAnswerCommand}"
-                    CornerRadius="30"
-                    FontSize="25"
-                    HeightRequest="50"
-                    Style="{StaticResource OutlinedButton}"
-                    Text="+"
-                    VerticalOptions="Center"
-                    WidthRequest="50" />
+                <Grid
+                    Margin="0,0,0,25"
+                    Padding="10"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
+                    </Grid.GestureRecognizers>
+                    <Label
+                        FontSize="Medium"
+                        Text="ADD"
+                        VerticalOptions="Center" />
+                </Grid>
             </StackLayout>
             <CollectionView
                 Header="Lista: "

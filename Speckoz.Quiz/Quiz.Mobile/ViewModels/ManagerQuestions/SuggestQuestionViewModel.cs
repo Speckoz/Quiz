@@ -49,6 +49,7 @@ namespace Quiz.ViewModels.ManagerQuestions
         public RelayCommand SendSugestionCommand { get; private set; }
 
         public RelayCommand AddIncorrectAnswerCommand { get; private set; }
+        public RelayCommand ExitSuggestScreenCommand { get; private set; }
 
         public ObservableCollection<SuggestQuestionChipModel> IncorrectAnswersChips { get; set; }
 
@@ -62,7 +63,7 @@ namespace Quiz.ViewModels.ManagerQuestions
                 {
                     IncorrectAnswersChips.Add(new SuggestQuestionChipModel
                     {
-                        IncorrectAnswerText = NewQuestion.IncorrectAnswers,
+                        IncorrectAnswerText = NewQuestion.IncorrectAnswers.Replace("/", ""),
                         IncorrectAnswerCommand = new RelayCommand<MaterialChip>(RemoveChipWithIncorretAnswer)
                     });
 
@@ -142,7 +143,14 @@ namespace Quiz.ViewModels.ManagerQuestions
             CategoryChoice = Enum.GetNames(typeof(CategoryEnum));
             SendSugestionCommand = new RelayCommand(SendSugestion);
             AddIncorrectAnswerCommand = new RelayCommand(AddChipWithIncorrectAnswer);
+            ExitSuggestScreenCommand = new RelayCommand(ExitSuggestScreen);
             IncorrectAnswersChips = new ObservableCollection<SuggestQuestionChipModel>();
+        }
+
+        private async void ExitSuggestScreen()
+        {
+            if(await Application.Current.MainPage.DisplayAlert("ATENÇAO", "Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "Sim", "Cancelar"))
+                await Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
     }
 }

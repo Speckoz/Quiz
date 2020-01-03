@@ -15,7 +15,7 @@ namespace Quiz.Mobile.Services.Requests
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Authorization", $"Bearer {GetDataHelper.User.Token}");
-            request.AddJsonBody(question);
+            request.AddJsonBody(JsonSerializer.Serialize(question));
             return await new RestClient($"{GetDataHelper.Uri}/Suggestions").ExecuteTaskAsync(request);
         }
     }

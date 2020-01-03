@@ -13,7 +13,8 @@
     <StackLayout>
         <material:MaterialCard
             Margin="10"
-            BorderColor="LightGray"
+            BackgroundColor="Transparent"
+            BorderColor="DimGray"
             CornerRadius="10"
             Elevation="2">
             <material:MaterialCard.GestureRecognizers>
@@ -33,7 +34,7 @@
                         Text="Sugerir Questao"
                         VerticalOptions="Center" />
                     <Label
-                        Padding="5"
+                        Padding="0,0,0,10"
                         FontSize="Subtitle"
                         Opacity=".6"
                         Text="Abre uma tela com campos para sugerir uma questao"
@@ -42,6 +43,37 @@
             </StackLayout>
         </material:MaterialCard>
 
+        <material:MaterialCard
+            Margin="10"
+            BackgroundColor="Transparent"
+            BorderColor="DimGray"
+            CornerRadius="10"
+            Elevation="2">
+            <material:MaterialCard.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding StatusSuggestions.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
+            </material:MaterialCard.GestureRecognizers>
+            <StackLayout Orientation="Horizontal">
+                <Image
+                    HeightRequest="60"
+                    Source="{Binding StatusSuggestions.ActionImage}"
+                    VerticalOptions="Center"
+                    WidthRequest="60" />
+
+                <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="Status Sugestao"
+                        VerticalOptions="Center" />
+                    <Label
+                        Padding="0,0,0,10"
+                        FontSize="Subtitle"
+                        Opacity=".6"
+                        Text="Abre uma tela para ver todas as suas sugestoes."
+                        TextColor="Default" />
+                </StackLayout>
+            </StackLayout>
+        </material:MaterialCard>
         <Label
             HorizontalOptions="Center"
             IsVisible="{Binding IsAdmin}"
@@ -55,7 +87,8 @@
                             <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                         </StackLayout.GestureRecognizers>
                         <material:MaterialCard
-                            BorderColor="LightGray"
+                            BackgroundColor="Transparent"
+                            BorderColor="DimGray"
                             CornerRadius="10"
                             Elevation="2">
                             <StackLayout Orientation="Horizontal">
@@ -70,13 +103,10 @@
                                     Orientation="Vertical"
                                     VerticalOptions="Center">
                                     <Label
-                                        Grid.Row="0"
                                         FontAttributes="Bold"
                                         FontSize="Medium"
-                                        Text="{Binding ActionName}"
-                                        VerticalOptions="Center" />
+                                        Text="{Binding ActionName}" />
                                     <Label
-                                        Grid.Row="1"
                                         FontSize="Subtitle"
                                         Opacity=".6"
                                         Text="{Binding ActionDescription}"

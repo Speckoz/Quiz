@@ -65,11 +65,11 @@ namespace Quiz.API
             if (env.IsDevelopment())
             {
                 // Auto create DB
-                //using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-                //{
-                //    ApiContext context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
-                //    context.Database.Migrate();
-                //}
+                using (IServiceScope serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    ApiContext context = serviceScope.ServiceProvider.GetRequiredService<ApiContext>();
+                    context.Database.Migrate();
+                }
                 app.UseDeveloperExceptionPage();
                 seedingService.Seed();
             }

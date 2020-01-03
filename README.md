@@ -1,8 +1,12 @@
-# Mobile Quiz 😃 👾
+<div align="center">
+  <h1> Quiz 😃 👾</h1>
+</div>
+
+<h4>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+</h4>
 
-
-# Tecnologias Utilizadas 😁
+## Tecnologias Utilizadas 😁
 ### App
 - Xamarin
 - Material Design
@@ -10,11 +14,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - ASP.NET Core 3.1
 - Database SQLite
 
-# Contribuição ✌️
+## Contribuição ✌️
 
 ### Contribuições são 100% bem-vindas, bastar fazer uma PR ou Issue
 
-# TODO List 🚀
+## TODO List 🚀
 
 
 - [x] Fazer a tela de login.

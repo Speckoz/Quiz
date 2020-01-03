@@ -6,7 +6,7 @@ namespace Quiz.Mobile.Models.Starting
 {
     public class UserBase : IUserBase
     {
-        public int UserID { get; set; }
+        public System.Guid UserID { get; set; }
 
         public string Email { get; set; }
 

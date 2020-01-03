@@ -1,10 +1,11 @@
 ﻿using Quiz.Dependencies.Enums;
+using System;
 
 namespace Speckoz.MobileQuiz.Dependencies.Interfaces
 {
     public interface IUserBase
     {
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public int Level { get; set; }

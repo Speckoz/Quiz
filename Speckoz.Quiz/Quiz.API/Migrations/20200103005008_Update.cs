@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Quiz.API.Migrations
 {
-    public partial class Model : Migration
+    public partial class Update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +21,21 @@ namespace Quiz.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Questions", x => x.QuestionID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "QuestionsStatus",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    QuestionID = table.Column<int>(nullable: false),
+                    UserID = table.Column<int>(nullable: false),
+                    QuestionStatus = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QuestionsStatus", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,8 +58,7 @@ namespace Quiz.API.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    UserID = table.Column<Guid>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Username = table.Column<string>(nullable: false),
                     Level = table.Column<int>(nullable: false),
@@ -60,6 +75,9 @@ namespace Quiz.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Questions");
+
+            migrationBuilder.DropTable(
+                name: "QuestionsStatus");
 
             migrationBuilder.DropTable(
                 name: "Suggestions");

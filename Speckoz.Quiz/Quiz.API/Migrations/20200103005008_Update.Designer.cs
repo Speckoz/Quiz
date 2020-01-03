@@ -9,8 +9,8 @@ using Quiz.API.Data;
 namespace Quiz.API.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20191228223920_Model")]
-    partial class Model
+    [Migration("20200103005008_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,7 @@ namespace Quiz.API.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("Quiz.API.Models.QuestionSuggestion", b =>
+            modelBuilder.Entity("Quiz.API.Models.QuestionSuggestionModel", b =>
                 {
                     b.Property<int>("QuestionSuggestionID")
                         .ValueGeneratedOnAdd()
@@ -70,11 +70,31 @@ namespace Quiz.API.Migrations
                     b.ToTable("Suggestions");
                 });
 
-            modelBuilder.Entity("Quiz.API.Models.UserModel", b =>
+            modelBuilder.Entity("Quiz.API.Models.QuestionsStatusModel", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("QuestionStatus")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("QuestionsStatus");
+                });
+
+            modelBuilder.Entity("Quiz.API.Models.UserBaseModel", b =>
+                {
+                    b.Property<Guid>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()

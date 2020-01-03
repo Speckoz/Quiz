@@ -15,5 +15,9 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet build ./Speckoz.Quiz/Quiz.API/Quiz.API.csproj --configuration Release
+    - name: Clean .db
+      run: rm ./Speckoz.Quiz/Quiz.API.Tests/bin/release/netcoreapp3.1/Api.db
+    - name: Create .db
+      run: touch ./Speckoz.Quiz/Quiz.API.Tests/bin/release/netcoreapp3.1/Api.db
     - name: Test with dotnet
       run: dotnet test ./Speckoz.Quiz/Quiz.API.Tests --configuration Release

@@ -18,8 +18,14 @@ namespace Quiz.API
     public class Startup
     {
         private readonly IConfiguration _configuration;
+        private readonly IHostEnvironment _appHost;
 
-        public Startup(IConfiguration configuration) => _configuration = configuration;
+        public Startup(IConfiguration configuration, IHostEnvironment appHost) 
+        {
+            _configuration = configuration;
+            _appHost = appHost;
+        }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -27,7 +33,7 @@ namespace Quiz.API
             // Sqlite
             services.AddDbContext<ApiContext>
             (
-                options => options.UseSqlite(_configuration["ConnectionString"],
+                options => options.UseSqlite($"Data Source={_appHost.ContentRootPath}/Api.db",
                 builder => builder.MigrationsAssembly("Quiz.API"))
             );
 

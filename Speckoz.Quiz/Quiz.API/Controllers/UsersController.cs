@@ -22,18 +22,5 @@ namespace Speckoz.MobileQuiz.API.Controllers
         {
             throw new NotImplementedException();
         }
-
-        // POST: /users
-        [HttpPost]
-        public async Task<IActionResult> CreateUser([FromBody]UserBaseModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                var newUser = await _userRepository.CreateTaskAync(user);
-                return Created($"/users/{newUser.UserID}", newUser);
-            }
-
-            return BadRequest();
-        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
@@ -11,6 +12,7 @@ namespace Quiz.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class RegisterController : ControllerBase
     {
         private readonly IUserRepository _userRepository;

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
@@ -38,6 +39,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // POST: /Questions
         [HttpPost]
+        [Authorize(Roles = "Normal, Admin")]
         public async Task<IActionResult> CreateQuestion([FromBody]QuestionModel question)
         {
             if (ModelState.IsValid)
@@ -50,6 +52,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // Delete /Questions/12
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteQuestion(int id)
         {
             await _questionRepository.DeleteAsync(id);

@@ -21,6 +21,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: /Questions
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetRandomQuestion(string cat = "0")
         {
             // Verifica se a categoria existe, senao atribui como categoria 0
@@ -31,6 +32,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: /Questions/2
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetQuestionById(int id)
         {
             QuestionModel question = await _questionRepository.FindByID(id);

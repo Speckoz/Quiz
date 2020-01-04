@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+nohup.out
 Api.db	
 Api.db-shm	
 Api.db-wal

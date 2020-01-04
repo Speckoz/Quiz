@@ -50,6 +50,7 @@ namespace Quiz.API.Controllers
 
         // GET: /suggestions
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetSuggestions()
         {
             List<QuestionSuggestionModel> suggestions = await _questionSuggestionRepository.GetSuggestionsTaskAsync();
@@ -95,6 +96,7 @@ namespace Quiz.API.Controllers
 
         // GET: /suggestions/status
         [HttpGet("status")]
+        [Authorize]
         public async Task<IActionResult> GetStatus() =>
             Ok(await _questionsStatusRepository.GetQuestionsStatusTaskAsync());
     }

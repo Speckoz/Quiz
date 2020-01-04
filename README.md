@@ -12,7 +12,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - Material Design
 ### API
 - ASP.NET Core 3.1
-- Database SQLite
+- Database MySQL Server
 
 ## Contribuição ✌️
 

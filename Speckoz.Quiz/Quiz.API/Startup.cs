@@ -20,12 +20,11 @@ namespace Quiz.API
         private readonly IConfiguration _configuration;
         private readonly IHostEnvironment _appHost;
 
-        public Startup(IConfiguration configuration, IHostEnvironment appHost) 
+        public Startup(IConfiguration configuration, IHostEnvironment appHost)
         {
             _configuration = configuration;
             _appHost = appHost;
         }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,7 +35,6 @@ namespace Quiz.API
                 options => options.UseMySql(_configuration["ConnectionString"],
                 builder => builder.MigrationsAssembly("Quiz.API"))
             );
-
 
             // JWT
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

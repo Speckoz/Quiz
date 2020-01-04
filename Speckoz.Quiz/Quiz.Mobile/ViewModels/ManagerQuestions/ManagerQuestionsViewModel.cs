@@ -1,13 +1,16 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using Quiz.Dependencies.Enums;
 using Quiz.Helpers;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Properties;
+using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Models;
 using Quiz.Views.ManagerQuestions;
 
 using System.Collections.ObjectModel;
+
 using Xamarin.Forms;
 
 namespace Quiz.ViewModels.ManagerQuestions
@@ -54,7 +57,7 @@ namespace Quiz.ViewModels.ManagerQuestions
             StatusSuggestions = new ManagerQuestionsModel
             {
                 ActionImage = ConvertImageHelper.Convert(Resources.choose),
-                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
+                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new StatusQuestionsView()), true))
             };
 
             if (IsAdmin = GetDataHelper.User.User.UserType == UserTypeEnum.Admin)

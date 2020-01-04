@@ -4,7 +4,7 @@ namespace Quiz.Mobile.Helpers
 {
     internal class GetDataHelper
     {
-        public static string Uri { get; } = "http://192.168.1.243:5000";
+        public static string Uri { get; } = "http://201.75.156.51:5000/questions";
 
         public static UserLogin User { get; set; }
     }

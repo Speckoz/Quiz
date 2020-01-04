@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Quiz.API.Migrations
 {
-    public partial class Models : Migration
+    public partial class models : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,15 +28,14 @@ namespace Quiz.API.Migrations
                 name: "QuestionsStatus",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    QuestionID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    QuestionID = table.Column<int>(nullable: false),
                     UserID = table.Column<Guid>(nullable: false),
                     QuestionStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionsStatus", x => x.ID);
+                    table.PrimaryKey("PK_QuestionsStatus", x => x.QuestionID);
                 });
 
             migrationBuilder.CreateTable(

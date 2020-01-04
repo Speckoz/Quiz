@@ -1,9 +1,8 @@
-﻿using Quiz.ViewModels;
-
+﻿using Quiz.Mobile.ViewModels.Starting;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Quiz.Views.Starting
+namespace Quiz.Mobile.Views.Starting
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AuthAccountView : ContentPage

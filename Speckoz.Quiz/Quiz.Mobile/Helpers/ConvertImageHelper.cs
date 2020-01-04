@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace Quiz.Helpers
+namespace Quiz.Mobile.Helpers
 {
     internal class ConvertImageHelper
     {

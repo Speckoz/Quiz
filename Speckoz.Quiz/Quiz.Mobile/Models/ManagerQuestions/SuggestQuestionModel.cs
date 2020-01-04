@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 using XF.Material.Forms.UI;
 
-namespace Quiz.Models.ManagerQuestions
+namespace Quiz.Mobile.Models.ManagerQuestions
 {
     internal class SuggestQuestionChipModel
     {

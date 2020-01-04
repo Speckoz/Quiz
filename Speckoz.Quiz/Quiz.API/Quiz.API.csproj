@@ -5,6 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200103235435_Models.cs" />
+    <Compile Remove="Migrations\20200103235435_Models.Designer.cs" />
+    <Compile Remove="Migrations\20200104171834_delete_duplicate.cs" />
+    <Compile Remove="Migrations\20200104171834_delete_duplicate.Designer.cs" />
+    <Compile Remove="Migrations\20200104175155_DeleteDuplicateColumn.cs" />
+    <Compile Remove="Migrations\20200104175155_DeleteDuplicateColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200104180327_DeleteDuplicateColumn.cs" />
+    <Compile Remove="Migrations\20200104180327_DeleteDuplicateColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200104180748_DeleteDuplicateColumn.cs" />
+    <Compile Remove="Migrations\20200104180748_DeleteDuplicateColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200104181139_models.cs" />
+    <Compile Remove="Migrations\20200104181139_models.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Quiz.Helpers
+namespace Quiz.Mobile.Helpers
 {
     public static class RandomizeListHelper
     {

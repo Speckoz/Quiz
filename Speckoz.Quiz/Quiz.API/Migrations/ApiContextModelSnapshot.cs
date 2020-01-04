@@ -71,11 +71,8 @@ namespace Quiz.API.Migrations
 
             modelBuilder.Entity("Quiz.API.Models.QuestionsStatusModel", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
                     b.Property<int>("QuestionID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("QuestionStatus")
@@ -84,7 +81,7 @@ namespace Quiz.API.Migrations
                     b.Property<Guid>("UserID")
                         .HasColumnType("char(36)");
 
-                    b.HasKey("ID");
+                    b.HasKey("QuestionID");
 
                     b.ToTable("QuestionsStatus");
                 });

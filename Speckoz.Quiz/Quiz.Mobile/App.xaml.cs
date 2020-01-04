@@ -1,4 +1,4 @@
-﻿using Quiz.Views.Starting;
+﻿using Quiz.Mobile.Views.Starting;
 
 using Xamarin.Forms;
 

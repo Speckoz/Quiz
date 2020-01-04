@@ -13,7 +13,7 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
-            request.AddHeader("Authorization", $"Bearer {GetDataHelper.User.Token}");
+            request.AddHeader("Authorization", $"Bearer {GetDataHelper.CurrentUser.Token}");
             var restClient = new RestClient($"{GetDataHelper.Uri}/questions{(isRandom ? $"?cat={((int)category).ToString()}" : string.Empty)}");
             return await restClient.ExecuteGetTaskAsync(request);
         }

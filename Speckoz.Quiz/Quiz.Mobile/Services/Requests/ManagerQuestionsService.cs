@@ -1,5 +1,5 @@
 ﻿using Quiz.Mobile.Helpers;
-using Quiz.Models;
+using Quiz.Mobile.Models;
 
 using RestSharp;
 
@@ -14,7 +14,7 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
-            request.AddHeader("Authorization", $"Bearer {GetDataHelper.User.Token}");
+            request.AddHeader("Authorization", $"Bearer {GetDataHelper.CurrentUser.Token}");
             request.AddJsonBody(JsonSerializer.Serialize(question));
             return await new RestClient($"{GetDataHelper.Uri}/Suggestions").ExecuteTaskAsync(request);
         }

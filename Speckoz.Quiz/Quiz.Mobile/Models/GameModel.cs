@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace Quiz.Models
+namespace Quiz.Mobile.Models
 {
     public class GameModel
     {

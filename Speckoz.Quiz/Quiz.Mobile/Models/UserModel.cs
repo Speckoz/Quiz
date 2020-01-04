@@ -1,4 +1,4 @@
-﻿namespace Quiz.Models
+﻿namespace Quiz.Mobile.Models
 {
     public class UserModel
     {

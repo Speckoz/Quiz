@@ -3,10 +3,10 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
-using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Models;
-using Quiz.Views;
+using Quiz.Mobile.Views;
 
 using RestSharp;
 
@@ -20,7 +20,7 @@ using Xamarin.Forms;
 
 using XF.Material.Forms.UI.Dialogs;
 
-namespace Quiz.ViewModels
+namespace Quiz.Mobile.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {

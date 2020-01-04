@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage
-    x:Class="Quiz.Views.MainTabListView"
+    x:Class="Quiz.Mobile.Views.MainTabListView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:local="clr-namespace:Quiz.Views"
+    xmlns:local="clr-namespace:Quiz.Mobile.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mq="clr-namespace:Quiz.Views.ManagerQuestions"
-    xmlns:start="clr-namespace:Quiz.Views.Starting"
+    xmlns:mq="clr-namespace:Quiz.Mobile.Views.ManagerQuestions"
+    xmlns:start="clr-namespace:Quiz.Mobile.Views.Starting"
     Title="Mobile Quiz"
     Visual="Material"
     mc:Ignorable="d">

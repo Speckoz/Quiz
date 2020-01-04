@@ -1,19 +1,18 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Helpers;
 using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models.Menu;
 using Quiz.Mobile.Properties;
-using Quiz.Models.Menu;
-using Quiz.Views;
-using Quiz.Views.Starting;
+using Quiz.Mobile.Views;
+using Quiz.Mobile.Views.Starting;
 
 using System;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
-namespace Quiz.ViewModels.Menu
+namespace Quiz.Mobile.ViewModels.Menu
 {
     internal class MenuViewModel : ViewModelBase
     {
@@ -42,7 +41,7 @@ namespace Quiz.ViewModels.Menu
         public MenuViewModel()
         {
             UserImage = ConvertImageHelper.Convert(Resources.choose);
-            UserName = GetDataHelper.User.User.Email;
+            UserName = GetDataHelper.CurrentUser.User.Email;
 
             MenuItems = new ObservableCollection<MenuModel>
             {

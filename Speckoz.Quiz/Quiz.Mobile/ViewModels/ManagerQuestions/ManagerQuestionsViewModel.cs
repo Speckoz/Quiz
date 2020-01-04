@@ -2,18 +2,17 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Helpers;
 using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Views.ManagerQuestions;
-using Quiz.Models;
-using Quiz.Views.ManagerQuestions;
+using Quiz.Mobile.Views.ManagerQuestions;
 
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
-namespace Quiz.ViewModels.ManagerQuestions
+namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     internal class ManagerQuestionsViewModel : ViewModelBase
     {
@@ -60,7 +59,7 @@ namespace Quiz.ViewModels.ManagerQuestions
                 ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new StatusQuestionsView()), true))
             };
 
-            if (IsAdmin = GetDataHelper.User.User.UserType == UserTypeEnum.Admin)
+            if (IsAdmin = GetDataHelper.CurrentUser.User.UserType == UserTypeEnum.Admin)
                 AdminAreaItems();
         }
 

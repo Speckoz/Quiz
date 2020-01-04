@@ -1,10 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Views.Starting;
+using Quiz.Mobile.Views.Starting;
 
 using RestSharp;
 
@@ -15,7 +15,7 @@ using Xamarin.Forms;
 
 using XF.Material.Forms.UI.Dialogs;
 
-namespace Quiz.ViewModels
+namespace Quiz.Mobile.ViewModels.Starting
 {
     public class RegisterAccountViewModel : ViewModelBase
     {

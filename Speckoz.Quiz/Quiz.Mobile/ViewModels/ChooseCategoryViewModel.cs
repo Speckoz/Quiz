@@ -2,10 +2,10 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
-using Quiz.Models;
-using Quiz.Views;
+using Quiz.Mobile.Views;
 
 using System;
 using System.Collections.ObjectModel;
@@ -15,7 +15,7 @@ using Xamarin.Forms;
 using XF.Material.Forms;
 using XF.Material.Forms.Resources;
 
-namespace Quiz.ViewModels
+namespace Quiz.Mobile.ViewModels
 {
     internal class ChooseCategoryViewModel : ViewModelBase
     {

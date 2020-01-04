@@ -1,9 +1,9 @@
-﻿using Quiz.ViewModels.ManagerQuestions;
+﻿using Quiz.Mobile.ViewModels.ManagerQuestions;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Quiz.Views.ManagerQuestions
+namespace Quiz.Mobile.Views.ManagerQuestions
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManagerQuestionsView : ContentPage

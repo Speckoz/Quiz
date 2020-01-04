@@ -2,10 +2,10 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Helpers;
+using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models;
+using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Models;
-using Quiz.Models.ManagerQuestions;
 
 using RestSharp;
 
@@ -20,7 +20,7 @@ using Xamarin.Forms;
 using XF.Material.Forms.UI;
 using XF.Material.Forms.UI.Dialogs;
 
-namespace Quiz.ViewModels.ManagerQuestions
+namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     internal class SuggestQuestionViewModel : ViewModelBase
     {
@@ -58,7 +58,6 @@ namespace Quiz.ViewModels.ManagerQuestions
         private void AddChipWithIncorrectAnswer()
         {
             if (!string.IsNullOrEmpty(NewQuestion.IncorrectAnswers))
-            {
                 if (!IncorrectAnswersChips.Any(i => i.IncorrectAnswerText == NewQuestion.IncorrectAnswers))
                 {
                     IncorrectAnswersChips.Add(new SuggestQuestionChipModel
@@ -71,7 +70,6 @@ namespace Quiz.ViewModels.ManagerQuestions
                 }
                 else
                     SendMessageHelper.SendAsync("Já está na lista!", "Ops!");
-            }
             else
                 SendMessageHelper.SendAsync("Voce precisa digitar algo no campo!", "Ops!");
         }
@@ -115,9 +113,7 @@ namespace Quiz.ViewModels.ManagerQuestions
         private async void SendSugestion()
         {
             if (await FieldsIsEmpty())
-            {
                 return;
-            }
             string aux = "";
             IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
@@ -149,7 +145,7 @@ namespace Quiz.ViewModels.ManagerQuestions
 
         private async void ExitSuggestScreen()
         {
-            if(await Application.Current.MainPage.DisplayAlert("ATENÇAO", "Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "Sim", "Cancelar"))
+            if (await Application.Current.MainPage.DisplayAlert("ATENÇAO", "Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "Sim", "Cancelar"))
                 await Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
     }

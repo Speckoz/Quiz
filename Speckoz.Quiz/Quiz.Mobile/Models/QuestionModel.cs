@@ -1,7 +1,7 @@
 ﻿using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 
-namespace Quiz.Models
+namespace Quiz.Mobile.Models
 {
     public class QuestionModel : IQuestion
     {

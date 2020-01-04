@@ -4,7 +4,7 @@ using Quiz.Dependencies.Enums;
 
 using Xamarin.Forms;
 
-namespace Quiz.Models
+namespace Quiz.Mobile.Models
 {
     internal class ChooseCategoryModel
     {

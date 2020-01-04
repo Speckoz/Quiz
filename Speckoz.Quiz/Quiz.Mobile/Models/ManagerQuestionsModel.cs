@@ -1,10 +1,8 @@
 ﻿using GalaSoft.MvvmLight.Command;
 
-using Quiz.Views.ManagerQuestions;
-
 using Xamarin.Forms;
 
-namespace Quiz.Models
+namespace Quiz.Mobile.Models
 {
     public class ManagerQuestionsModel
     {

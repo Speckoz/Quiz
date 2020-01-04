@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace Quiz.Models.Menu
+namespace Quiz.Mobile.Models.Menu
 {
     internal class MenuModel
     {

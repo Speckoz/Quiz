@@ -2,7 +2,7 @@
 
 using XF.Material.Forms.UI.Dialogs;
 
-namespace Quiz.Helpers
+namespace Quiz.Mobile.Helpers
 {
     internal static class SendMessageHelper
     {

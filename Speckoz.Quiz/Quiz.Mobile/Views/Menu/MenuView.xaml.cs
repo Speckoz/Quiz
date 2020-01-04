@@ -1,9 +1,8 @@
-﻿using Quiz.ViewModels.Menu;
-
+﻿using Quiz.Mobile.ViewModels.Menu;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Quiz.Views.Menu
+namespace Quiz.Mobile.Views.Menu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuView : ContentPage

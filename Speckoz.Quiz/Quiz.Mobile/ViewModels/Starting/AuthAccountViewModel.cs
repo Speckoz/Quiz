@@ -1,13 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Helpers;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Starting;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Views;
-using Quiz.Views.Starting;
+using Quiz.Mobile.Views;
+using Quiz.Mobile.Views.Starting;
 
 using RestSharp;
 
@@ -19,7 +18,7 @@ using Xamarin.Forms;
 
 using XF.Material.Forms.UI.Dialogs;
 
-namespace Quiz.ViewModels
+namespace Quiz.Mobile.ViewModels.Starting
 {
     public class AuthAccountViewModel : ViewModelBase
     {
@@ -73,7 +72,7 @@ namespace Quiz.ViewModels
                 {
                     dialog.MessageText = "Autenticado com sucesso!";
 
-                    GetDataHelper.User = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                     await Task.Delay(1000);
 

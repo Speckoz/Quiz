@@ -7,7 +7,7 @@ using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions;
-
+using Quiz.Mobile.Views.ManagerQuestions.Admin;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
@@ -72,7 +72,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                         ActionImage = ConvertImageHelper.Convert(Resources.register),
                         ActionName = "Avaliar Sugestoes",
                         ActionDescription= "Abre uma tela com as sugestoes de questoes.",
-                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Avaliar Sugestoes", "OK"))
+                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
                     },new ManagerQuestionsModel
                     {
                         ActionImage = ConvertImageHelper.Convert(Resources.heartLogo),

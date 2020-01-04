@@ -6,30 +6,36 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    Title="Status Questoes"
     mc:Ignorable="d">
-    <CollectionView ItemsSource="{Binding}">
-        <d:CollectionView.ItemsSource>
-            <x:String>12</x:String>
-        </d:CollectionView.ItemsSource>
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Grid Padding="5">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding}" />
-                    </Grid.GestureRecognizers>
-                    <md:MaterialCard BorderColor="DimGray">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Status: " />
-                            <Grid BackgroundColor="Green">
-                                <Label
-                                    Padding="3"
-                                    d:Text="Aceito"
-                                    TextColor="White" />
-                            </Grid>
-                        </StackLayout>
-                    </md:MaterialCard>
-                </Grid>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <ScrollView>
+        <FlexLayout
+            AlignContent="Center"
+            BindableLayout.ItemsSource="{Binding}"
+            Wrap="Wrap">
+            <d:BindableLayout.ItemsSource>
+                <x:String>12345</x:String>
+            </d:BindableLayout.ItemsSource>
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding}" />
+                        </Grid.GestureRecognizers>
+                        <md:MaterialCard BorderColor="DimGray">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Status: " />
+                                <Grid BackgroundColor="Green">
+                                    <Label
+                                        Padding="3"
+                                        d:Text="Aceito"
+                                        TextColor="White" />
+                                </Grid>
+                            </StackLayout>
+                        </md:MaterialCard>
+                    </Grid>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+    </ScrollView>
 </ContentPage>

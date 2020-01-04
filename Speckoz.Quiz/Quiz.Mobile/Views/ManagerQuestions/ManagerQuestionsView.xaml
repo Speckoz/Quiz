@@ -79,44 +79,53 @@
             IsVisible="{Binding IsAdmin}"
             Text="Area Administrativa" />
 
-        <CollectionView HorizontalOptions="FillAndExpand" ItemsSource="{Binding QuestionOptions}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10" Orientation="Vertical">
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
-                        </StackLayout.GestureRecognizers>
-                        <material:MaterialCard
-                            BackgroundColor="Transparent"
-                            BorderColor="DimGray"
-                            CornerRadius="10"
-                            Elevation="2">
-                            <StackLayout Orientation="Horizontal">
-                                <Image
-                                    HeightRequest="60"
-                                    Source="{Binding ActionImage}"
-                                    VerticalOptions="Center"
-                                    WidthRequest="60" />
+        <ScrollView>
+            <FlexLayout
+                AlignContent="Stretch"
+                BindableLayout.ItemsSource="{Binding QuestionOptions}"
+                HorizontalOptions="FillAndExpand"
+                Wrap="NoWrap">
+                <d:BindableLayout.ItemsSource>
+                    <x:String>12345</x:String>
+                </d:BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Orientation="Vertical">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
+                            </StackLayout.GestureRecognizers>
+                            <material:MaterialCard
+                                BackgroundColor="Transparent"
+                                BorderColor="DimGray"
+                                CornerRadius="10"
+                                Elevation="2">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="60"
+                                        Source="{Binding ActionImage}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="60" />
 
-                                <StackLayout
-                                    Margin="20,0,0,0"
-                                    Orientation="Vertical"
-                                    VerticalOptions="Center">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="Medium"
-                                        Text="{Binding ActionName}" />
-                                    <Label
-                                        FontSize="Subtitle"
-                                        Opacity=".6"
-                                        Text="{Binding ActionDescription}"
-                                        TextColor="Default" />
+                                    <StackLayout
+                                        Margin="20,0,0,0"
+                                        Orientation="Vertical"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding ActionName}" />
+                                        <Label
+                                            FontSize="Subtitle"
+                                            Opacity=".6"
+                                            Text="{Binding ActionDescription}"
+                                            TextColor="Default" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </material:MaterialCard>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                            </material:MaterialCard>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>

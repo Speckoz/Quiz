@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Quiz.API.Migrations
 {
-    public partial class pk_id : Migration
+    public partial class Models : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,7 @@ namespace Quiz.API.Migrations
                 columns: table => new
                 {
                     QuestionID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Question = table.Column<string>(nullable: false),
                     CorrectAnswer = table.Column<string>(nullable: false),
                     Category = table.Column<int>(nullable: false),
@@ -28,9 +29,9 @@ namespace Quiz.API.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     QuestionID = table.Column<int>(nullable: false),
-                    UserID = table.Column<int>(nullable: false),
+                    UserID = table.Column<Guid>(nullable: false),
                     QuestionStatus = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -43,7 +44,7 @@ namespace Quiz.API.Migrations
                 columns: table => new
                 {
                     QuestionSuggestionID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Question = table.Column<string>(nullable: false),
                     CorrectAnswer = table.Column<string>(nullable: false),
                     Category = table.Column<int>(nullable: false),

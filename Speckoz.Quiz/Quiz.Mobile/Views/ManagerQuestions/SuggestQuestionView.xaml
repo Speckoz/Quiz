@@ -15,7 +15,6 @@
 
     <ScrollView Padding="20">
         <StackLayout>
-
             <material:MaterialTextField
                 BackgroundColor="Transparent"
                 HorizontalOptions="CenterAndExpand"
@@ -54,27 +53,33 @@
                         VerticalOptions="Center" />
                 </Grid>
             </StackLayout>
-            <CollectionView
-                Header="Lista: "
-                HeightRequest="50"
-                ItemsLayout="HorizontalList"
-                ItemsSource="{Binding IncorrectAnswersChips}">
-                <CollectionView.ItemTemplate>
+            <FlexLayout
+                BindableLayout.ItemsSource="{Binding IncorrectAnswersChips}"
+                JustifyContent="SpaceEvenly"
+                Wrap="Wrap">
+                <d:BindableLayout.ItemsSource>
+                    <x:String>xxxxxxxxxxxxxxxxxx</x:String>
+                </d:BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
-                            </Grid.GestureRecognizers>
+                        <Grid
+                            Padding="2"
+                            d:HeightRequest="30"
+                            d:WidthRequest="50">
                             <material:MaterialChip
                                 x:Name="IAnswerChip"
                                 BackgroundColor="{StaticResource Material.Color.Primary}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="White" />
+                                TextColor="White">
+                                <material:MaterialChip.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
+                                </material:MaterialChip.GestureRecognizers>
+                            </material:MaterialChip>
                         </Grid>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
 
             <Label />
             <Picker

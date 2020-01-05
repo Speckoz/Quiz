@@ -9,13 +9,13 @@ using XF.Material.Forms.UI;
 
 namespace Quiz.Mobile.Models.ManagerQuestions
 {
-    internal class SuggestQuestionChipModel
+    public class SuggestQuestionChipModel
     {
         public RelayCommand<MaterialChip> IncorrectAnswerCommand { get; set; }
         public string IncorrectAnswerText { get; set; }
     }
 
-    internal class SuggestQuestionModel : QuestionModel, INotifyPropertyChanged
+    public class SuggestQuestionModel : QuestionModel, INotifyPropertyChanged
     {
         private CategoryEnum __category;
         private string __incorrectAnswers;

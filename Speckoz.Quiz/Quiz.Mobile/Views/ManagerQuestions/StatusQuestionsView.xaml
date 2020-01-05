@@ -9,33 +9,46 @@
     Title="Status Questoes"
     mc:Ignorable="d">
     <ScrollView>
-        <FlexLayout
-            AlignContent="Center"
-            BindableLayout.ItemsSource="{Binding}"
-            Wrap="Wrap">
+        <StackLayout BindableLayout.ItemsSource="{Binding StatusQuestions}">
             <d:BindableLayout.ItemsSource>
-                <x:String>12345</x:String>
+                <x:String>xxxxxxxxxxxx</x:String>
             </d:BindableLayout.ItemsSource>
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="5">
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding}" />
+                            <TapGestureRecognizer Command="{Binding ViewStatusCommand}" />
                         </Grid.GestureRecognizers>
-                        <md:MaterialCard BorderColor="DimGray">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Status: " />
-                                <Grid BackgroundColor="Green">
-                                    <Label
-                                        Padding="3"
-                                        d:Text="Aceito"
-                                        TextColor="White" />
-                                </Grid>
+                        <md:MaterialCard
+                            BackgroundColor="Transparent"
+                            BorderColor="DimGray"
+                            Elevation="5">
+                            <StackLayout Orientation="Vertical">
+                                <Label LineBreakMode="TailTruncation">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="Pergunta: " TextColor="DimGray" />
+                                                <Span d:Text="Qual o número mínimo de jogadores numa partida de futebol?" Text="{Binding Question.Question}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="Status: " TextColor="DimGray" />
+                                                <Span d:Text="Aceito" Text="{Binding Status.QuestionStatus}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
                             </StackLayout>
                         </md:MaterialCard>
                     </Grid>
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
-        </FlexLayout>
+        </StackLayout>
     </ScrollView>
 </ContentPage>

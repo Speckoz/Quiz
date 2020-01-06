@@ -64,7 +64,7 @@ namespace Quiz.Mobile.ViewModels.Starting
                 return;
             }
 
-            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
+            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
                 IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
 

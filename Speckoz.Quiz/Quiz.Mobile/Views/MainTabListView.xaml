@@ -9,6 +9,9 @@
     xmlns:mq="clr-namespace:Quiz.Mobile.Views.ManagerQuestions"
     xmlns:start="clr-namespace:Quiz.Mobile.Views.Starting"
     Title="Mobile Quiz"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BarBackgroundColor="{DynamicResource PrimaryColor}"
+    BarTextColor="{DynamicResource OverlayTextColor}"
     Visual="Material"
     mc:Ignorable="d">
     <TabbedPage.Children>

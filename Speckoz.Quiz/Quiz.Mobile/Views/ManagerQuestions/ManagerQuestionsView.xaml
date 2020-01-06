@@ -14,7 +14,7 @@
         <StackLayout>
             <material:MaterialCard
                 Margin="10"
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 BorderColor="DimGray"
                 CornerRadius="10"
                 Elevation="2">
@@ -39,14 +39,14 @@
                             FontSize="Subtitle"
                             Opacity=".6"
                             Text="Abre uma tela com campos para sugerir uma questao"
-                            TextColor="Default" />
+                            TextColor="{DynamicResource PrimaryTintColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
 
             <material:MaterialCard
                 Margin="10"
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 BorderColor="DimGray"
                 CornerRadius="10"
                 Elevation="2">
@@ -71,7 +71,7 @@
                             FontSize="Subtitle"
                             Opacity=".6"
                             Text="Abre uma tela para ver todas as suas sugestoes."
-                            TextColor="Default" />
+                            TextColor="{DynamicResource PrimaryTintColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
@@ -91,7 +91,7 @@
                                 <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                             </StackLayout.GestureRecognizers>
                             <material:MaterialCard
-                                BackgroundColor="Transparent"
+                                BackgroundColor="{DynamicResource PageBackgroundColor}"
                                 BorderColor="DimGray"
                                 CornerRadius="10"
                                 Elevation="2">
@@ -112,9 +112,9 @@
                                             Text="{Binding ActionName}" />
                                         <Label
                                             FontSize="Subtitle"
-                                            Opacity=".6"
+                                            Opacity=".5"
                                             Text="{Binding ActionDescription}"
-                                            TextColor="Default" />
+                                            TextColor="{DynamicResource PrimaryTintColor}" />
                                     </StackLayout>
                                 </StackLayout>
                             </material:MaterialCard>

@@ -4,7 +4,7 @@ using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.Helpers
 {
-    internal static class SendMessageHelper
+    public static class SendMessageHelper
     {
         public static async void SendAsync(string message, string title)
         {

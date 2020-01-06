@@ -7,6 +7,7 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Sugerir Questao"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
@@ -16,14 +17,14 @@
     <ScrollView Padding="20">
         <StackLayout>
             <material:MaterialTextField
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Pergunta"
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
             <material:MaterialTextField
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Resposta Correta"
                 ReturnType="Next"
@@ -32,7 +33,7 @@
 
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <material:MaterialTextField
-                    BackgroundColor="Transparent"
+                    BackgroundColor="{DynamicResource PageBackgroundColor}"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Respostas incorretas"
                     ReturnCommand="{Binding AddIncorrectAnswerCommand}"
@@ -68,10 +69,10 @@
                             d:WidthRequest="50">
                             <material:MaterialChip
                                 x:Name="IAnswerChip"
-                                BackgroundColor="{StaticResource Material.Color.Primary}"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="White">
+                                TextColor="{DynamicResource OverlayTextColor}">
                                 <material:MaterialChip.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
                                 </material:MaterialChip.GestureRecognizers>
@@ -84,9 +85,10 @@
             <Label />
             <Picker
                 Title="Selecione a Categoria"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 ItemsSource="{Binding CategoryChoice}"
                 SelectedIndex="{Binding Index}"
-                TextColor="{StaticResource Material.Color.Primary}" />
+                TextColor="{DynamicResource PrimaryColor}" />
             <Label />
 
             <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />

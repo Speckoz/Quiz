@@ -64,7 +64,7 @@ namespace Quiz.Mobile.ViewModels.Menu
                     break;
 
                 case ItemIdEnum.Perfil:
-                    //add perfil here
+                    //
                     break;
 
                 case ItemIdEnum.Logout:

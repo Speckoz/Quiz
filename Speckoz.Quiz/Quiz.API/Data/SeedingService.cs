@@ -19,7 +19,9 @@ namespace Quiz.API.Data
             {
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Historia,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "De quem é a famosa frase Penso, logo existo?",
                     CorrectAnswer = "Descartes",
                     IncorrectAnswers = "Platão/Sócrates/Galileu"
@@ -27,7 +29,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Quais o menor e o maior país do mundo?",
                     CorrectAnswer = "Vaticano e Rússia",
                     IncorrectAnswers = "Nauru e China/Mônaco e Canadá/Malta e Estados Unidos"
@@ -35,7 +39,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Qual o nome do presidente do Brasil que ficou conhecido como Jango?",
                     CorrectAnswer = "João Goulart",
                     IncorrectAnswers = "Jânio Quadros/Getúlio Vargas/João Figueiredo"
@@ -43,21 +49,27 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Quais os países que têm a maior e a menor expectativa de vida do mundo?",
                     CorrectAnswer = "Japão e Serra Leoa",
                     IncorrectAnswers = "Estados Unidos e Angola/Brasil e Congo/Austrália e Afeganistão"
                 });
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Esporte,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Qual o número mínimo de jogadores numa partida de futebol?",
                     CorrectAnswer = "7",
                     IncorrectAnswers = "8/10/5"
                 });
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Arte,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Quem pintou 'Guernica'?",
                     CorrectAnswer = "Pablo Picasso",
                     IncorrectAnswers = "Paul Cézanne/Diego Rivera/arsila do Amaral"
@@ -65,7 +77,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Ciencia,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Quanto tempo a luz do Sol demora para chegar à Terra?",
                     CorrectAnswer = "8 minutos",
                     IncorrectAnswers = "12 horas/1 dia/12 minutos"
@@ -73,7 +87,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Historia,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Qual a nacionalidade de Che Guevara?",
                     CorrectAnswer = "Argentina",
                     IncorrectAnswers = "Boliviana/Panamenha/Cubana"
@@ -81,7 +97,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Em que período da pré-história o fogo foi descoberto?",
                     CorrectAnswer = "Paleolítico",
                     IncorrectAnswers = "Idade Média/Neolítico/Idade dos Metais"
@@ -89,7 +107,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Qual o maior animal terrestre ?",
                     CorrectAnswer = "Elefante africano",
                     IncorrectAnswers = "Girafa/Tubarão Branco/Dinossauro"
@@ -97,7 +117,9 @@ namespace Quiz.API.Data
 
                 _context.Questions.Add(new QuestionModel
                 {
+                    Status = QuestionStatusEnum.Approved,
                     Category = CategoryEnum.Geograria,
+                    AuthorID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Question = "Em quantas compas do mundo a pátria amada brasil foi campeã?",
                     CorrectAnswer = "5",
                     IncorrectAnswers = "3/6/1"
@@ -112,6 +134,7 @@ namespace Quiz.API.Data
             {
                 _context.Users.Add(new UserBaseModel
                 {
+                    UserID = Guid.Parse("{9F708217-9FFB-4F29-89E1-DA85B3B72259}"),
                     Email = "quiz@speckoz.net",
                     Password = "quiz",
                     Level = 1,
@@ -121,35 +144,6 @@ namespace Quiz.API.Data
             }
 
             #endregion Users
-
-            #region Suggestions
-
-            if (!_context.Suggestions.Any())
-            {
-                _context.Suggestions.Add(new QuestionSuggestionModel
-                {
-                    Category = CategoryEnum.Ciencia,
-                    CorrectAnswer = "CorrectA",
-                    IncorrectAnswers = "e/e/e",
-                    Question = "Question for tests",
-                });
-            }
-
-            #endregion Suggestions
-
-            #region QuestionsStatus
-
-            if (!_context.QuestionsStatus.Any())
-            {
-                _context.QuestionsStatus.Add(new QuestionsStatusModel
-                {
-                    QuestionID = 1,
-                    QuestionStatus = QuestionStatusEnum.Pending,
-                    UserID = Guid.NewGuid(),
-                });
-            }
-
-            #endregion QuestionsStatus
 
             _context.SaveChanges();
         }

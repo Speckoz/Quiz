@@ -7,7 +7,7 @@
     xmlns:local="clr-namespace:Quiz.Mobile.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:menu="clr-namespace:Quiz.Mobile.Views.Menu"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <!--  Menu here  -->

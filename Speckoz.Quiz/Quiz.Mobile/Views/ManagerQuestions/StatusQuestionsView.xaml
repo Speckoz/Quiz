@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     Title="Status Questoes"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     mc:Ignorable="d">
     <ScrollView>
         <StackLayout BindableLayout.ItemsSource="{Binding StatusQuestions}">
@@ -21,7 +21,7 @@
                             <TapGestureRecognizer Command="{Binding ViewStatusCommand}" />
                         </Grid.GestureRecognizers>
                         <md:MaterialCard
-                            BackgroundColor="{DynamicResource PageBackgroundColor}"
+                            BackgroundColor="{DynamicResource BackgroundColor}"
                             BorderColor="DimGray"
                             Elevation="5">
                             <StackLayout Orientation="Vertical">

@@ -11,7 +11,7 @@
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationBarColor}" />
-            <Setter Property="BarTextColor" Value="{DynamicResource OverlayTextColor}" />
+            <Setter Property="BarTextColor" Value="{DynamicResource NavigationBarTextColor}" />
         </Style>
 
         <Style TargetType="Label">
@@ -20,13 +20,13 @@
 
         <Style TargetType="Button">
             <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
-            <Setter Property="TextColor" Value="{DynamicResource OverlayTextColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="CornerRadius" Value="20" />
             <Setter Property="HeightRequest" Value="40" />
         </Style>
 
         <Style x:Key="OutlinedButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="BorderWidth" Value="8" />
@@ -37,7 +37,7 @@
             <Setter Property="PlaceholderColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="FloatingPlaceholderColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="TextFontSize" Value="15" />
-            <Setter Property="TextColor" Value="{DynamicResource PrimaryTintColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource BackgroundTextColor}" />
             <Setter Property="AlwaysShowUnderline" Value="True" />
             <Setter Property="ShouldAnimateUnderline" Value="True" />
             <Setter Property="UnderlineColor" Value="{DynamicResource PrimaryColor}" />

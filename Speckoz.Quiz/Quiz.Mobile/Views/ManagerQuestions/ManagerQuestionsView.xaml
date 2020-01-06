@@ -8,13 +8,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="this"
     Title="Gerenciar Questoes"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ScrollView>
         <StackLayout>
             <material:MaterialCard
                 Margin="10"
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 BorderColor="DimGray"
                 CornerRadius="10"
                 Elevation="2">
@@ -39,14 +40,14 @@
                             FontSize="Subtitle"
                             Opacity=".6"
                             Text="Abre uma tela com campos para sugerir uma questao"
-                            TextColor="{DynamicResource PrimaryTintColor}" />
+                            TextColor="{DynamicResource BackgroundTextColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
 
             <material:MaterialCard
                 Margin="10"
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 BorderColor="DimGray"
                 CornerRadius="10"
                 Elevation="2">
@@ -71,7 +72,7 @@
                             FontSize="Subtitle"
                             Opacity=".6"
                             Text="Abre uma tela para ver todas as suas sugestoes."
-                            TextColor="{DynamicResource PrimaryTintColor}" />
+                            TextColor="{DynamicResource BackgroundTextColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
@@ -91,7 +92,7 @@
                                 <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                             </StackLayout.GestureRecognizers>
                             <material:MaterialCard
-                                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                                BackgroundColor="{DynamicResource BackgroundColor}"
                                 BorderColor="DimGray"
                                 CornerRadius="10"
                                 Elevation="2">
@@ -114,7 +115,7 @@
                                             FontSize="Subtitle"
                                             Opacity=".5"
                                             Text="{Binding ActionDescription}"
-                                            TextColor="{DynamicResource PrimaryTintColor}" />
+                                            TextColor="{DynamicResource BackgroundTextColor}" />
                                     </StackLayout>
                                 </StackLayout>
                             </material:MaterialCard>

@@ -7,7 +7,7 @@
     xmlns:image="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Menu"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -37,7 +37,7 @@
                     FontSize="Medium"
                     HorizontalOptions="Center"
                     Text="{Binding UserName}"
-                    TextColor="{DynamicResource OverlayTextColor}"
+                    TextColor="{DynamicResource PrimaryTextColor}"
                     VerticalOptions="Center" />
             </StackLayout>
             <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding MenuItems}">
@@ -64,7 +64,7 @@
                                 d:Text="{Binding .}"
                                 FontSize="Large"
                                 Text="{Binding Text}"
-                                TextColor="{DynamicResource PrimaryTintColor}" />
+                                TextColor="{DynamicResource BackgroundTextColor}" />
                         </Grid>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
@@ -76,7 +76,7 @@
                 FontSize="Medium"
                 HorizontalOptions="Center"
                 Text="Mobile Quiz - 2019"
-                TextColor="{DynamicResource PrimaryTintColor}"
+                TextColor="{DynamicResource BackgroundTextColor}"
                 VerticalOptions="End" />
         </Grid>
     </ContentPage.Content>

@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <StackLayout>

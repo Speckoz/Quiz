@@ -7,7 +7,7 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Sugerir Questao"
-    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
@@ -17,14 +17,14 @@
     <ScrollView Padding="20">
         <StackLayout>
             <material:MaterialTextField
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Pergunta"
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
             <material:MaterialTextField
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Resposta Correta"
                 ReturnType="Next"
@@ -33,7 +33,7 @@
 
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <material:MaterialTextField
-                    BackgroundColor="{DynamicResource PageBackgroundColor}"
+                    BackgroundColor="{DynamicResource BackgroundColor}"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Respostas incorretas"
                     ReturnCommand="{Binding AddIncorrectAnswerCommand}"
@@ -72,7 +72,7 @@
                                 BackgroundColor="{DynamicResource PrimaryColor}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="{DynamicResource OverlayTextColor}">
+                                TextColor="{DynamicResource PrimaryTextColor}">
                                 <material:MaterialChip.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
                                 </material:MaterialChip.GestureRecognizers>
@@ -85,7 +85,7 @@
             <Label />
             <Picker
                 Title="Selecione a Categoria"
-                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 ItemsSource="{Binding CategoryChoice}"
                 SelectedIndex="{Binding Index}"
                 TextColor="{DynamicResource PrimaryColor}" />

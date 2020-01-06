@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="ThemeBase">
       <HintPath>..\..\..\..\..\..\..\Users\Logikoz\source\repos\ThemeBase\Logikoz.ThemeBase\ThemeBase\bin\Release\netstandard2.1\ThemeBase.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 

@@ -6,7 +6,6 @@ using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Views.ManagerQuestions;
-using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions.Admin;
 using System.Collections.ObjectModel;
 

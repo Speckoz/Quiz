@@ -36,20 +36,9 @@ namespace Quiz.API.Controllers
                 question.AuthorID = Guid.Parse(userId);
                 QuestionModel suggestion = await _questionsRepository.CreateSuggestionTaskAsync(question);
 
-                return Created(new Uri($"/suggestions/{suggestion.QuestionID}"), suggestion);
+                return Created("/suggestions/{suggestion.QuestionID}", suggestion);
             }
             return BadRequest();
-        }
-
-        // GET: /suggestions
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetSuggestions()
-        {
-            List<QuestionModel> suggestions = await _questionsRepository.
-                GetQuestionsByStatusTaskAsync(QuestionStatusEnum.Pending);
-
-            return Ok(suggestions);
         }
 
         // DELETE: /suggestions/2

@@ -7,17 +7,18 @@ using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions.Admin;
+
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
 namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
-    internal class ManagerQuestionsViewModel : ViewModelBase
+    public class ManagerQuestionsViewModel : ViewModelBase
     {
         private ObservableCollection<ManagerQuestionsModel> __questionOptions;
         private ManagerQuestionsModel __suggestQuestion;
-        private bool __isAdmin = true;
+        private bool __isAdmin;
         private ManagerQuestionsModel __statusSuggestions;
 
         public ObservableCollection<ManagerQuestionsModel> QuestionOptions
@@ -54,8 +55,11 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
             StatusSuggestions = new ManagerQuestionsModel
             {
-                ActionImage = ConvertImageHelper.Convert(Resources.choose),
-                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new StatusQuestionsView()), true))
+                ActionImage = ConvertImageHelper.Convert(Resources.heartLogo),
+                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new StatusQuestionsView()
+                {
+                    BindingContext = new StatusQuestionsViewModel()
+                }), true))
             };
 
             if (IsAdmin = GetDataHelper.CurrentUser.User.UserType == UserTypeEnum.Admin)

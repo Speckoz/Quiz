@@ -18,5 +18,13 @@ namespace Quiz.Mobile.Services.Requests
             request.AddJsonBody(JsonSerializer.Serialize(question));
             return await new RestClient($"{GetDataHelper.Uri}/Suggestions").ExecuteTaskAsync(request);
         }
+
+        public static async Task<IRestResponse> StatusQuestionsTaskAsync()
+        {
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Authorization", $"Bearer {GetDataHelper.CurrentUser.Token}");
+            return await new RestClient($"{GetDataHelper.Uri}/Suggestions/status").ExecuteTaskAsync(request);
+        }
     }
 }

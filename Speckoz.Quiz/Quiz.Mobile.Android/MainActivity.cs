@@ -4,10 +4,15 @@ using Android.OS;
 using Android.Runtime;
 
 using Quiz.Mobile.Droid;
+using Quiz.Mobile.Droid.Services;
+using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Models.Starting;
+
+using System.Text.Json;
 
 namespace Quiz.Droid
 {
-    [Activity(Label = "Quiz", Icon = "@mipmap/icon", Theme = "@style/DarkTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Quiz", Icon = "@mipmap/icon", Theme = "@style/LightTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -27,6 +32,11 @@ namespace Quiz.Droid
             Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
             LoadApplication(new App());
+
+            //GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(CurrentUserAndroidService.GetCurrentUser(), new JsonSerializerOptions
+            //{
+            //    PropertyNameCaseInsensitive = true
+            //});
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

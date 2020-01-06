@@ -6,6 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <StackLayout>
@@ -48,6 +49,7 @@
                 <material:MaterialTextField
                     InputType="Password"
                     Placeholder="Senha"
+                    ReturnCommand="{Binding RegisterCommand}"
                     ReturnType="Done"
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewPassword}" />
@@ -62,7 +64,7 @@
         <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Já tem uma conta?" />
             <Button
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 Command="{Binding BackCommand}"
                 Style="{StaticResource OutlinedButton}"
                 Text="Voltar"

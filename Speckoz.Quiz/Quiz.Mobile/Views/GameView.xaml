@@ -7,118 +7,119 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Jogando"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding ForceGameOverCommand}" Text="Encerrar" />
     </ContentPage.ToolbarItems>
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ScrollView>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <material:MaterialCard
-            Grid.Row="0"
-            BackgroundColor="Transparent"
-            BorderColor="DimGray"
-            CornerRadius="10"
-            Elevation="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Label
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center"
-                    TextColor="Default">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Rodada: " />
-                            <Span
-                                d:Text="15"
-                                Text="{Binding Round}"
-                                TextColor="#9d0af5" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label
-                    Grid.Column="1"
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center"
-                    TextColor="Default">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Pontos: " />
-                            <Span
-                                d:Text="1235"
-                                Text="{Binding Points}"
-                                TextColor="#9d0af5" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </Grid>
-        </material:MaterialCard>
-
-        <material:MaterialCard
-            Grid.Row="1"
-            Margin="0,20,0,30"
-            Padding="0"
-            BackgroundColor="Transparent"
-            BorderColor="DimGray"
-            CornerRadius="10"
-            Elevation="2">
-            <StackLayout>
+            <material:MaterialCard
+                Grid.Row="0"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BorderColor="DimGray"
+                CornerRadius="10"
+                Elevation="2">
                 <Grid>
-                    <BoxView BackgroundColor="{StaticResource Material.Color.Primary}" CornerRadius="10 10 0 0" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Label
+                        Grid.Column="0"
                         FontAttributes="Bold"
                         FontSize="Large"
-                        HorizontalOptions="Center"
-                        Text="Pergunta"
-                        TextColor="White"
-                        VerticalOptions="Center" />
+                        HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Rodada: " TextColor="{DynamicResource PrimaryTintColor}" />
+                                <Span
+                                    d:Text="15"
+                                    Text="{Binding Round}"
+                                    TextColor="{DynamicResource PrimaryColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Pontos: " TextColor="{DynamicResource PrimaryTintColor}" />
+                                <Span
+                                    d:Text="1235"
+                                    Text="{Binding Points}"
+                                    TextColor="{DynamicResource PrimaryColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
                 </Grid>
+            </material:MaterialCard>
 
-                <Label
-                    Grid.Row="1"
-                    Margin="15"
-                    d:Text="Ruan Carlos é top demais test teste lgkflkgsd lgskdlfkg sldf "
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding Question}"
-                    TextColor="Default"
-                    VerticalOptions="Center" />
-            </StackLayout>
-        </material:MaterialCard>
-        <CollectionView Grid.Row="2" ItemsSource="{Binding AnswerButtons}">
-            <d:CollectionView.ItemsSource>
-                <x:String>11111</x:String>
-            </d:CollectionView.ItemsSource>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Padding="5">
-                        <Button
-                            x:Name="ClickedButton"
-                            Padding="0"
-                            d:Text="Teste"
-                            BackgroundColor="Transparent"
-                            ClassId="{Binding IsCorrectAnswer}"
-                            Command="{Binding AnswerCommand}"
-                            CommandParameter="{Binding Source={x:Reference ClickedButton}}"
-                            FontSize="Medium"
-                            HeightRequest="40"
-                            Style="{StaticResource OutlinedButton}"
-                            Text="{Binding AnswerText}" />
+            <material:MaterialCard
+                Grid.Row="1"
+                Margin="0,20,0,30"
+                Padding="0"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                BorderColor="DimGray"
+                CornerRadius="10"
+                Elevation="2">
+                <StackLayout>
+                    <Grid>
+                        <BoxView BackgroundColor="{DynamicResource PrimaryColor}" CornerRadius="10 10 0 0" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="Pergunta"
+                            TextColor="{DynamicResource PrimaryTintColor}"
+                            VerticalOptions="Center" />
                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+
+                    <Label
+                        Grid.Row="1"
+                        Margin="15"
+                        d:Text="Ruan Carlos é top demais test teste lgkflkgsd lgskdlfkg sldf ola olaol ola ola"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Question}"
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </material:MaterialCard>
+            <StackLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding AnswerButtons}">
+                <d:BindableLayout.ItemsSource>
+                    <x:String>11111</x:String>
+                </d:BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Button
+                                x:Name="ClickedButton"
+                                Padding="0"
+                                d:Text="Teste"
+                                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                                ClassId="{Binding IsCorrectAnswer}"
+                                Command="{Binding AnswerCommand}"
+                                CommandParameter="{Binding Source={x:Reference ClickedButton}}"
+                                FontSize="Medium"
+                                HeightRequest="40"
+                                Style="{StaticResource OutlinedButton}"
+                                Text="{Binding AnswerText}" />
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>

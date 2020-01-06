@@ -6,56 +6,42 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
-    xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
     mc:Ignorable="d">
     <Application.Resources>
 
-        <mtrl:MaterialColorConfiguration
-            x:Key="Material.Color"
-            Background="#EAEAEA"
-            Error="#B00020"
-            OnBackground="#000000"
-            OnError="#FFFFFF"
-            OnPrimary="#FFFFFF"
-            OnSecondary="#FFFFFF"
-            OnSurface="#000000"
-            Primary="#9d0af5"
-            PrimaryVariant="#000000"
-            Secondary="Gray"
-            SecondaryVariant="#001229"
-            Surface="#FFFFFF" />
-
-        <mtrl:MaterialConfiguration x:Key="Material.Configuration" ColorConfiguration="{StaticResource Material.Color}" />
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationBarColor}" />
+            <Setter Property="BarTextColor" Value="{DynamicResource OverlayTextColor}" />
+        </Style>
 
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
         </Style>
 
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource OverlayTextColor}" />
             <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="TextColor" Value="White" />
             <Setter Property="HeightRequest" Value="40" />
         </Style>
 
         <Style x:Key="OutlinedButton" TargetType="Button">
-            <Setter Property="BackgroundColor" Value="White" />
-            <Setter Property="TextColor" Value="{DynamicResource Material.Color.Primary}" />
-            <Setter Property="BorderColor" Value="{DynamicResource Material.Color.Primary}" />
-            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="BorderWidth" Value="8" />
         </Style>
 
         <Style x:Key="MTFBase" TargetType="material:MaterialTextField">
             <Setter Property="BackgroundColor" Value="Default" />
-            <Setter Property="PlaceholderColor" Value="{DynamicResource Material.Color.Primary}" />
-            <Setter Property="FloatingPlaceholderColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="PlaceholderColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="FloatingPlaceholderColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="TextFontSize" Value="15" />
-            <Setter Property="TextColor" Value="Default" />
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTintColor}" />
             <Setter Property="AlwaysShowUnderline" Value="True" />
             <Setter Property="ShouldAnimateUnderline" Value="True" />
-            <Setter Property="UnderlineColor" Value="{DynamicResource Material.Color.Secondary}" />
-            <Setter Property="TintColor" Value="{DynamicResource Material.Color.Primary}" />
+            <Setter Property="UnderlineColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="TintColor" Value="{DynamicResource PrimaryColor}" />
         </Style>
     </Application.Resources>
 </Application>

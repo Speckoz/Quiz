@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Quiz.Mobile.ViewModels;
+
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Quiz.Mobile.Views
@@ -6,6 +8,10 @@ namespace Quiz.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainScreenView : MasterDetailPage
     {
-        public MainScreenView() => InitializeComponent();
+        public MainScreenView()
+        {
+            InitializeComponent();
+            BindingContext = new MainScreenViewModel();
+        }
     }
 }

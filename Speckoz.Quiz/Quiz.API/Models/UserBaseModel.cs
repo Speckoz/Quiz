@@ -1,6 +1,7 @@
 ﻿using Quiz.Dependencies.Enums;
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
+
 using System;
 using System.ComponentModel.DataAnnotations;
 

@@ -22,7 +22,7 @@ using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
-    internal class SuggestQuestionViewModel : ViewModelBase
+    public class SuggestQuestionViewModel : ViewModelBase
     {
         private SuggestQuestionModel __newQuestion;
 

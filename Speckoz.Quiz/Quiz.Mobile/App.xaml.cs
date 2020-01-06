@@ -1,4 +1,7 @@
-﻿using Quiz.Mobile.Views.Starting;
+﻿using Logikoz.ThemeBase.Enums;
+
+using Quiz.Mobile.Util;
+using Quiz.Mobile.Views.Starting;
 
 using Xamarin.Forms;
 
@@ -9,7 +12,7 @@ namespace Quiz
         public App()
         {
             InitializeComponent();
-            XF.Material.Forms.Material.Init(this, "Material.Configuration");
+            ChangeThemeUtil.Change(ThemeEnum.Dark);
         }
 
         protected override void OnStart() => MainPage = new AuthAccountView();

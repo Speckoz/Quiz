@@ -7,6 +7,7 @@
     xmlns:local="clr-namespace:Quiz.Mobile.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:menu="clr-namespace:Quiz.Mobile.Views.Menu"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <!--  Menu here  -->
@@ -15,6 +16,9 @@
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>
+            <NavigationPage.ToolbarItems>
+                <ToolbarItem Command="{Binding ChangeThemeCommand}" Text="Tema" />
+            </NavigationPage.ToolbarItems>
             <x:Arguments>
                 <local:MainTabListView />
             </x:Arguments>

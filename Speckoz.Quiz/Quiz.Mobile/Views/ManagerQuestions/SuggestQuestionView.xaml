@@ -7,6 +7,7 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Sugerir Questao"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ContentPage.ToolbarItems>
@@ -15,16 +16,15 @@
 
     <ScrollView Padding="20">
         <StackLayout>
-
             <material:MaterialTextField
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Pergunta"
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
             <material:MaterialTextField
-                BackgroundColor="Transparent"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
                 Placeholder="Resposta Correta"
                 ReturnType="Next"
@@ -33,7 +33,7 @@
 
             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                 <material:MaterialTextField
-                    BackgroundColor="Transparent"
+                    BackgroundColor="{DynamicResource PageBackgroundColor}"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Respostas incorretas"
                     ReturnCommand="{Binding AddIncorrectAnswerCommand}"
@@ -54,34 +54,41 @@
                         VerticalOptions="Center" />
                 </Grid>
             </StackLayout>
-            <CollectionView
-                Header="Lista: "
-                HeightRequest="50"
-                ItemsLayout="HorizontalList"
-                ItemsSource="{Binding IncorrectAnswersChips}">
-                <CollectionView.ItemTemplate>
+            <FlexLayout
+                BindableLayout.ItemsSource="{Binding IncorrectAnswersChips}"
+                JustifyContent="SpaceEvenly"
+                Wrap="Wrap">
+                <d:BindableLayout.ItemsSource>
+                    <x:String>xxxxxxxxxxxxxxxxxx</x:String>
+                </d:BindableLayout.ItemsSource>
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
-                            </Grid.GestureRecognizers>
+                        <Grid
+                            Padding="2"
+                            d:HeightRequest="30"
+                            d:WidthRequest="50">
                             <material:MaterialChip
                                 x:Name="IAnswerChip"
-                                BackgroundColor="{StaticResource Material.Color.Primary}"
+                                BackgroundColor="{DynamicResource PrimaryColor}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="White" />
+                                TextColor="{DynamicResource OverlayTextColor}">
+                                <material:MaterialChip.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
+                                </material:MaterialChip.GestureRecognizers>
+                            </material:MaterialChip>
                         </Grid>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
 
             <Label />
             <Picker
                 Title="Selecione a Categoria"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
                 ItemsSource="{Binding CategoryChoice}"
                 SelectedIndex="{Binding Index}"
-                TextColor="{StaticResource Material.Color.Primary}" />
+                TextColor="{DynamicResource PrimaryColor}" />
             <Label />
 
             <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />

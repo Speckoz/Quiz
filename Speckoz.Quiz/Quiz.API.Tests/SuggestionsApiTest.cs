@@ -69,7 +69,8 @@ namespace Quiz.API.Tests
 
             using HttpResponseMessage response = await _client.SendAsync(request);
 
-            QuestionSuggestionModel resultSuggestion = JsonConvert.DeserializeObject<QuestionSuggestionModel>(await response.Content.ReadAsStringAsync());
+            string value = await response.Content.ReadAsStringAsync();
+            QuestionSuggestionModel resultSuggestion = JsonConvert.DeserializeObject<QuestionSuggestionModel>(value);
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             Assert.NotEmpty(resultSuggestion.QuestionSuggestionID.ToString());
             Assert.NotEmpty(resultSuggestion.Question);

@@ -6,9 +6,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <StackLayout>
+
         <Grid Margin="20,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -36,18 +38,20 @@
                 Grid.Row="2"
                 Margin="0,20,0,20"
                 Orientation="Vertical">
+
                 <material:MaterialTextField
                     InputType="Text"
                     Placeholder="Usuário/Email"
                     ReturnType="Next"
-                    Style="{StaticResource MTFBase}"
+                    Style="{DynamicResource MTFBase}"
                     Text="{Binding Login}" />
 
                 <material:MaterialTextField
                     InputType="Password"
                     Placeholder="Senha"
+                    ReturnCommand="{Binding AuthCommand}"
                     ReturnType="Done"
-                    Style="{StaticResource MTFBase}"
+                    Style="{DynamicResource MTFBase}"
                     Text="{Binding Password}" />
             </StackLayout>
 
@@ -59,7 +63,6 @@
                     VerticalOptions="Center" />
             </StackLayout>
         </Grid>
-
         <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
             <Button

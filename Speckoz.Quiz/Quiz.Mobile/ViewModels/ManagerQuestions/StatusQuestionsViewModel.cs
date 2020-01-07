@@ -6,7 +6,7 @@ using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
 
 using RestSharp;
-
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
@@ -44,7 +44,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                         StatusQuestions.Add(new StatusQuestionsCardModel
                         {
                             Question = question,
-                            ViewStatusCommand = new RelayCommand<IQuestion>(async (question) => await MaterialDialog.Instance.ConfirmAsync(question.Question, $"{question.Status}", "OK"))
+                            ViewStatusCommand = new RelayCommand<IQuestion>(ViewStatus)
                         });
                     }
                 }
@@ -53,6 +53,13 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops", "OK");
                 }
             }
+        }
+
+        private async void ViewStatus(IQuestion question)
+        {
+            await MaterialDialog.Instance.ConfirmAsync(
+                $"Pergunta: {question.Question}\nCorreta: {question.CorrectAnswer}\nErradas: {question.IncorrectAnswers}\nCategoria: {question.Category}\nID: {question.QuestionID}",
+                $"{question.AuthorID}", "OK");
         }
     }
 }

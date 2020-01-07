@@ -23,6 +23,7 @@ namespace Quiz.Mobile.ViewModels.Menu
         private ImageSource __userImage;
         private ObservableCollection<MenuModel> __menuItems;
         private string __userType;
+        private string __userName;
 
         public ImageSource UserImage
         {
@@ -32,12 +33,8 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         public string UserName
         {
-            get => GetDataHelper.CurrentUser.User.Username;
-            set
-            {
-                GetDataHelper.CurrentUser.User.Username = value;
-                RaisePropertyChanged();
-            }
+            get => __userName;
+            set => Set(ref __userName, value);
         }
 
         public string UserType

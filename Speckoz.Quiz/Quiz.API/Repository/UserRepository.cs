@@ -44,8 +44,7 @@ namespace Quiz.API.Repository
             IQueryable<UserBaseModel> query = _context.Users
                 .Where(u => (u.Username == login || u.Email == login) && u.Password == password);
 
-            var user = await query.FirstOrDefaultAsync();
-            return user;
+            return await query.FirstOrDefaultAsync();
         }
     }
 }

@@ -64,7 +64,7 @@ namespace Quiz.Mobile.ViewModels
 
             ForceGameOverCommand = new RelayCommand(async () =>
             {
-                if (await Application.Current.MainPage.DisplayAlert("Aviso", "Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Sair", "Cancelar"))
+                if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
                     await Application.Current.MainPage.Navigation.PopModalAsync(true);
             });
         }
@@ -73,7 +73,7 @@ namespace Quiz.Mobile.ViewModels
         {
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
             {
-                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
+                IRestResponse response = GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -84,12 +84,12 @@ namespace Quiz.Mobile.ViewModels
                 else if (response.StatusCode == HttpStatusCode.NotFound)
                 {
                     GameOverAsync();
-                    await Application.Current.MainPage.DisplayAlert("🤔", "Nao existe nenhuma pergunta para essa categoria. :/", "OK");
+                    await MaterialDialog.Instance.AlertAsync("Nao existe nenhuma pergunta para essa categoria.", ":/", "OK");
                 }
                 else
                 {
                     GameOverAsync();
-                    await Application.Current.MainPage.DisplayAlert("😥", "Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "OK");
+                    await MaterialDialog.Instance.AlertAsync("Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "Erro", "OK");
                 }
             }
         }
@@ -127,7 +127,8 @@ namespace Quiz.Mobile.ViewModels
             {
                 (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
 
-                if (await Application.Current.MainPage.DisplayAlert("Fim de jogo 🎮", $"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Jogar Novamente", "Voltar"))
+                if ((await MaterialDialog.Instance.ConfirmAsync($"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Fim de jogo",
+                    "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
                     await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(_category)), true);

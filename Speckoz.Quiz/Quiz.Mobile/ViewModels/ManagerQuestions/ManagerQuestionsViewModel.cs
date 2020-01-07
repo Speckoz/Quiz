@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
+using XF.Material.Forms.UI.Dialogs;
+
 namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     public class ManagerQuestionsViewModel : ViewModelBase
@@ -69,27 +71,27 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         private void AdminAreaItems()
         {
             QuestionOptions = new ObservableCollection<ManagerQuestionsModel>
+            {
+                new ManagerQuestionsModel
                 {
-                    new ManagerQuestionsModel
-                    {
-                        ActionImage = ConvertImageHelper.Convert(Resources.register),
-                        ActionName = "Avaliar Sugestoes",
-                        ActionDescription= "Abre uma tela com as sugestoes de questoes.",
-                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
-                    },new ManagerQuestionsModel
-                    {
-                        ActionImage = ConvertImageHelper.Convert(Resources.heartLogo),
-                        ActionName = "Editar Questao",
-                        ActionDescription= "Abre uma tela com campos para editar uma questao",
-                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Editar questao", "OK"))
-                    },new ManagerQuestionsModel
-                    {
-                        ActionImage = ConvertImageHelper.Convert(Resources.choose),
-                        ActionName = "Excluir Questao",
-                        ActionDescription= "Abre uma tela com campos para excluir uma questao",
-                        ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("", "Excluir questao", "OK"))
-                    }
-                };
+                    ActionImage = ConvertImageHelper.Convert(Resources.register),
+                    ActionName = "Avaliar Sugestoes",
+                    ActionDescription= "Abre uma tela com as sugestoes de questoes.",
+                    ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
+                },new ManagerQuestionsModel
+                {
+                    ActionImage = ConvertImageHelper.Convert(Resources.heartLogo),
+                    ActionName = "Editar Questao",
+                    ActionDescription= "Abre uma tela com campos para editar uma questao",
+                    ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Editar questao", "", "OK"))
+                },new ManagerQuestionsModel
+                {
+                    ActionImage = ConvertImageHelper.Convert(Resources.choose),
+                    ActionName = "Excluir Questao",
+                    ActionDescription= "Abre uma tela com campos para excluir uma questao",
+                    ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Excluir questao", "", "OK"))
+                }
+            };
         }
     }
 }

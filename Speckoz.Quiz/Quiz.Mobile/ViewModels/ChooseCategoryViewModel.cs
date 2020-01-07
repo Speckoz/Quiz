@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using Logikoz.ThemeBase.Enums;
+using Logikoz.ThemeBase.Helpers;
 using Quiz.Dependencies.Enums;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models;
@@ -11,9 +12,6 @@ using System;
 using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
-
-using XF.Material.Forms;
-using XF.Material.Forms.Resources;
 
 namespace Quiz.Mobile.ViewModels
 {
@@ -42,7 +40,7 @@ namespace Quiz.Mobile.ViewModels
             {
                 new ChooseCategoryModel
                 {
-                    BackgroundColor = Material.GetResource<Color>(MaterialConstants.Color.PRIMARY),
+                    BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
                     PaddingButton = new Thickness(0,30,0,20),
                     ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosenAsync),
                     TextButton = CategoryEnum.Todas

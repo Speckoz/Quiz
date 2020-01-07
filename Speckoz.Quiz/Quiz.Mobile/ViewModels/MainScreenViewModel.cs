@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Logikoz.ThemeBase.Enums;
 
+using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Util;
 
 namespace Quiz.Mobile.ViewModels
@@ -17,7 +18,11 @@ namespace Quiz.Mobile.ViewModels
 
         private void Init()
         {
-            ChangeThemeCommand = new RelayCommand(() => ChangeThemeUtil.Change(currentTheme = (currentTheme == ThemeEnum.Light) ? ThemeEnum.Dark : ThemeEnum.Light));
+            ChangeThemeCommand = new RelayCommand(() =>
+            {
+                ChangeThemeUtil.Change(currentTheme = (currentTheme == ThemeEnum.Light) ? ThemeEnum.Dark : ThemeEnum.Light);
+                DialogThemeConfigHelper.Init();
+            });
         }
     }
 }

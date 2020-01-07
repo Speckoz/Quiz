@@ -76,20 +76,20 @@ namespace Quiz.Mobile.ViewModels.Starting
         {
             if (!string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(NewPassword))
             {
-                ConfirmNewPassword = await Application.Current.MainPage.DisplayPromptAsync("Cadastro", "Por favor, confirme sua senha!", "Confirmar", "Esqueci", "Senha");
+                ConfirmNewPassword = await MaterialDialog.Instance.InputAsync("Cadastro", "Por favor, confirme sua senha!", string.Empty, "Senha", "Confirmar", "Esqueci");
 
-                if (ConfirmNewPassword == null)
+                if (string.IsNullOrEmpty(ConfirmNewPassword))
                     return;
 
                 if (NewPassword != ConfirmNewPassword)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Ops!", "As senhas nao coincidem!", "OK");
+                    await MaterialDialog.Instance.AlertAsync("As senhas nao coincidem!", "Ops!", "OK");
                     return;
                 }
 
                 using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Processando cadastro..."))
                 {
-                    IRestResponse response = await AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
+                    IRestResponse response = AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
 
                     if (response.StatusCode == HttpStatusCode.Created)
                     {
@@ -101,12 +101,12 @@ namespace Quiz.Mobile.ViewModels.Starting
                     else
                     {
                         await dialog.DismissAsync();
-                        await Application.Current.MainPage.DisplayAlert("Algo deu errado!", "Nao foi possivel efetuar o cadastro!\nVerifique sua conexao e tente novamente.", "OK");
+                        await MaterialDialog.Instance.AlertAsync("Nao foi possivel efetuar o cadastro!\nVerifique sua conexao e tente novamente.", "Algo deu errado!", "OK");
                     }
                 }
             }
             else
-                await Application.Current.MainPage.DisplayAlert("Oh nao!", "Voce precisa preencher os campos!\n", "OK");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa preencher os campos!\n", "Oh nao!", "OK");
         }
     }
 }

@@ -56,22 +56,24 @@
             </StackLayout>
 
             <StackLayout Grid.Row="3" Orientation="Vertical">
-                <Button
+                <material:MaterialButton
                     Command="{Binding AuthCommand}"
                     HorizontalOptions="Fill"
+                    Style="{StaticResource RaisedButton}"
                     Text="Autenticar"
                     VerticalOptions="Center" />
             </StackLayout>
         </Grid>
         <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
             <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
-            <Button
-                BackgroundColor="Transparent"
+            <material:MaterialButton
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 Command="{Binding RegisterCommand}"
                 HorizontalOptions="Fill"
                 Style="{StaticResource OutlinedButton}"
                 Text="Registrar"
-                VerticalOptions="Center" />
+                VerticalOptions="Center"
+                Visual="Material" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

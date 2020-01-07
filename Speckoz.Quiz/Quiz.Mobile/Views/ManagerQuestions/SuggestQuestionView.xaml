@@ -72,7 +72,7 @@
                                 BackgroundColor="{DynamicResource PrimaryColor}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="{DynamicResource PrimaryTextColor}">
+                                TextColor="{DynamicResource PrimaryColorTextColor}">
                                 <material:MaterialChip.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
                                 </material:MaterialChip.GestureRecognizers>
@@ -91,7 +91,10 @@
                 TextColor="{DynamicResource PrimaryColor}" />
             <Label />
 
-            <Button Command="{Binding SendSugestionCommand}" Text="Enviar" />
+            <material:MaterialButton
+                Command="{Binding SendSugestionCommand}"
+                Style="{StaticResource RaisedButton}"
+                Text="Enviar" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

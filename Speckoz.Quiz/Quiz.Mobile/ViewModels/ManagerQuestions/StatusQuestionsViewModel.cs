@@ -11,8 +11,6 @@ using System.Collections.ObjectModel;
 using System.Net;
 using System.Text.Json;
 
-using Xamarin.Forms;
-
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.ManagerQuestions
@@ -34,19 +32,19 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             StatusQuestions = new ObservableCollection<StatusQuestionsCardModel>();
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Recolhendo informaçoes..."))
             {
-                IRestResponse response = await ManagerQuestionsService.StatusQuestionsTaskAsync();
+                IRestResponse response = ManagerQuestionsService.StatusQuestionsTaskAsync();
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     List<StatusQuestionsModel> list = JsonSerializer
                         .Deserialize<List<StatusQuestionsModel>>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                    foreach(var i in list)
+                    foreach (StatusQuestionsModel i in list)
                     {
                         StatusQuestions.Add(new StatusQuestionsCardModel
                         {
                             Status = i,
                             Question = new SuggestQuestionModel { Question = "Como vai pessoas?" },
-                            ViewStatusCommand = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("😋", "Tudo certo", "OK"))
+                            ViewStatusCommand = new RelayCommand(async () => await MaterialDialog.Instance.ConfirmAsync("Tudo certo", "OKOK", "OK"))
                         });
                     }
                     //list.ForEach(i => StatusQuestions.Add(new StatusQuestionsCardModel
@@ -58,7 +56,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Ops", "Algo de errado nao está certo", "OK");
+                    await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops", "OK");
                 }
             }
         }

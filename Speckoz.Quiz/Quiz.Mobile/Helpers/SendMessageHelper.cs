@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-using XF.Material.Forms.UI.Dialogs;
+﻿using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.Helpers
 {
@@ -14,7 +12,7 @@ namespace Quiz.Mobile.Helpers
             }
             catch
             {
-                await Application.Current.MainPage.DisplayAlert(title, message, "OK");
+                await MaterialDialog.Instance.AlertAsync(message, title, "OK");
             }
         }
     }

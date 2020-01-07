@@ -6,8 +6,14 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:theme="clr-namespace:Logikoz.ThemeBase.Themes;assembly=ThemeBase"
     mc:Ignorable="d">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <theme:DarkDefaultTheme />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="{DynamicResource NavigationBarColor}" />
@@ -18,18 +24,18 @@
             <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
         </Style>
 
-        <Style TargetType="Button">
+        <Style x:Key="RaisedButton" TargetType="material:MaterialButton">
             <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="HeightRequest" Value="40" />
         </Style>
 
-        <Style x:Key="OutlinedButton" TargetType="Button">
+        <Style x:Key="OutlinedButton" TargetType="material:MaterialButton">
             <Setter Property="BackgroundColor" Value="{DynamicResource BackgroundColor}" />
             <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
             <Setter Property="BorderColor" Value="{DynamicResource PrimaryColor}" />
-            <Setter Property="BorderWidth" Value="8" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="BorderWidth" Value="1" />
         </Style>
 
         <Style x:Key="MTFBase" TargetType="material:MaterialTextField">

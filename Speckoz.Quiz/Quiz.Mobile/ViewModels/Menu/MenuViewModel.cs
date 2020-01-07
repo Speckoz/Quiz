@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 
 using Xamarin.Forms;
 
+using XF.Material.Forms.UI.Dialogs;
+
 namespace Quiz.Mobile.ViewModels.Menu
 {
     internal class MenuViewModel : ViewModelBase
@@ -68,7 +70,7 @@ namespace Quiz.Mobile.ViewModels.Menu
                     break;
 
                 case ItemIdEnum.Logout:
-                    if (await Application.Current.MainPage.DisplayAlert("ATENÇAO!", "Realmente deseja deslogar da conta atual?", "Deslogar", "Cancelar"))
+                    if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja deslogar da conta atual?", "ATENÇAO!", "Deslogar", "Cancelar")) == true)
                         Application.Current.MainPage = new AuthAccountView();
                     break;
 

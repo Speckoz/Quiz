@@ -60,13 +60,13 @@ namespace Quiz.Mobile.ViewModels.Starting
         {
             if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
             {
-                await Application.Current.MainPage.DisplayAlert("Ops!", "Voce precisa preencher os campos!", "OK");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa preencher os campos!", "Ops!", "OK");
                 return;
             }
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
-                IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
+                IRestResponse response = AccountService.AuthAccountTaskAsync(Login, Password);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -81,12 +81,12 @@ namespace Quiz.Mobile.ViewModels.Starting
                 else if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
                     await dialog.DismissAsync();
-                    await Application.Current.MainPage.DisplayAlert("🤔", "Usuario ou Senha está incorreto!", "OK");
+                    await MaterialDialog.Instance.AlertAsync("Usuario ou Senha está incorreto!", "Ops!", "OK");
                 }
                 else
                 {
                     await dialog.DismissAsync();
-                    await Application.Current.MainPage.DisplayAlert("😑", "Algo deu errado, verifique sua conexao e tente novamente!", "OK");
+                    await MaterialDialog.Instance.AlertAsync("Algo deu errado, verifique sua conexao e tente novamente!", "Erro", "OK");
                 }
             }
         }

@@ -81,7 +81,7 @@
                             FontSize="Large"
                             HorizontalOptions="Center"
                             Text="Pergunta"
-                            TextColor="{DynamicResource BackgroundTextColor}"
+                            TextColor="{DynamicResource PrimaryTextColor}"
                             VerticalOptions="Center" />
                     </Grid>
 
@@ -93,30 +93,25 @@
                         FontSize="Large"
                         HorizontalTextAlignment="Center"
                         Text="{Binding Question}"
-                        TextColor="{DynamicResource PrimaryTextColor}"
+                        TextColor="{DynamicResource BackgroundTextColor}"
                         VerticalOptions="Center" />
                 </StackLayout>
             </material:MaterialCard>
             <StackLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding AnswerButtons}">
                 <d:BindableLayout.ItemsSource>
-                    <x:String>11111</x:String>
+                    <x:String>12345</x:String>
                 </d:BindableLayout.ItemsSource>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5">
-                            <Button
-                                x:Name="ClickedButton"
-                                Padding="0"
-                                d:Text="Teste"
-                                BackgroundColor="{DynamicResource BackgroundColor}"
-                                ClassId="{Binding IsCorrectAnswer}"
-                                Command="{Binding AnswerCommand}"
-                                CommandParameter="{Binding Source={x:Reference ClickedButton}}"
-                                FontSize="Medium"
-                                HeightRequest="40"
-                                Style="{StaticResource OutlinedButton}"
-                                Text="{Binding AnswerText}" />
-                        </Grid>
+                        <material:MaterialButton
+                            x:Name="ClickedButton"
+                            BackgroundColor="{DynamicResource BackgroundColor}"
+                            ClassId="{Binding IsCorrectAnswer}"
+                            Command="{Binding AnswerCommand}"
+                            CommandParameter="{Binding Source={x:Reference ClickedButton}}"
+                            FontSize="Medium"
+                            Style="{StaticResource OutlinedButton}"
+                            Text="{Binding AnswerText}" />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

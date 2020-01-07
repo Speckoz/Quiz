@@ -81,29 +81,29 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     if (incorret.IncorrectAnswerText == chip.Text)
                         IncorrectAnswersChips.Remove(incorret);
 
-            static async Task<bool> Continue() => await Application.Current.MainPage.DisplayAlert("", "Tem certeza que quer excluir este item? ", "Sim", "Cancelar");
+            static async Task<bool> Continue() => (await MaterialDialog.Instance.ConfirmAsync("Tem certeza que quer excluir este item? ", "Confirmar", "Sim", "Cancelar")) == true;
         }
 
         private async Task<bool> FieldsIsEmpty()
         {
             if (string.IsNullOrEmpty(NewQuestion.Question))
             {
-                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar a pergunta!", "Ok");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa informar a pergunta!", "Ops!", "Ok");
                 return true;
             }
             else if (string.IsNullOrEmpty(NewQuestion.CorrectAnswer))
             {
-                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar a resposta correta da pergunta!", "Ok");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa informar a resposta correta da pergunta!", "Ops!", "Ok");
                 return true;
             }
             else if (!(IncorrectAnswersChips.Count >= 3))
             {
-                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa informar pelo menos 3 respostas incorretas!", "Ok");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa informar pelo menos 3 respostas incorretas!", "Ops!", "Ok");
                 return true;
             }
             else if (!(NewQuestion.Category >= 0))
             {
-                await Application.Current.MainPage.DisplayAlert("🥱 Ops!", "Voce precisa selecionar a categoria que mais se encaixa com a pergunta!", "Ok");
+                await MaterialDialog.Instance.AlertAsync("Voce precisa selecionar a categoria que mais se encaixa com a pergunta!", "Ops!", "Ok");
                 return true;
             }
             else
@@ -118,7 +118,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
             using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando...");
-            IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
+            IRestResponse response = ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
             {
                 Question = NewQuestion.Question,
                 Category = NewQuestion.Category,
@@ -145,7 +145,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
         private async void ExitSuggestScreen()
         {
-            if (await Application.Current.MainPage.DisplayAlert("ATENÇAO", "Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "Sim", "Cancelar"))
+            if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "ATENÇAO", "Sim", "Cancelar")) == true)
                 await Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
     }

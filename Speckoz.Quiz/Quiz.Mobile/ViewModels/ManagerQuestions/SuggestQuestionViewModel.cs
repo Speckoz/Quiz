@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
@@ -23,11 +24,11 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     public class SuggestQuestionViewModel : ViewModelBase
     {
-        private SuggestQuestionModel __newQuestion;
+        private IQuestion __newQuestion;
 
         private string[] __categoryChoice;
 
-        public SuggestQuestionModel NewQuestion
+        public IQuestion NewQuestion
         {
             get => __newQuestion;
             set => Set(ref __newQuestion, value);

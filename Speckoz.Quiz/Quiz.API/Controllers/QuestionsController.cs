@@ -41,7 +41,7 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // POST: /Questions
         [HttpPost]
-        [Authorize(Roles = "Normal, Admin")]
+        [Authorize(Roles = "Normal, Admin")] //Normal pode criar questao???? sai do elixir
         public async Task<IActionResult> CreateQuestion([FromBody]QuestionModel question)
         {
             if (ModelState.IsValid)

@@ -1,5 +1,7 @@
 ﻿using Quiz.Dependencies.Enums;
 
+using System;
+
 namespace Quiz.Dependencies.Interfaces
 {
     public interface IQuestion
@@ -13,5 +15,9 @@ namespace Quiz.Dependencies.Interfaces
         CategoryEnum Category { get; set; }
 
         string IncorrectAnswers { get; set; }
+
+        Guid AuthorID { get; set; }
+
+        QuestionStatusEnum Status { get; set; }
     }
 }

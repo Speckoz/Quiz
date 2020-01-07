@@ -83,11 +83,12 @@
 
             <Label />
             <material:MaterialTextField
+                Title="Escolha uma categoria"
                 BackgroundColor="{DynamicResource BackgroundColor}"
                 Choices="{Binding CategoryChoice}"
                 FloatingPlaceholderColor="{DynamicResource PrimaryColor}"
                 InputType="Choice"
-                Placeholder="Escolha a Categoria"
+                Placeholder="Categoria"
                 SelectedChoice="{Binding SelectedCategory}"
                 TextColor="{DynamicResource PrimaryColor}" />
             <Label />

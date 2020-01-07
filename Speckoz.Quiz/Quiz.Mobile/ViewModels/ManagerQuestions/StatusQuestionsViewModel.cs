@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using Quiz.Dependencies.Interfaces;
+using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
 
@@ -36,23 +37,16 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    List<StatusQuestionsModel> list = JsonSerializer
-                        .Deserialize<List<StatusQuestionsModel>>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                    foreach (StatusQuestionsModel i in list)
+                    List<QuestionModel> list = JsonSerializer
+                        .Deserialize<List<QuestionModel>>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    foreach (IQuestion question in list)
                     {
                         StatusQuestions.Add(new StatusQuestionsCardModel
                         {
-                            Status = i,
-                            Question = new SuggestQuestionModel { Question = "Como vai pessoas?" },
-                            ViewStatusCommand = new RelayCommand(async () => await MaterialDialog.Instance.ConfirmAsync("Tudo certo", "OKOK", "OK"))
+                            Question = question,
+                            ViewStatusCommand = new RelayCommand<IQuestion>(async (question) => await MaterialDialog.Instance.ConfirmAsync(question.Question, $"{question.Status}", "OK"))
                         });
                     }
-                    //list.ForEach(i => StatusQuestions.Add(new StatusQuestionsCardModel
-                    //{
-                    //    Status = i,
-                    //    Question = new SuggestQuestionModel { Question = "Como vai pessoas?" },
-                    //    ViewStatusCommand = new RelayCommand(async () => await Application.Current.MainPage.DisplayAlert("😋", "Tudo certo", "OK"))
-                    //}));
                 }
                 else
                 {

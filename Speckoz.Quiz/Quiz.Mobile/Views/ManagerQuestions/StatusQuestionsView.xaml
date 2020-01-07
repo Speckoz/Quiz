@@ -18,7 +18,7 @@
                 <DataTemplate>
                     <Grid Padding="5">
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewStatusCommand}" />
+                            <TapGestureRecognizer Command="{Binding ViewStatusCommand}" CommandParameter="{Binding Question}" />
                         </Grid.GestureRecognizers>
                         <md:MaterialCard
                             BackgroundColor="{DynamicResource BackgroundColor}"
@@ -40,7 +40,7 @@
                                         <FormattedString>
                                             <FormattedString.Spans>
                                                 <Span Text="Status: " TextColor="DimGray" />
-                                                <Span d:Text="Aceito" Text="{Binding Status.QuestionStatus}" />
+                                                <Span d:Text="Aceito" Text="{Binding Question.Status}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>

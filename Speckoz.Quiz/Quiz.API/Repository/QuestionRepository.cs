@@ -6,6 +6,7 @@ using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,9 +29,9 @@ namespace Quiz.API.Repository
                 await _context.Questions.AddAsync(question);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                throw exc;
+                throw;
             }
 
             return question;
@@ -64,11 +65,28 @@ namespace Quiz.API.Repository
                     await _context.SaveChangesAsync();
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                throw exc;
+                throw;
             }
         }
+
+        /// <summary>
+        /// Retorna todas as questão de um determinado status
+        /// </summary>
+        /// <param name="status">Status da questão</param>
+        public async Task<List<QuestionModel>> GetQuestionsByStatusTaskAsync(QuestionStatusEnum status) =>
+            await _context.Questions.Where(q => q.Status == status).ToListAsync();
+        
+
+        /// <summary>
+        /// Retorna todas as questão de um determinado status de um usuario
+        /// </summary>
+        /// <param name="status">Status das questões</param>
+        /// <param name="userId">ID do usuario</param>
+        public async Task<List<QuestionModel>> GetQuestionsByStatusTaskAsync(QuestionStatusEnum status, Guid userId) =>
+            await _context.Questions.Where(q => q.Status == status && q.AuthorID == userId).ToListAsync();
+        
 
         /// <summary>
         /// Atualiza os dados de uma questão
@@ -76,6 +94,8 @@ namespace Quiz.API.Repository
         /// <param name="question">Questão atualizada</param>
         public async Task<QuestionModel> UpdateTaskAsync(QuestionModel question)
         {
+            if (question == null) throw new ArgumentNullException(nameof(question));
+
             if (!await ExistsTaskAsync((int)question.QuestionID))
                 return null;
 
@@ -89,9 +109,9 @@ namespace Quiz.API.Repository
 
                 return question;
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                throw exc;
+                throw;
             }
         }
 
@@ -103,13 +123,19 @@ namespace Quiz.API.Repository
         {
             if (category == CategoryEnum.Todas)
             {
-                var questionsAll = await _context.Questions.ToListAsync();
+                var questionsAll = await _context.Questions
+                    .Where(q => q.Status == QuestionStatusEnum.Approved)
+                    .ToListAsync();
+
                 var selectedQuestion = questionsAll[new Random().Next(questionsAll.Count)];
 
                 return selectedQuestion;
             }
 
-            var questionsCategory = await _context.Questions.Where(q => q.Category == category).ToListAsync();
+            var questionsCategory = await _context.Questions.
+                Where(q => q.Status == QuestionStatusEnum.Approved && q.Category == category).
+                ToListAsync();
+
             var selected = questionsCategory[new Random().Next(questionsCategory.Count)];
 
             return selected;
@@ -121,5 +147,34 @@ namespace Quiz.API.Repository
         /// <param name="id">ID da questão</param>
         private async Task<bool> ExistsTaskAsync(int id) =>
             await _context.Questions.AnyAsync(q => q.QuestionID == id);
+
+        /// <summary>
+        /// Cria uma nova questão com o status Pending
+        /// </summary>
+        /// <param name="question">Modelo da questao</param>
+        public async Task<QuestionModel> CreateSuggestionTaskAsync(QuestionModel question)
+        {
+            if (question == null) throw new ArgumentOutOfRangeException(nameof(question));
+
+            try
+            {
+                question.Status = QuestionStatusEnum.Pending;
+                await _context.Questions.AddAsync(question);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return question;
+        }
+
+        public Task ApproveSuggestion(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }

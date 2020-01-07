@@ -48,7 +48,7 @@ namespace Quiz.API.Tests
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotEmpty(status[0].QuestionID.ToString());
             Assert.NotEmpty(status[0].QuestionStatus.ToString());
-            Assert.NotEmpty(status[0].UserID.ToString());
+            Assert.NotEmpty(status[0].AuthorID.ToString());
         }
 
         [Fact]

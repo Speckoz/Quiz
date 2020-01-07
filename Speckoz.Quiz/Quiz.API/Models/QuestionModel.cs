@@ -1,6 +1,6 @@
 ﻿using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
-
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Quiz.API.Models
@@ -11,6 +11,12 @@ namespace Quiz.API.Models
 
         [Required]
         public string Question { get; set; }
+
+        [Required]
+        public Guid AuthorID { get; set; }
+
+        [Required]
+        public QuestionStatusEnum Status { get; set; } = QuestionStatusEnum.Pending;
 
         [Required]
         public string CorrectAnswer { get; set; }

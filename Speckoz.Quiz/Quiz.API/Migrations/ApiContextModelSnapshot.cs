@@ -23,6 +23,9 @@ namespace Quiz.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<Guid>("AuthorID")
+                        .HasColumnType("char(36)");
+
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
@@ -37,53 +40,13 @@ namespace Quiz.API.Migrations
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("QuestionID");
 
                     b.ToTable("Questions");
-                });
-
-            modelBuilder.Entity("Quiz.API.Models.QuestionSuggestionModel", b =>
-                {
-                    b.Property<int>("QuestionSuggestionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CorrectAnswer")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("IncorrectAnswers")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("QuestionSuggestionID");
-
-                    b.ToTable("Suggestions");
-                });
-
-            modelBuilder.Entity("Quiz.API.Models.QuestionsStatusModel", b =>
-                {
-                    b.Property<int>("QuestionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuestionStatus")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("QuestionID");
-
-                    b.ToTable("QuestionsStatus");
                 });
 
             modelBuilder.Entity("Quiz.API.Models.UserBaseModel", b =>

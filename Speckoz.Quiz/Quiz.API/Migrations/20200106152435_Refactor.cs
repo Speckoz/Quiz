@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace Quiz.API.Migrations
 {
-    public partial class models : Migration
+    public partial class Refactor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,8 @@ namespace Quiz.API.Migrations
                     QuestionID = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Question = table.Column<string>(nullable: false),
+                    AuthorID = table.Column<Guid>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
                     CorrectAnswer = table.Column<string>(nullable: false),
                     Category = table.Column<int>(nullable: false),
                     IncorrectAnswers = table.Column<string>(nullable: false)
@@ -22,36 +24,6 @@ namespace Quiz.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Questions", x => x.QuestionID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "QuestionsStatus",
-                columns: table => new
-                {
-                    QuestionID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserID = table.Column<Guid>(nullable: false),
-                    QuestionStatus = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_QuestionsStatus", x => x.QuestionID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Suggestions",
-                columns: table => new
-                {
-                    QuestionSuggestionID = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Question = table.Column<string>(nullable: false),
-                    CorrectAnswer = table.Column<string>(nullable: false),
-                    Category = table.Column<int>(nullable: false),
-                    IncorrectAnswers = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Suggestions", x => x.QuestionSuggestionID);
                 });
 
             migrationBuilder.CreateTable(
@@ -75,12 +47,6 @@ namespace Quiz.API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Questions");
-
-            migrationBuilder.DropTable(
-                name: "QuestionsStatus");
-
-            migrationBuilder.DropTable(
-                name: "Suggestions");
 
             migrationBuilder.DropTable(
                 name: "Users");

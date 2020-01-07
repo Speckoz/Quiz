@@ -16,60 +16,37 @@ namespace Quiz.API.Controllers
     [ApiController]
     public class SuggestionsController : ControllerBase
     {
-        private readonly IQuestionSuggestionRepository _questionSuggestionRepository;
-        private readonly IQuestionsStatusRepository _questionsStatusRepository;
-
-        public SuggestionsController(IQuestionSuggestionRepository questionSuggestionRepository,
-            IQuestionsStatusRepository questionsStatusRepository)
+        private readonly IQuestionRepository _questionsRepository;
+        public SuggestionsController(IQuestionRepository questionRepository)
         {
-            _questionSuggestionRepository = questionSuggestionRepository;
-            _questionsStatusRepository = questionsStatusRepository;
+            _questionsRepository = questionRepository;
         }
 
         // POST: /suggestions
         [Authorize(Roles = "Normal,Admin")]
         [HttpPost]
-        public async Task<IActionResult> CreateNewSuggestion(QuestionSuggestionModel question)
+        public async Task<IActionResult> CreateNewSuggestion(QuestionModel question)
         {
+            if (question == null)
+                throw new ArgumentNullException(nameof(question));
+
             if (ModelState.IsValid)
             {
                 string userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                QuestionSuggestionModel suggestion = await _questionSuggestionRepository.CreateTaskAync(question);
+                question.AuthorID = Guid.Parse(userId);
+                QuestionModel suggestion = await _questionsRepository.CreateSuggestionTaskAsync(question);
 
-                await _questionsStatusRepository.CreateTaskAync(new QuestionsStatusModel
-                {
-                    QuestionID = question.QuestionSuggestionID,
-                    QuestionStatus = QuestionStatusEnum.Pending,
-                    UserID = Guid.Parse(userId)
-                });
-
-                return Created($"/suggestions/{suggestion.QuestionSuggestionID}", suggestion);
+                return Created("/suggestions/{suggestion.QuestionID}", suggestion);
             }
             return BadRequest();
-        }
-
-        // GET: /suggestions
-        [HttpGet]
-        [Authorize]
-        public async Task<IActionResult> GetSuggestions()
-        {
-            List<QuestionSuggestionModel> suggestions = await _questionSuggestionRepository.GetSuggestionsTaskAsync();
-            return Ok(suggestions);
         }
 
         // DELETE: /suggestions/2
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteSuggestion(int id)
+        public Task<IActionResult> DeleteSuggestion(int id)
         {
-            // Coloca o status denied na tabela de status
-            QuestionsStatusModel suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
-            if (suggestion == null) return NoContent();
-            suggestion.QuestionStatus = QuestionStatusEnum.Denied;
-            await _questionsStatusRepository.UpdateTaskAync(suggestion);
-
-            await _questionSuggestionRepository.DeleteSuggestionTaskAsync(id);
-            return NoContent();
+            throw new NotImplementedException();
         }
 
         // PUT: /suggestions/approve/2
@@ -77,27 +54,29 @@ namespace Quiz.API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ApproveSuggestion(int id)
         {
-            try
-            {
-                // Coloca o status approved na tabela de status
-                QuestionsStatusModel suggestion = await _questionsStatusRepository.FindByIdTaskAsync(id);
-                if (suggestion == null) return BadRequest();
-                suggestion.QuestionStatus = QuestionStatusEnum.Approved;
-                await _questionsStatusRepository.UpdateTaskAync(suggestion);
+            // Verifica se a questão existe
+            var question = await _questionsRepository.FindByID(id);
+            if (question == null) return BadRequest();
 
-                await _questionSuggestionRepository.ApproveSuggestion(id);
-                return Ok();
-            }
-            catch (KeyNotFoundException)
-            {
-                return BadRequest();
-            }
+            question.Status = QuestionStatusEnum.Approved;
+            await _questionsRepository.UpdateTaskAsync(question);
+
+            return Ok(question);
         }
 
         // GET: /suggestions/status
         [HttpGet("status")]
         [Authorize]
-        public async Task<IActionResult> GetStatus() =>
-            Ok(await _questionsStatusRepository.GetQuestionsStatusTaskAsync());
+        public async Task<IActionResult> GetStatus()
+        {
+            if (User.HasClaim(ClaimTypes.Role, UserTypeEnum.Admin.ToString()))
+            {
+                return Ok(await _questionsRepository.GetQuestionsByStatusTaskAsync(QuestionStatusEnum.Pending));
+            }
+
+            var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            return Ok(await _questionsRepository.GetQuestionsByStatusTaskAsync(QuestionStatusEnum.Pending, userId));
+        }
     }
 }

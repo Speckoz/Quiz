@@ -25,7 +25,6 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
-            //request.AddHeader("Authorization", $"Bearer {GetDataHelper.CurrentUser.Token}");
             return new RestClient($"{GetDataHelper.Uri}/Suggestions/status")
             {
                 Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)

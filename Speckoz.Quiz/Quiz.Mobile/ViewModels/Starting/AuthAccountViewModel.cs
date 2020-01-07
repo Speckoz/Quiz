@@ -5,6 +5,7 @@ using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Starting;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Starting;
 
@@ -51,7 +52,7 @@ namespace Quiz.Mobile.ViewModels.Starting
 
         private void InitCommands()
         {
-            Image = ConvertImageHelper.Convert(Resources.heartLogo);
+            Image = ConvertImageUtil.Convert(Resources.heartLogo);
             AuthCommand = new RelayCommand(Auth);
             RegisterCommand = new RelayCommand(Register);
         }

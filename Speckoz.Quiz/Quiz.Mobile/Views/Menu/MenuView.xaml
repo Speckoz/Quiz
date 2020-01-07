@@ -10,74 +10,91 @@
     BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackLayout
-                Grid.Row="0"
-                Padding="30"
-                BackgroundColor="{DynamicResource PrimaryColor}"
-                HorizontalOptions="FillAndExpand"
-                Orientation="Vertical">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout
+            Grid.Row="0"
+            Padding="30"
+            BackgroundColor="{DynamicResource PrimaryColor}"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical">
 
-                <image:CircleImage
-                    Aspect="AspectFill"
-                    HeightRequest="100"
-                    HorizontalOptions="Center"
-                    Source="https://avatars0.githubusercontent.com/u/37851168"
-                    WidthRequest="100" />
-                <!--  Source="{Binding UserImage}"  -->
-                <Label
-                    d:Text="Ruan Carlos CS"
-                    FontAttributes="Bold"
-                    FontSize="Medium"
-                    HorizontalOptions="Center"
-                    Text="{Binding UserName}"
-                    TextColor="{DynamicResource PrimaryTextColor}"
-                    VerticalOptions="Center" />
-            </StackLayout>
-            <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding MenuItems}">
-                <d:CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Inicio</x:String>
-                        <x:String>Ver Perfil</x:String>
-                        <x:String>Deslogar</x:String>
-                        <x:String />
-                        <x:String>Sobre</x:String>
-                    </x:Array>
-                </d:CollectionView.ItemsSource>
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
-                            x:Name="Item"
-                            Padding="20,10"
-                            ClassId="{Binding ItemId}"
-                            HorizontalOptions="Fill">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MenuItemCommand}" CommandParameter="{Binding Source={x:Reference Item}}" />
-                            </Grid.GestureRecognizers>
-                            <Label
-                                d:Text="{Binding .}"
-                                FontSize="Large"
-                                Text="{Binding Text}"
-                                TextColor="{DynamicResource BackgroundTextColor}" />
-                        </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-
+            <image:CircleImage
+                Aspect="AspectFill"
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="https://avatars0.githubusercontent.com/u/37851168"
+                WidthRequest="100" />
+            <!--  Source="{Binding UserImage}"  -->
             <Label
-                Grid.Row="2"
-                Margin="20"
+                d:Text="ruancarlos14@hotmail.com"
+                FontAttributes="Bold"
                 FontSize="Medium"
                 HorizontalOptions="Center"
-                Text="Mobile Quiz - 2019"
-                TextColor="{DynamicResource BackgroundTextColor}"
-                VerticalOptions="End" />
-        </Grid>
-    </ContentPage.Content>
+                Text="{Binding UserName}"
+                TextColor="{DynamicResource PrimaryTextColor}"
+                VerticalOptions="Center" />
+            <Label
+                d:Text="Administrador"
+                FontSize="Small"
+                HorizontalOptions="Center"
+                Text="{Binding UserType}"
+                TextColor="{DynamicResource PrimaryTextColor}"
+                VerticalOptions="Center" />
+        </StackLayout>
+        <ScrollView Grid.Row="1" VerticalOptions="Fill">
+            <StackLayout VerticalOptions="Fill">
+                <StackLayout BindableLayout.ItemsSource="{Binding MenuItems}">
+                    <d:CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Inicio</x:String>
+                            <x:String>Ver Perfil</x:String>
+                            <x:String>Deslogar</x:String>
+                            <x:String />
+                            <x:String>Devs</x:String>
+                            <x:String>Sobre</x:String>
+                        </x:Array>
+                    </d:CollectionView.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                x:Name="Item"
+                                Padding="20,10"
+                                ClassId="{Binding ItemId}"
+                                HorizontalOptions="Fill">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding MenuItemCommand}" CommandParameter="{Binding Source={x:Reference Item}}" />
+                                </Grid.GestureRecognizers>
+                                <Label
+                                    d:Text="{Binding .}"
+                                    FontSize="Large"
+                                    Text="{Binding Text}"
+                                    TextColor="{DynamicResource BackgroundTextColor}" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <StackLayout
+                    Margin="20"
+                    HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Subtitle"
+                        HorizontalOptions="Center"
+                        Text="Quiz"
+                        TextColor="{DynamicResource BackgroundTextColor}" />
+                    <Label
+                        FontSize="Small"
+                        HorizontalOptions="Center"
+                        Text="Speckoz © 2020"
+                        TextColor="{DynamicResource BackgroundTextColor}" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

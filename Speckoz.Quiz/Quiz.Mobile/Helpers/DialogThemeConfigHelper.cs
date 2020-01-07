@@ -20,8 +20,19 @@ namespace Quiz.Mobile.Helpers
                 loadingDialogConfiguration: GetThemeLoadiing(),
                 confirmationDialogConfiguration: GetThemeConfirm(),
                 inputDialogConfiguration: GetThemeInput(),
-                customContentDialogConfiguration: GetThemeAlert()
+                customContentDialogConfiguration: GetThemeAlert(),
+                snackbarConfiguration: GetThemeSnack()
             );
+        }
+
+        private static MaterialSnackbarConfiguration GetThemeSnack()
+        {
+            return new MaterialSnackbarConfiguration
+            {
+                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.SnackBarColor).color,
+                MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.SnackBarTextColor).color,
+                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color
+            };
         }
 
         private static MaterialInputDialogConfiguration GetThemeInput()
@@ -63,7 +74,7 @@ namespace Quiz.Mobile.Helpers
                 BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
                 TextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
                 TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
-                TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color                
+                TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color
             };
         }
     }

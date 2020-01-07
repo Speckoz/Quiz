@@ -13,6 +13,6 @@ namespace Quiz.Mobile.Models.Menu
 
     internal enum ItemIdEnum
     {
-        Home, Perfil, Logout, VOID, About
+        Home, Profile, Logout, VOID, Devs, About
     }
 }

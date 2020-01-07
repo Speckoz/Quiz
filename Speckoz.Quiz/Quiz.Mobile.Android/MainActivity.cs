@@ -4,11 +4,6 @@ using Android.OS;
 using Android.Runtime;
 
 using Quiz.Mobile.Droid;
-using Quiz.Mobile.Droid.Services;
-using Quiz.Mobile.Helpers;
-using Quiz.Mobile.Models.Starting;
-
-using System.Text.Json;
 
 namespace Quiz.Droid
 {
@@ -32,11 +27,6 @@ namespace Quiz.Droid
             Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
 
             LoadApplication(new App());
-
-            //GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(CurrentUserAndroidService.GetCurrentUser(), new JsonSerializerOptions
-            //{
-            //    PropertyNameCaseInsensitive = true
-            //});
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

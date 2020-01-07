@@ -4,8 +4,6 @@ using Quiz.Mobile.Helpers;
 using RestSharp;
 using RestSharp.Authenticators;
 
-using System.Threading.Tasks;
-
 namespace Quiz.Mobile.Services.Requests
 {
     internal class GameQuestionService

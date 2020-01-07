@@ -3,7 +3,9 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Menu;
+using Quiz.Mobile.Models.Starting;
 using Quiz.Mobile.Properties;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Starting;
 
@@ -19,8 +21,8 @@ namespace Quiz.Mobile.ViewModels.Menu
     internal class MenuViewModel : ViewModelBase
     {
         private ImageSource __userImage;
-        private string __userName;
         private ObservableCollection<MenuModel> __menuItems;
+        private string __userType;
 
         public ImageSource UserImage
         {
@@ -30,8 +32,18 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         public string UserName
         {
-            get => __userName;
-            set => Set(ref __userName, value);
+            get => GetDataHelper.CurrentUser.User.Username;
+            set
+            {
+                GetDataHelper.CurrentUser.User.Username = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string UserType
+        {
+            get => __userType;
+            set => Set(ref __userType, value);
         }
 
         public ObservableCollection<MenuModel> MenuItems
@@ -40,17 +52,21 @@ namespace Quiz.Mobile.ViewModels.Menu
             set => Set(ref __menuItems, value);
         }
 
-        public MenuViewModel()
+        public MenuViewModel() => Init();
+
+        private void Init()
         {
-            UserImage = ConvertImageHelper.Convert(Resources.choose);
+            UserImage = ConvertImageUtil.Convert(Resources.choose);
             UserName = GetDataHelper.CurrentUser.User.Email;
+            UserType = DescriptionValueUtil.Get(GetDataHelper.CurrentUser.User.UserType);
 
             MenuItems = new ObservableCollection<MenuModel>
             {
-                new MenuModel { Text = "Inicio", ItemId = ItemIdEnum.Home, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = "Ver Perfil", ItemId = ItemIdEnum.Perfil, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = "Deslogar", ItemId = ItemIdEnum.Logout, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
-                new MenuModel { Text = string.Empty, ItemId = ItemIdEnum.VOID, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected)},
+                new MenuModel { Text = "Inicio", ItemId = ItemIdEnum.Home, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) },
+                new MenuModel { Text = "Ver Perfil", ItemId = ItemIdEnum.Profile, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) },
+                new MenuModel { Text = "Deslogar", ItemId = ItemIdEnum.Logout, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) },
+                new MenuModel { Text = string.Empty, ItemId = ItemIdEnum.VOID, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) },
+                new MenuModel { Text = "Desenvolvedores", ItemId = ItemIdEnum.Devs, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) },
                 new MenuModel { Text = "Sobre", ItemId = ItemIdEnum.About, MenuItemCommand = new RelayCommand<Grid>(MenuItemSelected) }
             };
         }
@@ -65,8 +81,9 @@ namespace Quiz.Mobile.ViewModels.Menu
                     (Application.Current.MainPage as MasterDetailPage).Detail = new NavigationPage(new MainTabListView());
                     break;
 
-                case ItemIdEnum.Perfil:
-                    //
+                case ItemIdEnum.Profile:
+                    UserBase user = GetDataHelper.CurrentUser.User;
+                    await MaterialDialog.Instance.AlertAsync($"Username: {user.Username}\nEmail: {user.Email}\nTipo: {user.UserType}\nLevel: {user.Level}", "Perfil", "OK");
                     break;
 
                 case ItemIdEnum.Logout:
@@ -74,8 +91,12 @@ namespace Quiz.Mobile.ViewModels.Menu
                         Application.Current.MainPage = new AuthAccountView();
                     break;
 
+                case ItemIdEnum.Devs:
+                    await MaterialDialog.Instance.AlertAsync("Ruan Carlos CS (@Logikoz)\nMarco Pandolfo (@lolgamarco2)", "Desenvolvedores", "OK");
+                    break;
+
                 case ItemIdEnum.About:
-                    //add about here
+                    await MaterialDialog.Instance.AlertAsync("Vai criar uma view vagabundo", "Sobre", "OK");
                     break;
             }
             obj.BackgroundColor = Color.Transparent;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Quiz.Mobile.Helpers
+namespace Quiz.Mobile.Util
 {
-    public static class RandomizeListHelper
+    public static class RandomizeListUtil
     {
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {

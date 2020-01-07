@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Views;

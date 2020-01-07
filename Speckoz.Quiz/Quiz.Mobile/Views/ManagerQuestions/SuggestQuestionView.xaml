@@ -23,6 +23,7 @@
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.Question}" />
+            <Label />
             <material:MaterialTextField
                 BackgroundColor="{DynamicResource BackgroundColor}"
                 HorizontalOptions="CenterAndExpand"
@@ -30,8 +31,9 @@
                 ReturnType="Next"
                 Style="{StaticResource MTFBase}"
                 Text="{Binding NewQuestion.CorrectAnswer}" />
+            <Label />
 
-            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
                 <material:MaterialTextField
                     BackgroundColor="{DynamicResource BackgroundColor}"
                     HorizontalOptions="FillAndExpand"
@@ -41,10 +43,7 @@
                     Style="{StaticResource MTFBase}"
                     Text="{Binding NewQuestion.IncorrectAnswers}" />
 
-                <Grid
-                    Margin="0,0,0,25"
-                    Padding="10"
-                    VerticalOptions="FillAndExpand">
+                <Grid Padding="10" VerticalOptions="Center">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
                     </Grid.GestureRecognizers>
@@ -69,10 +68,10 @@
                             d:WidthRequest="50">
                             <material:MaterialChip
                                 x:Name="IAnswerChip"
-                                BackgroundColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="{DynamicResource SecondaryColor}"
                                 Image="https://i.imgur.com/N9vNTvB.png"
                                 Text="{Binding IncorrectAnswerText}"
-                                TextColor="{DynamicResource PrimaryColorTextColor}">
+                                TextColor="{DynamicResource SecondaryTextColor}">
                                 <material:MaterialChip.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
                                 </material:MaterialChip.GestureRecognizers>
@@ -83,11 +82,13 @@
             </FlexLayout>
 
             <Label />
-            <Picker
-                Title="Selecione a Categoria"
+            <material:MaterialTextField
                 BackgroundColor="{DynamicResource BackgroundColor}"
-                ItemsSource="{Binding CategoryChoice}"
-                SelectedIndex="{Binding Index}"
+                Choices="{Binding CategoryChoice}"
+                FloatingPlaceholderColor="{DynamicResource PrimaryColor}"
+                InputType="Choice"
+                Placeholder="Escolha a Categoria"
+                SelectedChoice="{Binding SelectedCategory}"
                 TextColor="{DynamicResource PrimaryColor}" />
             <Label />
 

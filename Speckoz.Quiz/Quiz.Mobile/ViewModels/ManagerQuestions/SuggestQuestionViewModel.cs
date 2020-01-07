@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
@@ -40,10 +39,16 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             set => Set(ref __categoryChoice, value);
         }
 
-        public byte Index
+        public string SelectedCategory
         {
-            get => (byte)NewQuestion.Category;
-            set => NewQuestion.Category = (CategoryEnum)value;
+            get => NewQuestion.Category.ToString();
+            set
+            {
+                if (Enum.TryParse(value, out CategoryEnum category))
+                {
+                    NewQuestion.Category = category;
+                }
+            }
         }
 
         public RelayCommand SendSugestionCommand { get; private set; }
@@ -55,7 +60,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
         public SuggestQuestionViewModel() => Init();
 
-        private void AddChipWithIncorrectAnswer()
+        private async void AddChipWithIncorrectAnswer()
         {
             if (!string.IsNullOrEmpty(NewQuestion.IncorrectAnswers))
                 if (!IncorrectAnswersChips.Any(i => i.IncorrectAnswerText == NewQuestion.IncorrectAnswers))
@@ -69,9 +74,9 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     NewQuestion.IncorrectAnswers = string.Empty;
                 }
                 else
-                    SendMessageHelper.SendAsync("Já está na lista!", "Ops!");
+                    await MaterialDialog.Instance.SnackbarAsync("Já está na lista!", MaterialSnackbar.DurationLong);
             else
-                SendMessageHelper.SendAsync("Voce precisa digitar algo no campo!", "Ops!");
+                await MaterialDialog.Instance.SnackbarAsync("Voce precisa digitar algo no campo!", MaterialSnackbar.DurationLong);
         }
 
         private async void RemoveChipWithIncorretAnswer(MaterialChip chip)

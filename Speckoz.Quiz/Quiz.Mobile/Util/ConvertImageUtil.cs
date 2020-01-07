@@ -2,9 +2,9 @@
 
 using Xamarin.Forms;
 
-namespace Quiz.Mobile.Helpers
+namespace Quiz.Mobile.Util
 {
-    public class ConvertImageHelper
+    public class ConvertImageUtil
     {
         /// <summary>
         /// Converte um Byte[] para ImageSource.

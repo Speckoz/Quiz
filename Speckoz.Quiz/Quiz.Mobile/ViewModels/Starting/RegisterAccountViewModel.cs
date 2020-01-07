@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Views.Starting;
@@ -60,7 +60,7 @@ namespace Quiz.Mobile.ViewModels.Starting
 
         public RegisterAccountViewModel()
         {
-            Image = ConvertImageHelper.Convert(Resources.register);
+            Image = ConvertImageUtil.Convert(Resources.register);
             InitCommands();
         }
 

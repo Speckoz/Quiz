@@ -14,9 +14,14 @@ namespace Quiz
             InitializeComponent();
             Material.Init(this);
             DialogThemeConfigHelper.Init();
+
+            MainPage = new AuthAccountView();
         }
 
-        protected override void OnStart() => MainPage = new AuthAccountView();
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
 
         protected override void OnSleep()
         {

@@ -9,71 +9,74 @@
     BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
-    <StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Grid Margin="20,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        <Grid Margin="20,10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+                <Image
+                    Grid.Row="0"
+                    Margin="20,0,20,5"
+                    HeightRequest="70"
+                    HorizontalOptions="Center"
+                    Source="{Binding Image}"
+                    WidthRequest="70" />
 
-            <Image
-                Grid.Row="0"
-                Margin="20,0,20,5"
-                HeightRequest="70"
-                HorizontalOptions="Center"
-                Source="{Binding Image}"
-                WidthRequest="70" />
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    Text="Autenticar Conta" />
 
-            <Label
-                Grid.Row="1"
-                FontAttributes="Bold"
-                FontSize="Title"
-                HorizontalOptions="Center"
-                Text="Autenticar Conta" />
+                <StackLayout
+                    Grid.Row="2"
+                    Margin="0,20,0,20"
+                    Orientation="Vertical">
 
-            <StackLayout
-                Grid.Row="2"
-                Margin="0,20,0,20"
-                Orientation="Vertical">
+                    <material:MaterialTextField
+                        InputType="Text"
+                        Placeholder="Usuário/Email"
+                        ReturnType="Next"
+                        Style="{DynamicResource MTFBase}"
+                        Text="{Binding Login}" />
+                    <Label />
+                    <material:MaterialTextField
+                        InputType="Password"
+                        Placeholder="Senha"
+                        ReturnCommand="{Binding AuthCommand}"
+                        ReturnType="Done"
+                        Style="{DynamicResource MTFBase}"
+                        Text="{Binding Password}" />
 
-                <material:MaterialTextField
-                    InputType="Text"
-                    Placeholder="Usuário/Email"
-                    ReturnType="Next"
-                    Style="{DynamicResource MTFBase}"
-                    Text="{Binding Login}" />
+                </StackLayout>
 
-                <material:MaterialTextField
-                    InputType="Password"
-                    Placeholder="Senha"
-                    ReturnCommand="{Binding AuthCommand}"
-                    ReturnType="Done"
-                    Style="{DynamicResource MTFBase}"
-                    Text="{Binding Password}" />
-            </StackLayout>
-
-            <StackLayout Grid.Row="3" Orientation="Vertical">
+                <StackLayout Grid.Row="3" Orientation="Vertical">
+                    <material:MaterialButton
+                        Command="{Binding AuthCommand}"
+                        HorizontalOptions="Fill"
+                        Style="{StaticResource RaisedButton}"
+                        Text="Autenticar"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Grid>
+            <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
+                <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
                 <material:MaterialButton
-                    Command="{Binding AuthCommand}"
+                    BackgroundColor="{DynamicResource BackgroundColor}"
+                    Command="{Binding RegisterCommand}"
                     HorizontalOptions="Fill"
-                    Style="{StaticResource RaisedButton}"
-                    Text="Autenticar"
-                    VerticalOptions="Center" />
+                    Style="{StaticResource OutlinedButton}"
+                    Text="Registrar"
+                    VerticalOptions="Center"
+                    Visual="Material" />
             </StackLayout>
-        </Grid>
-        <StackLayout Margin="20,0,20,30" VerticalOptions="EndAndExpand">
-            <Label HorizontalOptions="Center" Text="Ainda nao possui uma conta?" />
-            <material:MaterialButton
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                Command="{Binding RegisterCommand}"
-                HorizontalOptions="Fill"
-                Style="{StaticResource OutlinedButton}"
-                Text="Registrar"
-                VerticalOptions="Center"
-                Visual="Material" />
+
         </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -1,9 +1,6 @@
 ﻿using Quiz.Mobile.Helpers;
 
 using RestSharp;
-using RestSharp.Authenticators;
-using System;
-using System.Threading.Tasks;
 
 namespace Quiz.Mobile.Services.Requests
 {

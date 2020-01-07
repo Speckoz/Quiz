@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using Logikoz.ThemeBase.Enums;
 using Logikoz.ThemeBase.Helpers;
 using Quiz.Dependencies.Enums;
-using Quiz.Mobile.Helpers;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Properties;
 using Quiz.Mobile.Views;
@@ -70,7 +70,7 @@ namespace Quiz.Mobile.ViewModels
 
         private void Init()
         {
-            Image = ConvertImageHelper.Convert(Resources.choose);
+            Image = ConvertImageUtil.Convert(Resources.choose);
             CreateButtonsChoose();
         }
     }

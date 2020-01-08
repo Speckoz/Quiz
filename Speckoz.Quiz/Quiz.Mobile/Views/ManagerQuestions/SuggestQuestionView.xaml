@@ -14,89 +14,100 @@
         <ToolbarItem Command="{Binding ExitSuggestScreenCommand}" Text="Sair" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView Padding="20">
-        <StackLayout>
-            <material:MaterialTextField
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                HorizontalOptions="CenterAndExpand"
-                Placeholder="Pergunta"
-                ReturnType="Next"
-                Style="{StaticResource MTFBase}"
-                Text="{Binding NewQuestion.Question}" />
-            <Label />
-            <material:MaterialTextField
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                HorizontalOptions="CenterAndExpand"
-                Placeholder="Resposta Correta"
-                ReturnType="Next"
-                Style="{StaticResource MTFBase}"
-                Text="{Binding NewQuestion.CorrectAnswer}" />
-            <Label />
-
-            <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0" Padding="20">
+            <StackLayout>
                 <material:MaterialTextField
                     BackgroundColor="{DynamicResource BackgroundColor}"
-                    HorizontalOptions="FillAndExpand"
-                    Placeholder="Respostas incorretas"
-                    ReturnCommand="{Binding AddIncorrectAnswerCommand}"
-                    ReturnType="Go"
+                    HorizontalOptions="CenterAndExpand"
+                    Placeholder="Pergunta"
+                    ReturnType="Next"
                     Style="{StaticResource MTFBase}"
-                    Text="{Binding NewQuestion.IncorrectAnswers}" />
+                    Text="{Binding NewQuestion.Question}" />
+                <Label />
+                <material:MaterialTextField
+                    BackgroundColor="{DynamicResource BackgroundColor}"
+                    HorizontalOptions="CenterAndExpand"
+                    Placeholder="Resposta Correta"
+                    ReturnType="Next"
+                    Style="{StaticResource MTFBase}"
+                    Text="{Binding NewQuestion.CorrectAnswer}" />
+                <Label />
 
-                <Grid Padding="10" VerticalOptions="Center">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
-                    </Grid.GestureRecognizers>
-                    <Label
-                        FontSize="Medium"
-                        Text="ADD"
-                        VerticalOptions="Center" />
-                </Grid>
+                <material:MaterialTextField
+                    Title="Escolha uma categoria"
+                    BackgroundColor="{DynamicResource BackgroundColor}"
+                    Choices="{Binding CategoryChoice}"
+                    FloatingPlaceholderColor="{DynamicResource PrimaryColor}"
+                    InputType="Choice"
+                    Placeholder="Categoria"
+                    SelectedChoice="{Binding SelectedCategory}"
+                    TextColor="{DynamicResource PrimaryColor}" />
+                <Label />
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
+                    <material:MaterialTextField
+                        BackgroundColor="{DynamicResource BackgroundColor}"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Respostas incorretas"
+                        ReturnCommand="{Binding AddIncorrectAnswerCommand}"
+                        ReturnType="Go"
+                        Style="{StaticResource MTFBase}"
+                        Text="{Binding NewQuestion.IncorrectAnswers}" />
+
+                    <Grid Padding="10" VerticalOptions="Center">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
+                        </Grid.GestureRecognizers>
+                        <Label
+                            FontSize="Medium"
+                            Text="ADD"
+                            VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+                <FlexLayout
+                    BindableLayout.ItemsSource="{Binding IncorrectAnswersChips}"
+                    Direction="Row"
+                    FlexLayout.Basis="24%"
+                    FlexLayout.Grow="1"
+                    JustifyContent="SpaceEvenly"
+                    Wrap="Wrap">
+                    <d:BindableLayout.ItemsSource>
+                        <x:String>xxxxxxxxxxxxxxxxxx</x:String>
+                    </d:BindableLayout.ItemsSource>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Padding="2"
+                                d:HeightRequest="30"
+                                d:WidthRequest="50">
+                                <material:MaterialChip
+                                    x:Name="IAnswerChip"
+                                    BackgroundColor="{DynamicResource SecondaryColor}"
+                                    Image="https://i.imgur.com/N9vNTvB.png"
+                                    Text="{Binding IncorrectAnswerText}"
+                                    TextColor="{DynamicResource SecondaryTextColor}">
+                                    <material:MaterialChip.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
+                                    </material:MaterialChip.GestureRecognizers>
+                                </material:MaterialChip>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
             </StackLayout>
-            <FlexLayout
-                BindableLayout.ItemsSource="{Binding IncorrectAnswersChips}"
-                JustifyContent="SpaceEvenly"
-                Wrap="Wrap">
-                <d:BindableLayout.ItemsSource>
-                    <x:String>xxxxxxxxxxxxxxxxxx</x:String>
-                </d:BindableLayout.ItemsSource>
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid
-                            Padding="2"
-                            d:HeightRequest="30"
-                            d:WidthRequest="50">
-                            <material:MaterialChip
-                                x:Name="IAnswerChip"
-                                BackgroundColor="{DynamicResource SecondaryColor}"
-                                Image="https://i.imgur.com/N9vNTvB.png"
-                                Text="{Binding IncorrectAnswerText}"
-                                TextColor="{DynamicResource SecondaryTextColor}">
-                                <material:MaterialChip.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding IncorrectAnswerCommand}" CommandParameter="{Binding Source={x:Reference IAnswerChip}}" />
-                                </material:MaterialChip.GestureRecognizers>
-                            </material:MaterialChip>
-                        </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </FlexLayout>
+        </ScrollView>
 
-            <Label />
-            <material:MaterialTextField
-                Title="Escolha uma categoria"
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                Choices="{Binding CategoryChoice}"
-                FloatingPlaceholderColor="{DynamicResource PrimaryColor}"
-                InputType="Choice"
-                Placeholder="Categoria"
-                SelectedChoice="{Binding SelectedCategory}"
-                TextColor="{DynamicResource PrimaryColor}" />
-            <Label />
-
-            <material:MaterialButton
-                Command="{Binding SendSugestionCommand}"
-                Style="{StaticResource RaisedButton}"
-                Text="Enviar" />
-        </StackLayout>
-    </ScrollView>
+        <material:MaterialButton
+            Grid.Row="1"
+            Margin="10,5,10,10"
+            Command="{Binding SendSugestionCommand}"
+            Style="{StaticResource RaisedButton}"
+            Text="Enviar"
+            VerticalOptions="End" />
+    </Grid>
 </ContentPage>

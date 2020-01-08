@@ -16,20 +16,17 @@
             </d:BindableLayout.ItemsSource>
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="5">
+                    <Grid Padding="10,10,10,0">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ViewStatusCommand}" CommandParameter="{Binding Question}" />
                         </Grid.GestureRecognizers>
-                        <md:MaterialCard
-                            BackgroundColor="{DynamicResource BackgroundColor}"
-                            BorderColor="DimGray"
-                            Elevation="5">
+                        <md:MaterialCard BackgroundColor="#3b3b3b" Elevation="5">
                             <StackLayout Orientation="Vertical">
                                 <Label LineBreakMode="TailTruncation">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
-                                                <Span Text="Pergunta: " TextColor="DimGray" />
+                                                <Span Text="Pergunta: " TextColor="#7e7e7e" />
                                                 <Span d:Text="Qual o número mínimo de jogadores numa partida de futebol?" Text="{Binding Question.Question}" />
                                             </FormattedString.Spans>
                                         </FormattedString>

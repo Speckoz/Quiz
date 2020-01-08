@@ -32,24 +32,11 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: /Questions/2
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetQuestionById(int id)
         {
             QuestionModel question = await _questionRepository.FindByID(id);
             return question == null ? NotFound() : (IActionResult)Ok(question);
-        }
-
-        // POST: /Questions
-        [HttpPost]
-        [Authorize(Roles = "Normal, Admin")] //Normal pode criar questao???? sai do elixir
-        public async Task<IActionResult> CreateQuestion([FromBody]QuestionModel question)
-        {
-            if (ModelState.IsValid)
-            {
-                QuestionModel newQuestion = await _questionRepository.CreateTaskAsync(question);
-                return Created($"/questions/{newQuestion.QuestionID}", question);
-            }
-            return BadRequest();
         }
 
         // Delete /Questions/12

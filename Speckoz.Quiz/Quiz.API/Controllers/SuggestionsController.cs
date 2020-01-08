@@ -44,9 +44,16 @@ namespace Quiz.API.Controllers
         // DELETE: /suggestions/2
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
-        public Task<IActionResult> DeleteSuggestion(int id)
+        public async Task<IActionResult> DeleteSuggestion(int id)
         {
-            throw new NotImplementedException();
+            // Verifica se a questão existe
+            var question = await _questionsRepository.FindByID(id);
+            if (question == null) return BadRequest();
+
+            question.Status = QuestionStatusEnum.Denied;
+            await _questionsRepository.UpdateTaskAsync(question);
+
+            return Ok(question);
         }
 
         // PUT: /suggestions/approve/2
@@ -69,14 +76,9 @@ namespace Quiz.API.Controllers
         [Authorize]
         public async Task<IActionResult> GetStatus()
         {
-            if (User.HasClaim(ClaimTypes.Role, UserTypeEnum.Admin.ToString()))
-            {
-                return Ok(await _questionsRepository.GetQuestionsByStatusTaskAsync(QuestionStatusEnum.Pending));
-            }
-
             var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            return Ok(await _questionsRepository.GetQuestionsByStatusTaskAsync(QuestionStatusEnum.Pending, userId));
+            return Ok(await _questionsRepository.GetQuestionsByUserTaskAsync(userId));
         }
     }
 }

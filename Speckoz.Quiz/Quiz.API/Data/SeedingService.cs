@@ -145,6 +145,21 @@ namespace Quiz.API.Data
 
             #endregion Users
 
+            #region Sugestions
+            if (!_context.Questions.Any())
+            {
+                _context.Questions.Add(new QuestionModel
+                {
+                    Status = QuestionStatusEnum.Pending,
+                    Category = CategoryEnum.Ciencia,
+                    AuthorID = Guid.Parse("{c2e12f6f-eca1-4b46-83da-80d5747532dc}"),
+                    Question = "Sugestão de questão teste",
+                    CorrectAnswer = "teste",
+                    IncorrectAnswers = "c/c/c"
+                });
+            }
+            #endregion
+
             _context.SaveChanges();
         }
     }

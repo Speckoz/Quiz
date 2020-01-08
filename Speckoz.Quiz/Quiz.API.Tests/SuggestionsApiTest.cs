@@ -66,7 +66,8 @@ namespace Quiz.API.Tests
             Assert.NotEmpty(resultSuggestion.Question);
 
             // Delete created suggestion
-            using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/suggestions/{resultSuggestion.QuestionID}");
+            using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/questions/{resultSuggestion.QuestionID}");
+            await _client.SendAsync(delete);
         }
     }
 }

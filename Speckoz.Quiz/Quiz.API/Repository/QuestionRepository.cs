@@ -175,6 +175,7 @@ namespace Quiz.API.Repository
             throw new NotImplementedException();
         }
 
-
+        public async Task<List<QuestionModel>> GetQuestionsByUserTaskAsync(Guid userId) =>
+            await _context.Questions.Where(q => q.AuthorID == userId).ToListAsync();
     }
 }

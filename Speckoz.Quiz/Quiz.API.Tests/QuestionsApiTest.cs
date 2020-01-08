@@ -36,12 +36,13 @@ namespace Quiz.API.Tests
             QuestionModel question = JsonConvert.DeserializeObject<QuestionModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.NotEmpty(question.Category.ToString());
-            Assert.NotEmpty(question.Question);
+            Assert.NotEmpty(question.AuthorID.ToString());
             Assert.NotEmpty(question.IncorrectAnswers);
             Assert.NotEmpty(question.CorrectAnswer);
         }
 
         [Fact]
+        // ???
         public async Task DadaQuestaoValidaNoPostApiRetornaCreated()
         {
             var question = new QuestionModel

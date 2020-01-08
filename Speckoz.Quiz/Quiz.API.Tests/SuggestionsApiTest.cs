@@ -22,7 +22,7 @@ namespace Quiz.API.Tests
         public SuggestionsApiTest(WebApplicationFactory<Startup> factory) => _client = ConnectionFactory.GetClient(factory);
 
         [Fact]
-        public async Task ApiRetornaListaDasSugestoes()
+        public async Task ApiRetornaListaDasSugestoesComOsStatus()
         {
             // Arranje
             using var request = new HttpRequestMessage(new HttpMethod("GET"), $"/suggestions");
@@ -31,24 +31,12 @@ namespace Quiz.API.Tests
             using HttpResponseMessage response = await _client.SendAsync(request);
 
             // Assert
-            List<QuestionSuggestionModel> suggestions = JsonConvert.DeserializeObject<List<QuestionSuggestionModel>>(await response.Content.ReadAsStringAsync());
+            List<QuestionModel> suggestions = JsonConvert.DeserializeObject<List<QuestionModel>>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotEmpty(suggestions[0].QuestionID.ToString());
+            Assert.NotEmpty(suggestions[0].Status.ToString());
+            Assert.NotEmpty(suggestions[0].AuthorID.ToString());
             Assert.NotEmpty(suggestions[0].IncorrectAnswers);
-            Assert.NotEmpty(suggestions[0].QuestionSuggestionID.ToString());
-        }
-
-        [Fact]
-        public async Task ApiRetornaListaDoStatusDasSugestoes()
-        {
-            using var request = new HttpRequestMessage(new HttpMethod("GET"), $"/suggestions/status");
-
-            using HttpResponseMessage response = await _client.SendAsync(request);
-
-            List<QuestionsStatusModel> status = JsonConvert.DeserializeObject<List<QuestionsStatusModel>>(await response.Content.ReadAsStringAsync());
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.NotEmpty(status[0].QuestionID.ToString());
-            Assert.NotEmpty(status[0].QuestionStatus.ToString());
-            Assert.NotEmpty(status[0].AuthorID.ToString());
         }
 
         [Fact]
@@ -56,9 +44,9 @@ namespace Quiz.API.Tests
         {
             var question = new QuestionModel
             {
-                Question = "Questão Teste",
+                Question = "Questão inserida por teste automatizado",
                 Category = CategoryEnum.Arte,
-                CorrectAnswer = "Certa",
+                CorrectAnswer = "Teste",
                 IncorrectAnswers = "e/e/e",
             };
 
@@ -70,13 +58,15 @@ namespace Quiz.API.Tests
             using HttpResponseMessage response = await _client.SendAsync(request);
 
             string value = await response.Content.ReadAsStringAsync();
-            QuestionSuggestionModel resultSuggestion = JsonConvert.DeserializeObject<QuestionSuggestionModel>(value);
+            QuestionModel resultSuggestion = JsonConvert.DeserializeObject<QuestionModel>(value);
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-            Assert.NotEmpty(resultSuggestion.QuestionSuggestionID.ToString());
+            Assert.Equal(QuestionStatusEnum.Pending, resultSuggestion.Status);
+            Assert.NotEmpty(resultSuggestion.QuestionID.ToString());
+            Assert.NotEmpty(resultSuggestion.AuthorID.ToString());
             Assert.NotEmpty(resultSuggestion.Question);
 
             // Delete created suggestion
-            using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/suggestions/{resultSuggestion.QuestionSuggestionID}");
+            using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/suggestions/{resultSuggestion.QuestionID}");
         }
     }
 }

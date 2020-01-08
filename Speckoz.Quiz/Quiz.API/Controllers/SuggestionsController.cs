@@ -64,8 +64,8 @@ namespace Quiz.API.Controllers
             return Ok(question);
         }
 
-        // GET: /suggestions/status
-        [HttpGet("status")]
+        // GET: /suggestions
+        [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetStatus()
         {

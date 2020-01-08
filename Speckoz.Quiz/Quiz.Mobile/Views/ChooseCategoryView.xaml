@@ -21,7 +21,7 @@
             <Image
                 Grid.Row="0"
                 HeightRequest="70"
-                Source="{Binding Image}"
+                Source="choose.png"
                 WidthRequest="70" />
             <Label
                 Grid.Row="1"

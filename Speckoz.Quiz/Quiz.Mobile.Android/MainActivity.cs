@@ -7,6 +7,7 @@ using Quiz.Mobile.Droid;
 
 namespace Quiz.Droid
 {
+    [Preserve(AllMembers = true)]
     [Activity(Label = "Quiz", Icon = "@mipmap/icon", Theme = "@style/LightTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

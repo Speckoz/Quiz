@@ -4,7 +4,6 @@ using GalaSoft.MvvmLight.Command;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Menu;
 using Quiz.Mobile.Models.Starting;
-using Quiz.Mobile.Properties;
 using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Starting;
@@ -53,7 +52,7 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         private void Init()
         {
-            UserImage = ConvertImageUtil.Convert(Resources.choose);
+            //UserImage = ImageSource.FromFile("heartLogo.png");
             UserName = GetDataHelper.CurrentUser.User.Email;
             UserType = DescriptionValueUtil.Get(GetDataHelper.CurrentUser.User.UserType);
 
@@ -75,7 +74,8 @@ namespace Quiz.Mobile.ViewModels.Menu
             switch (Enum.Parse<ItemIdEnum>(obj.ClassId))
             {
                 case ItemIdEnum.Home:
-                    (Application.Current.MainPage as MasterDetailPage).Detail = new NavigationPage(new MainTabListView());
+                    var mainTabListView = ((Application.Current.MainPage as MasterDetailPage).Detail as NavigationPage).RootPage as MainTabListView;
+                    mainTabListView.CurrentPage = mainTabListView.Children[0];
                     break;
 
                 case ItemIdEnum.Profile:

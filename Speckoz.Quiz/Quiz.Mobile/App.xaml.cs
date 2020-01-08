@@ -2,11 +2,13 @@
 using Quiz.Mobile.Views.Starting;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 using XF.Material.Forms;
 
 namespace Quiz
 {
+    [Preserve(AllMembers = true)]
     public partial class App : Application
     {
         public App()

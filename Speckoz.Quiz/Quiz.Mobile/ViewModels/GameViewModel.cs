@@ -3,9 +3,9 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Services.Requests;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 
 using RestSharp;
@@ -65,7 +65,7 @@ namespace Quiz.Mobile.ViewModels
             ForceGameOverCommand = new RelayCommand(async () =>
             {
                 if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
-                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                    await PopPushViewUtil.PopModalAsync(true);
             });
         }
 
@@ -131,7 +131,7 @@ namespace Quiz.Mobile.ViewModels
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(_category)), true);
+                    await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(_category)), true);
                 }
                 else
                     GameOverAsync();
@@ -158,6 +158,6 @@ namespace Quiz.Mobile.ViewModels
 
         private void NextLevel() => Mount();
 
-        private async void GameOverAsync() => await Application.Current.MainPage.Navigation.PopModalAsync();
+        private async void GameOverAsync() => await PopPushViewUtil.PopModalAsync(true);
     }
 }

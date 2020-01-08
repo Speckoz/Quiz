@@ -23,8 +23,7 @@
 
             <material:MaterialCard
                 Grid.Row="0"
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                BorderColor="DimGray"
+                BackgroundColor="{DynamicResource CardColor}"
                 CornerRadius="10"
                 Elevation="2">
                 <Grid>
@@ -39,7 +38,7 @@
                         HorizontalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Rodada: " TextColor="{DynamicResource BackgroundTextColor}" />
+                                <Span Text="Rodada: " TextColor="{DynamicResource CardTextColor}" />
                                 <Span
                                     d:Text="15"
                                     Text="{Binding Round}"
@@ -54,7 +53,7 @@
                         HorizontalTextAlignment="Center">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Pontos: " TextColor="{DynamicResource BackgroundTextColor}" />
+                                <Span Text="Pontos: " TextColor="{DynamicResource CardTextColor}" />
                                 <Span
                                     d:Text="1235"
                                     Text="{Binding Points}"
@@ -69,8 +68,7 @@
                 Grid.Row="1"
                 Margin="0,20,0,30"
                 Padding="0"
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                BorderColor="DimGray"
+                BackgroundColor="{DynamicResource CardColor}"
                 CornerRadius="10"
                 Elevation="2">
                 <StackLayout>
@@ -93,7 +91,7 @@
                         FontSize="Large"
                         HorizontalTextAlignment="Center"
                         Text="{Binding Question}"
-                        TextColor="{DynamicResource BackgroundTextColor}"
+                        TextColor="{DynamicResource CardTextColor}"
                         VerticalOptions="Center" />
                 </StackLayout>
             </material:MaterialCard>

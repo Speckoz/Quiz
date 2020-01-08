@@ -2,11 +2,13 @@
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
 
+using System;
+
 namespace Quiz.Mobile.Models.Starting
 {
     public class UserBase : IUserBase
     {
-        public System.Guid UserID { get; set; }
+        public Guid UserID { get; set; }
 
         public string Email { get; set; }
 

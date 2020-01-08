@@ -46,7 +46,8 @@
                     InputType="Choice"
                     Placeholder="Categoria"
                     SelectedChoice="{Binding SelectedCategory}"
-                    TextColor="{DynamicResource PrimaryColor}" />
+                    TextColor="{DynamicResource BackgroundTextColor}"
+                    TintColor="{DynamicResource PrimaryColor}" />
                 <Label />
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Fill">

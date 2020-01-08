@@ -22,7 +22,7 @@
                 <Image
                     Grid.Row="0"
                     HeightRequest="70"
-                    Source="{Binding Image}"
+                    Source="register.png"
                     WidthRequest="70" />
 
                 <Label

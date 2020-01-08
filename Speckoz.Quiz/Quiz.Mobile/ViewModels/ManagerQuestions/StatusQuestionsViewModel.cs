@@ -57,7 +57,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
         private async void ViewStatus(IQuestion question)
         {
-            await MaterialDialog.Instance.ConfirmAsync(
+            await MaterialDialog.Instance.AlertAsync(
                 $"Pergunta: {question.Question}\nCorreta: {question.CorrectAnswer}\nErradas: {question.IncorrectAnswers}\nCategoria: {question.Category}\nID: {question.QuestionID}",
                 $"{question.AuthorID}", "OK");
         }

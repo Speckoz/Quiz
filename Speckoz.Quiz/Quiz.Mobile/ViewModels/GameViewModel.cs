@@ -27,7 +27,7 @@ namespace Quiz.Mobile.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {
-        private readonly CategoryEnum _category;
+        private CategoryEnum category;
 
         private int __points;
         private int __round;
@@ -60,9 +60,11 @@ namespace Quiz.Mobile.ViewModels
 
         public RelayCommand ForceGameOverCommand { get; private set; }
 
-        public GameViewModel(CategoryEnum category)
+        public GameViewModel(CategoryEnum category) => Init(category);
+
+        private void Init(CategoryEnum category)
         {
-            _category = category;
+            this.category = category;
             Mount();
 
             ForceGameOverCommand = new RelayCommand(async () =>
@@ -76,7 +78,7 @@ namespace Quiz.Mobile.ViewModels
         {
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
             {
-                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
+                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -135,7 +137,7 @@ namespace Quiz.Mobile.ViewModels
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(_category)), true);
+                    await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(category)), true);
                 }
                 else
                     GameOverAsync();

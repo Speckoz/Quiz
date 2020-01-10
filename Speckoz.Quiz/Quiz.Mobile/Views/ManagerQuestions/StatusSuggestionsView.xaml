@@ -9,6 +9,9 @@
     Title="Status das Sugestoes"
     BackgroundColor="{DynamicResource BackgroundColor}"
     mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding BackToManagerQuestionsCommand}" Text="Voltar" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout BindableLayout.ItemsSource="{Binding StatusQuestions}">
             <d:BindableLayout.ItemsSource>

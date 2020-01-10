@@ -58,7 +58,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             {
                 ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<StatusSuggestionsView>(new NavigationPage(new StatusSuggestionsView()
                 {
-                    BindingContext = new StatusQuestionsViewModel()
+                    BindingContext = new StatusSuggestionsViewModel()
                 }), true))
             };
 

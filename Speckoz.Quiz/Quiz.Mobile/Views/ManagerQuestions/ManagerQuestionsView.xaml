@@ -38,7 +38,6 @@
                         <Label
                             Padding="0,0,0,10"
                             FontSize="Subtitle"
-                            Opacity=".6"
                             Text="Abre uma tela com campos para sugerir uma questao"
                             TextColor="{DynamicResource CardTextColor}" />
                     </StackLayout>
@@ -69,7 +68,6 @@
                         <Label
                             Padding="0,0,0,10"
                             FontSize="Subtitle"
-                            Opacity=".6"
                             Text="Abre uma tela para ver todas as suas sugestoes."
                             TextColor="{DynamicResource CardTextColor}" />
                     </StackLayout>
@@ -113,7 +111,6 @@
                                             Text="{Binding ActionName}" />
                                         <Label
                                             FontSize="Subtitle"
-                                            Opacity=".5"
                                             Text="{Binding ActionDescription}"
                                             TextColor="{DynamicResource CardTextColor}" />
                                     </StackLayout>

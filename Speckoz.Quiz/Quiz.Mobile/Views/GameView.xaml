@@ -73,13 +73,13 @@
                 Elevation="2">
                 <StackLayout>
                     <Grid>
-                        <BoxView BackgroundColor="{DynamicResource PrimaryColor}" CornerRadius="10 10 0 0" />
+                        <BoxView BackgroundColor="{DynamicResource SecondaryColor}" CornerRadius="10 10 0 0" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="Large"
                             HorizontalOptions="Center"
                             Text="Pergunta"
-                            TextColor="{DynamicResource PrimaryTextColor}"
+                            TextColor="{DynamicResource SecondaryTextColor}"
                             VerticalOptions="Center" />
                     </Grid>
 
@@ -95,6 +95,7 @@
                         VerticalOptions="Center" />
                 </StackLayout>
             </material:MaterialCard>
+
             <StackLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding AnswerButtons}">
                 <d:BindableLayout.ItemsSource>
                     <x:String>12345</x:String>
@@ -103,13 +104,16 @@
                     <DataTemplate>
                         <material:MaterialButton
                             x:Name="ClickedButton"
-                            BackgroundColor="{DynamicResource BackgroundColor}"
+                            BackgroundColor="{DynamicResource CardColor}"
+                            BorderWidth="3"
                             ClassId="{Binding IsCorrectAnswer}"
                             Command="{Binding AnswerCommand}"
                             CommandParameter="{Binding Source={x:Reference ClickedButton}}"
+                            CornerRadius="5"
                             FontSize="Medium"
-                            Style="{StaticResource OutlinedButton}"
-                            Text="{Binding AnswerText}" />
+                            HeightRequest="50"
+                            Text="{Binding AnswerText}"
+                            TextColor="{DynamicResource CardTextColor}" />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

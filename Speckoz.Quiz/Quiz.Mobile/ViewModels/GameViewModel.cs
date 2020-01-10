@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using Logikoz.ThemeBase.Enums;
+using Logikoz.ThemeBase.Helpers;
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;
@@ -116,16 +117,17 @@ namespace Quiz.Mobile.ViewModels
             button.BorderWidth = 5;
             if (bool.Parse(button.ClassId))
             {
+                button.BorderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color;
+
                 Round++;
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
 
-                //SendMessageHelper.SendAsync("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.");
                 NextLevel();
             }
             else
             {
-                (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
+                button.BorderColor = Color.Red;
 
                 if ((await MaterialDialog.Instance.ConfirmAsync($"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Fim de jogo",
                     "Jogar Novamente", "Voltar")) == true)

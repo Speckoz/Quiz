@@ -20,7 +20,7 @@ namespace Quiz.Mobile.ViewModels
         {
             ChangeThemeCommand = new RelayCommand(() =>
             {
-                ChangeThemeUtil.Change(currentTheme = (currentTheme == ThemeEnum.Light) ? ThemeEnum.Dark : ThemeEnum.Light);
+                ChangeThemeUtil.Change(currentTheme = (currentTheme == ThemeEnum.Dark) ? ThemeEnum.Light : ThemeEnum.Dark);
                 DialogThemeConfigHelper.Init();
             });
         }

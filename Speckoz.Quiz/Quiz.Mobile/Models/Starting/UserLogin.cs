@@ -2,7 +2,7 @@
 {
     public class UserLogin
     {
-        public UserBase User { get; set; }
+        public UserBaseModel User { get; set; }
 
         public string Token { get; set; }
     }

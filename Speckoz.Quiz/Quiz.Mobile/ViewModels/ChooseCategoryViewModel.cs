@@ -59,7 +59,7 @@ namespace Quiz.Mobile.ViewModels
         private async void CategoryChosenAsync(Button bt)
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
-                await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(result)), true);
+                await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(result)), true);
         }
 
         private void Init()

@@ -6,7 +6,7 @@ using System;
 
 namespace Quiz.Mobile.Models.Starting
 {
-    public class UserBase : IUserBase
+    public class UserBaseModel : IUserBase
     {
         public Guid UserID { get; set; }
 

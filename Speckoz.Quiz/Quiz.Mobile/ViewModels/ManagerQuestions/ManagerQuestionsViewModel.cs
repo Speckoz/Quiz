@@ -51,12 +51,12 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         {
             SuggestQuestion = new ManagerQuestionsModel
             {
-                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
+                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<SuggestQuestionView>(new NavigationPage(new SuggestQuestionView()), true))
             };
 
             StatusSuggestions = new ManagerQuestionsModel
             {
-                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new StatusSuggestionsView()
+                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<StatusSuggestionsView>(new NavigationPage(new StatusSuggestionsView()
                 {
                     BindingContext = new StatusQuestionsViewModel()
                 }), true))
@@ -75,7 +75,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     ActionImage = ImageSource.FromFile("adminStatus.png"),
                     ActionName = "Avaliar Sugestoes",
                     ActionDescription= "Abre uma tela com as sugestoes de questoes.",
-                    ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
+                    ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<ApproveQuestionsView>(new NavigationPage(new ApproveQuestionsView())), true)
                 },new ManagerQuestionsModel
                 {
                     ActionImage = ImageSource.FromFile("heartLogo.png"),

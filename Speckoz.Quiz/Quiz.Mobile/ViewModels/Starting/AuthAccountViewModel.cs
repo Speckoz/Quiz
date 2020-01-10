@@ -12,7 +12,6 @@ using RestSharp;
 
 using System.Net;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -48,7 +47,7 @@ namespace Quiz.Mobile.ViewModels.Starting
         private void InitCommands()
         {
             AuthCommand = new RelayCommand(Auth);
-            RegisterCommand = new RelayCommand(Register);
+            RegisterCommand = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<RegisterAccountView>(new RegisterAccountView(), true));
         }
 
         private async void Auth()
@@ -61,7 +60,6 @@ namespace Quiz.Mobile.ViewModels.Starting
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
-                
                 IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
 
                 if (response.StatusCode == HttpStatusCode.OK)
@@ -85,11 +83,6 @@ namespace Quiz.Mobile.ViewModels.Starting
                     await MaterialDialog.Instance.AlertAsync("Algo deu errado, verifique sua conexao e tente novamente!", "Erro", "OK");
                 }
             }
-        }
-
-        private async void Register()
-        {
-            await PopPushViewUtil.PushModalAsync(new RegisterAccountView(), true);
         }
     }
 }

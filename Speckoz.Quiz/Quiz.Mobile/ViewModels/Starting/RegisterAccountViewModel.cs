@@ -55,7 +55,7 @@ namespace Quiz.Mobile.ViewModels.Starting
         private void InitCommands()
         {
             RegisterCommand = new RelayCommand(Register);
-            BackCommand = new RelayCommand(async () => await PopPushViewUtil.PopModalAsync(true));
+            BackCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<RegisterAccountView>(true));
         }
 
         private async void Register()

@@ -1,39 +1,40 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using XF.Material.Forms.UI.Dialogs;
+using Xamarin.Forms.Internals;
 
 namespace Quiz.Mobile.Util
 {
     internal class PopPushViewUtil
     {
-        public static async Task PushAsync(Page page, bool animated = false)
-        {
-            await Task.Delay(1000);
-            await Application.Current.MainPage.Navigation.PushAsync(page, animated);
-        }
+        public static async Task PushAsync(INavigation navigation, Page page, bool animated = false) => await navigation.PushAsync(page, animated);
 
-        public static async Task PopAsync(bool animated = false)
+        public static void Pop<T>(INavigation navigation)
         {
-            try
+            IReadOnlyList<Page> pages = navigation.NavigationStack;
+            pages.ForEach(page =>
             {
-                await Application.Current.MainPage.Navigation.PopAsync(animated);
-            }
-            catch { }
+                if (page is T)
+                    navigation.RemovePage(page);
+            });
         }
 
-        public static async Task PushModalAsync(Page page, bool animated = false)
+        public static async Task PushModalAsync<T>(Page page, bool animated = false)
         {
+            PopModalAsync<T>();
             await Application.Current.MainPage.Navigation.PushModalAsync(page, animated);
         }
 
-        public static async Task PopModalAsync(bool animated = false)
+        public static void PopModalAsync<T>(bool animated = false)
         {
-            try
+            INavigation navigation = Application.Current.MainPage.Navigation;
+            IReadOnlyList<Page> pages = navigation.ModalStack;
+            pages.ForEach(async page =>
             {
-                await Application.Current.MainPage.Navigation.PopModalAsync(animated);
-            }
-            catch { }
+                if (page is T || (page as NavigationPage).RootPage is T)
+                    await navigation.PopModalAsync(animated);
+            });
         }
     }
 }

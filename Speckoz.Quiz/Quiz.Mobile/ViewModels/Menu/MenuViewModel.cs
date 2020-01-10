@@ -3,16 +3,16 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Menu;
-using Quiz.Mobile.Models.Starting;
 using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
+using Quiz.Mobile.Views.Menu;
 using Quiz.Mobile.Views.Starting;
 
 using System;
 using System.Collections.ObjectModel;
-
+using System.Linq;
 using Xamarin.Forms;
-
+using Xamarin.Forms.Internals;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.Menu
@@ -79,8 +79,14 @@ namespace Quiz.Mobile.ViewModels.Menu
                     break;
 
                 case ItemIdEnum.Profile:
-                    UserBase user = GetDataHelper.CurrentUser.User;
-                    await MaterialDialog.Instance.AlertAsync($"Username: {user.Username}\nEmail: {user.Email}\nTipo: {user.UserType}\nLevel: {user.Level}", "Perfil", "OK");
+
+                    var mainScreenView = Application.Current.MainPage as MainScreenView;
+                    INavigation navigation = (mainScreenView.Detail as NavigationPage).RootPage.Navigation;
+
+                    PopPushViewUtil.Pop<ProfileView>(navigation);
+                    await PopPushViewUtil.PushAsync(navigation, new ProfileView(), true);
+                    mainScreenView.IsPresented = false;
+
                     break;
 
                 case ItemIdEnum.Logout:

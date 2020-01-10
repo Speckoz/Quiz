@@ -68,7 +68,7 @@ namespace Quiz.Mobile.ViewModels
             ForceGameOverCommand = new RelayCommand(async () =>
             {
                 if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
-                    await PopPushViewUtil.PopModalAsync(true);
+                    PopPushViewUtil.PopModalAsync<GameView>(true);
             });
         }
 
@@ -135,7 +135,7 @@ namespace Quiz.Mobile.ViewModels
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(_category)), true);
+                    await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(_category)), true);
                 }
                 else
                     GameOverAsync();
@@ -162,6 +162,6 @@ namespace Quiz.Mobile.ViewModels
 
         private void NextLevel() => Mount();
 
-        private async void GameOverAsync() => await PopPushViewUtil.PopModalAsync(true);
+        private void GameOverAsync() => PopPushViewUtil.PopModalAsync<GameView>(true);
     }
 }

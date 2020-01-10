@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Quiz.Mobile.Views.Menu.ProfileView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{DynamicResource BackgroundColor}"
+    mc:Ignorable="d">
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Label FontSize="Title" Text="Dados do usuario" />
+        <Label />
+        <Label Text="{Binding User.Username}" />
+        <Label Text="{Binding User.Email}" />
+        <Label Text="{Binding User.Level}" />
+        <Label Text="{Binding User.UserType}" />
+        <Label Text="{Binding User.UserID}" />
+    </StackLayout>
+</ContentPage>

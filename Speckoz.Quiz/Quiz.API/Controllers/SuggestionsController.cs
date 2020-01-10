@@ -6,7 +6,6 @@ using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
 
 using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,6 +16,7 @@ namespace Quiz.API.Controllers
     public class SuggestionsController : ControllerBase
     {
         private readonly IQuestionRepository _questionsRepository;
+
         public SuggestionsController(IQuestionRepository questionRepository)
         {
             _questionsRepository = questionRepository;

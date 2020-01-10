@@ -17,9 +17,9 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
-    <PackageReference Include="RestSharp" Version="106.9.0" />
+    <PackageReference Include="RestSharp" Version="106.10.0" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
-    <PackageReference Include="ThemeBase" Version="1.0.6" />
+    <PackageReference Include="ThemeBase" Version="1.0.9" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
@@ -33,10 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\ChooseCategoryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -46,13 +42,19 @@
     <EmbeddedResource Update="Views\ManagerQuestions\Admin\ApproveQuestionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ManagerQuestions\StatusQuestionsView.xaml">
+    <EmbeddedResource Update="Views\ManagerQuestions\ShowStatusSuggestionView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ManagerQuestions\StatusSuggestionsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ManagerQuestions\SuggestQuestionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Menu\MenuView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Menu\ProfileView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Starting\AuthAccountView.xaml">
@@ -73,16 +75,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Update="Views\ChooseCategoryView.xaml.cs">
       <DependentUpon>ChooseCategoryView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ManagerQuestions\StatusSuggestionsView.xaml.cs">
+      <DependentUpon>StatusSuggestionsView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Starting\AuthAccountView.xaml.cs">
       <DependentUpon>AuthAccountView.xaml</DependentUpon>
@@ -90,6 +90,10 @@
     <Compile Update="Views\Starting\RegisterAccountView.xaml.cs">
       <DependentUpon>RegisterAccountView.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

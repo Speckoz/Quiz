@@ -21,14 +21,15 @@
             <Image
                 Grid.Row="0"
                 HeightRequest="70"
-                Source="{Binding Image}"
+                Source="choose.png"
                 WidthRequest="70" />
             <Label
                 Grid.Row="1"
                 FontAttributes="Bold"
                 FontSize="Title"
                 HorizontalOptions="Center"
-                Text="Escolha a Categoria" />
+                Text="Escolha a Categoria"
+                TextColor="{DynamicResource PrimaryColor}" />
 
             <StackLayout Grid.Row="2" BindableLayout.ItemsSource="{Binding ChooseCategories}">
                 <BindableLayout.ItemTemplate>

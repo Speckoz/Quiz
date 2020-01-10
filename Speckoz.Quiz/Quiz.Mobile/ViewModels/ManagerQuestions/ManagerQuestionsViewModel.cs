@@ -4,7 +4,6 @@ using GalaSoft.MvvmLight.Command;
 using Quiz.Dependencies.Enums;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models;
-using Quiz.Mobile.Properties;
 using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions.Admin;
@@ -52,16 +51,14 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         {
             SuggestQuestion = new ManagerQuestionsModel
             {
-                ActionImage = ConvertImageUtil.Convert(Resources.choose),
-                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
+                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<SuggestQuestionView>(new NavigationPage(new SuggestQuestionView()), true))
             };
 
             StatusSuggestions = new ManagerQuestionsModel
             {
-                ActionImage = ConvertImageUtil.Convert(Resources.heartLogo),
-                ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new StatusQuestionsView()
+                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<StatusSuggestionsView>(new NavigationPage(new StatusSuggestionsView()
                 {
-                    BindingContext = new StatusQuestionsViewModel()
+                    BindingContext = new StatusSuggestionsViewModel()
                 }), true))
             };
 
@@ -75,19 +72,19 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             {
                 new ManagerQuestionsModel
                 {
-                    ActionImage = ConvertImageUtil.Convert(Resources.register),
+                    ActionImage = ImageSource.FromFile("adminStatus.png"),
                     ActionName = "Avaliar Sugestoes",
                     ActionDescription= "Abre uma tela com as sugestoes de questoes.",
-                    ActionOpen = new RelayCommand(async () => await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
+                    ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<ApproveQuestionsView>(new NavigationPage(new ApproveQuestionsView())), true)
                 },new ManagerQuestionsModel
                 {
-                    ActionImage = ConvertImageUtil.Convert(Resources.heartLogo),
+                    ActionImage = ImageSource.FromFile("heartLogo.png"),
                     ActionName = "Editar Questao",
                     ActionDescription= "Abre uma tela com campos para editar uma questao",
                     ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Editar questao", "", "OK"))
                 },new ManagerQuestionsModel
                 {
-                    ActionImage = ConvertImageUtil.Convert(Resources.choose),
+                    ActionImage = ImageSource.FromFile("removeQuestion.png"),
                     ActionName = "Excluir Questao",
                     ActionDescription= "Abre uma tela com campos para excluir uma questao",
                     ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Excluir questao", "", "OK"))

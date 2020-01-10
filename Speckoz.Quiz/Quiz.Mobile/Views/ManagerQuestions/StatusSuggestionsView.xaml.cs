@@ -4,8 +4,8 @@ using Xamarin.Forms.Xaml;
 namespace Quiz.Mobile.Views.ManagerQuestions
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StatusQuestionsView : ContentPage
+    public partial class StatusSuggestionsView : ContentPage
     {
-        public StatusQuestionsView() => InitializeComponent();
+        public StatusSuggestionsView() => InitializeComponent();
     }
 }

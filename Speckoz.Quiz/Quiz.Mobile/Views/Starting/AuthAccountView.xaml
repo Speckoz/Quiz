@@ -24,7 +24,7 @@
                     Margin="20,0,20,5"
                     HeightRequest="70"
                     HorizontalOptions="Center"
-                    Source="{Binding Image}"
+                    Source="heartLogo.png"
                     WidthRequest="70" />
 
                 <Label
@@ -32,7 +32,8 @@
                     FontAttributes="Bold"
                     FontSize="Title"
                     HorizontalOptions="Center"
-                    Text="Autenticar Conta" />
+                    Text="Autenticação"
+                    TextColor="{DynamicResource PrimaryColor}" />
 
                 <StackLayout
                     Grid.Row="2"
@@ -53,7 +54,6 @@
                         ReturnType="Done"
                         Style="{DynamicResource MTFBase}"
                         Text="{Binding Password}" />
-
                 </StackLayout>
 
                 <StackLayout Grid.Row="3" Orientation="Vertical">
@@ -71,12 +71,9 @@
                     BackgroundColor="{DynamicResource BackgroundColor}"
                     Command="{Binding RegisterCommand}"
                     HorizontalOptions="Fill"
-                    Style="{StaticResource OutlinedButton}"
                     Text="Registrar"
-                    VerticalOptions="Center"
-                    Visual="Material" />
+                    TextColor="{DynamicResource PrimaryColor}" />
             </StackLayout>
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

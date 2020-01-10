@@ -1,9 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Quiz.Mobile.Util;
-using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.Starting;
 
 using RestSharp;
@@ -19,17 +18,10 @@ namespace Quiz.Mobile.ViewModels.Starting
 {
     public class RegisterAccountViewModel : ViewModelBase
     {
-        private ImageSource __image;
         private string __username;
         private string __newPassword;
         private string __confirmNewPassword;
         private string __email;
-
-        public ImageSource Image
-        {
-            get => __image;
-            set => Set(ref __image, value);
-        }
 
         public string Username
         {
@@ -58,19 +50,13 @@ namespace Quiz.Mobile.ViewModels.Starting
         public RelayCommand RegisterCommand { get; private set; }
         public RelayCommand BackCommand { get; private set; }
 
-        public RegisterAccountViewModel()
-        {
-            Image = ConvertImageUtil.Convert(Resources.register);
-            InitCommands();
-        }
+        public RegisterAccountViewModel() => InitCommands();
 
         private void InitCommands()
         {
             RegisterCommand = new RelayCommand(Register);
-            BackCommand = new RelayCommand(Back);
+            BackCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<RegisterAccountView>(true));
         }
-
-        private async void Back() => await Application.Current.MainPage.Navigation.PopModalAsync(true);
 
         private async void Register()
         {
@@ -89,7 +75,7 @@ namespace Quiz.Mobile.ViewModels.Starting
 
                 using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Processando cadastro..."))
                 {
-                    IRestResponse response = AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
+                    IRestResponse response = await AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
 
                     if (response.StatusCode == HttpStatusCode.Created)
                     {

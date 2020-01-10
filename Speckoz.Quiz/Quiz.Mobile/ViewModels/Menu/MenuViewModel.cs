@@ -3,17 +3,16 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Menu;
-using Quiz.Mobile.Models.Starting;
-using Quiz.Mobile.Properties;
 using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
+using Quiz.Mobile.Views.Menu;
 using Quiz.Mobile.Views.Starting;
 
 using System;
 using System.Collections.ObjectModel;
-
+using System.Linq;
 using Xamarin.Forms;
-
+using Xamarin.Forms.Internals;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.Menu
@@ -53,7 +52,7 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         private void Init()
         {
-            UserImage = ConvertImageUtil.Convert(Resources.choose);
+            //UserImage = ImageSource.FromFile("heartLogo.png");
             UserName = GetDataHelper.CurrentUser.User.Email;
             UserType = DescriptionValueUtil.Get(GetDataHelper.CurrentUser.User.UserType);
 
@@ -75,12 +74,19 @@ namespace Quiz.Mobile.ViewModels.Menu
             switch (Enum.Parse<ItemIdEnum>(obj.ClassId))
             {
                 case ItemIdEnum.Home:
-                    (Application.Current.MainPage as MasterDetailPage).Detail = new NavigationPage(new MainTabListView());
+                    var mainTabListView = ((Application.Current.MainPage as MasterDetailPage).Detail as NavigationPage).RootPage as MainTabListView;
+                    mainTabListView.CurrentPage = mainTabListView.Children[0];
                     break;
 
                 case ItemIdEnum.Profile:
-                    UserBase user = GetDataHelper.CurrentUser.User;
-                    await MaterialDialog.Instance.AlertAsync($"Username: {user.Username}\nEmail: {user.Email}\nTipo: {user.UserType}\nLevel: {user.Level}", "Perfil", "OK");
+
+                    var mainScreenView = Application.Current.MainPage as MainScreenView;
+                    INavigation navigation = (mainScreenView.Detail as NavigationPage).RootPage.Navigation;
+
+                    PopPushViewUtil.Pop<ProfileView>(navigation);
+                    await PopPushViewUtil.PushAsync(navigation, new ProfileView(), true);
+                    mainScreenView.IsPresented = false;
+
                     break;
 
                 case ItemIdEnum.Logout:

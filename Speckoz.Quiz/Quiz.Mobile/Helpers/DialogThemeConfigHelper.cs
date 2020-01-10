@@ -41,6 +41,8 @@ namespace Quiz.Mobile.Helpers
             {
                 BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
                 MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                InputTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                InputPlaceholderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
                 TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
                 TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color
             };

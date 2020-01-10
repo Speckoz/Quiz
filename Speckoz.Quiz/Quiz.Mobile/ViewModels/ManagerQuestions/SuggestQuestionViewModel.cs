@@ -6,6 +6,8 @@ using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
+using Quiz.Mobile.Util;
+using Quiz.Mobile.Views.ManagerQuestions;
 
 using RestSharp;
 
@@ -14,8 +16,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
 
 using XF.Material.Forms.UI;
 using XF.Material.Forms.UI.Dialogs;
@@ -124,7 +124,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
             using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando...");
-            IRestResponse response = ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
+            IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
             {
                 Question = NewQuestion.Question,
                 Category = NewQuestion.Category,
@@ -136,7 +136,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
             await Task.Delay(1500);
             if (response.StatusCode == HttpStatusCode.Created)
-                await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                PopPushViewUtil.PopModalAsync<SuggestQuestionView>(true);
         }
 
         private void Init()
@@ -152,7 +152,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         private async void ExitSuggestScreen()
         {
             if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "ATENÇAO", "Sim", "Cancelar")) == true)
-                await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                PopPushViewUtil.PopModalAsync<SuggestQuestionView>(true);
         }
     }
 }

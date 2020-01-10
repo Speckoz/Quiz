@@ -7,27 +7,23 @@
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="this"
-    Title="Gerenciar Questoes"
     BackgroundColor="{DynamicResource BackgroundColor}"
     Visual="Material"
     mc:Ignorable="d">
     <ScrollView>
         <StackLayout>
+            <Label />
+            <Label HorizontalOptions="Center" Text="Membro" />
             <material:MaterialCard
-                Margin="10"
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                BorderColor="DimGray"
+                Margin="10,10,10,0"
+                BackgroundColor="{DynamicResource CardColor}"
                 CornerRadius="10"
                 Elevation="2">
                 <material:MaterialCard.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SuggestQuestion.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                 </material:MaterialCard.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
-                    <Image
-                        HeightRequest="60"
-                        Source="{Binding SuggestQuestion.ActionImage}"
-                        VerticalOptions="Center"
-                        WidthRequest="60" />
+                    <Image Source="suggest" VerticalOptions="Center" />
 
                     <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
                         <Label
@@ -38,28 +34,22 @@
                         <Label
                             Padding="0,0,0,10"
                             FontSize="Subtitle"
-                            Opacity=".6"
                             Text="Abre uma tela com campos para sugerir uma questao"
-                            TextColor="{DynamicResource BackgroundTextColor}" />
+                            TextColor="{DynamicResource CardTextColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
 
             <material:MaterialCard
-                Margin="10"
-                BackgroundColor="{DynamicResource BackgroundColor}"
-                BorderColor="DimGray"
+                Margin="10,10,10,0"
+                BackgroundColor="{DynamicResource CardColor}"
                 CornerRadius="10"
                 Elevation="2">
                 <material:MaterialCard.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding StatusSuggestions.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                 </material:MaterialCard.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
-                    <Image
-                        HeightRequest="60"
-                        Source="{Binding StatusSuggestions.ActionImage}"
-                        VerticalOptions="Center"
-                        WidthRequest="60" />
+                    <Image Source="status" VerticalOptions="Center" />
 
                     <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
                         <Label
@@ -70,12 +60,17 @@
                         <Label
                             Padding="0,0,0,10"
                             FontSize="Subtitle"
-                            Opacity=".6"
                             Text="Abre uma tela para ver todas as suas sugestoes."
-                            TextColor="{DynamicResource BackgroundTextColor}" />
+                            TextColor="{DynamicResource CardTextColor}" />
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
+            <BoxView
+                Margin="10"
+                BackgroundColor="{DynamicResource SeparatorLineColor}"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsAdmin}" />
             <Label
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsAdmin}"
@@ -87,17 +82,18 @@
                 </d:BindableLayout.ItemsSource>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="10" Orientation="Vertical">
+                        <StackLayout Orientation="Vertical">
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                             </StackLayout.GestureRecognizers>
                             <material:MaterialCard
-                                BackgroundColor="{DynamicResource BackgroundColor}"
-                                BorderColor="DimGray"
+                                Margin="10,10,10,0"
+                                BackgroundColor="{DynamicResource CardColor}"
                                 CornerRadius="10"
                                 Elevation="2">
                                 <StackLayout Orientation="Horizontal">
                                     <Image
+                                        d:Source="adminStatus"
                                         HeightRequest="60"
                                         Source="{Binding ActionImage}"
                                         VerticalOptions="Center"
@@ -108,14 +104,15 @@
                                         Orientation="Vertical"
                                         VerticalOptions="Center">
                                         <Label
+                                            d:Text="Titulo adm aqui"
                                             FontAttributes="Bold"
                                             FontSize="Medium"
                                             Text="{Binding ActionName}" />
                                         <Label
+                                            d:Text="Mensagem de uma admin qualquer"
                                             FontSize="Subtitle"
-                                            Opacity=".5"
                                             Text="{Binding ActionDescription}"
-                                            TextColor="{DynamicResource BackgroundTextColor}" />
+                                            TextColor="{DynamicResource CardTextColor}" />
                                     </StackLayout>
                                 </StackLayout>
                             </material:MaterialCard>

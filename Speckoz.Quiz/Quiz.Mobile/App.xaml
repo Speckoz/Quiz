@@ -11,7 +11,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <theme:DarkDefaultTheme />
+                <theme:LightDefaultTheme />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -21,7 +21,7 @@
         </Style>
 
         <Style TargetType="Label">
-            <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+            <Setter Property="TextColor" Value="{DynamicResource BackgroundTextColor}" />
         </Style>
 
         <Style x:Key="RaisedButton" TargetType="material:MaterialButton">

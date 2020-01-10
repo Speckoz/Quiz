@@ -6,12 +6,12 @@ using Xamarin.Forms.Xaml;
 namespace Quiz.Mobile.Views.Menu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MenuView : ContentPage
+    public partial class ProfileView : ContentPage
     {
-        public MenuView()
+        public ProfileView()
         {
             InitializeComponent();
-            BindingContext = new MenuViewModel();
+            BindingContext = new ProfileViewModel();
         }
     }
 }

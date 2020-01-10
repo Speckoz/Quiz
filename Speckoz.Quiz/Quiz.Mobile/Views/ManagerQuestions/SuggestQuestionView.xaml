@@ -46,7 +46,8 @@
                     InputType="Choice"
                     Placeholder="Categoria"
                     SelectedChoice="{Binding SelectedCategory}"
-                    TextColor="{DynamicResource PrimaryColor}" />
+                    TextColor="{DynamicResource BackgroundTextColor}"
+                    TintColor="{DynamicResource PrimaryColor}" />
                 <Label />
 
                 <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
@@ -64,8 +65,10 @@
                             <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
                         </Grid.GestureRecognizers>
                         <Label
+                            Margin="0,15"
                             FontSize="Medium"
                             Text="ADD"
+                            TextColor="{DynamicResource PrimaryColor}"
                             VerticalOptions="Center" />
                     </Grid>
                 </StackLayout>

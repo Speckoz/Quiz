@@ -1,11 +1,14 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.ThemeBase.Enums;
+using Logikoz.ThemeBase.Helpers;
+
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Services.Requests;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 
 using RestSharp;
@@ -24,7 +27,7 @@ namespace Quiz.Mobile.ViewModels
 {
     public class GameViewModel : ViewModelBase
     {
-        private readonly CategoryEnum _category;
+        private CategoryEnum category;
 
         private int __points;
         private int __round;
@@ -57,15 +60,17 @@ namespace Quiz.Mobile.ViewModels
 
         public RelayCommand ForceGameOverCommand { get; private set; }
 
-        public GameViewModel(CategoryEnum category)
+        public GameViewModel(CategoryEnum category) => Init(category);
+
+        private void Init(CategoryEnum category)
         {
-            _category = category;
+            this.category = category;
             Mount();
 
             ForceGameOverCommand = new RelayCommand(async () =>
             {
                 if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
-                    await Application.Current.MainPage.Navigation.PopModalAsync(true);
+                    PopPushViewUtil.PopModalAsync<GameView>(true);
             });
         }
 
@@ -73,7 +78,7 @@ namespace Quiz.Mobile.ViewModels
         {
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
             {
-                IRestResponse response = GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
+                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -116,22 +121,23 @@ namespace Quiz.Mobile.ViewModels
             button.BorderWidth = 5;
             if (bool.Parse(button.ClassId))
             {
+                button.BorderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color;
+
                 Round++;
                 bool isDefault = Points == default;
                 Points = isDefault ? 10 : Points * 2;
 
-                //SendMessageHelper.SendAsync("Parabéns", $"Você acertou!\n\n+{(isDefault ? 10 : Points / 2)} pontos.");
                 NextLevel();
             }
             else
             {
-                (button.BackgroundColor, button.BorderColor) = (Color.Red, Color.Red);
+                button.BorderColor = Color.Red;
 
                 if ((await MaterialDialog.Instance.ConfirmAsync($"Você Perdeu!\nA alternativa correta é: {GetAnswerCorrect()}\n\nVocê fez: {Points} pontos", "Fim de jogo",
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(_category)), true);
+                    await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(category)), true);
                 }
                 else
                     GameOverAsync();
@@ -158,6 +164,6 @@ namespace Quiz.Mobile.ViewModels
 
         private void NextLevel() => Mount();
 
-        private async void GameOverAsync() => await Application.Current.MainPage.Navigation.PopModalAsync();
+        private void GameOverAsync() => PopPushViewUtil.PopModalAsync<GameView>(true);
     }
 }

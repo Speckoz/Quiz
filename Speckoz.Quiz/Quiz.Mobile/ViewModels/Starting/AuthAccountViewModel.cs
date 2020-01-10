@@ -3,7 +3,6 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Starting;
-using Quiz.Mobile.Properties;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
@@ -16,16 +15,17 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.Starting
 {
+    [Preserve(AllMembers = true)]
     public class AuthAccountViewModel : ViewModelBase
     {
         private string __login;
         private string __password;
-        private ImageSource __image;
 
         public string Login
         {
@@ -39,12 +39,6 @@ namespace Quiz.Mobile.ViewModels.Starting
             set => Set(ref __password, value);
         }
 
-        public ImageSource Image
-        {
-            get => __image;
-            set => Set(ref __image, value);
-        }
-
         public RelayCommand AuthCommand { get; private set; }
         public RelayCommand RegisterCommand { get; private set; }
 
@@ -52,9 +46,8 @@ namespace Quiz.Mobile.ViewModels.Starting
 
         private void InitCommands()
         {
-            Image = ConvertImageUtil.Convert(Resources.heartLogo);
             AuthCommand = new RelayCommand(Auth);
-            RegisterCommand = new RelayCommand(Register);
+            RegisterCommand = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<RegisterAccountView>(new RegisterAccountView(), true));
         }
 
         private async void Auth()
@@ -67,7 +60,7 @@ namespace Quiz.Mobile.ViewModels.Starting
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
-                IRestResponse response = AccountService.AuthAccountTaskAsync(Login, Password);
+                IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -91,7 +84,5 @@ namespace Quiz.Mobile.ViewModels.Starting
                 }
             }
         }
-
-        private async void Register() => await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterAccountView(), true);
     }
 }

@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Quiz.Mobile.Views.ManagerQuestions.StatusQuestionsView"
+    x:Class="Quiz.Mobile.Views.ManagerQuestions.StatusSuggestionsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
-    Title="Status Questoes"
+    Title="Status das Sugestoes"
     BackgroundColor="{DynamicResource BackgroundColor}"
     mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding BackToManagerQuestionsCommand}" Text="Voltar" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout BindableLayout.ItemsSource="{Binding StatusQuestions}">
             <d:BindableLayout.ItemsSource>
@@ -20,14 +23,20 @@
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ViewStatusCommand}" CommandParameter="{Binding Question}" />
                         </Grid.GestureRecognizers>
-                        <md:MaterialCard BackgroundColor="#3b3b3b" Elevation="5">
+                        <md:MaterialCard
+                            BackgroundColor="{DynamicResource CardColor}"
+                            CornerRadius="10"
+                            Elevation="5">
                             <StackLayout Orientation="Vertical">
                                 <Label LineBreakMode="TailTruncation">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
-                                                <Span Text="Pergunta: " TextColor="#7e7e7e" />
-                                                <Span d:Text="Qual o número mínimo de jogadores numa partida de futebol?" Text="{Binding Question.Question}" />
+                                                <Span Text="Pergunta: " TextColor="{DynamicResource CardTextColor}" />
+                                                <Span
+                                                    d:Text="Qual o número mínimo de jogadores numa partida de futebol?"
+                                                    Text="{Binding Question.Question}"
+                                                    TextColor="{DynamicResource PrimaryColor}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -36,8 +45,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
-                                                <Span Text="Status: " TextColor="DimGray" />
-                                                <Span d:Text="Aceito" Text="{Binding Question.Status}" />
+                                                <Span Text="Status: " TextColor="{DynamicResource CardTextColor}" />
+                                                <Span
+                                                    d:Text="Aceito"
+                                                    Text="{Binding Question.Status}"
+                                                    TextColor="{DynamicResource SecondaryColor}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>

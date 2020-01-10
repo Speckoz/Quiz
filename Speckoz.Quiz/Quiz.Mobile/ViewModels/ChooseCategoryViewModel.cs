@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using Logikoz.ThemeBase.Enums;
 using Logikoz.ThemeBase.Helpers;
+
 using Quiz.Dependencies.Enums;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Models;
-using Quiz.Mobile.Properties;
+using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 
 using System;
@@ -17,19 +18,12 @@ namespace Quiz.Mobile.ViewModels
 {
     internal class ChooseCategoryViewModel : ViewModelBase
     {
-        private ImageSource __image;
         private ObservableCollection<ChooseCategoryModel> __chooseCategories;
 
         public ObservableCollection<ChooseCategoryModel> ChooseCategories
         {
             get => __chooseCategories;
             set => Set(ref __chooseCategories, value);
-        }
-
-        public ImageSource Image
-        {
-            get => __image;
-            set => Set(ref __image, value);
         }
 
         public ChooseCategoryViewModel() => Init();
@@ -65,12 +59,11 @@ namespace Quiz.Mobile.ViewModels
         private async void CategoryChosenAsync(Button bt)
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
-                await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new GameView(result)), true);
+                await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(result)), true);
         }
 
         private void Init()
         {
-            Image = ConvertImageUtil.Convert(Resources.choose);
             CreateButtonsChoose();
         }
     }

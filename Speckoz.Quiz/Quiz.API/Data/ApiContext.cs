@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using Quiz.API.Models;
+
 using System;
 
 namespace Quiz.API.Data
@@ -15,7 +16,7 @@ namespace Quiz.API.Data
         {
             if (modelBuilder == null)
                 throw new ArgumentNullException(nameof(modelBuilder));
-            
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<UserBaseModel>().ToTable("Users").HasKey(u => u.UserID);

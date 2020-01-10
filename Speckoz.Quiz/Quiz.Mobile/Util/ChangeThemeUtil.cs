@@ -7,7 +7,7 @@ using XF.Material.Forms;
 
 namespace Quiz.Mobile.Util
 {
-    public static class ChangeThemeUtil
+    internal static class ChangeThemeUtil
     {
         /// <summary>
         /// Altera o tema (dark/light) do app e inicia o XF-Material.

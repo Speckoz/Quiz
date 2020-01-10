@@ -1,5 +1,6 @@
 ﻿using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
+
 using System;
 using System.Linq;
 
@@ -146,6 +147,7 @@ namespace Quiz.API.Data
             #endregion Users
 
             #region Sugestions
+
             if (!_context.Questions.Any())
             {
                 _context.Questions.Add(new QuestionModel
@@ -158,7 +160,8 @@ namespace Quiz.API.Data
                     IncorrectAnswers = "c/c/c"
                 });
             }
-            #endregion
+
+            #endregion Sugestions
 
             _context.SaveChanges();
         }

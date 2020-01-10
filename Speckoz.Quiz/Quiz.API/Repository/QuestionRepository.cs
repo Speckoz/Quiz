@@ -77,7 +77,6 @@ namespace Quiz.API.Repository
         /// <param name="status">Status da questão</param>
         public async Task<List<QuestionModel>> GetQuestionsByStatusTaskAsync(QuestionStatusEnum status) =>
             await _context.Questions.Where(q => q.Status == status).ToListAsync();
-        
 
         /// <summary>
         /// Retorna todas as questão de um determinado status de um usuario
@@ -86,7 +85,6 @@ namespace Quiz.API.Repository
         /// <param name="userId">ID do usuario</param>
         public async Task<List<QuestionModel>> GetQuestionsByStatusTaskAsync(QuestionStatusEnum status, Guid userId) =>
             await _context.Questions.Where(q => q.Status == status && q.AuthorID == userId).ToListAsync();
-        
 
         /// <summary>
         /// Atualiza os dados de uma questão

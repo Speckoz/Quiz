@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using Logikoz.ThemeBase.Enums;
 using Logikoz.ThemeBase.Helpers;
+
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;

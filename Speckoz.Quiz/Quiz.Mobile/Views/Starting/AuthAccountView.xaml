@@ -53,7 +53,6 @@
                         ReturnType="Done"
                         Style="{DynamicResource MTFBase}"
                         Text="{Binding Password}" />
-
                 </StackLayout>
 
                 <StackLayout Grid.Row="3" Orientation="Vertical">
@@ -76,7 +75,6 @@
                     VerticalOptions="Center"
                     Visual="Material" />
             </StackLayout>
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

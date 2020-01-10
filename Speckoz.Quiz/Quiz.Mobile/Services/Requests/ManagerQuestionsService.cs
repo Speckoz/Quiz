@@ -5,30 +5,32 @@ using RestSharp;
 using RestSharp.Authenticators;
 
 using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Quiz.Mobile.Services.Requests
 {
     internal class ManagerQuestionsService
     {
-        public static IRestResponse SuggestQuestionTaskAsync(QuestionModel question)
+        public static async Task<IRestResponse> SuggestQuestionTaskAsync(QuestionModel question)
         {
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(JsonSerializer.Serialize(question));
-            return new RestClient($"{GetDataHelper.Uri}/Suggestions")
+            return await new RestClient($"{GetDataHelper.Uri}/Suggestions")
             {
                 Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)
-            }.Execute(request);
+            }.ExecuteAsync(request, new CancellationTokenSource().Token);
         }
 
-        public static IRestResponse StatusQuestionsTaskAsync()
+        public static async Task<IRestResponse> StatusQuestionsTaskAsync()
         {
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
-            return new RestClient($"{GetDataHelper.Uri}/Suggestions")
+            return await new RestClient($"{GetDataHelper.Uri}/Suggestions")
             {
                 Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)
-            }.Execute(request);
+            }.ExecuteAsync(request, new CancellationTokenSource().Token);
         }
     }
 }

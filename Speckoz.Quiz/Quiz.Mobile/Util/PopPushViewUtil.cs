@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.Util
 {
@@ -23,7 +24,6 @@ namespace Quiz.Mobile.Util
 
         public static async Task PushModalAsync(Page page, bool animated = false)
         {
-            await Task.Delay(1000);
             await Application.Current.MainPage.Navigation.PushModalAsync(page, animated);
         }
 

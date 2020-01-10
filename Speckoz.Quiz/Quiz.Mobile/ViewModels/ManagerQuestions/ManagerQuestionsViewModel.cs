@@ -51,14 +51,12 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         {
             SuggestQuestion = new ManagerQuestionsModel
             {
-                ActionImage = ImageSource.FromFile("heartLogo.png"),
                 ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true))
             };
 
             StatusSuggestions = new ManagerQuestionsModel
             {
-                ActionImage = ImageSource.FromFile("heartLogo.png"),
-                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new StatusQuestionsView()
+                ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new StatusSuggestionsView()
                 {
                     BindingContext = new StatusQuestionsViewModel()
                 }), true))
@@ -74,7 +72,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             {
                 new ManagerQuestionsModel
                 {
-                    ActionImage = ImageSource.FromFile("heartLogo.png"),
+                    ActionImage = ImageSource.FromFile("adminStatus.png"),
                     ActionName = "Avaliar Sugestoes",
                     ActionDescription= "Abre uma tela com as sugestoes de questoes.",
                     ActionOpen = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync(new NavigationPage(new ApproveQuestionsView())), true)
@@ -86,7 +84,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Editar questao", "", "OK"))
                 },new ManagerQuestionsModel
                 {
-                    ActionImage = ImageSource.FromFile("heartLogo.png"),
+                    ActionImage = ImageSource.FromFile("removeQuestion.png"),
                     ActionName = "Excluir Questao",
                     ActionDescription= "Abre uma tela com campos para excluir uma questao",
                     ActionOpen = new RelayCommand(async () => await MaterialDialog.Instance.AlertAsync("Excluir questao", "", "OK"))

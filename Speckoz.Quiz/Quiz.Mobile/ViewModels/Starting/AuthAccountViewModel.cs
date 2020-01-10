@@ -12,6 +12,7 @@ using RestSharp;
 
 using System.Net;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -60,7 +61,8 @@ namespace Quiz.Mobile.ViewModels.Starting
 
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
             {
-                IRestResponse response = AccountService.AuthAccountTaskAsync(Login, Password);
+                
+                IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -85,6 +87,9 @@ namespace Quiz.Mobile.ViewModels.Starting
             }
         }
 
-        private async void Register() => await PopPushViewUtil.PushModalAsync(new RegisterAccountView(), true);
+        private async void Register()
+        {
+            await PopPushViewUtil.PushModalAsync(new RegisterAccountView(), true);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Quiz.Mobile.ViewModels
 {
     internal class MainScreenViewModel : ViewModelBase
     {
-        private ThemeEnum currentTheme;
+        private ThemeEnum currentTheme = ThemeEnum.Light;
 
         public RelayCommand ChangeThemeCommand { get; set; }
 

@@ -123,7 +123,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             IncorrectAnswersChips.ToList().ForEach(i => aux += $"{i.IncorrectAnswerText.ToString()}/");
 
             using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Enviando...");
-            IRestResponse response = ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
+            IRestResponse response = await ManagerQuestionsService.SuggestQuestionTaskAsync(new QuestionModel
             {
                 Question = NewQuestion.Question,
                 Category = NewQuestion.Category,

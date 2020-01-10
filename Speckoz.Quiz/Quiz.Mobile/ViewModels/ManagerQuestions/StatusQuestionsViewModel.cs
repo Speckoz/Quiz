@@ -34,7 +34,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             StatusQuestions = new ObservableCollection<StatusQuestionsCardModel>();
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Recolhendo informaçoes..."))
             {
-                IRestResponse response = ManagerQuestionsService.StatusQuestionsTaskAsync();
+                IRestResponse response = await ManagerQuestionsService.StatusQuestionsTaskAsync();
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {

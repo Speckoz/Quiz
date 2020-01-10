@@ -55,10 +55,8 @@ namespace Quiz.Mobile.ViewModels.Starting
         private void InitCommands()
         {
             RegisterCommand = new RelayCommand(Register);
-            BackCommand = new RelayCommand(Back);
+            BackCommand = new RelayCommand(async () => await PopPushViewUtil.PopModalAsync(true));
         }
-
-        private async void Back() => await PopPushViewUtil.PopModalAsync(true);
 
         private async void Register()
         {
@@ -77,7 +75,7 @@ namespace Quiz.Mobile.ViewModels.Starting
 
                 using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Processando cadastro..."))
                 {
-                    IRestResponse response = AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
+                    IRestResponse response = await AccountService.RegisterAccountTaskAsync(Username, Email, NewPassword);
 
                     if (response.StatusCode == HttpStatusCode.Created)
                     {

@@ -65,8 +65,10 @@
                             <TapGestureRecognizer Command="{Binding AddIncorrectAnswerCommand}" />
                         </Grid.GestureRecognizers>
                         <Label
+                            Margin="0,15"
                             FontSize="Medium"
                             Text="ADD"
+                            TextColor="{DynamicResource PrimaryColor}"
                             VerticalOptions="Center" />
                     </Grid>
                 </StackLayout>

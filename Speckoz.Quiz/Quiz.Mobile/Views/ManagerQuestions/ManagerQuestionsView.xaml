@@ -13,7 +13,7 @@
     <ScrollView>
         <StackLayout>
             <Label />
-            <Label HorizontalOptions="Center" Text="Area Membriana :D" />
+            <Label HorizontalOptions="Center" Text="Membro" />
             <material:MaterialCard
                 Margin="10,10,10,0"
                 BackgroundColor="{DynamicResource CardColor}"
@@ -23,11 +23,7 @@
                     <TapGestureRecognizer Command="{Binding SuggestQuestion.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                 </material:MaterialCard.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
-                    <Image
-                        HeightRequest="60"
-                        Source="{Binding SuggestQuestion.ActionImage}"
-                        VerticalOptions="Center"
-                        WidthRequest="60" />
+                    <Image Source="suggest" VerticalOptions="Center" />
 
                     <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
                         <Label
@@ -53,11 +49,7 @@
                     <TapGestureRecognizer Command="{Binding StatusSuggestions.ActionOpen}" CommandParameter="{Binding Source={x:Reference this}}" />
                 </material:MaterialCard.GestureRecognizers>
                 <StackLayout Orientation="Horizontal">
-                    <Image
-                        HeightRequest="60"
-                        Source="{Binding StatusSuggestions.ActionImage}"
-                        VerticalOptions="Center"
-                        WidthRequest="60" />
+                    <Image Source="status" VerticalOptions="Center" />
 
                     <StackLayout Margin="20,0,0,0" VerticalOptions="Center">
                         <Label
@@ -73,7 +65,12 @@
                     </StackLayout>
                 </StackLayout>
             </material:MaterialCard>
-            <Label />
+            <BoxView
+                Margin="10"
+                BackgroundColor="{DynamicResource SeparatorLineColor}"
+                HeightRequest="1"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsAdmin}" />
             <Label
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsAdmin}"
@@ -96,6 +93,7 @@
                                 Elevation="2">
                                 <StackLayout Orientation="Horizontal">
                                     <Image
+                                        d:Source="adminStatus"
                                         HeightRequest="60"
                                         Source="{Binding ActionImage}"
                                         VerticalOptions="Center"
@@ -106,10 +104,12 @@
                                         Orientation="Vertical"
                                         VerticalOptions="Center">
                                         <Label
+                                            d:Text="Titulo adm aqui"
                                             FontAttributes="Bold"
                                             FontSize="Medium"
                                             Text="{Binding ActionName}" />
                                         <Label
+                                            d:Text="Mensagem de uma admin qualquer"
                                             FontSize="Subtitle"
                                             Text="{Binding ActionDescription}"
                                             TextColor="{DynamicResource CardTextColor}" />

@@ -30,7 +30,8 @@
                     FontAttributes="Bold"
                     FontSize="Title"
                     HorizontalOptions="Center"
-                    Text="Registrar Conta" />
+                    Text="Nova Conta"
+                    TextColor="{DynamicResource PrimaryColor}" />
 
                 <StackLayout Grid.Row="2" Margin="0,20,0,20">
                     <material:MaterialTextField
@@ -70,8 +71,8 @@
                 <material:MaterialButton
                     BackgroundColor="{DynamicResource BackgroundColor}"
                     Command="{Binding BackCommand}"
-                    Style="{StaticResource OutlinedButton}"
                     Text="Voltar"
+                    TextColor="{DynamicResource PrimaryColor}"
                     VerticalOptions="EndAndExpand" />
             </StackLayout>
         </StackLayout>

@@ -76,7 +76,7 @@ namespace Quiz.Mobile.ViewModels
         {
             using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
             {
-                IRestResponse response = GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
+                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(_category != CategoryEnum.Todas, _category);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {

@@ -41,7 +41,7 @@
                     Orientation="Vertical">
 
                     <material:MaterialTextField
-                        InputType="Text"
+                        InputType="Email"
                         Placeholder="Usuário/Email"
                         ReturnType="Next"
                         Style="{DynamicResource MTFBase}"

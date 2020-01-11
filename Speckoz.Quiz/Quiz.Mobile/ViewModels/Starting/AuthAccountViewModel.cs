@@ -47,7 +47,12 @@ namespace Quiz.Mobile.ViewModels.Starting
         private void InitCommands()
         {
             AuthCommand = new RelayCommand(Auth);
-            RegisterCommand = new RelayCommand(async () => await PopPushViewUtil.PushModalAsync<RegisterAccountView>(new RegisterAccountView(), true));
+            RegisterCommand = new RelayCommand(async () =>
+            {
+                PopPushViewUtil.PopModalAsync<RegisterAccountView>();
+                await PopPushViewUtil.PushModalAsync(new RegisterAccountView(), true);
+            });
+
         }
 
         private async void Auth()
@@ -58,30 +63,28 @@ namespace Quiz.Mobile.ViewModels.Starting
                 return;
             }
 
-            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando..."))
+            using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Autenticando...");
+            IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
+
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                IRestResponse response = await AccountService.AuthAccountTaskAsync(Login, Password);
+                dialog.MessageText = "Autenticado com sucesso!";
 
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    dialog.MessageText = "Autenticado com sucesso!";
+                GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-                    GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                await Task.Delay(1000);
 
-                    await Task.Delay(1000);
-
-                    Application.Current.MainPage = new MainScreenView();
-                }
-                else if (response.StatusCode == HttpStatusCode.BadRequest)
-                {
-                    await dialog.DismissAsync();
-                    await MaterialDialog.Instance.AlertAsync("Usuario ou Senha está incorreto!", "Ops!", "OK");
-                }
-                else
-                {
-                    await dialog.DismissAsync();
-                    await MaterialDialog.Instance.AlertAsync("Algo deu errado, verifique sua conexao e tente novamente!", "Erro", "OK");
-                }
+                Application.Current.MainPage = new MainScreenView();
+            }
+            else if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                await dialog.DismissAsync();
+                await MaterialDialog.Instance.AlertAsync("Usuario ou Senha está incorreto!", "Ops!", "OK");
+            }
+            else
+            {
+                await dialog.DismissAsync();
+                await MaterialDialog.Instance.AlertAsync("Algo deu errado, verifique sua conexao e tente novamente!", "Erro", "OK");
             }
         }
     }

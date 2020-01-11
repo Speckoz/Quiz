@@ -13,5 +13,12 @@ namespace Quiz.Mobile.Views.Starting
             InitializeComponent();
             BindingContext = new RegisterAccountViewModel();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            (BindingContext as RegisterAccountViewModel).BackCommand.Execute(null);
+
+            return true;
+        }
     }
 }

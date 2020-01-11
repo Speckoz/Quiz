@@ -70,32 +70,30 @@ namespace Quiz.Mobile.ViewModels
             ForceGameOverCommand = new RelayCommand(async () =>
             {
                 if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
-                    PopPushViewUtil.PopModalAsync<GameView>(true);
+                    PopPushViewUtil.PopModalAsync<GameView>();
             });
         }
 
         private async void Mount()
         {
-            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
-            {
-                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
+            using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando...");
+            IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
 
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                    Question = question.Question;
-                    CreateButtons(question);
-                }
-                else if (response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    GameOverAsync();
-                    await MaterialDialog.Instance.AlertAsync("Nao existe nenhuma pergunta para essa categoria.", ":/", "OK");
-                }
-                else
-                {
-                    GameOverAsync();
-                    await MaterialDialog.Instance.AlertAsync("Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "Erro", "OK");
-                }
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                Question = question.Question;
+                CreateButtons(question);
+            }
+            else if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                GameOverAsync();
+                await MaterialDialog.Instance.AlertAsync("Nao existe nenhuma pergunta para essa categoria.", ":/", "OK");
+            }
+            else
+            {
+                GameOverAsync();
+                await MaterialDialog.Instance.AlertAsync("Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "Erro", "OK");
             }
         }
 
@@ -124,8 +122,7 @@ namespace Quiz.Mobile.ViewModels
                 button.BorderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color;
 
                 Round++;
-                bool isDefault = Points == default;
-                Points = isDefault ? 10 : Points * 2;
+                Points = Points == default ? 10 : Points * 2;
 
                 NextLevel();
             }
@@ -137,7 +134,8 @@ namespace Quiz.Mobile.ViewModels
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(category)), true);
+                    PopPushViewUtil.PopModalAsync<GameView>();
+                    await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(category)), true);
                 }
                 else
                     GameOverAsync();
@@ -164,6 +162,6 @@ namespace Quiz.Mobile.ViewModels
 
         private void NextLevel() => Mount();
 
-        private void GameOverAsync() => PopPushViewUtil.PopModalAsync<GameView>(true);
+        private void GameOverAsync() => PopPushViewUtil.PopModalAsync<GameView>();
     }
 }

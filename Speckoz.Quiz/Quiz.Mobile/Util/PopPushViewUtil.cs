@@ -20,20 +20,16 @@ namespace Quiz.Mobile.Util
             });
         }
 
-        public static async Task PushModalAsync<T>(Page page, bool animated = false)
-        {
-            PopModalAsync<T>();
-            await Application.Current.MainPage.Navigation.PushModalAsync(page, animated);
-        }
+        public static async Task PushModalAsync(Page page, bool animated = false) => await Application.Current.MainPage.Navigation.PushModalAsync(page, animated);
 
-        public static void PopModalAsync<T>(bool animated = false)
+        public static void PopModalAsync<T>(bool isAnimated = false)
         {
             INavigation navigation = Application.Current.MainPage.Navigation;
             IReadOnlyList<Page> pages = navigation.ModalStack;
             pages.ForEach(async page =>
             {
                 if (page is T || (page as NavigationPage).RootPage is T)
-                    await navigation.PopModalAsync(animated);
+                    await navigation.PopModalAsync(isAnimated);
             });
         }
     }

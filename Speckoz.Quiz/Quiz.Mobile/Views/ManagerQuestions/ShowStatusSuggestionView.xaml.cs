@@ -12,9 +12,6 @@ namespace Quiz.Mobile.Views.ManagerQuestions
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShowStatusSuggestionView : ContentPage
     {
-        public ShowStatusSuggestionView()
-        {
-            InitializeComponent();
-        }
+        public ShowStatusSuggestionView() => InitializeComponent();
     }
 }

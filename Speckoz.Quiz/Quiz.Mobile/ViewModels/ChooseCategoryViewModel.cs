@@ -18,13 +18,7 @@ namespace Quiz.Mobile.ViewModels
 {
     internal class ChooseCategoryViewModel : ViewModelBase
     {
-        private ObservableCollection<ChooseCategoryModel> __chooseCategories;
-
-        public ObservableCollection<ChooseCategoryModel> ChooseCategories
-        {
-            get => __chooseCategories;
-            set => Set(ref __chooseCategories, value);
-        }
+        public ObservableCollection<ChooseCategoryModel> ChooseCategories { get; set; }
 
         public ChooseCategoryViewModel() => Init();
 
@@ -59,7 +53,10 @@ namespace Quiz.Mobile.ViewModels
         private async void CategoryChosenAsync(Button bt)
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
-                await PopPushViewUtil.PushModalAsync<GameView>(new NavigationPage(new GameView(result)), true);
+            {
+                PopPushViewUtil.PopModalAsync<GameView>();
+                await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(result)), true);
+            }
         }
 
         private void Init()

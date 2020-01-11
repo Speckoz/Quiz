@@ -13,5 +13,13 @@ namespace Quiz.Mobile.Views.ManagerQuestions
             InitializeComponent();
             BindingContext = new SuggestQuestionViewModel();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            (BindingContext as SuggestQuestionViewModel).ExitSuggestScreenCommand.Execute(null);
+
+            return true;
+        }
+
     }
 }

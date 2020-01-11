@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Util;
+using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.Starting;
 
 using RestSharp;
@@ -55,7 +56,17 @@ namespace Quiz.Mobile.ViewModels.Starting
         private void InitCommands()
         {
             RegisterCommand = new RelayCommand(Register);
-            BackCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<RegisterAccountView>(true));
+            BackCommand = new RelayCommand(async () =>
+            {
+                if (!string.IsNullOrEmpty(Email) || !string.IsNullOrEmpty(Username) || !string.IsNullOrEmpty(NewPassword))
+                {
+                    if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "ATENÇAO", "Sim", "Cancelar")) == false)
+                        return;
+                }
+
+                PopPushViewUtil.PopModalAsync<RegisterAccountView>();
+            });
+
         }
 
         private async void Register()

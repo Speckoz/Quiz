@@ -14,5 +14,11 @@ namespace Quiz.Mobile.Views
             InitializeComponent();
             BindingContext = new GameViewModel(category);
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            (BindingContext as GameViewModel).ForceGameOverCommand.Execute(null);
+            return true;
+        }
     }
 }

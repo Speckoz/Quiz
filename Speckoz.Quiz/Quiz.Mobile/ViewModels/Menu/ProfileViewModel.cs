@@ -17,9 +17,6 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         public ProfileViewModel() => Init();
 
-        private void Init()
-        {
-            User = GetDataHelper.CurrentUser.User;
-        }
+        private void Init() => User = GetDataHelper.CurrentUser.User;
     }
 }

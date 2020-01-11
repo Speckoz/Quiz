@@ -12,9 +12,11 @@ using RestSharp;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net;
+using System.Text;
 using System.Text.Json;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -24,13 +26,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     public class StatusSuggestionsViewModel : ViewModelBase
     {
-        private ObservableCollection<StatusQuestionsCardModel> __statusQuestions;
-
-        public ObservableCollection<StatusQuestionsCardModel> StatusQuestions
-        {
-            get => __statusQuestions;
-            set => Set(ref __statusQuestions, value);
-        }
+        public ObservableCollection<StatusQuestionsCardModel> StatusQuestions { get; private set; }
 
         public RelayCommand BackToManagerQuestionsCommand { get; private set; }
 
@@ -39,30 +35,33 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         private async void Init()
         {
             StatusQuestions = new ObservableCollection<StatusQuestionsCardModel>();
-            BackToManagerQuestionsCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<StatusSuggestionsView>(true));
+            BackToManagerQuestionsCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<StatusSuggestionsView>());
 
-            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Recolhendo informaçoes..."))
+            using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Recolhendo informaçoes...");
+            IRestResponse response = await ManagerQuestionsService.StatusQuestionsTaskAsync();
+
+            if (response.StatusCode == HttpStatusCode.OK)
             {
-                IRestResponse response = await ManagerQuestionsService.StatusQuestionsTaskAsync();
-
-                if (response.StatusCode == HttpStatusCode.OK)
+                (await DeselializeAsync(response)).ForEach(question =>
                 {
-                    List<QuestionModel> list = JsonSerializer
-                        .Deserialize<List<QuestionModel>>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                    foreach (IQuestion question in list)
+                    StatusQuestions.Add(new StatusQuestionsCardModel
                     {
-                        StatusQuestions.Add(new StatusQuestionsCardModel
-                        {
-                            Question = question,
-                            ViewStatusCommand = new RelayCommand<IQuestion>(ViewStatus)
-                        });
-                    }
-                }
-                else
-                {
-                    await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops", "OK");
-                }
+                        Question = question,
+                        ViewStatusCommand = new RelayCommand<IQuestion>(ViewStatus)
+                    });
+                });
             }
+            else
+            {
+                await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops", "OK");
+            }
+        }
+
+        private async static Task<List<QuestionModel>> DeselializeAsync(IRestResponse response)
+        {
+            return await JsonSerializer.DeserializeAsync<List<QuestionModel>>(
+                new MemoryStream(Encoding.UTF8.GetBytes(response.Content)), 
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         private void ViewStatus(IQuestion question)

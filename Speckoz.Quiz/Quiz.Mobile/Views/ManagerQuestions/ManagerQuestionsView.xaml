@@ -68,7 +68,7 @@
             <BoxView
                 Margin="10"
                 BackgroundColor="{DynamicResource SeparatorLineColor}"
-                HeightRequest="1"
+                HeightRequest=".5"
                 HorizontalOptions="FillAndExpand"
                 IsVisible="{Binding IsAdmin}" />
             <Label
@@ -120,6 +120,8 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
+
+            <Label />
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -7,7 +7,7 @@ namespace Quiz.API.Repository.Interfaces
     public interface IUserRepository
     {
         Task<UserBaseModel> CreateTaskAync(UserBaseModel user);
-
+        Task<bool> CheckEmailExistsTaskAsync(string email);
         Task<UserBaseModel> FindUserTaskAsync(string login, string password);
     }
 }

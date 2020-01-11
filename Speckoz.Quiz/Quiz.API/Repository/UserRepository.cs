@@ -17,6 +17,13 @@ namespace Quiz.API.Repository
         public UserRepository(ApiContext context) => _context = context;
 
         /// <summary>
+        /// Verifica se um email ja foi cadastrado.
+        /// </summary>
+        /// <param name="email">Email do usuario</param>
+        public async Task<bool> CheckEmailExistsTaskAsync(string email) =>
+            await _context.Users.AnyAsync(u => u.Email == email);
+
+        /// <summary>
         /// Cria um novo usuario.
         /// </summary>
         /// <param name="user">Dados do usuario</param>

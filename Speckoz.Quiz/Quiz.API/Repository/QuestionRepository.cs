@@ -50,9 +50,9 @@ namespace Quiz.API.Repository
         }
 
         /// <summary>
-        /// Deleta um usuario
+        /// Deleta uma questão.
         /// </summary>
-        /// <param name="id">ID do usuario</param>
+        /// <param name="id">ID da questão</param>
         public async Task DeleteAsync(int id)
         {
             QuestionModel question = await _context.Questions.SingleOrDefaultAsync(q => q.QuestionID == id);

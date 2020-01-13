@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Quiz.API.Repository.Interfaces;
 
@@ -17,9 +18,19 @@ namespace Speckoz.MobileQuiz.API.Controllers
 
         // GET: /users/2
         [HttpGet("{id}")]
-        public Task<IActionResult> GetUserById(int id)
+        [Authorize(Roles = "Admin")]
+        public Task<IActionResult> GetUserById(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        // DELETE: /users/2
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            await _userRepository.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

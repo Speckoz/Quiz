@@ -1,5 +1,5 @@
 ﻿using Quiz.API.Models;
-
+using System;
 using System.Threading.Tasks;
 
 namespace Quiz.API.Repository.Interfaces
@@ -9,5 +9,6 @@ namespace Quiz.API.Repository.Interfaces
         Task<UserBaseModel> CreateTaskAync(UserBaseModel user);
         Task<bool> CheckEmailExistsTaskAsync(string email);
         Task<UserBaseModel> FindUserTaskAsync(string login, string password);
+        Task DeleteAsync(Guid id);
     }
 }

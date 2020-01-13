@@ -53,5 +53,27 @@ namespace Quiz.API.Repository
 
             return await query.FirstOrDefaultAsync();
         }
+
+        /// <summary>
+        /// Deleta um usuario
+        /// </summary>
+        /// <param name="id">ID do usuario</param>
+        public async Task DeleteAsync(Guid id)
+        {
+            UserBaseModel user = await _context.Users.SingleOrDefaultAsync(u => u.UserID == id);
+
+            try
+            {
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

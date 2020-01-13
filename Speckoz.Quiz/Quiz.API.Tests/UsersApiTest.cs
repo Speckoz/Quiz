@@ -25,7 +25,7 @@ namespace Quiz.API.Tests
         {
             var user = new RegisterRequestModel
             {
-                Email = "speckoz@gmail.com",
+                Email = "email@gmail.com",
                 Password = "1234",
                 Username = "speckoz",
             };
@@ -44,6 +44,27 @@ namespace Quiz.API.Tests
 
             // Delete created user
             using var delete = new HttpRequestMessage(new HttpMethod("DELETE"), $"/users/{createdUser.UserID}");
+            await _client.SendAsync(delete);
+        }
+
+        [Fact]
+        public async Task DadoEmailJaExistenteAoCriarContaApiRetornaBadRequest()
+        {
+            var user = new RegisterRequestModel
+            {
+                Email = "quiz@speckoz.net",
+                Password = "1234",
+                Username = "speckoz",
+            };
+
+            using var request = new HttpRequestMessage(new HttpMethod("POST"), "/register")
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json")
+            };
+
+            using HttpResponseMessage response = await _client.SendAsync(request);
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }

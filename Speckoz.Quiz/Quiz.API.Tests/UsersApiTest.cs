@@ -47,14 +47,16 @@ namespace Quiz.API.Tests
             await _client.SendAsync(delete);
         }
 
-        [Fact]
-        public async Task DadoEmailJaExistenteAoCriarContaApiRetornaBadRequest()
+        [Theory]
+        [InlineData("quiz@speckoz.net", "username")]
+        [InlineData("emailValid323s@speckoz.net", "quiz")]
+        public async Task DadoEmailOuUsernameJaExistenteAoCriarContaApiRetornaBadRequest(string email, string username)
         {
             var user = new RegisterRequestModel
             {
-                Email = "quiz@speckoz.net",
+                Email = email,
                 Password = "1234",
-                Username = "speckoz",
+                Username = username,
             };
 
             using var request = new HttpRequestMessage(new HttpMethod("POST"), "/register")

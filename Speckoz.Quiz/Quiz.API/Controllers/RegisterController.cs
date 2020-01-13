@@ -25,10 +25,10 @@ namespace Quiz.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool emailExists = await _userRepository.CheckEmailExistsTaskAsync(user.Email);
-                if (emailExists)
+                bool loginExists = await _userRepository.CheckIfEmailOrUserExistsTaskAsync(user.Email, user.Username);
+                if (loginExists)
                 {
-                    return BadRequest("Ja existe um usuario cadastrado com esse email");
+                    return BadRequest("Ja existe um usuario cadastrado com esse email ou username");
                 }
 
                 UserBaseModel createdUser = await _userRepository.CreateTaskAync(new UserBaseModel

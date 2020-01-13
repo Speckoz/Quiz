@@ -20,8 +20,9 @@ namespace Quiz.API.Repository
         /// Verifica se um email ja foi cadastrado.
         /// </summary>
         /// <param name="email">Email do usuario</param>
-        public async Task<bool> CheckEmailExistsTaskAsync(string email) =>
-            await _context.Users.AnyAsync(u => u.Email == email);
+        /// <param name="username">Username do usuario</param>
+        public async Task<bool> CheckIfEmailOrUserExistsTaskAsync(string email, string username) =>
+            await _context.Users.AnyAsync(u => u.Email == email || u.Username == username);
 
         /// <summary>
         /// Cria um novo usuario.

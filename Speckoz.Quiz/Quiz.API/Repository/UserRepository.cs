@@ -20,8 +20,9 @@ namespace Quiz.API.Repository
         /// Verifica se um email ja foi cadastrado.
         /// </summary>
         /// <param name="email">Email do usuario</param>
-        public async Task<bool> CheckEmailExistsTaskAsync(string email) =>
-            await _context.Users.AnyAsync(u => u.Email == email);
+        /// <param name="username">Username do usuario</param>
+        public async Task<bool> CheckIfEmailOrUserExistsTaskAsync(string email, string username) =>
+            await _context.Users.AnyAsync(u => u.Email == email || u.Username == username);
 
         /// <summary>
         /// Cria um novo usuario.
@@ -52,6 +53,28 @@ namespace Quiz.API.Repository
                 .Where(u => (u.Username == login || u.Email == login) && u.Password == password);
 
             return await query.FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Deleta um usuario
+        /// </summary>
+        /// <param name="id">ID do usuario</param>
+        public async Task DeleteAsync(Guid id)
+        {
+            UserBaseModel user = await _context.Users.SingleOrDefaultAsync(u => u.UserID == id);
+
+            try
+            {
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

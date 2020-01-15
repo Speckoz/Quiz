@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Dependencies.Enums;
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions.Admin;
 
@@ -53,7 +54,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             {
                 ActionOpen = new RelayCommand(async () =>
                 {
-                    PopPushViewUtil.PopModalAsync<SuggestQuestionView>();
+                    PopPushViewUtil.PopNavModalAsync<SuggestQuestionView>();
                     await PopPushViewUtil.PushModalAsync(new NavigationPage(new SuggestQuestionView()), true);
                 })
             };
@@ -62,7 +63,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             {
                 ActionOpen = new RelayCommand(async () =>
                 {
-                    PopPushViewUtil.PopModalAsync<StatusSuggestionsView>();
+                    PopPushViewUtil.PopNavModalAsync<StatusSuggestionsView>();
                     await PopPushViewUtil.PushModalAsync(new NavigationPage(new StatusSuggestionsView()
                     {
                         BindingContext = new StatusSuggestionsViewModel()
@@ -83,10 +84,10 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     ActionImage = ImageSource.FromFile("adminStatus.png"),
                     ActionName = "Avaliar Sugestoes",
                     ActionDescription= "Abre uma tela com as sugestoes de questoes.",
-                    ActionOpen = new RelayCommand(async () => 
+                    ActionOpen = new RelayCommand(async () =>
                     {
-                        PopPushViewUtil.PopModalAsync<ApproveQuestionsView>();
-                        await PopPushViewUtil.PushModalAsync(new NavigationPage(new ApproveQuestionsView()), true); 
+                        PopPushViewUtil.PopNavModalAsync<ApproveQuestionsView>();
+                        await PopPushViewUtil.PushModalAsync(new NavigationPage(new ApproveQuestionsView()), true);
                     })
                 },new ManagerQuestionsModel
                 {

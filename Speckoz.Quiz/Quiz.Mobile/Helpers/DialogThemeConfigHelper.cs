@@ -1,5 +1,5 @@
-﻿using Logikoz.ThemeBase.Enums;
-using Logikoz.ThemeBase.Helpers;
+﻿using Logikoz.XamarinUtilities.Enums;
+using Logikoz.XamarinUtilities.Utilities;
 
 using Xamarin.Forms;
 
@@ -29,9 +29,9 @@ namespace Quiz.Mobile.Helpers
         {
             return new MaterialSnackbarConfiguration
             {
-                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.SnackBarColor).color,
-                MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.SnackBarTextColor).color,
-                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color
+                BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.SnackBarColor).color,
+                MessageTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.SnackBarTextColor).color,
+                TintColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color
             };
         }
 
@@ -39,12 +39,12 @@ namespace Quiz.Mobile.Helpers
         {
             return new MaterialInputDialogConfiguration
             {
-                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
-                MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
-                InputTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
-                InputPlaceholderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
-                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
-                TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color
+                BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
+                MessageTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                InputTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                InputPlaceholderColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color,
+                TintColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color,
+                TitleTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color
             };
         }
 
@@ -52,10 +52,10 @@ namespace Quiz.Mobile.Helpers
         {
             return new MaterialAlertDialogConfiguration
             {
-                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
-                MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
-                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
-                TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color
+                BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
+                MessageTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                TintColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color,
+                TitleTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color
             };
         }
 
@@ -63,9 +63,9 @@ namespace Quiz.Mobile.Helpers
         {
             return new MaterialLoadingDialogConfiguration
             {
-                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
-                MessageTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
-                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color
+                BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
+                MessageTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                TintColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color
             };
         }
 
@@ -73,10 +73,10 @@ namespace Quiz.Mobile.Helpers
         {
             return new MaterialConfirmationDialogConfiguration
             {
-                BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
-                TextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
-                TintColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
-                TitleTextColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.BackgroundTextColor).color
+                BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.DialogBackgroundColor).color,
+                TextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color,
+                TintColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color,
+                TitleTextColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.BackgroundTextColor).color
             };
         }
     }

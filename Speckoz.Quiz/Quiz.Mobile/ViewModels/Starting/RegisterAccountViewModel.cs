@@ -1,9 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Mobile.Services.Requests;
-using Quiz.Mobile.Util;
-using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.Starting;
 
 using RestSharp;
@@ -51,9 +51,9 @@ namespace Quiz.Mobile.ViewModels.Starting
         public RelayCommand RegisterCommand { get; private set; }
         public RelayCommand BackCommand { get; private set; }
 
-        public RegisterAccountViewModel() => InitCommands();
+        public RegisterAccountViewModel() => Init();
 
-        private void InitCommands()
+        private void Init()
         {
             RegisterCommand = new RelayCommand(Register);
             BackCommand = new RelayCommand(async () =>
@@ -64,9 +64,8 @@ namespace Quiz.Mobile.ViewModels.Starting
                         return;
                 }
 
-                PopPushViewUtil.PopModalAsync<RegisterAccountView>();
+                PopPushViewUtil.PopModalAsync<RegisterAccountView>(true);
             });
-
         }
 
         private async void Register()

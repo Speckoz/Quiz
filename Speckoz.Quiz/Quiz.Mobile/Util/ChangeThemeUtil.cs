@@ -1,5 +1,5 @@
-﻿using Logikoz.ThemeBase.Enums;
-using Logikoz.ThemeBase.Services;
+﻿using Logikoz.XamarinUtilities.Enums;
+using Logikoz.XamarinUtilities.Services;
 
 using Xamarin.Forms;
 

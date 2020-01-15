@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Logikoz.ThemeBase.Enums;
-using Logikoz.ThemeBase.Helpers;
+using Logikoz.XamarinUtilities.Enums;
+using Logikoz.XamarinUtilities.Utilities;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
@@ -70,30 +70,32 @@ namespace Quiz.Mobile.ViewModels
             ForceGameOverCommand = new RelayCommand(async () =>
             {
                 if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja abandonar o jogo atual?\nVoce perderá todos os pontos!", "Aviso", "Sair", "Cancelar")) == true)
-                    PopPushViewUtil.PopModalAsync<GameView>();
+                    PopPushViewUtil.PopNavModalAsync<GameView>(true);
             });
         }
 
         private async void Mount()
         {
-            using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando...");
-            IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
+            using (IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Sorteando..."))
+            {
+                IRestResponse response = await GameQuestionService.GetQuestionTaskAsync(category != CategoryEnum.Todas, category);
 
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                Question = question.Question;
-                CreateButtons(question);
-            }
-            else if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                GameOverAsync();
-                await MaterialDialog.Instance.AlertAsync("Nao existe nenhuma pergunta para essa categoria.", ":/", "OK");
-            }
-            else
-            {
-                GameOverAsync();
-                await MaterialDialog.Instance.AlertAsync("Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "Erro", "OK");
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    QuestionModel question = JsonSerializer.Deserialize<QuestionModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    Question = question.Question;
+                    CreateButtons(question);
+                }
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    GameOverAsync();
+                    await MaterialDialog.Instance.AlertAsync("Nao existe nenhuma pergunta para essa categoria.", ":/", "OK");
+                }
+                else
+                {
+                    GameOverAsync();
+                    await MaterialDialog.Instance.AlertAsync("Nao foi possivel preparar o jogo, verifique sua conexao e tente novamente!", "Erro", "OK");
+                }
             }
         }
 
@@ -119,7 +121,7 @@ namespace Quiz.Mobile.ViewModels
             button.BorderWidth = 5;
             if (bool.Parse(button.ClassId))
             {
-                button.BorderColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color;
+                button.BorderColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color;
 
                 Round++;
                 Points = Points == default ? 10 : Points * 2;
@@ -134,7 +136,7 @@ namespace Quiz.Mobile.ViewModels
                     "Jogar Novamente", "Voltar")) == true)
                 {
                     GameOverAsync();
-                    PopPushViewUtil.PopModalAsync<GameView>();
+                    PopPushViewUtil.PopNavModalAsync<GameView>();
                     await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(category)), true);
                 }
                 else
@@ -162,6 +164,6 @@ namespace Quiz.Mobile.ViewModels
 
         private void NextLevel() => Mount();
 
-        private void GameOverAsync() => PopPushViewUtil.PopModalAsync<GameView>();
+        private void GameOverAsync() => PopPushViewUtil.PopNavModalAsync<GameView>(true);
     }
 }

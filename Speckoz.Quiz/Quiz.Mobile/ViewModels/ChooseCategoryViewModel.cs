@@ -1,12 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Logikoz.ThemeBase.Enums;
-using Logikoz.ThemeBase.Helpers;
+using Logikoz.XamarinUtilities.Enums;
+using Logikoz.XamarinUtilities.Utilities;
 
 using Quiz.Dependencies.Enums;
 using Quiz.Mobile.Models;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 
 using System;
@@ -28,7 +27,7 @@ namespace Quiz.Mobile.ViewModels
             {
                 new ChooseCategoryModel
                 {
-                    BackgroundColor = (Color)GetResourceColorHelper.GetResourceColor(ColorsEnum.PrimaryColor).color,
+                    BackgroundColor = (Color)ResourceColorUtil.GetResourceColor(ColorsEnum.PrimaryColor).color,
                     PaddingButton = new Thickness(0,30,0,20),
                     ChooseAnswerCommand = new RelayCommand<Button>(CategoryChosenAsync),
                     TextButton = CategoryEnum.Todas
@@ -54,7 +53,7 @@ namespace Quiz.Mobile.ViewModels
         {
             if (Enum.TryParse(bt.Text, out CategoryEnum result))
             {
-                PopPushViewUtil.PopModalAsync<GameView>();
+                PopPushViewUtil.PopNavModalAsync<GameView>();
                 await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(result)), true);
             }
         }

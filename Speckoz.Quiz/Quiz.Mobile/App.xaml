@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:theme="clr-namespace:Logikoz.ThemeBase.Themes;assembly=ThemeBase"
+    xmlns:theme="clr-namespace:Logikoz.XamarinUtilities.Themes;assembly=Logikoz.XamarinUtilities"
     mc:Ignorable="d">
     <Application.Resources>
         <ResourceDictionary>

@@ -1,18 +1,19 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Menu;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Menu;
 using Quiz.Mobile.Views.Starting;
 
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
+
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
+
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Quiz.Mobile.ViewModels.Menu

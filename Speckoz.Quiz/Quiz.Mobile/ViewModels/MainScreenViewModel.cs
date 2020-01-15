@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
-using Logikoz.ThemeBase.Enums;
+using Logikoz.XamarinUtilities.Enums;
 
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Util;

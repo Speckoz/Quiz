@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Mobile.Helpers;
 using Quiz.Mobile.Models.Starting;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Starting;
 
@@ -52,7 +53,6 @@ namespace Quiz.Mobile.ViewModels.Starting
                 PopPushViewUtil.PopModalAsync<RegisterAccountView>();
                 await PopPushViewUtil.PushModalAsync(new RegisterAccountView(), true);
             });
-
         }
 
         private async void Auth()

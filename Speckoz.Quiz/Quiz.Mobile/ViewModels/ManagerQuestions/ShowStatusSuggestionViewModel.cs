@@ -1,8 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.ManagerQuestions;
 
 using Xamarin.Forms;

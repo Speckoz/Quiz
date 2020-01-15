@@ -1,12 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-
+using Logikoz.XamarinUtilities.Utilities;
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.ManagerQuestions;
 
 using RestSharp;
@@ -136,7 +135,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 
             await Task.Delay(1500);
             if (response.StatusCode == HttpStatusCode.Created)
-                PopPushViewUtil.PopModalAsync<SuggestQuestionView>();
+                PopPushViewUtil.PopNavModalAsync<SuggestQuestionView>();
         }
 
         private void Init()
@@ -152,7 +151,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         private async void ExitSuggestScreen()
         {
             if ((await MaterialDialog.Instance.ConfirmAsync("Realmente deseja sair dessa tela?\nTodos os dados nao salvos seram perdidos!", "ATENÇAO", "Sim", "Cancelar")) == true)
-                PopPushViewUtil.PopModalAsync<SuggestQuestionView>();
+                PopPushViewUtil.PopNavModalAsync<SuggestQuestionView>(true);
         }
     }
 }

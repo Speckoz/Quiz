@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
+using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
-using Quiz.Mobile.Util;
 using Quiz.Mobile.Views.ManagerQuestions;
 
 using RestSharp;
@@ -17,6 +18,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -35,7 +37,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
         private async void Init()
         {
             StatusQuestions = new ObservableCollection<StatusQuestionsCardModel>();
-            BackToManagerQuestionsCommand = new RelayCommand(() => PopPushViewUtil.PopModalAsync<StatusSuggestionsView>());
+            BackToManagerQuestionsCommand = new RelayCommand(() => PopPushViewUtil.PopNavModalAsync<StatusSuggestionsView>(true));
 
             using IMaterialModalPage dialog = await MaterialDialog.Instance.LoadingDialogAsync("Recolhendo informaçoes...");
             IRestResponse response = await ManagerQuestionsService.StatusQuestionsTaskAsync();
@@ -53,14 +55,14 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
             }
             else
             {
-                await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops", "OK");
+                await MaterialDialog.Instance.AlertAsync("Algo de errado nao está certo", "Ops");
             }
         }
 
         private async static Task<List<QuestionModel>> DeselializeAsync(IRestResponse response)
         {
             return await JsonSerializer.DeserializeAsync<List<QuestionModel>>(
-                new MemoryStream(Encoding.UTF8.GetBytes(response.Content)), 
+                new MemoryStream(Encoding.UTF8.GetBytes(response.Content)),
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 

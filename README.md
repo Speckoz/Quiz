@@ -34,13 +34,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - [x] Implementar MVVM.
 - [x] Criar tela de gerenciamento de questoes.
   - [x] Sugerir questoes. (USER)
-  - [ ] Listar status das questoes sugeridas. (USER)
+  - [x] Listar status das questoes sugeridas. (USER)
   - [ ] Listar sugestoes de questao. (ADMIN)
   - [ ] Editar questao. (ADMIN)
   - [ ] Remover questao. (ADMIN)
 - [x] Criar menu lateral.
   - [x] adicionar opçao de voltar pra pagina inicial.
-  - [ ] adicionar perfil.
+  - [x] adicionar perfil.
   - [x] adicionar opçao de deslogar.
   - [ ] adicionar sobre.
 - [x] Implementar API.

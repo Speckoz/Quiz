@@ -3,7 +3,7 @@
 using Newtonsoft.Json;
 
 using Quiz.API.Models;
-using Quiz.Dependencies.Models.Auxiliary;
+using Quiz.API.Models.Auxiliary;
 
 using Speckoz.MobileQuiz.Dependencies.Interfaces;
 

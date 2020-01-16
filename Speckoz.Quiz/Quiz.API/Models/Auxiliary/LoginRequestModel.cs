@@ -1,4 +1,4 @@
-﻿namespace Quiz.Dependencies.Models.Auxiliary
+﻿namespace Quiz.API.Models.Auxiliary
 {
     public class LoginRequestModel
     {

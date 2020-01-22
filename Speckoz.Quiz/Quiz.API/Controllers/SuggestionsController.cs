@@ -17,10 +17,7 @@ namespace Quiz.API.Controllers
     {
         private readonly IQuestionRepository _questionsRepository;
 
-        public SuggestionsController(IQuestionRepository questionRepository)
-        {
-            _questionsRepository = questionRepository;
-        }
+        public SuggestionsController(IQuestionRepository questionRepository) => _questionsRepository = questionRepository;
 
         // POST: /suggestions
         [Authorize(Roles = "Normal,Admin")]
@@ -47,7 +44,7 @@ namespace Quiz.API.Controllers
         public async Task<IActionResult> DeleteSuggestion(int id)
         {
             // Verifica se a questão existe
-            var question = await _questionsRepository.FindByID(id);
+            QuestionModel question = await _questionsRepository.FindByID(id);
             if (question == null) return BadRequest();
 
             question.Status = QuestionStatusEnum.Denied;
@@ -62,7 +59,7 @@ namespace Quiz.API.Controllers
         public async Task<IActionResult> ApproveSuggestion(int id)
         {
             // Verifica se a questão existe
-            var question = await _questionsRepository.FindByID(id);
+            QuestionModel question = await _questionsRepository.FindByID(id);
             if (question == null) return BadRequest();
 
             question.Status = QuestionStatusEnum.Approved;

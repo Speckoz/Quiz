@@ -20,6 +20,5 @@ namespace Quiz.Mobile.Views.ManagerQuestions
 
             return true;
         }
-
     }
 }

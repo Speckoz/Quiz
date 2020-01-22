@@ -44,7 +44,7 @@ namespace Quiz.API.Repository
         public async Task<QuestionModel> FindByID(int id)
         {
             IQueryable<QuestionModel> query = _context.Questions
-                .Where(q => (q.QuestionID == id));
+                .Where(q => q.QuestionID == id);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -121,20 +121,20 @@ namespace Quiz.API.Repository
         {
             if (category == CategoryEnum.Todas)
             {
-                var questionsAll = await _context.Questions
+                List<QuestionModel> questionsAll = await _context.Questions
                     .Where(q => q.Status == QuestionStatusEnum.Approved)
                     .ToListAsync();
 
-                var selectedQuestion = questionsAll[new Random().Next(questionsAll.Count)];
+                QuestionModel selectedQuestion = questionsAll[new Random().Next(questionsAll.Count)];
 
                 return selectedQuestion;
             }
 
-            var questionsCategory = await _context.Questions.
+            List<QuestionModel> questionsCategory = await _context.Questions.
                 Where(q => q.Status == QuestionStatusEnum.Approved && q.Category == category).
                 ToListAsync();
 
-            var selected = questionsCategory[new Random().Next(questionsCategory.Count)];
+            QuestionModel selected = questionsCategory[new Random().Next(questionsCategory.Count)];
 
             return selected;
         }
@@ -152,7 +152,8 @@ namespace Quiz.API.Repository
         /// <param name="question">Modelo da questao</param>
         public async Task<QuestionModel> CreateSuggestionTaskAsync(QuestionModel question)
         {
-            if (question == null) throw new ArgumentOutOfRangeException(nameof(question));
+            if (question == null)
+                throw new ArgumentOutOfRangeException(nameof(question));
 
             try
             {
@@ -168,10 +169,7 @@ namespace Quiz.API.Repository
             return question;
         }
 
-        public Task ApproveSuggestion(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public Task ApproveSuggestion(int id) => throw new NotImplementedException();
 
         public async Task<List<QuestionModel>> GetQuestionsByUserTaskAsync(Guid userId) =>
             await _context.Questions.Where(q => q.AuthorID == userId).ToListAsync();

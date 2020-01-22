@@ -1,6 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+
 using Logikoz.XamarinUtilities.Utilities;
+
 using Quiz.Dependencies.Enums;
 using Quiz.Dependencies.Interfaces;
 using Quiz.Mobile.Models;

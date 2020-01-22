@@ -25,8 +25,8 @@ namespace Speckoz.MobileQuiz.API.Controllers
         public async Task<IActionResult> GetRandomQuestion(string cat = "0")
         {
             // Verifica se a categoria existe, senao atribui como categoria 0
-            var category = Enum.IsDefined(typeof(CategoryEnum), int.Parse(cat)) ? (CategoryEnum)int.Parse(cat) : 0;
-            var question = await _questionRepository.GetRandomTaskAsync(category);
+            CategoryEnum category = Enum.IsDefined(typeof(CategoryEnum), int.Parse(cat)) ? (CategoryEnum)int.Parse(cat) : 0;
+            QuestionModel question = await _questionRepository.GetRandomTaskAsync(category);
             return Ok(question);
         }
 

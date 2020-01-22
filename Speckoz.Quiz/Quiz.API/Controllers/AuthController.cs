@@ -35,7 +35,8 @@ namespace Speckoz.MobileQuiz.API.Controllers
         {
             UserBaseModel user = await _userRepository.FindUserTaskAsync(login.Login, login.Password);
 
-            if (user == null) return BadRequest();
+            if (user == null)
+                return BadRequest();
             user.Password = null;
 
             var token = new JwtSecurityToken(

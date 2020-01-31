@@ -18,32 +18,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Contribuições são 100% bem-vindas, bastar fazer uma PR ou Issue
 
-## TODO List 🚀
-
-
-- [x] Fazer a tela de login.
-- [x] Criar os serviços das questoes e usuarios.
-- [x] Fazer a tela de categorias.
-- [x] Fazer a tela principal do jogo.
-- [x] Avançar para proxima fase.
-- [x] Implementar fim de jogo.
-- [x] Avançar para proxima fase.
-- [x] Tela de cadastro.
-- [x] Efetuar o cadastro.
-- [x] Alterar questoes para um arquivo json local.
-- [x] Implementar MVVM.
-- [x] Criar tela de gerenciamento de questoes.
-  - [x] Sugerir questoes. (USER)
-  - [x] Listar status das questoes sugeridas. (USER)
-  - [ ] Listar sugestoes de questao. (ADMIN)
-  - [ ] Editar questao. (ADMIN)
-  - [ ] Remover questao. (ADMIN)
-- [x] Criar menu lateral.
-  - [x] adicionar opçao de voltar pra pagina inicial.
-  - [x] adicionar perfil.
-  - [x] adicionar opçao de deslogar.
-  - [ ] adicionar sobre.
-- [x] Implementar API.
+## [TODO List](https://github.com/orgs/Speckoz/projects/3?fullscreen=true) 🚀
 
 ## Aqui vou deixar algumas imagens de como ta ficando a interface :running:
 

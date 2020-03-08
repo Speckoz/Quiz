@@ -93,6 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Starting\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 

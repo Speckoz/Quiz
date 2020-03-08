@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using Logikoz.XamarinUtilities.Utilities;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Mobile.Helpers;
+using Quiz.Dependencies.Helpers;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Views.ManagerQuestions;
 using Quiz.Mobile.Views.ManagerQuestions.Admin;
@@ -71,7 +71,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                 })
             };
 
-            if (IsAdmin = GetDataHelper.CurrentUser.User.UserType == UserTypeEnum.Admin)
+            if (IsAdmin = DataHelper.CurrentUser.User.UserType == UserTypeEnum.Admin)
                 AdminAreaItems();
         }
 

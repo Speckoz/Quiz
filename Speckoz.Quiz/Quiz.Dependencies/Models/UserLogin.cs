@@ -1,6 +1,4 @@
-﻿using Quiz.Dependencies.Models;
-
-namespace Quiz.Mobile.Models.Starting
+﻿namespace Quiz.Dependencies.Models
 {
     public class UserLogin
     {

@@ -3,8 +3,8 @@ using GalaSoft.MvvmLight.Command;
 
 using Logikoz.XamarinUtilities.Utilities;
 
-using Quiz.Mobile.Helpers;
-using Quiz.Mobile.Models.Starting;
+using Quiz.Dependencies.Helpers;
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Starting;
@@ -70,7 +70,7 @@ namespace Quiz.Mobile.ViewModels.Starting
             {
                 dialog.MessageText = "Autenticado com sucesso!";
 
-                GetDataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                DataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 await Task.Delay(1000);
 

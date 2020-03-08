@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Logikoz.XamarinUtilities.Utilities;
 
-using Quiz.Mobile.Helpers;
+using Quiz.Dependencies.Helpers;
 using Quiz.Mobile.Models.Menu;
 using Quiz.Mobile.Views;
 using Quiz.Mobile.Views.Menu;
@@ -54,8 +54,8 @@ namespace Quiz.Mobile.ViewModels.Menu
         private void Init()
         {
             //UserImage = ImageSource.FromFile("heartLogo.png");
-            UserName = GetDataHelper.CurrentUser.User.Email;
-            UserType = DescriptionValueUtil.Get(GetDataHelper.CurrentUser.User.UserType);
+            UserName = DataHelper.CurrentUser.User.Email;
+            UserType = DescriptionValueUtil.Get(DataHelper.CurrentUser.User.UserType);
 
             MenuItems = new ObservableCollection<MenuModel>
             {

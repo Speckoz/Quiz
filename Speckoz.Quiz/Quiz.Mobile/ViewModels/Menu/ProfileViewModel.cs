@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
-
+using Quiz.Dependencies.Helpers;
 using Quiz.Dependencies.Models;
 using Quiz.Mobile.Helpers;
 
@@ -17,6 +17,6 @@ namespace Quiz.Mobile.ViewModels.Menu
 
         public ProfileViewModel() => Init();
 
-        private void Init() => User = GetDataHelper.CurrentUser.User;
+        private void Init() => User = DataHelper.CurrentUser.User;
     }
 }

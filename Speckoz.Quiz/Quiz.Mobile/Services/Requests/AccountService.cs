@@ -1,4 +1,4 @@
-﻿using Quiz.Mobile.Helpers;
+﻿using Quiz.Dependencies.Helpers;
 
 using RestSharp;
 
@@ -14,7 +14,7 @@ namespace Quiz.Mobile.Services.Requests
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(new { Login = login, Password = password });
-            return await new RestClient($"{GetDataHelper.Uri}/Auth").ExecuteAsync(request, new CancellationTokenSource().Token);
+            return await new RestClient($"{DataHelper.Uri}/Auth").ExecuteAsync(request, new CancellationTokenSource().Token);
         }
 
         public static async Task<IRestResponse> RegisterAccountTaskAsync(string username, string email, string password)
@@ -22,7 +22,7 @@ namespace Quiz.Mobile.Services.Requests
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(new { Username = username, Email = email, Password = password });
-            return await new RestClient($"{GetDataHelper.Uri}/Register").ExecuteAsync(request, new CancellationTokenSource().Token);
+            return await new RestClient($"{DataHelper.Uri}/Register").ExecuteAsync(request, new CancellationTokenSource().Token);
         }
     }
 }

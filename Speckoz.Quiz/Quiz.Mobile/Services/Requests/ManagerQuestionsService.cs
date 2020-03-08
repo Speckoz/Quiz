@@ -1,5 +1,5 @@
-﻿using Quiz.Dependencies.Models;
-using Quiz.Mobile.Helpers;
+﻿using Quiz.Dependencies.Helpers;
+using Quiz.Dependencies.Models;
 
 using RestSharp;
 using RestSharp.Authenticators;
@@ -17,9 +17,9 @@ namespace Quiz.Mobile.Services.Requests
             var request = new RestRequest(Method.POST);
             request.AddHeader("Accept", "application/json");
             request.AddJsonBody(JsonSerializer.Serialize(question));
-            return await new RestClient($"{GetDataHelper.Uri}/Suggestions")
+            return await new RestClient($"{DataHelper.Uri}/Suggestions")
             {
-                Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)
+                Authenticator = new JwtAuthenticator(DataHelper.CurrentUser.Token)
             }.ExecuteAsync(request, new CancellationTokenSource().Token);
         }
 
@@ -27,9 +27,9 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
-            return await new RestClient($"{GetDataHelper.Uri}/Suggestions")
+            return await new RestClient($"{DataHelper.Uri}/Suggestions")
             {
-                Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)
+                Authenticator = new JwtAuthenticator(DataHelper.CurrentUser.Token)
             }.ExecuteAsync(request, new CancellationTokenSource().Token);
         }
     }

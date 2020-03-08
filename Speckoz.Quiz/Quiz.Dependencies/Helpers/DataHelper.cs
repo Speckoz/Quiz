@@ -1,8 +1,8 @@
-﻿using Quiz.Mobile.Models.Starting;
+﻿using Quiz.Dependencies.Models;
 
-namespace Quiz.Mobile.Helpers
+namespace Quiz.Dependencies.Helpers
 {
-    public class GetDataHelper
+    public class DataHelper
     {
         public static string Uri { get; } = "http://192.168.1.243:5000";//"http://marcopandolfo.ddns.net:5000";
 

@@ -1,5 +1,5 @@
 ﻿using Quiz.Dependencies.Enums;
-using Quiz.Mobile.Helpers;
+using Quiz.Dependencies.Helpers;
 
 using RestSharp;
 using RestSharp.Authenticators;
@@ -15,9 +15,9 @@ namespace Quiz.Mobile.Services.Requests
         {
             var request = new RestRequest(Method.GET);
             request.AddHeader("Accept", "application/json");
-            return await new RestClient($"{GetDataHelper.Uri}/questions{(isRandom ? $"?cat={((int)category).ToString()}" : string.Empty)}")
+            return await new RestClient($"{DataHelper.Uri}/questions{(isRandom ? $"?cat={((int)category).ToString()}" : string.Empty)}")
             {
-                Authenticator = new JwtAuthenticator(GetDataHelper.CurrentUser.Token)
+                Authenticator = new JwtAuthenticator(DataHelper.CurrentUser.Token)
             }.ExecuteAsync(request, new CancellationTokenSource().Token);
         }
     }

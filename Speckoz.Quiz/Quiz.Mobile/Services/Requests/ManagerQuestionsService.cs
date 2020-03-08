@@ -1,5 +1,5 @@
-﻿using Quiz.Mobile.Helpers;
-using Quiz.Mobile.Models;
+﻿using Quiz.Dependencies.Models;
+using Quiz.Mobile.Helpers;
 
 using RestSharp;
 using RestSharp.Authenticators;

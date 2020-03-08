@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Logikoz.XamarinUtilities.Utilities;
 
-using Quiz.Dependencies.Interfaces;
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Views.ManagerQuestions;
 
 using Xamarin.Forms;
@@ -12,9 +12,9 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     internal class ShowStatusSuggestionViewModel : ViewModelBase
     {
-        private IQuestion __suggestion;
+        private QuestionModel __suggestion;
 
-        public IQuestion Suggestion
+        public QuestionModel Suggestion
         {
             get => __suggestion;
             set => Set(ref __suggestion, value);

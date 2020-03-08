@@ -1,4 +1,4 @@
-﻿using Quiz.API.Models;
+﻿using Quiz.Dependencies.Models;
 
 using System;
 using System.Threading.Tasks;

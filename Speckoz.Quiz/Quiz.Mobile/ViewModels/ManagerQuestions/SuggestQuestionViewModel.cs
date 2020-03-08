@@ -4,8 +4,7 @@ using GalaSoft.MvvmLight.Command;
 using Logikoz.XamarinUtilities.Utilities;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Models;
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Views.ManagerQuestions;
@@ -25,11 +24,11 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
 {
     public class SuggestQuestionViewModel : ViewModelBase
     {
-        private IQuestion __newQuestion;
+        private QuestionModel __newQuestion;
 
         private string[] __categoryChoice;
 
-        public IQuestion NewQuestion
+        public QuestionModel NewQuestion
         {
             get => __newQuestion;
             set => Set(ref __newQuestion, value);

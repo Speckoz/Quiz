@@ -1,12 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Command;
 
-using Quiz.Dependencies.Interfaces;
+using Quiz.Dependencies.Models;
 
 namespace Quiz.Mobile.Models.ManagerQuestions
 {
     public class StatusQuestionsCardModel
     {
-        public IQuestion Question { get; set; }
-        public RelayCommand<IQuestion> ViewStatusCommand { get; set; }
+        public QuestionModel Question { get; set; }
+        public RelayCommand<QuestionModel> ViewStatusCommand { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using Logikoz.XamarinUtilities.Enums;
 using Logikoz.XamarinUtilities.Utilities;
 
 using Quiz.Dependencies.Enums;
-using Quiz.Dependencies.Interfaces;
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Models;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Util;
@@ -99,14 +99,14 @@ namespace Quiz.Mobile.ViewModels
             }
         }
 
-        private void CreateButtons(IQuestion question)
+        private void CreateButtons(QuestionModel question)
         {
             AnswerButtons = new ObservableCollection<GameModel>();
             GetAnswersFromQuestion(question)
                 .ForEach(q => AnswerButtons.Add(CreateAnswerButton(q, question)));
         }
 
-        private GameModel CreateAnswerButton(string answer, IQuestion question)
+        private GameModel CreateAnswerButton(string answer, QuestionModel question)
         {
             return new GameModel
             {
@@ -144,7 +144,7 @@ namespace Quiz.Mobile.ViewModels
             }
         }
 
-        private List<string> GetAnswersFromQuestion(IQuestion question)
+        private List<string> GetAnswersFromQuestion(QuestionModel question)
         {
             var answerList = question.IncorrectAnswers.Split('/').ToList();
             foreach (string i in answerList.Where(i => i == string.Empty).Select(i => i))

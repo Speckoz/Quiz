@@ -2,8 +2,8 @@
 
 using Newtonsoft.Json;
 
-using Quiz.API.Models;
 using Quiz.API.Models.Auxiliary;
+using Quiz.Dependencies.Models;
 
 using System.Net;
 using System.Net.Http;

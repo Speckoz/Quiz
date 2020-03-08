@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using Quiz.API.Models;
+using Quiz.Dependencies.Models;
 
 using System;
 

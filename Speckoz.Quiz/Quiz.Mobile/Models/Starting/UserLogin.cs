@@ -1,4 +1,6 @@
-﻿namespace Quiz.Mobile.Models.Starting
+﻿using Quiz.Dependencies.Models;
+
+namespace Quiz.Mobile.Models.Starting
 {
     public class UserLogin
     {

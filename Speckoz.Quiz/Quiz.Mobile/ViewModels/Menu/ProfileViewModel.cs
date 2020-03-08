@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Helpers;
-using Quiz.Mobile.Models.Starting;
 
 namespace Quiz.Mobile.ViewModels.Menu
 {

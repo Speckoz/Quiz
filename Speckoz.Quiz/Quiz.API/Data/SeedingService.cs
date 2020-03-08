@@ -1,5 +1,5 @@
-﻿using Quiz.API.Models;
-using Quiz.Dependencies.Enums;
+﻿using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models;
 
 using System;
 using System.Linq;

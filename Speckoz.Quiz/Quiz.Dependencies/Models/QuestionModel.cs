@@ -1,12 +1,11 @@
 ﻿using Quiz.Dependencies.Enums;
-using Quiz.Dependencies.Interfaces;
 
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Quiz.API.Models
+namespace Quiz.Dependencies.Models
 {
-    public class QuestionModel : IQuestion
+    public class QuestionModel
     {
         public int? QuestionID { get; set; }
 
@@ -23,9 +22,9 @@ namespace Quiz.API.Models
         public string CorrectAnswer { get; set; }
 
         [Required]
-        public CategoryEnum Category { get; set; }
+        public virtual CategoryEnum Category { get; set; }
 
         [Required]
-        public string IncorrectAnswers { get; set; }
+        public virtual string IncorrectAnswers { get; set; }
     }
 }

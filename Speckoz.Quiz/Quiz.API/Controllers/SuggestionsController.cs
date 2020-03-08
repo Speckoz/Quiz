@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models;
 
 using System;
 using System.Security.Claims;

@@ -2,10 +2,8 @@
 
 using Newtonsoft.Json;
 
-using Quiz.API.Models;
 using Quiz.API.Models.Auxiliary;
-
-using Speckoz.MobileQuiz.Dependencies.Interfaces;
+using Quiz.Dependencies.Models;
 
 using System.Net;
 using System.Net.Http;
@@ -41,7 +39,7 @@ namespace Quiz.API.Tests
             using HttpResponseMessage response = await _client.SendAsync(request);
 
             // Assert
-            IUserBase usuario = JsonConvert.DeserializeObject<UserBaseModel>(await response.Content.ReadAsStringAsync());
+            UserBaseModel usuario = JsonConvert.DeserializeObject<UserBaseModel>(await response.Content.ReadAsStringAsync());
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using Quiz.API.Data;
-using Quiz.API.Models;
 using Quiz.API.Repository.Interfaces;
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models;
 
 using System;
 using System.Collections.Generic;

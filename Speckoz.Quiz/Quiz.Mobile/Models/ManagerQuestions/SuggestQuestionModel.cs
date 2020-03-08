@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight.Command;
 
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models;
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 using Newtonsoft.Json;
 
-using Quiz.API.Models;
 using Quiz.Dependencies.Enums;
+using Quiz.Dependencies.Models;
 
 using System.Net;
 using System.Net.Http;

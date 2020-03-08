@@ -43,9 +43,9 @@ namespace Quiz.Mobile.ViewModels.Starting
         public RelayCommand AuthCommand { get; private set; }
         public RelayCommand RegisterCommand { get; private set; }
 
-        public AuthAccountViewModel() => InitCommands();
+        public AuthAccountViewModel() => Init();
 
-        private void InitCommands()
+        private void Init()
         {
             AuthCommand = new RelayCommand(Auth);
             RegisterCommand = new RelayCommand(async () =>

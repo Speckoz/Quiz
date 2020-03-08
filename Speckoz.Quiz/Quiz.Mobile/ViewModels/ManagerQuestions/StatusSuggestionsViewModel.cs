@@ -3,8 +3,7 @@ using GalaSoft.MvvmLight.Command;
 
 using Logikoz.XamarinUtilities.Utilities;
 
-using Quiz.Dependencies.Interfaces;
-using Quiz.Mobile.Models;
+using Quiz.Dependencies.Models;
 using Quiz.Mobile.Models.ManagerQuestions;
 using Quiz.Mobile.Services.Requests;
 using Quiz.Mobile.Views.ManagerQuestions;
@@ -49,7 +48,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                     StatusQuestions.Add(new StatusQuestionsCardModel
                     {
                         Question = question,
-                        ViewStatusCommand = new RelayCommand<IQuestion>(ViewStatus)
+                        ViewStatusCommand = new RelayCommand<QuestionModel>(ViewStatus)
                     });
                 });
             }
@@ -66,7 +65,7 @@ namespace Quiz.Mobile.ViewModels.ManagerQuestions
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
-        private void ViewStatus(IQuestion question)
+        private void ViewStatus(QuestionModel question)
         {
             Application.Current.MainPage.Navigation.ModalStack.ForEach(async page =>
             {

@@ -17,9 +17,11 @@ namespace Quiz.Mobile.ViewModels
 {
     internal class ChooseCategoryViewModel : ViewModelBase
     {
-        public ObservableCollection<ChooseCategoryModel> ChooseCategories { get; set; }
+        public ObservableCollection<ChooseCategoryModel> ChooseCategories { get; private set; }
 
         public ChooseCategoryViewModel() => Init();
+
+        private void Init() => CreateButtonsChoose();
 
         private void CreateButtonsChoose()
         {
@@ -56,11 +58,6 @@ namespace Quiz.Mobile.ViewModels
                 PopPushViewUtil.PopNavModalAsync<GameView>();
                 await PopPushViewUtil.PushModalAsync(new NavigationPage(new GameView(result)), true);
             }
-        }
-
-        private void Init()
-        {
-            CreateButtonsChoose();
         }
     }
 }

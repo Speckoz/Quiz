@@ -125,8 +125,8 @@ namespace Quiz.Mobile.ViewModels
 
                 Round++;
                 Points = Points == default ? 10 : Points * 2;
-
-                NextLevel();
+                //proximo nivel.
+                Mount();
             }
             else
             {
@@ -159,10 +159,9 @@ namespace Quiz.Mobile.ViewModels
             foreach (GameModel gm in AnswerButtons)
                 if (bool.Parse(gm.IsCorrectAnswer))
                     return gm.AnswerText;
+
             return null;
         }
-
-        private void NextLevel() => Mount();
 
         private void GameOverAsync() => PopPushViewUtil.PopNavModalAsync<GameView>(true);
     }

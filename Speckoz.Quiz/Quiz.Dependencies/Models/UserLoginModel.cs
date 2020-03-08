@@ -1,6 +1,6 @@
 ﻿namespace Quiz.Dependencies.Models
 {
-    public class UserLogin
+    public class UserLoginModel
     {
         public UserBaseModel User { get; set; }
 

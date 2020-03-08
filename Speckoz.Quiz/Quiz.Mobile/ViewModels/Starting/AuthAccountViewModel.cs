@@ -70,7 +70,7 @@ namespace Quiz.Mobile.ViewModels.Starting
             {
                 dialog.MessageText = "Autenticado com sucesso!";
 
-                DataHelper.CurrentUser = JsonSerializer.Deserialize<UserLogin>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                DataHelper.CurrentUser = JsonSerializer.Deserialize<UserLoginModel>(response.Content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
                 await Task.Delay(1000);
 
